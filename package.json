@@ -1,18 +1,43 @@
 {
   "name": "wdui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "wdui",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production webpack --display-modules --sort-modules-by size"
   },
   "author": "wdfe",
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^6.6.0",
+    "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
+    "babel-helper-vue-jsx-merge-props": "^2.0.2",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.3.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-runtime": "^6.20.0",
+    "clean-webpack-plugin": "^0.1.14",
+    "css-loader": "^0.26.1",
     "eslint": "^3.12.2",
     "eslint-config-wdfe": "http://10.8.96.35:2009/package/eslint-config-wdfe/latest",
+    "eslint-loader": "^1.6.1",
     "eslint-plugin-vue": "^1.0.0",
+    "file-loader": "^0.9.0",
+    "json-loader": "^0.5.4",
     "lerna": "2.0.0-beta.30",
-    "vue": "^2.1.7"
+    "node-sass": "^4.1.1",
+    "postcss-loader": "^1.2.1",
+    "postcss-px2rem": "^0.3.0",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "vue": "^2.1.7",
+    "vue-loader": "^10.0.2",
+    "vue-style-loader": "^1.0.0",
+    "vue-template-compiler": "^2.1.7",
+    "webpack": "^2.2.0-rc.2"
   }
 }

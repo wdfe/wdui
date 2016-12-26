@@ -1,16 +1,17 @@
 import MessageBox from '../packages/MessageBox/index.js'
 
 const install = function() {
-  if(typeof window !== 'undefined' && window.WDUIInstalled) {
+  if(install.installed) {
     return
   }
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
-  window.WDUIInstalled = true
 }
 
 module.exports = {
+  install,
+  version: '0.0.2',
   MessageBox
 }

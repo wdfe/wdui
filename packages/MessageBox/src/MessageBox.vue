@@ -18,7 +18,7 @@
 
 <script>
 
-import Popup from '../../util/popup/index.js'
+import Popup from '../../../src/popup/index.js'
 
 export default {
   name: 'MessageBox',
