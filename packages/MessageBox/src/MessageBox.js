@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import MessageBoxComponent from './MessageBox.vue'
 
-const MessageBoxConstructor = Vue.extend(MessageComponent)
+const MessageBoxConstructor = Vue.extend(MessageBoxComponent)
 
 const init = () => {
   return new MessageBoxConstructor({
