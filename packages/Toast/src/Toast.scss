@@ -39,13 +39,13 @@
   .success {
     width: 88px;
     height: 64px;
-    background: url(../../../assets/images/fill.png) no-repeat;
+    background: url(../../../src/assets/images/fill.png) no-repeat;
     background-size: 88px auto;
   }
   .spinner {
     width: 59px;
     height: 60px;
-    background: url(../../../assets/images/spinner.gif) no-repeat;
+    background: url(../../../src/assets/images/spinner-b.gif) no-repeat;
     background-size: 59px auto;
   }
 }
@@ -72,6 +72,7 @@
   .spinner {
     width: 48px;
     height: 48px;
+    background: url(../../../assets/images/spinner-s.gif) no-repeat;
     background-size: 48px auto;
   }
 }
