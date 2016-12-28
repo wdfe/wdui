@@ -1,19 +1,17 @@
 <template>
-  <span>
-    <transition :name="messageBoxTransition" @after-enter="onShow()" @after-leave="onHide()">
-      <div class="wd-messagebox" ref="popup" v-if="open" :style="{'z-index': zIndex}">
-        <div class="wd-messagebox-content">
-          <header v-if="title">{{ title }}</header>
-          <p class="wd-messagebox-content-text">{{ text }}</p>
-          <input class="wd-messagebox-content-input" v-if="isShowInput" v-model="inputValue" ref="input"></input>
-        </div>
-        <footer :class="{'wd-messagebox-footer-row': !isColumnButton, 'wd-messagebox-footer-column': isColumnButton}">
-          <span @click="onCancel" v-if="isShowCancelButton">{{ cancelText }}</span>
-          <span @click="confirmHandler" :class="{disabled: isConfirmDisabled}">{{ confirmText }}</span>
-        </footer>
+  <transition :name="messageBoxTransition" @after-enter="onShow()" @after-leave="onHide()">
+    <div class="wd-messagebox" ref="popup" v-if="open" :style="{'z-index': zIndex}">
+      <div class="wd-messagebox-content">
+        <header v-if="title">{{ title }}</header>
+        <p class="wd-messagebox-content-text">{{ text }}</p>
+        <input class="wd-messagebox-content-input   " v-if="isShowInput" v-model="inputValue" ref="input"></input>
       </div>
-    </transition>
-  </span>
+      <footer :class="{'wd-messagebox-footer-row': !isColumnButton, 'wd-messagebox-footer-column': isColumnButton}">
+        <span @click="onCancel" v-if="isShowCancelButton">{{ cancelText }}</span>
+        <span @click="confirmHandler" :class="{disabled: isConfirmDisabled}">{{ confirmText }}</span>
+      </footer>
+    </div>
+  </transition>
 </template>
 
 <script>
