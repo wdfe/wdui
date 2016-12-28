@@ -44,11 +44,10 @@ module.exports = {
         loaders: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|jpg|gif|svg)(\?t=\d+)?$/,
-        loader: 'url-loader?limit=10000',
-        query: {
-          name: '[name].[ext]?[hash]'
-        }
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|svg)(\?t=\d+)?$/,
+        loaders: [{
+          loader: 'url-loader?limit=8192&name=[name]-[hash].[ext]'
+        }]
       }
     ]
   },
