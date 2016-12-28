@@ -42,6 +42,13 @@ module.exports = {
       {
         test: /\.css$/,
         loaders: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpg|gif|svg)(\?t=\d+)?$/,
+        loader: 'url?limit=10000',
+        query: {
+          name: '[name].[ext]?[hash]'
+        }
       }
     ]
   },
