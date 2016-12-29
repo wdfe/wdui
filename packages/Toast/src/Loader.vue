@@ -1,102 +1,129 @@
 <template lang="html">
-  <div class="loader">
-   <div class="line-spin-fade-loader">
-     <div></div>
-     <div></div>
-     <div></div>
-     <div></div>
-     <div></div>
-     <div></div>
-     <div></div>
-     <div></div>
-   </div>
+ <div class="wd-spin-wrap" :class="type">
+   <div v-for="i in 12"></div>
  </div>
 </template>
 
 <script>
 export default {
+  props: {
+    type: {
+      type: String,
+      default: 'big'
+    }
+  }
 }
 </script>
 
 <style lang="css">
-.loader {
+.wd-spin-wrap {
   position: relative;
 }
-.line-spin-fade-loader {
-  position: absolute;
-  top: 10px;
-  left: 20px;
+.wd-spin-wrap.big{
+  width: 60px;
+  height: 60px;
+  left: 50%;
 }
-.line-spin-fade-loader > div:nth-child(1) {
-  top: 20px;
-  left: 0;
-  -webkit-animation: line-spin-fade-loader 1.2s -0.84s infinite ease-in-out;
-          animation: line-spin-fade-loader 1.2s -0.84s infinite ease-in-out; }
-.line-spin-fade-loader > div:nth-child(2) {
-  top: 13.63636px;
-  left: 13.63636px;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  -webkit-animation: line-spin-fade-loader 1.2s -0.72s infinite ease-in-out;
-          animation: line-spin-fade-loader 1.2s -0.72s infinite ease-in-out; }
-.line-spin-fade-loader > div:nth-child(3) {
-  top: 0;
-  left: 20px;
+.wd-spin-wrap.small{
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: -9px;
+}
+.wd-spin-wrap > div:nth-child(1) {
+  -webkit-animation: wd-spin-wrap 1.2s -0.84s infinite ease-in-out;
+          animation: wd-spin-wrap 1.2s -0.84s infinite ease-in-out;
+    }
+.wd-spin-wrap > div:nth-child(2) {
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+          -webkit-animation: wd-spin-wrap 1.2s -0.72s infinite ease-in-out;
+                  animation: wd-spin-wrap 1.2s -0.72s infinite ease-in-out;
+}
+.wd-spin-wrap > div:nth-child(3) {
+  -webkit-transform: rotate(60deg);
+          transform: rotate(60deg);
+          -webkit-animation: wd-spin-wrap 1.2s -0.6s infinite ease-in-out;
+                  animation: wd-spin-wrap 1.2s -0.6s infinite ease-in-out;
+  }
+.wd-spin-wrap > div:nth-child(4) {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
-  -webkit-animation: line-spin-fade-loader 1.2s -0.6s infinite ease-in-out;
-          animation: line-spin-fade-loader 1.2s -0.6s infinite ease-in-out; }
-.line-spin-fade-loader > div:nth-child(4) {
-  top: -13.63636px;
-  left: 13.63636px;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  -webkit-animation: line-spin-fade-loader 1.2s -0.48s infinite ease-in-out;
-          animation: line-spin-fade-loader 1.2s -0.48s infinite ease-in-out;
+          -webkit-animation: wd-spin-wrap 1.2s -0.48s infinite ease-in-out;
+                  animation: wd-spin-wrap 1.2s -0.48s infinite ease-in-out;
+
 }
-.line-spin-fade-loader > div:nth-child(5) {
-  top: -20px;
-  left: 0;
-  -webkit-animation: line-spin-fade-loader 1.2s -0.36s infinite ease-in-out;
-          animation: line-spin-fade-loader 1.2s -0.36s infinite ease-in-out;
+.wd-spin-wrap > div:nth-child(5) {
+  -webkit-animation: wd-spin-wrap 1.2s -0.36s infinite ease-in-out;
+          animation: wd-spin-wrap 1.2s -0.36s infinite ease-in-out;
+  -webkit-transform: rotate(120deg);
+          transform: rotate(120deg);
 }
-.line-spin-fade-loader > div:nth-child(6) {
-  top: -13.63636px;
-  left: -13.63636px;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  -webkit-animation: line-spin-fade-loader 1.2s -0.24s infinite ease-in-out;
-          animation: line-spin-fade-loader 1.2s -0.24s infinite ease-in-out;
+.wd-spin-wrap > div:nth-child(6) {
+  -webkit-animation: wd-spin-wrap 1.2s -0.25s infinite ease-in-out;
+          animation: wd-spin-wrap 1.2s -0.25s infinite ease-in-out;
+  -webkit-transform: rotate(150deg);
+          transform: rotate(150deg);
 }
-.line-spin-fade-loader > div:nth-child(7) {
-  top: 0;
-  left: -20px;
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-  -webkit-animation: line-spin-fade-loader 1.2s -0.12s infinite ease-in-out;
-          animation: line-spin-fade-loader 1.2s -0.12s infinite ease-in-out;
+.wd-spin-wrap > div:nth-child(7) {
+  -webkit-animation: wd-spin-wrap 1.2s -0.12s infinite ease-in-out;
+          animation: wd-spin-wrap 1.2s -0.12s infinite ease-in-out;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
-.line-spin-fade-loader > div:nth-child(8) {
-  top: 13.63636px;
-  left: -13.63636px;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  -webkit-animation: line-spin-fade-loader 1.2s 0s infinite ease-in-out;
-          animation: line-spin-fade-loader 1.2s 0s infinite ease-in-out;
+.wd-spin-wrap > div:nth-child(8) {
+  -webkit-animation: wd-spin-wrap 1.2s -0s infinite ease-in-out;
+          animation: wd-spin-wrap 1.2s -0s infinite ease-in-out;
+  -webkit-transform: rotate(-150deg);
+          transform: rotate(-150deg);
+
 }
-.line-spin-fade-loader > div {
-  background-color: #fff;
+.wd-spin-wrap > div:nth-child(9) {
+  -webkit-animation: wd-spin-wrap 1.2s -0s infinite ease-in-out;
+          animation: wd-spin-wrap 1.2s -0s infinite ease-in-out;
+  -webkit-transform: rotate(-120deg);
+          transform: rotate(-120deg);
+}
+.wd-spin-wrap > div:nth-child(10) {
+  -webkit-animation: wd-spin-wrap 1.2s -0s infinite ease-in-out;
+          animation: wd-spin-wrap 1.2s -0s infinite ease-in-out;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+.wd-spin-wrap > div:nth-child(11) {
+  -webkit-animation: wd-spin-wrap 1.2s -0s infinite ease-in-out;
+          animation: wd-spin-wrap 1.2s -0s infinite ease-in-out;
+  -webkit-transform: rotate(-60deg);
+          transform: rotate(-60deg);
+}
+.wd-spin-wrap > div:nth-child(12) {
+  -webkit-animation: wd-spin-wrap 1.2s -0s infinite ease-in-out;
+          animation: wd-spin-wrap 1.2s -0s infinite ease-in-out;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+}
+.wd-spin-wrap.small > div {
+  background-color: #000;
   width: 4px;
-  height: 35px;
-  border-radius: 2px;
-  margin: 2px;
+  height: 11px;
+  border-radius: 4px;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
   position: absolute;
-  width: 5px;
-  height: 15px;
+  transform-origin: center 10px; /*no*/
 }
-@-webkit-keyframes line-spin-fade-loader {
+.wd-spin-wrap.big > div {
+  background-color: #fff;
+  width: 6px;
+  height: 14px;
+  border-radius: 4px;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  position: absolute;
+  transform-origin: center 14px; /*no*/
+}
+@-webkit-keyframes wd-spin-wrap {
   50% {
     opacity: 0.3;
   }
@@ -104,7 +131,7 @@ export default {
     opacity: 1;
   }
 }
-@keyframes line-spin-fade-loader {
+@keyframes wd-spin-wrap {
   50% {
     opacity: 0.3;
   }

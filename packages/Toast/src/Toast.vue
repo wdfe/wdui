@@ -3,7 +3,7 @@
     <div class="wd-toast-mask" v-if="visible" :class="{'wd-toast-theme-light': theme === 'Light'}" >
       <div class="wd-toast-box" :class="{'wd-toast-box-haveicon': iconClass !== ''}">
         <i class="wd-toast-icon" :class="iconClass" v-if="iconClass !== '' && iconClass != 'loader'"></i>
-        <loaderIcon v-if="iconClass === 'loader'" class="wd-toast-loader-icon"></loaderIcon>
+        <loaderIcon v-if="iconClass === 'loader'" :type="theme == 'Light' ? 'small' : 'big'"></loaderIcon>
         <span v-html="content"></span>
       </div>
     </div>
@@ -11,7 +11,6 @@
 </template>
 <script>
 import loaderIcon from './Loader.vue'
-
 export default {
   props: {
     theme: {
