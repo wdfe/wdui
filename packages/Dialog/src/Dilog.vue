@@ -12,7 +12,7 @@
 </template>
 <script>
 
-import Popup from '../../../popup/index.js'
+import Popup from '../../../src/popup/index.js'
 
 export default {
   name: 'wdDialog',
@@ -61,11 +61,11 @@ export default {
       this.visible = val
     },
     visible(val) {
+      this.$emit('input', val)
       if (val) {
         this.$emit('open')
       } else {
         this.$emit('close')
-        this.$emit('input', false)
       }
     }
   },

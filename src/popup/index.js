@@ -61,6 +61,18 @@ export default {
     resetZIndex() {
       this.maskZIndex = getZIndex()
       this.zIndex = getZIndex()
+    },
+    openMask() {
+      if (val) {
+        this.bindClickOutSide()
+        this.resetZIndex()
+        if (this.mask) {
+          MaskManager.open(this)
+        }
+      } else {
+        this.unBindClickOutSide()
+        MaskManager.close(this)
+      }
     }
   },
   mounted() {
@@ -82,20 +94,14 @@ export default {
     document.body.removeChild(this.$refs.popup)
   },
   watch: {
+    value(val) {
+      this.openMask(val)
+    },
     open(val, oldVal) {
       if (val === oldVal) {
         return
       }
-      if (val) {
-        this.bindClickOutSide()
-        this.resetZIndex()
-        if (this.mask) {
-          MaskManager.open(this)
-        }
-      } else {
-        this.unBindClickOutSide()
-        MaskManager.close(this)
-      }
+      this.openMask(val)
     }
   }
 }
