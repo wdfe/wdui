@@ -1,4 +1,5 @@
 import MessageBox from '../packages/MessageBox/index.js'
+import Lazyload from '../packages/Lazyload'
 
 const install = function() {
   if(install.installed) {
@@ -13,5 +14,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 module.exports = {
   install,
   version: '0.0.5',
-  MessageBox
+  MessageBox,
+  Lazyload
 }
