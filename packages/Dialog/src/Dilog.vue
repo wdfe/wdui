@@ -65,17 +65,18 @@ export default {
         this.$emit('open')
       } else {
         this.$emit('close')
+        this.$emit('input', false)
       }
-      // console.log(123)
     }
   },
   methods: {
-
+    close() {
+      this.visible = false
+    }
   },
   mounted() {
     if (this.value) {
-      this.rendered = true;
-      // this.open();
+      this.visible = true;
     }
   }
 }
