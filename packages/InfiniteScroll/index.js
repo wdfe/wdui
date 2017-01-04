@@ -1,1 +1,1 @@
-export {default} from './src/infinite-scroll.js'
+export {default} from './src/directive.js'
