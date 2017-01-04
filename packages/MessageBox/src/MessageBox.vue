@@ -19,7 +19,7 @@
 import Popup from '../../../src/popup/index.js'
 
 export default {
-  name: 'MessageBox',
+  name: 'wd-messagebox',
   mixins: [Popup],
   props: {
     transition: {
