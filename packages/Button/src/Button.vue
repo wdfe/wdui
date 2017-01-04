@@ -101,10 +101,6 @@ $button-disabled-opacity: 0.4;
       background-color: $button-background-color-primary-pressed;
       color: $button-text-primary-color-pressed;
     }
-
-    &[disabled] {
-      opacity: $button-disabled-opacity;
-    }
   }
 
   &-default {
@@ -115,10 +111,6 @@ $button-disabled-opacity: 0.4;
     &:active {
       background-color: $button-background-color-default-pressed;
       color: $button-text-default-color-pressed;
-    }
-
-    &[disabled] {
-      opacity: $button-disabled-opacity;
     }
   }
 
@@ -131,10 +123,6 @@ $button-disabled-opacity: 0.4;
       background-color: $button-background-color-gray-pressed;
       color: $button-text-gray-color-pressed;
     }
-
-    &[disabled] {
-      opacity: $button-disabled-opacity;
-    }
   }
 
   &-dark {
@@ -146,14 +134,14 @@ $button-disabled-opacity: 0.4;
       background-color: $button-background-color-dark-pressed;
       color: $button-text-dark-color-pressed;
     }
-
-    &[disabled] {
-      opacity: $button-disabled-opacity;
-    }
   }
 
   &.wd-button-ghost:not(:active) {
     background-color: transparent;
+  }
+
+  &[disabled] {
+    opacity: $button-disabled-opacity;
   }
 
   label {
