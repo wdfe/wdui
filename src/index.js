@@ -1,6 +1,7 @@
 import MessageBox from '../packages/MessageBox/index.js'
 import Toast from '../packages/Toast/index.js'
 import Button from '../packages/Button/index.js'
+import InfiniteScroll from '../packages/InfiniteScroll/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -8,6 +9,7 @@ const install = function(Vue) {
   }
 
   Vue.component(Button.name, Button)
+  Vue.directive('InfiniteScroll', InfiniteScroll)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -16,8 +18,9 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 module.exports = {
   install,
-  version: '0.0.6',
+  version: '0.0.7',
   MessageBox,
   Toast,
-  Button
+  Button,
+  InfiniteScroll
 }
