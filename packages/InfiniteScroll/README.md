@@ -1,1 +1,1 @@
-# wd-infinite-scroll
+InfiniteScroll
