@@ -1,9 +1,13 @@
 import MessageBox from '../packages/MessageBox/index.js'
 import Toast from '../packages/Toast/index.js'
-const install = function() {
+import Button from '../packages/Button/index.js'
+
+const install = function(Vue) {
   if(install.installed) {
     return
   }
+
+  Vue.component(Button.name, Button)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -12,7 +16,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 module.exports = {
   install,
-  version: '0.0.5',
+  version: '0.0.6',
   MessageBox,
-  Toast
+  Toast,
+  Button
 }
