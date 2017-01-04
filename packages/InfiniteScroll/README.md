@@ -1,1 +1,1 @@
-# mint-infinite-scroll
+# wd-infinite-scroll
