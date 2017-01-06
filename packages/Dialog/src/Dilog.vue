@@ -1,11 +1,14 @@
 <template>
   <transition :name="dialogTransition" @after-enter="onShow()" @after-leave="onHide()">
-    <div class="wd-dialog" :class="dialogClass" ref="popup" v-if="visible" :style="{'z-index': zIndex}">
+    <div class="wd-dialog" :class="[dialogClass]" ref="popup" v-if="visible" :style="{'z-index': zIndex}">
       <div class="wd-dialog-header">
         <div v-if="showClose" class="wd-dialog-header-close" @click="close()"></div>
       </div>
       <div class="wd-dialog-content">
         <slot></slot>
+      </div>
+      <div class="wd-dialog-footer">
+        <slot name="footer"></slot>
       </div>
     </div>
   </transition>
@@ -27,7 +30,8 @@ export default {
       default: false
     },
     dialogClass: {
-      type: [String, Array, Object]
+      type: String,
+      default: ''
     },
     showClose: {
       type: Boolean,
@@ -76,7 +80,8 @@ export default {
   },
   mounted() {
     if (this.value) {
-      this.visible = true;
+      this.visible = true
+      this.open()
     }
   }
 }
@@ -96,6 +101,7 @@ export default {
     backface-visibility: hidden;
     overflow: hidden;
     border-radius: 16px;
+    padding-bottom: 56px;
 
     .wd-dialog-header {
       position: relative;
@@ -127,10 +133,13 @@ export default {
       }
     }
 
-    .wd-dialog-content {
+    .wd-dialog-content, .wd-dialog-footer {
       box-sizing: border-box;
-      padding: 0 56px 56px;
+      padding: 0 56px;
     }
 
+    .wd-dialog-footer {
+      text-align: right;
+    }
   }
 </style>

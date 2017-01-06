@@ -3,10 +3,6 @@ import MaskManager from './mask-manager'
 import {getZIndex} from './utils'
 export default {
   props: {
-    open: {
-      type: Boolean,
-      default: false
-    },
     mask: {
       type: Boolean,
       default: true
@@ -22,6 +18,7 @@ export default {
   },
   data() {
     return {
+      open: false,
       maskZIndex: getZIndex(),
       zIndex: getZIndex()
     }
@@ -61,18 +58,6 @@ export default {
     resetZIndex() {
       this.maskZIndex = getZIndex()
       this.zIndex = getZIndex()
-    },
-    openMask() {
-      if (val) {
-        this.bindClickOutSide()
-        this.resetZIndex()
-        if (this.mask) {
-          MaskManager.open(this)
-        }
-      } else {
-        this.unBindClickOutSide()
-        MaskManager.close(this)
-      }
     }
   },
   mounted() {
@@ -95,13 +80,22 @@ export default {
   },
   watch: {
     value(val) {
-      this.openMask(val)
+      this.open = val
     },
     open(val, oldVal) {
       if (val === oldVal) {
         return
       }
-      this.openMask(val)
+      if (val) {
+        this.bindClickOutSide()
+        this.resetZIndex()
+        if (this.mask) {
+          MaskManager.open(this)
+        }
+      } else {
+        this.unBindClickOutSide()
+        MaskManager.close(this)
+      }
     }
   }
 }
