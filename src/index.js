@@ -2,6 +2,7 @@ import MessageBox from '../packages/MessageBox/index.js'
 import Toast from '../packages/Toast/index.js'
 import InfiniteScroll from '../packages/InfiniteScroll/index.js'
 import Lazyload from '../packages/Lazyload'
+import Dialog from '../packages/Dialog/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -11,7 +12,7 @@ const install = function(Vue) {
   Vue.use(Lazyload, {
     try: 3
   })
-
+  Vue.component(Dialog.name, Dialog)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -20,9 +21,10 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 module.exports = {
   install,
-  version: '0.0.7',
+  version: '0.0.8',
   MessageBox,
   Toast,
   InfiniteScroll,
-  Lazyload
+  Lazyload,
+  Dialog
 }

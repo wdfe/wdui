@@ -3,10 +3,6 @@ import MaskManager from './mask-manager'
 import {getZIndex} from './utils'
 export default {
   props: {
-    open: {
-      type: Boolean,
-      default: false
-    },
     mask: {
       type: Boolean,
       default: true
@@ -22,6 +18,7 @@ export default {
   },
   data() {
     return {
+      open: false,
       maskZIndex: getZIndex(),
       zIndex: getZIndex()
     }
@@ -82,6 +79,9 @@ export default {
     document.body.removeChild(this.$refs.popup)
   },
   watch: {
+    value(val) {
+      this.open = val
+    },
     open(val, oldVal) {
       if (val === oldVal) {
         return
