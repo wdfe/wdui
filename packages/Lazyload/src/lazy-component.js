@@ -1,4 +1,4 @@
-import { inBrowser } from './util'
+import {inBrowser} from './util'
 
 export default (lazy) => {
   return {
@@ -8,7 +8,7 @@ export default (lazy) => {
         default: 'div'
       }
     },
-    render (h) {
+    render(h) {
       if (this.show === false) {
         return h(this.tag, {
           attrs: {
@@ -22,7 +22,7 @@ export default (lazy) => {
         }
       }, this.$slots.default)
     },
-    data () {
+    data() {
       return {
         state: {
           loaded: false
@@ -31,20 +31,20 @@ export default (lazy) => {
         show: false
       }
     },
-    mounted () {
+    mounted() {
       lazy.addLazyBox(this)
     },
     methods: {
-      getRect () {
+      getRect() {
         this.rect = this.$el.getBoundingClientRect()
       },
-      checkInView () {
+      checkInView() {
         this.getRect()
         return inBrowser &&
           (this.rect.top < window.innerHeight * lazy.options.preLoad && this.rect.bottom > 0) &&
           (this.rect.left < window.innerWidth * lazy.options.preLoad && this.rect.right > 0)
       },
-      load () {
+      load() {
         this.show = true
       }
     }

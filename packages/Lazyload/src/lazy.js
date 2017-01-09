@@ -1,12 +1,12 @@
 import Vue from 'vue'
-import { remove, some, find, _, throttle, supportWebp, getDPR, getBestSelectionFromSrcset } from './util'
+import {remove, some, find, _, throttle, supportWebp, getDPR, getBestSelectionFromSrcset} from './util'
 import ReactiveListener from './listener'
 
 const DEFAULT_URL = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 const DEFAULT_EVENTS = ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend']
 
 export default class Lazy {
-  constructor ({ preLoad, error, loading, attempt, silent, scale, listenEvents, hasbind, filter, adapter }) {
+  constructor({preLoad, error, loading, attempt, silent, scale, listenEvents, hasbind, filter, adapter}) {
     this.ListenerQueue = []
     this.options = {
       silent: silent || true,
@@ -16,7 +16,7 @@ export default class Lazy {
       attempt: attempt || 3,
       scale: getDPR(scale),
       ListenEvents: listenEvents || DEFAULT_EVENTS,
-      hasbind: false,
+      hasbind: hasbind || false,
       supportWebp: supportWebp(),
       filter: filter || {},
       adapter: adapter || {}
@@ -26,26 +26,28 @@ export default class Lazy {
     this.lazyLoadHandler = throttle(() => {
       let catIn = false
       this.ListenerQueue.forEach(listener => {
-        if (listener.state.loaded) return
+        if(listener.state.loaded) {
+          return
+        }
         catIn = listener.checkInView()
         catIn && listener.load()
       })
     }, 200)
   }
 
-  addLazyBox (vm) {
+  addLazyBox(vm) {
     this.ListenerQueue.push(vm)
     this.options.hasbind = true
     this.initListen(window, true)
   }
 
-  add (el, binding, vnode) {
+  add(el, binding, vnode) {
     if (some(this.ListenerQueue, item => item.el === el)) {
       this.update(el, binding)
       return Vue.nextTick(this.lazyLoadHandler)
     }
 
-    let { src, loading, error } = this.valueFormatter(binding.value)
+    let {src, loading, error} = this.valueFormatter(binding.value)
 
     Vue.nextTick(() => {
       let tmp = getBestSelectionFromSrcset(el, this.options.scale)
@@ -74,7 +76,9 @@ export default class Lazy {
         options: this.options
       })))
 
-      if (!this.ListenerQueue.length || this.options.hasbind) return
+      if(!this.ListenerQueue.length || this.options.hasbind) {
+        return
+      }
 
       this.options.hasbind = true
       this.initListen(window, true)
@@ -84,8 +88,8 @@ export default class Lazy {
     })
   }
 
-  update (el, binding) {
-    let { src, loading, error } = this.valueFormatter(binding.value)
+  update(el, binding) {
+    let {src, loading, error} = this.valueFormatter(binding.value)
 
     const exist = find(this.ListenerQueue, item => item.el === el)
 
@@ -98,19 +102,21 @@ export default class Lazy {
     Vue.nextTick(() => this.lazyLoadHandler())
   }
 
-  remove (el) {
-    if (!el) return
+  remove(el) {
+    if(!el) {
+      return
+    }
     const existItem = find(this.ListenerQueue, item => item.el === el)
     existItem && remove(this.ListenerQueue, existItem) && existItem.destroy()
     this.options.hasbind && !this.ListenerQueue.length && this.initListen(window, false)
   }
 
-  initListen (el, start) {
+  initListen(el, start) {
     this.options.hasbind = start
     this.options.ListenEvents.forEach((evt) => _[start ? 'on' : 'off'](el, evt, this.lazyLoadHandler))
   }
 
-  initEvent () {
+  initEvent() {
     this.Event = {
       listeners: {
         loading: [],
@@ -121,32 +127,34 @@ export default class Lazy {
 
     this.$on = (event, func) => {
       this.Event.listeners[event].push(func)
-    },
+    }
     this.$once = (event, func) => {
       const vm = this
-      function on () {
+      function on() {
         vm.$off(event, on)
         func.apply(vm, arguments)
       }
       this.$on(event, on)
-    },
+    }
     this.$off = (event, func) => {
       if (!func) {
         this.Event.listeners[event] = []
         return
       }
       remove(this.Event.listeners[event], func)
-    },
+    }
     this.$emit = (event, context) => {
       this.Event.listeners[event].forEach(func => func(context))
     }
   }
 
-  elRenderer (data, state, notify) {
-    const { el, bindType, src } = data
+  elRenderer(data, state, notify) {
+    const {el, bindType, src} = data
 
     // don't remove it please
-    if (!el) return
+    if (!el) {
+      return
+    }
 
     if (bindType) {
       el.style[bindType] = 'url(' + src + ')'
@@ -156,12 +164,14 @@ export default class Lazy {
 
     el.setAttribute('lazy', state)
 
-    if (!notify) return
+    if (!notify) {
+      return
+    }
     this.$emit(state, data)
     this.options.adapter[state] && this.options.adapter[state](data, this.options)
   }
 
-  listenerFilter (listener) {
+  listenerFilter(listener) {
     if (this.options.filter.webp && this.options.supportWebp) {
       listener.src = this.options.filter.webp(listener, this.options)
     }
@@ -171,13 +181,15 @@ export default class Lazy {
     return listener
   }
 
-  valueFormatter (value) {
+  valueFormatter(value) {
     let src = value
     let loading = this.options.loading
     let error = this.options.error
 
     if (Vue.util.isObject(value)) {
-      if (!value.src && !this.options.silent) Vue.util.warn('Vue Lazyload warning: miss src with ' + value)
+      if (!value.src && !this.options.silent) {
+        Vue.util.warn('Vue Lazyload warning: miss src with ' + value)
+      }
       src = value.src
       loading = value.loading || this.options.loading
       error = value.error || this.options.error

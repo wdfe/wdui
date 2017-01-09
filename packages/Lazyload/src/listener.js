@@ -1,8 +1,8 @@
-import { loadImageAsync } from './util'
+import {loadImageAsync} from './util'
 let imageCache = {}
 
 export default class ReactiveListener {
-  constructor ({ el, src, error, loading, bindType, $parent, options, elRenderer }) {
+  constructor({el, src, error, loading, bindType, $parent, options, elRenderer}) {
     this.el = el
     this.src = src
     this.error = error
@@ -23,7 +23,7 @@ export default class ReactiveListener {
     this.elRenderer = elRenderer
   }
 
-  initState () {
+  initState() {
     this.state = {
       error: false,
       loaded: false,
@@ -31,7 +31,7 @@ export default class ReactiveListener {
     }
   }
 
-  update ({ src, loading, error }) {
+  update({src, loading, error}) {
     this.src = src
     this.loading = loading
     this.error = error
@@ -39,19 +39,21 @@ export default class ReactiveListener {
     this.initState()
   }
 
-  getRect () {
+  getRect() {
     this.rect = this.el.getBoundingClientRect()
   }
 
-  checkInView () {
+  checkInView() {
     this.getRect()
     return (this.rect.top < window.innerHeight * this.options.preLoad && this.rect.bottom > 0) &&
       (this.rect.left < window.innerWidth * this.options.preLoad && this.rect.right > 0)
   }
 
-  load () {
+  load() {
     if ((this.attempt > this.options.attempt - 1) && this.state.error) {
-      if (!this.options.silent) console.log('error end')
+      if (!this.options.silent) {
+        // console.log('error end')
+      }
       return
     }
 
@@ -72,25 +74,25 @@ export default class ReactiveListener {
       this.state.error = false
       this.render('loaded', true)
       imageCache[this.src] = 1
-    }, err => {
+    }, () => {
       this.state.error = true
       this.state.loaded = false
       this.render('error', true)
     })
   }
 
-  render (state, notify) {
+  render(state, notify) {
     let src
     switch (state) {
-      case 'loading':
-        src = this.loading
-        break
-      case 'error':
-        src = this.error
-        break
-      default:
-        src = this.src
-        break
+    case 'loading':
+      src = this.loading
+      break
+    case 'error':
+      src = this.error
+      break
+    default:
+      src = this.src
+      break
     }
 
     this.elRenderer({
@@ -100,7 +102,7 @@ export default class ReactiveListener {
     }, state, notify)
   }
 
-  destroy () {
+  destroy() {
     this.el = null
     this.src = null
     this.error = null
