@@ -1,9 +1,10 @@
 {
   "name": "wdui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "wdui",
   "main": "dist/index.js",
   "scripts": {
+    "lint": "eslint --ext .js,.vue src packages",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack --display-modules --sort-modules-by size"
   },
