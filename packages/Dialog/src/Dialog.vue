@@ -58,7 +58,7 @@ export default {
       }else {
         return ''
       }
-    },
+    }
   },
   watch: {
     value(val) {
