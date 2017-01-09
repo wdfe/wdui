@@ -44,7 +44,7 @@ export default {
     onHide: {
       type: Function,
       default: () => {}
-    },
+    }
   },
   data() {
     return {
@@ -66,11 +66,6 @@ export default {
     },
     visible(val) {
       this.$emit('input', val)
-      if (val) {
-        this.$emit('open')
-      } else {
-        this.$emit('close')
-      }
     }
   },
   methods: {
@@ -81,7 +76,7 @@ export default {
   mounted() {
     if (this.value) {
       this.visible = true
-      this.open()
+      this.open = true
     }
   }
 }
