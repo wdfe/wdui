@@ -16,6 +16,7 @@
 
 <script>
 export default {
+  name: 'wd-search',
   data() {
     return {
       closeIcon: false,

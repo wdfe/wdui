@@ -12,11 +12,12 @@ const install = function(Vue) {
   }
 
   Vue.component(Button.name, Button)
-  Vue.directive('InfiniteScroll', InfiniteScroll)
+  Vue.directive('wd-infiniteScroll', InfiniteScroll)
   Vue.use(Lazyload, {
     try: 3
   })
-  Vue.component(Dialog.name, Dialog)
+  Vue.component(Dialog.name, Dialog),
+  Vue.component(Search.name, Search)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
