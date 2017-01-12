@@ -26,9 +26,6 @@ const Picker = (options = {}) => {
   instance.onHide = options.onHide ? options.onHide.bind(null, instance) : (() => {})
   instance.onChange = options.onChange ? options.onChange.bind(null, instance) : (() => {})
   document.body.appendChild(instance.$el)
-  Vue.nextTick(() => {
-    instance.mask = options.mask === undefined ? true : options.mask
-  })
   return instance
 }
 
