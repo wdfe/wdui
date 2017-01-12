@@ -117,9 +117,6 @@ export default {
     }
   },
   mounted() {
-    // document.addEventListener('mousewheel', (e) => {
-    //   console.log('ssss')
-    // }, false)
   },
   methods: {
     maskClick() {

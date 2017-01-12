@@ -1,4 +1,6 @@
-import Vue from 'vue'
+/*
+ * css translate 操作工具类，用于快速修改 dom 的 css translate 属性
+ */
 
 let docStyle = document.documentElement.style
 let engine

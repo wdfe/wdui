@@ -1,6 +1,10 @@
 let isDragging = false
 const supportTouch = 'ontouchstart' in window
 
+/*
+ * 为 dom 元素快捷添加拖拽事件( PC 上：mouse 事件，移动端：touch事件)
+ */
+
 export default function(element, options) {
   const moveFn = function(event) {
     if (options.drag) {

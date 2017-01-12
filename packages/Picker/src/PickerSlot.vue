@@ -76,6 +76,9 @@ export default {
       this.locateItem(0)
       this.$emit('change', this.slotIndex, this.values.length ? this.values[this.currentIndex] : '')
     }
+    /*
+     * 初始化时 slot-item 会调整位置，0.3s 后再显示
+     */
     setTimeout(() => {
       this.ready = true
     }, 300)
