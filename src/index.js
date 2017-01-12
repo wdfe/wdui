@@ -4,6 +4,7 @@ import Button from '../packages/Button/index.js'
 import InfiniteScroll from '../packages/InfiniteScroll/index.js'
 import Lazyload from '../packages/Lazyload'
 import Dialog from '../packages/Dialog/index.js'
+import Picker from '../packages/Picker/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -30,5 +31,6 @@ module.exports = {
   InfiniteScroll,
   Lazyload,
   Button,
-  Dialog
+  Dialog,
+  Picker
 }
