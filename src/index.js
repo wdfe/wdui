@@ -4,6 +4,7 @@ import Button from '../packages/Button/index.js'
 import InfiniteScroll from '../packages/InfiniteScroll/index.js'
 import Lazyload from '../packages/Lazyload'
 import Dialog from '../packages/Dialog/index.js'
+import Search from '../packages/Search/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -11,11 +12,12 @@ const install = function(Vue) {
   }
 
   Vue.component(Button.name, Button)
-  Vue.directive('InfiniteScroll', InfiniteScroll)
+  Vue.directive('wd-infiniteScroll', InfiniteScroll)
   Vue.use(Lazyload, {
     try: 3
   })
-  Vue.component(Dialog.name, Dialog)
+  Vue.component(Dialog.name, Dialog),
+  Vue.component(Search.name, Search)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -24,11 +26,12 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 module.exports = {
   install,
-  version: '0.0.9',
+  version: '0.0.10',
   MessageBox,
   Toast,
   InfiniteScroll,
   Lazyload,
   Button,
-  Dialog
+  Dialog,
+  Search
 }
