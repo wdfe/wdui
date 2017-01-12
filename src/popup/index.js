@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import MaskManager from './mask-manager'
 import {getZIndex} from './utils'
 export default {
@@ -64,6 +63,7 @@ export default {
     if (this.mask && this.open) {
       MaskManager.open(this)
     }
+
     if (this.open) {
       this.bindClickOutSide()
     }
@@ -94,6 +94,16 @@ export default {
         }
       } else {
         this.unBindClickOutSide()
+        MaskManager.close(this)
+      }
+    },
+    mask(val, oldVal) {
+      if (val === oldVal) {
+        return
+      }
+      if (val) {
+        MaskManager.open(this)
+      } else {
         MaskManager.close(this)
       }
     }
