@@ -4,7 +4,7 @@ import Button from '../packages/Button/index.js'
 import InfiniteScroll from '../packages/InfiniteScroll/index.js'
 import Lazyload from '../packages/Lazyload'
 import Dialog from '../packages/Dialog/index.js'
-import Search from '../packages/Search/index.js'
+import Picker from '../packages/Picker/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -26,12 +26,12 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 module.exports = {
   install,
-  version: '0.0.10',
+  version: '0.1.0',
   MessageBox,
   Toast,
   InfiniteScroll,
   Lazyload,
   Button,
   Dialog,
-  Search
+  Picker
 }
