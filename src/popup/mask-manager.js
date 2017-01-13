@@ -48,46 +48,14 @@ const MaskManager = {
       el: document.createElement('div')
     })
     mask.fixed = true
-    mask.color = instance.maskColor
-    mask.opacity = instance.maskOpacity
+    mask.color = instance.maskColor || '#000'
+    mask.opacity = instance.maskOpacity || 0.4
     mask.zIndex = instance.maskZIndex
     mask.onClick = this.handleMaskClick.bind(this)
     document.body.appendChild(mask.$el)
-    this.preventScrolling()
     Vue.nextTick(() => {
       mask.show = true
     })
-  },
-
-  /*
-   * 限制滚动
-   */
-  preventScrolling() {
-    if(this.locked) {
-      return
-    }
-    // body 操作
-    const body = document.getElementsByTagName('body')[0]
-    const html = document.getElementsByTagName('html')[0]
-    this.bodyOverflow = body.style.overflow
-    this.htmlOverflow = html.style.overflow
-    body.style.overflow = 'hidden'
-    html.style.overflow = 'hidden'
-    this.locked = true
-  },
-
-  /*
-   * 解除滚动限制
-   */
-
-  allowScrolling() {
-    const body = document.getElementsByTagName('body')[0]
-    const html = document.getElementsByTagName('html')[0]
-    body.style.overflow = this.bodyOverflow || ''
-    html.style.overflow = this.htmlOverflow || ''
-    this.bodyOverflow = null
-    this.htmlOverflow = null
-    this.locked = false
   },
 
   /*
@@ -98,7 +66,6 @@ const MaskManager = {
     if(!this.mask) {
       return
     }
-    this.allowScrolling()
     let mask = this.mask
     mask.show = false
     this.mask = null
@@ -117,9 +84,10 @@ const MaskManager = {
       return
     }
     const instance = this.instances[this.instances.length - 1]
-    this.mask.color = instance.maskColor
-    this.mask.opacity = instance.maskOpacity
+    this.mask.color = instance.maskColor || '#000'
+    this.mask.opacity = instance.maskOpacity || 0.4
     this.mask.zIndex = instance.maskZIndex
+    this.mask.onClick = this.handleMaskClick.bind(this)
   },
 
   /*

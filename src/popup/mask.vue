@@ -1,6 +1,6 @@
 <template>
   <transition name="wd-mask-fade">
-    <div class="wd-mask" v-if="show" @click="handleClick" @touchmove="prevent" :style="maskStyle" ></div>
+    <div class="wd-mask" v-if="show" @click="handleClick" :style="maskStyle" ></div>
   </transition>
 </template>
 
@@ -31,12 +31,18 @@ export default {
       type: Number
     }
   },
+  data() {
+    return {
+    }
+  },
+  methods: {
+    handleClick() {
+      if (this.onClick) {
+        this.onClick()
+      }
+    },
+  },
   computed: {
-
-    /*
-     * mask 样式
-     */
-
     maskStyle() {
       return {
         'opacity': this.opacity,
@@ -46,17 +52,6 @@ export default {
       }
     }
   },
-  methods: {
-    prevent(event) {
-      event.preventDefault()
-      event.stopPropagation()
-    },
-    handleClick() {
-      if (this.onClick) {
-        this.onClick()
-      }
-    }
-  }
 }
 </script>
 
@@ -67,9 +62,6 @@ export default {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: #000;
-  opacity: .5;
-  z-index: 1000;
 }
 .wd-mask-fade-enter-active, .wd-mask-fade-leave-active {
   transition: opacity .45s cubic-bezier(0.23, 1, 0.32, 1);

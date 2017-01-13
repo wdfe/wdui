@@ -8,7 +8,7 @@ export default {
     },
     maskOpacity: {
       type: Number,
-      default: 0.5
+      default: 0.4
     },
     maskColor: {
       type: String,
@@ -19,15 +19,16 @@ export default {
     return {
       open: false,
       maskZIndex: getZIndex(),
-      zIndex: getZIndex()
+      zIndex: getZIndex(),
+      touchStatusCache: {
+        clientY: 0,
+        scrolling: false
+      }
     }
   },
   methods: {
     maskClick(e) {
       this.$emit('maskClick', e)
-    },
-    clickOutSide(e) {
-      this.$emit('clickOutSide', e)
     },
     setZIndex() {
       const dom = this.$el
@@ -38,34 +39,101 @@ export default {
         dom.style.zIndex = this.zIndex
       }
     },
-    bindClickOutSide() {
-      if (!this._handleClickOutSide) {
-        this._handleClickOutSide = (e) => {
-          if (this.$refs.popup.contains(e.target)) {
-            return
-          }
-          this.clickOutSide(e)
-        }
-      }
-      setTimeout(() => {
-        document.addEventListener('click', this._handleClickOutSide)
-      }, 0)
-    },
-    unBindClickOutSide() {
-      document.removeEventListener('click', this._handleClickOutSide)
-    },
     resetZIndex() {
       this.maskZIndex = getZIndex()
       this.zIndex = getZIndex()
+    },
+    removeWheelEvent(e) {
+      e.stopPropagation()
+      e.preventDefault()
+      e.cancelBubble = false
+      return false
+    },
+    preventScroll() {
+      document.addEventListener('mousewheel', this.removeWheelEvent, false)
+      document.addEventListener('touchmove', this.removeWheelEvent, false)
+    },
+    enableScrollable() {
+      let $scrollable = Array.prototype.slice.call(this.$el.querySelectorAll('.wd-popup-scrollable'))
+      $scrollable.forEach((e) => {
+        e.addEventListener('mousewheel', this.enableWheelScrollEventHandler.bind(this, e), false)
+        e.addEventListener('touchmove', this.enableTouchScrollEventHandler.bind(this, e), false)
+        e.addEventListener('touchstart', this.touchStartEventHandler.bind(this, e), false)
+      })
+    },
+    enableWheelScrollEventHandler(el, e) {
+      e.stopPropagation()
+      e.cancelBubble = false
+      /*
+       * 滑到顶部咯
+       */
+      if(e.deltaY < 0 && el.scrollTop === 0) {
+        e.preventDefault()
+        return false
+      }
+      /*
+       * 滑到底部咯
+       */
+      if(e.deltaY > 0 && el.offsetHeight + el.scrollTop === el.scrollHeight) {
+        e.preventDefault()
+        return false
+      }
+    },
+    enableTouchScrollEventHandler(el, e) {
+      e.stopPropagation()
+      e.cancelBubble = false
+      if(!this.touchStatusCache.clientY) {
+        this.touchStatusCache.clientY = e.touches[0].clientY
+      }else {
+        let delta = e.touches[0].clientY - this.touchStatusCache.clientY
+        this.touchStatusCache.clientY = e.touches[0].clientY
+        /*
+         * 滑到顶部咯
+         */
+        if(delta > 0 && el.scrollTop === 0) {
+          e.preventDefault()
+        }
+        /*
+         * 滑到底部咯
+         */
+        if(delta < 0 && el.offsetHeight + el.scrollTop === el.scrollHeight) {
+          e.preventDefault()
+        }
+      }
+    },
+    touchStartEventHandler(el, e) {
+      if (!this.touchStatusCache.scrolling) {
+        this.touchStatusCache.scrolling = true
+
+        /*
+         * 如果滑动时在滑动区域头部/尾部，移动1px来防止背景跟随滚动
+         */
+        if (e.currentTarget.scrollTop === 0) {
+          e.currentTarget.scrollTop = 1
+        } else if (e.currentTarget.scrollHeight === e.currentTarget.scrollTop + e.currentTarget.offsetHeight) {
+          e.currentTarget.scrollTop -= 1
+        }
+        this.touchStatusCache.scrolling = false
+      }
+
+      this.touchStatusCache.clientY = e.touches[0].clientY
+    },
+    allowScroll() {
+      document.removeEventListener('mousewheel', this.removeWheelEvent, false)
+      document.removeEventListener('touchmove', this.removeWheelEvent, false)
+    },
+    disableScrollable() {
+      let $scrollable = Array.prototype.slice.call(this.$el.querySelectorAll('.wd-popup-scrollable'))
+      $scrollable.forEach((e) => {
+        e.removeEventListener('mousewheel', this.enableWheelScrollEventHandler.bind(this, e), false)
+        e.removeEventListener('touchmove', this.enableTouchScrollEventHandler.bind(this, e), false)
+        e.removeEventListener('touchstart', this.touchStartEventHandler.bind(this, e), false)
+      })
     }
   },
   mounted() {
     if (this.mask && this.open) {
       MaskManager.open(this)
-    }
-
-    if (this.open) {
-      this.bindClickOutSide()
     }
   },
   updated() {
@@ -75,7 +143,6 @@ export default {
   },
   beforeDestroy() {
     MaskManager.close(this)
-    this.unBindClickOutSide()
     document.body.removeChild(this.$refs.popup)
   },
   watch: {
@@ -87,14 +154,18 @@ export default {
         return
       }
       if (val) {
-        this.bindClickOutSide()
         this.resetZIndex()
         if (this.mask) {
           MaskManager.open(this)
+          this.$nextTick(() => {
+            this.preventScroll()
+            this.enableScrollable()
+          })
         }
       } else {
-        this.unBindClickOutSide()
         MaskManager.close(this)
+        this.allowScroll()
+        this.disableScrollable()
       }
     },
     mask(val, oldVal) {
