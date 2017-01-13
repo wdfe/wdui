@@ -27,7 +27,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 module.exports = {
   install,
-  version: '0.1.0',
+  version: '0.1.1',
   MessageBox,
   Toast,
   InfiniteScroll,
