@@ -1,6 +1,6 @@
 <template>
   <button
-  :nativeButtonType="type"
+  :type="nativeButtonType"
   :disabled="disabled"
   :class="['wd-button', `wd-button-${type}`, {
     'wd-button-ghost': ghost
