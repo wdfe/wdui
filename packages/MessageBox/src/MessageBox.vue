@@ -88,7 +88,7 @@ export default {
     },
     validate: {
       type: Function,
-      default: () => {return false}
+      default: () => {return true}
     }
   },
   data() {

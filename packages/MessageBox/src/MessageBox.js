@@ -58,7 +58,7 @@ const MessageBox = {
     instance.onCancel = options.onCancel ? options.onCancel.bind(null, instance) : (() => {instance.open = false})
     instance.onShow = options.onShow ? options.onShow.bind(null, instance) : (() => {})
     instance.onHide = options.onHide ? options.onHide.bind(null, instance) : (() => {})
-    instance.validate = options.validate
+    instance.validate = options.validate || (() => {return true})
     document.body.appendChild(instance.$el)
     return instance
   }
