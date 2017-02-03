@@ -25,9 +25,11 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-module.exports = {
+const version = '0.1.1'
+
+export {
   install,
-  version: '0.1.1',
+  version,
   MessageBox,
   Toast,
   InfiniteScroll,
