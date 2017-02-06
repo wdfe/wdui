@@ -22,7 +22,7 @@
       background: #CECECE;
       position: absolute;
       transform: rotate(135deg);
-      top: 20px;
+      top: 22px;
       left: 38px;
     }
     .wd-search-arrow-left::after {
@@ -53,8 +53,8 @@
       box-sizing: border-box;
       .wd-search-icon-search {
         display: inline-block;
-        width: 12.5px;/*no*/
-        height: 12.5px;/*no*/
+        width: 10px;/*no*/
+        height: 10px;/*no*/
         background: #EEEEEE;
         border: 1px solid  #737373; /*no*/
         border-radius: 50%;
@@ -65,11 +65,11 @@
         display: block;
         position: absolute;
         width: 1px; /*no*/
-        height: 7px; /*no*/
+        height: 6px; /*no*/
         background-color: #737373;
         transform: rotate(-45deg);
-        top: 10px;/*no*/
-        left: 14px;/*no*/
+        top: 8px;/*no*/
+        left: 11px;/*no*/
       }
     }
     input {
@@ -95,7 +95,7 @@
       border-radius: 50%;
       box-sizing: border-box;
       background: rgba(0,0,0,0.3);
-      font-size: 22px;/*px*/
+      font-size: 20px;/*px*/
       color: #ffffff;
       text-align: center;
       position: absolute;
