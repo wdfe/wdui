@@ -1,5 +1,5 @@
 <template>
-  <div v-if="type === 'data'" class="wd-picker-slot" :style="`flex: ${flex};text-align: ${textAlign};`" :class="{'wd-picker-slot-hidden': !ready}">
+  <div v-if="type === 'data'" class="wd-picker-slot" :style="`flex: ${flex};text-align: ${textAlign};transform:translate(0px, ${defaultTopOffset}px) translateZ(0px)`" :class="{'wd-picker-slot-hidden': !ready}">
     <p class="wd-picker-slot-item" :class="{'wd-picker-slot-item-selected': currentIndex === index}" v-for="(item, index) in values"> {{ item }} </p>
   </div>
   <div v-else-if="type === 'divider'" class="wd-picker-slot wd-picker-slot-divider" :style="`flex: ${flex ? flex : 'none'};text-align: ${textAlign};`" :class="{'wd-picker-slot-hidden': !ready}">
@@ -18,10 +18,6 @@ export default {
     type: {
       type: String,
       default: 'data'
-    },
-    value: {
-      type: String,
-      default: ''
     },
     values: {
       type: Array,
@@ -48,6 +44,9 @@ export default {
     slotIndex: {
       type: Number,
       default: 0
+    },
+    defaultValue: {
+      type: [Number, String]
     }
   },
   data() {
@@ -73,7 +72,16 @@ export default {
     if(this.type === 'data') {
       this.getSizes()
       this.bindEvents()
-      this.locateItem(0)
+      if(this.defaultValue) {
+        let index = this.values.findIndex((value) => value === this.defaultValue)
+        if(index) {
+          this.locateItem(index)
+        }else {
+          this.locateItem(0)
+        }
+      }else {
+        this.locateItem(0)
+      }
       this.$emit('change', this.slotIndex, this.values.length ? this.values[this.currentIndex] : '')
     }
     /*
