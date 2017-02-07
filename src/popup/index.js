@@ -143,7 +143,9 @@ export default {
   },
   beforeDestroy() {
     MaskManager.close(this)
-    document.body.removeChild(this.$refs.popup)
+    if(this.$refs.popup) {
+      this.$refs.popup.parentNode.removeChild(this.$refs.popup)
+    }
   },
   watch: {
     value(val) {
