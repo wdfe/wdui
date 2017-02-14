@@ -3,12 +3,28 @@ const webpack = require('webpack')
 const CleanPlugin = require('clean-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const px2rem = require('postcss-px2rem')
+const fs = require('fs')
+
+const generateEntrys = () => {
+  let packages = fs.readdirSync('packages')
+  let entrys = {
+    'index': __dirname + '/src/index.js',
+  }
+  if(packages) {
+    packages.forEach((e) => {
+      if(fs.statSync(`packages/${e}`).isDirectory()) {
+        entrys[e] = __dirname + `/packages/${e}/index.js`
+      }
+    })
+    return entrys
+  }
+}
 
 module.exports = {
-  entry: __dirname + '/src/index.js',
+  entry: generateEntrys(),
   output: {
-    path: __dirname + '/dist',
-    filename: 'index.js',
+    path: __dirname + '/lib',
+    filename: '[name].js',
     libraryTarget: 'umd'
   },
   externals: {
@@ -52,7 +68,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanPlugin(['dist']),
+    new CleanPlugin(['lib']),
   ]
 }
 
