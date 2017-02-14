@@ -6,7 +6,10 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue src packages",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "NODE_ENV=production webpack --display-modules --sort-modules-by size"
+    "build": "NODE_ENV=production webpack --config webpack.build.config.js --display-modules --sort-modules-by size",
+    "dev": "webpack-dev-server --inline --config webpack.dev.config.js --host 0.0.0.0",
+    "build-example": "NODE_ENV=production webpack --config webpack.bundle.config.js --display-modules --sort-modules-by size",
+    "upload": "sh upload.sh"
   },
   "author": "wdfe",
   "license": "MIT",
@@ -20,13 +23,15 @@
     "babel-plugin-transform-vue-jsx": "^3.3.0",
     "babel-preset-latest": "^6.16.0",
     "babel-runtime": "^6.20.0",
-    "clean-webpack-plugin": "^0.1.14",
+    "clean-webpack-plugin": "^0.1.15",
     "css-loader": "^0.26.1",
+    "es6-promise": "^4.0.5",
     "eslint": "^3.12.2",
     "eslint-config-wdfe": "http://10.8.96.35:2009/package/eslint-config-wdfe/latest",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-vue": "^1.0.0",
     "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.28.0",
     "json-loader": "^0.5.4",
     "lerna": "2.0.0-beta.30",
     "node-sass": "^4.1.1",
@@ -37,8 +42,11 @@
     "url-loader": "^0.5.7",
     "vue": "^2.1.7",
     "vue-loader": "^10.0.2",
+    "vue-resource": "^1.2.0",
+    "vue-router": "^2.0.0",
     "vue-style-loader": "^1.0.0",
     "vue-template-compiler": "^2.1.7",
-    "webpack": "^2.2.0"
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0"
   }
 }
