@@ -5,6 +5,8 @@ const autoprefixer = require('autoprefixer')
 const px2rem = require('postcss-px2rem')
 const fs = require('fs')
 
+const fileNameTransfer = fileName => fileName.match(/[A-Z][a-z]*/g).map((e) => e.toLowerCase()).join('-')
+
 const generateEntrys = () => {
   let packages = fs.readdirSync('packages')
   let entrys = {
@@ -13,7 +15,7 @@ const generateEntrys = () => {
   if(packages) {
     packages.forEach((e) => {
       if(fs.statSync(`packages/${e}`).isDirectory()) {
-        entrys[e] = __dirname + `/packages/${e}/index.js`
+        entrys[fileNameTransfer(e)] = __dirname + `/packages/${e}/index.js`
       }
     })
     return entrys
