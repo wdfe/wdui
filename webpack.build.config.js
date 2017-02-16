@@ -43,6 +43,17 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        enforce: 'pre',
+        options: {
+          eslint: {
+            configFile: '../.eslintrc.json'
+          }
+        }
+      },
+      {
         test: /\.vue$/,
         loaders: [{
           loader: 'vue-loader',
@@ -68,7 +79,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanPlugin(['lib']),
+    new CleanPlugin(['lib'])
   ]
 }
 

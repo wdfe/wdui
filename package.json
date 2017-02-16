@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue src packages",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "NODE_ENV=production webpack --config webpack.build.config.js --display-modules --sort-modules-by size",
+    "build": "NODE_ENV=production webpack --config webpack.build.config.js",
     "dev": "webpack-dev-server --inline --config webpack.dev.config.js --host 0.0.0.0",
     "build-example": "NODE_ENV=production webpack --config webpack.bundle.config.js --display-modules --sort-modules-by size",
     "upload": "sh upload.sh"
