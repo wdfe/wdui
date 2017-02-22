@@ -22,7 +22,6 @@ const MessageBox = {
     })
     instance.open = options.open || true
     instance.onMaskClick = options.onMaskClick ? options.onMaskClick.bind(null, instance) : (() => {})
-    instance.onClickOutSide = options.onClickOutSide ? options.onClickOutSide.bind(null, instance) : (() => {})
     instance.onConfirm = options.onConfirm ? options.onConfirm.bind(null, instance) : (() => {instance.open = false})
     instance.onCancel = options.onCancel ? options.onCancel.bind(null, instance) : (() => {instance.open = false})
     instance.onShow = options.onShow ? options.onShow.bind(null, instance) : (() => {})
@@ -44,7 +43,6 @@ const MessageBox = {
     })
     instance.open = options.open || true
     instance.onMaskClick = options.onMaskClick ? options.onMaskClick.bind(null, instance) : (() => {})
-    instance.onClickOutSide = options.onClickOutSide ? options.onClickOutSide.bind(null, instance) : (() => {})
     instance.onConfirm = options.onConfirm ? options.onConfirm.bind(null, instance) : (() => {instance.open = false})
     instance.onCancel = options.onCancel ? options.onCancel.bind(null, instance) : (() => {instance.open = false})
     instance.onShow = options.onShow ? options.onShow.bind(null, instance) : (() => {})
@@ -68,7 +66,6 @@ const MessageBox = {
     })
     instance.open = options.open || true
     instance.onMaskClick = options.onMaskClick ? options.onMaskClick.bind(null, instance) : (() => {})
-    instance.onClickOutSide = options.onClickOutSide ? options.onClickOutSide.bind(null, instance) : (() => {})
     instance.onConfirm = options.onConfirm ? options.onConfirm.bind(null, instance) : (() => {instance.open = false})
     instance.onCancel = options.onCancel ? options.onCancel.bind(null, instance) : (() => {instance.open = false})
     instance.onShow = options.onShow ? options.onShow.bind(null, instance) : (() => {})

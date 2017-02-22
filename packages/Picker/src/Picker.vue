@@ -78,10 +78,6 @@ export default {
       type: Function,
       default: () => {}
     },
-    onClickOutSide: {
-      type: Function,
-      default: () => {}
-    },
     onChange: {
       type: Function,
       default: () => {}
@@ -121,9 +117,6 @@ export default {
   methods: {
     maskClick() {
       this.onMaskClick()
-    },
-    clickOutSide() {
-      this.onClickOutSide()
     },
     slotChangeHandler(index, val) {
       if(`slot${index}` in this.datas) {

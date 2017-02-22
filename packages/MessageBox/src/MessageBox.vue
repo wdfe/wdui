@@ -82,10 +82,6 @@ export default {
       type: Function,
       default: () => {}
     },
-    onClickOutSide: {
-      type: Function,
-      default: () => {}
-    },
     validate: {
       type: Function,
       default: () => {return true}
@@ -122,9 +118,6 @@ export default {
   methods: {
     maskClick() {
       this.onMaskClick()
-    },
-    clickOutSide() {
-      this.onClickOutSide()
     },
     handleInputType(val) {
       if (val === 'range' || !this.$refs.input) {
