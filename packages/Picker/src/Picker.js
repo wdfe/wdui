@@ -3,21 +3,22 @@ import PickerComponent from './Picker.vue'
 
 const PickerConstructor = Vue.extend(PickerComponent)
 
-const init = () => {
+const init = (propsData) => {
   return new PickerConstructor({
-    el: document.createElement('div')
-  })
+    propsData
+  }).$mount(document.createElement('div'))
 }
 
 const Picker = (options = {}) => {
-  const instance = init()
+  const instance = init({
+    showItemCount: options.showItemCount,
+    slots: options.slots,
+    transition: options.transition,
+    maskOpacity: options.maskOpacity,
+    maskColor: options.maskColor,
+    isShowCancelButton: options.isShowCancelButton === undefined ? true : options.isShowCancelButton
+  })
   instance.value = options.open || true
-  instance.showItemCount = options.showItemCount || 5
-  instance.slots = options.slots
-  instance.transition = options.transition || 'slide-bottom'
-  instance.maskOpacity = options.maskOpacity
-  instance.maskColor = options.maskColor
-  instance.isShowCancelButton = options.isShowCancelButton === undefined ? true : options.isShowCancelButton
   instance.onMaskClick = options.onMaskClick ? options.onMaskClick.bind(null, instance) : (() => {})
   instance.onClickOutSide = options.onClickOutSide ? options.onClickOutSide.bind(null, instance) : (() => {})
   instance.onConfirm = options.onConfirm ? options.onConfirm.bind(null, instance, instance.datas) : (() => {instance.value = false})

@@ -3,20 +3,24 @@ import MessageBoxComponent from './MessageBox.vue'
 
 const MessageBoxConstructor = Vue.extend(MessageBoxComponent)
 
-const init = () => {
+const init = (propsData) => {
   return new MessageBoxConstructor({
-    el: document.createElement('div')
-  })
+    propsData
+  }).$mount(document.createElement('div'))
 }
 
 const MessageBox = {
   alert(options = {}) {
-    const instance = init()
+    const instance = init({
+      title: options.title,
+      text: options.text,
+      type: 'alert',
+      isShowCancelButton: options.isShowCancelButton,
+      confirmText: options.confirmText,
+      maskColor: options.maskColor,
+      maskOpacity: options.maskOpacity
+    })
     instance.open = options.open || true
-    instance.title = options.title
-    instance.text = options.text
-    instance.type = 'alert'
-    instance.isShowCancelButton = false
     instance.onMaskClick = options.onMaskClick ? options.onMaskClick.bind(null, instance) : (() => {})
     instance.onClickOutSide = options.onClickOutSide ? options.onClickOutSide.bind(null, instance) : (() => {})
     instance.onConfirm = options.onConfirm ? options.onConfirm.bind(null, instance) : (() => {instance.open = false})
@@ -27,13 +31,18 @@ const MessageBox = {
     return instance
   },
   confirm(options = {}) {
-    const instance = init()
+    const instance = init({
+      title: options.title,
+      text: options.text,
+      type: 'confirm',
+      isShowCancelButton: options.isShowCancelButton === undefined ? true : options.isShowCancelButton,
+      isColumnButton: options.isColumnButton,
+      confirmText: options.confirmText,
+      cancelText: options.cancelText,
+      maskColor: options.maskColor,
+      maskOpacity: options.maskOpacity
+    })
     instance.open = options.open || true
-    instance.title = options.title
-    instance.text = options.text
-    instance.type = 'confirm'
-    instance.isShowCancelButton = true
-    instance.isColumnButton = options.isColumnButton || false
     instance.onMaskClick = options.onMaskClick ? options.onMaskClick.bind(null, instance) : (() => {})
     instance.onClickOutSide = options.onClickOutSide ? options.onClickOutSide.bind(null, instance) : (() => {})
     instance.onConfirm = options.onConfirm ? options.onConfirm.bind(null, instance) : (() => {instance.open = false})
@@ -44,22 +53,30 @@ const MessageBox = {
     return instance
   },
   prompt(options = {}) {
-    const instance = init()
+    const instance = init({
+      title: options.title,
+      text: options.text,
+      type: 'prompt',
+      isShowCancelButton: options.isShowCancelButton === undefined ? true : options.isShowCancelButton,
+      isColumnButton: options.isColumnButton,
+      confirmText: options.confirmText,
+      cancelText: options.cancelText,
+      isShowInput: true,
+      validate: options.validate,
+      maskColor: options.maskColor,
+      maskOpacity: options.maskOpacity
+    })
     instance.open = options.open || true
-    instance.title = options.title
-    instance.text = options.text
-    instance.type = 'prompt'
-    instance.isShowCancelButton = options.isShowCancelButton || true
-    instance.isColumnButton = options.isColumnButton || false
-    instance.isShowInput = true
     instance.onMaskClick = options.onMaskClick ? options.onMaskClick.bind(null, instance) : (() => {})
     instance.onClickOutSide = options.onClickOutSide ? options.onClickOutSide.bind(null, instance) : (() => {})
     instance.onConfirm = options.onConfirm ? options.onConfirm.bind(null, instance) : (() => {instance.open = false})
     instance.onCancel = options.onCancel ? options.onCancel.bind(null, instance) : (() => {instance.open = false})
     instance.onShow = options.onShow ? options.onShow.bind(null, instance) : (() => {})
     instance.onHide = options.onHide ? options.onHide.bind(null, instance) : (() => {})
-    instance.validate = options.validate || (() => {return true})
     document.body.appendChild(instance.$el)
+    Vue.nextTick(() => {
+      instance.inputType = options.inputType || 'text'
+    })
     return instance
   }
 }

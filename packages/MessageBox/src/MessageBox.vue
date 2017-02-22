@@ -4,7 +4,7 @@
       <div class="wd-messagebox-content">
         <header v-if="title">{{ title }}</header>
         <p class="wd-messagebox-content-text">{{ text }}</p>
-        <input class="wd-messagebox-content-input   " v-if="isShowInput" v-model="inputValue" ref="input"></input>
+        <input class="wd-messagebox-content-input" v-if="isShowInput" v-model="inputValue" ref="input"></input>
       </div>
       <footer :class="{'wd-messagebox-footer-row': !isColumnButton, 'wd-messagebox-footer-column': isColumnButton}">
         <span @click="onCancel" v-if="isShowCancelButton">{{ cancelText }}</span>
