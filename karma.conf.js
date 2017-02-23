@@ -38,8 +38,6 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       './test/unit/index.js': ['webpack', 'sourcemap'],
-      // './src/**/*.js': ['coverage'],
-      // './packages/**/*.js': ['coverage']
     },
 
     // test results reporter to use
@@ -47,18 +45,6 @@ module.exports = function(config) {
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['spec', 'coverage-istanbul'],
 
-    coverageReporter: {
-      dir: './coverage',
-      reporters: [
-        {
-          type: 'lcov',
-          subdir: '.'
-        },
-        {
-          type: 'text-summary'
-        }
-      ]
-    },
     coverageIstanbulReporter: {
 
        // reports can be any that are listed here: https://github.com/istanbuljs/istanbul-reports/tree/590e6b0089f67b723a1fdf57bc7ccc080ff189d7/lib
