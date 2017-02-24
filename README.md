@@ -18,6 +18,8 @@ npm run dev
 
 开发时可在示例文档页面引入开发中的组件，进行开发、调试。
 
+开发遵循 gitlab-flow 流程，每次开发新 feature 时，新开一个分支进行开发；开发完毕后在 gitlab 上发起 merge request，被 merge 之后即集成进组件库。
+
 ### 编译
 
 ```javascript
