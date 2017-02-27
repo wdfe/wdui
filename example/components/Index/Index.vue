@@ -37,6 +37,11 @@
           <span class="word">Search</span>
           <i class="fa fa-angle-right right"></i>
         </router-link>
+        <router-link to="/switch">
+          <i class="fa fa-check-square"></i>
+          <span class="word">Switch</span>
+          <i class="fa fa-angle-right right"></i>
+        </router-link>
         <router-link to="/toast">
           <i class="fa fa-check-square"></i>
           <span class="word">Toast</span>

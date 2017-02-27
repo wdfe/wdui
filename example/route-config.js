@@ -7,6 +7,7 @@ import Dialog from './components/Example/Dialog.vue'
 import Button from './components/Example/Button.vue'
 import Picker from './components/Example/Picker.vue'
 import Lazyload from './components/Example/Lazyload.vue'
+import Switch from './components/Example/Switch.vue'
 
 export default {
   routes: [
@@ -29,6 +30,11 @@ export default {
       path: '/lazyload',
       name: 'Lazyload',
       component: Lazyload
+    },
+    {
+      path: '/switch',
+      name: 'Switch',
+      component: Switch
     },
     {
       path: '/search',
