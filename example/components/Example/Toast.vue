@@ -13,8 +13,12 @@ export default {
   methods: {
     showToast1: function(){
       this.$Toast({
-        content: '试试多文字文字'
+        content: 'Hello',
+        autoClose:  true
       })
+      setTimeout(function(){
+        some.close()
+      }, 2000)
     },
     showToast2: function(){
       this.$Toast({
