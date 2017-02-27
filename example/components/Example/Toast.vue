@@ -12,12 +12,12 @@
 export default {
   methods: {
     showToast1: function(){
-      this.$Toast({
+      let toast1 = this.$Toast({
         content: 'Hello',
         autoClose:  true
       })
       setTimeout(function(){
-        some.close()
+        toast1.close()
       }, 2000)
     },
     showToast2: function(){
