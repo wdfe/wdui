@@ -26,11 +26,11 @@ const Toast = (options = {}) => {
   instance.content = options.content || ''
   instance.position = options.position || 'middle'
   instance.iconClass = options.iconClass || ''
-  instance.autoClose = options.autoClose || false
+  instance.autoClose = options.autoClose || true
   instance.theme = options.theme || 'Dark'
   document.body.appendChild(instance.$el)
   if('autoClose' in options){
-    if(options.autoClose === false){
+    if(options.autoClose === true){
       instance.timer = setTimeout(function(){
         instance.close()
       }, instance.duration)
