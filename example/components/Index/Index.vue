@@ -42,6 +42,11 @@
           <span class="word">Picker</span>
           <i class="fa fa-angle-right right"></i>
         </router-link>
+        <router-link to="/switch">
+          <i class="fa fa-check-square"></i>
+          <span class="word">Switch</span>
+          <i class="fa fa-angle-right right"></i>
+        </router-link>
       </li>
     </ul>
   </div>

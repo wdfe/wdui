@@ -1,12 +1,13 @@
 import Index from './components/Index/Index.vue'
-import Toast from './components/Example/Toast.vue'
-import InfiniteScroll from './components/Example/InfiniteScroll.vue'
-import Search from './components/Example/Search.vue'
-import MessageBox from './components/Example/MessageBox.vue'
-import Dialog from './components/Example/Dialog.vue'
 import Button from './components/Example/Button.vue'
-import Picker from './components/Example/Picker.vue'
+import Dialog from './components/Example/Dialog.vue'
+import InfiniteScroll from './components/Example/InfiniteScroll.vue'
 import Lazyload from './components/Example/Lazyload.vue'
+import MessageBox from './components/Example/MessageBox.vue'
+import Picker from './components/Example/Picker.vue'
+import Search from './components/Example/Search.vue'
+import Switch from './components/Example/Switch.vue'
+import Toast from './components/Example/Toast.vue'
 
 export default {
   routes: [
@@ -16,9 +17,18 @@ export default {
       component: Index
     },
     {
-      path: '/toast',
-      name: 'Toast',
-      component: Toast
+      path: '/quickstart',
+      redirect: '/'
+    },
+    {
+      path: '/button',
+      name: 'Button',
+      component: Button
+    },
+    {
+      path: '/dialog',
+      name: 'Dialog',
+      component: Dialog
     },
     {
       path: '/infinitescroll',
@@ -31,24 +41,9 @@ export default {
       component: Lazyload
     },
     {
-      path: '/search',
-      name: 'Search',
-      component: Search
-    },
-    {
       path: '/messagebox',
       name: 'MessageBox',
       component: MessageBox
-    },
-    {
-      path: '/dialog',
-      name: 'Dialog',
-      component: Dialog
-    },
-    {
-      path: '/button',
-      name: 'Button',
-      component: Button
     },
     {
       path: '/picker',
@@ -56,8 +51,19 @@ export default {
       component: Picker
     },
     {
-      path: '/quickstart',
-      redirect: '/'
+      path: '/search',
+      name: 'Search',
+      component: Search
+    },
+    {
+      path: '/switch',
+      name: 'Switch',
+      component: Switch
+    },
+    {
+      path: '/toast',
+      name: 'Toast',
+      component: Toast
     }
   ]
 }
