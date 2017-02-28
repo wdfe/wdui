@@ -20,6 +20,12 @@ npm run dev
 
 开发遵循 gitlab-flow 流程，每次开发新 feature 时，新开一个分支进行开发；开发完毕后在 gitlab 上发起 merge request，被 merge 之后即集成进组件库。
 
+#### 开发规范
+
+代码规范遵循 [eslint-config-wdfe](http://git.vdian.net/weidianFE/eslint-config-wdfe/blob/master/index.js)，每次编译时会自动用 eslint 检查一遍并得出报告。
+
+组件 `name` 以 `wd-` 开头，如： `wd-button`, `wd-toast`。组件 CSS 类名以组件 name 开头，如： `wd-button-primary`，`wd-toast-box-haveicon` 等等。
+
 ### 编译
 
 ```javascript
