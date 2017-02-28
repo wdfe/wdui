@@ -1,1 +1,1 @@
-export {default} from './src/switch.vue'
+export {default} from './src/Switch.vue'

@@ -1,11 +1,12 @@
-import MessageBox from '../packages/MessageBox/index.js'
-import Toast from '../packages/Toast/index.js'
 import Button from '../packages/Button/index.js'
+import Dialog from '../packages/Dialog/index.js'
 import InfiniteScroll from '../packages/InfiniteScroll/index.js'
 import Lazyload from '../packages/Lazyload'
-import Dialog from '../packages/Dialog/index.js'
-import Search from '../packages/Search/index.js'
+import MessageBox from '../packages/MessageBox/index.js'
 import Picker from '../packages/Picker/index.js'
+import Search from '../packages/Search/index.js'
+import Switch from '../packages/Switch/index.js'
+import Toast from '../packages/Toast/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -13,6 +14,7 @@ const install = function(Vue) {
   }
 
   Vue.component(Button.name, Button)
+  Vue.component(Switch.name, Switch)
   Vue.directive('wd-infiniteScroll', InfiniteScroll)
   Vue.use(Lazyload, {
     try: 3
@@ -30,12 +32,13 @@ const version = '0.2.1'
 export {
   install,
   version,
-  MessageBox,
-  Toast,
-  InfiniteScroll,
-  Lazyload,
   Button,
   Dialog,
+  InfiniteScroll,
+  Lazyload,
+  MessageBox,
   Search,
-  Picker
+  Switch,
+  Picker,
+  Toast
 }

@@ -8,17 +8,17 @@
 
 <script>
   export default {
-    name: 'switch',
+    name: 'wd-switch',
     props: {
       value: Boolean
     },
     computed: {
       checked: {
         get() {
-          return this.value;
+          return this.value
         },
         set(val) {
-          this.$emit('changeValue', val);
+          this.$emit('changeValue', val)
         }
       }
     },
