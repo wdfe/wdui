@@ -2,17 +2,15 @@
   <div class="switch-page">
     <div class="page-title">Switch</div>
     <div class="form-item">
-      <span class="status">{{status1}}</span><wd-switch @changeValue="update1" :value="value1"></wd-switch>
+      <span class="status">{{status1}}</span><wd-switch class="switch" @changeValue="update1" :value="value1"></wd-switch>
     </div>
     <div class="form-item">
-      <span class="status">{{status2}}</span><wd-switch @changeValue="update2" :value="value2"></wd-switch>
+      <span class="status">{{status2}}</span><wd-switch class="switch" @changeValue="update2" :value="value2"></wd-switch>
     </div>
   </div>
 </template>
 
 <script>
-//  import Switchs from '../../../packages/Switch'
-
   export default {
     data () {
       return {
@@ -35,9 +33,6 @@
       update2 (val) {
         this.value2 = val
       }
-    },
-    components: {
-//      Switchs
     }
   }
 </script>

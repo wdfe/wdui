@@ -19,7 +19,7 @@ const install = function(Vue) {
   Vue.use(Lazyload, {
     try: 3
   })
-  Vue.component(Dialog.name, Dialog),
+  Vue.component(Dialog.name, Dialog)
   Vue.component(Search.name, Search)
 }
 
