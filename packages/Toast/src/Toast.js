@@ -26,16 +26,21 @@ const Toast = (options = {}) => {
   instance.content = options.content || ''
   instance.position = options.position || 'middle'
   instance.iconClass = options.iconClass || ''
+  instance.autoClose = options.autoClose || true
+  instance.theme = options.theme || 'Dark'
   document.body.appendChild(instance.$el)
-  if('theme' in options){
-    if(options.theme === 'Light'){
-      instance.theme = options.theme
-      return instance
+  if('autoClose' in options){
+    if(options.autoClose === true){
+      instance.timer = setTimeout(function(){
+        instance.close()
+      }, instance.duration)
     }
+  }else {
+    instance.timer = setTimeout(function(){
+      instance.close()
+    }, instance.duration)
   }
-  instance.timer = setTimeout(function(){
-    instance.close()
-  }, instance.duration)
+  return instance
 }
 Vue.$Toast = Vue.prototype.$Toast = Toast
 export default Toast
