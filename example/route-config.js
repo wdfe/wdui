@@ -8,6 +8,7 @@ import Picker from './components/Example/Picker.vue'
 import Search from './components/Example/Search.vue'
 import Switch from './components/Example/Switch.vue'
 import Toast from './components/Example/Toast.vue'
+import CheckList from './components/Example/CheckList.vue'
 
 export default {
   routes: [
@@ -64,6 +65,11 @@ export default {
       path: '/toast',
       name: 'Toast',
       component: Toast
+    },
+    {
+      path: '/checklist',
+      name: 'CheckList',
+      component: CheckList
     }
   ]
 }

@@ -7,6 +7,8 @@ import Picker from '../packages/Picker/index.js'
 import Search from '../packages/Search/index.js'
 import Switch from '../packages/Switch/index.js'
 import Toast from '../packages/Toast/index.js'
+import Radio from '../packages/Radio/index.js'
+import CheckList from '../packages/CheckList/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -21,6 +23,8 @@ const install = function(Vue) {
   })
   Vue.component(Dialog.name, Dialog)
   Vue.component(Search.name, Search)
+  Vue.component(Radio.name, Radio)
+  Vue.component(CheckList.name, CheckList)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -40,5 +44,6 @@ export {
   Search,
   Switch,
   Picker,
-  Toast
+  Toast,
+  Radio
 }
