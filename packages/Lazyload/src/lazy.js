@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import {remove, some, find, _, throttle, supportWebp, getDPR, getBestSelectionFromSrcset} from './util'
+import {isObject, remove, some, find, _, throttle, supportWebp, getDPR, getBestSelectionFromSrcset} from '../../../src/utils/common'
 import ReactiveListener from './listener'
 
 const DEFAULT_URL = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
@@ -186,7 +186,7 @@ export default class Lazy {
     let loading = this.options.loading
     let error = this.options.error
 
-    if (Vue.util.isObject(value)) {
+    if (isObject(value)) {
       if (!value.src && !this.options.silent) {
         Vue.util.warn('Vue Lazyload warning: miss src with ' + value)
       }

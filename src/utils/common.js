@@ -1,3 +1,7 @@
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
 const inBrowser = typeof window !== 'undefined'
 
 function remove(arr, item) {
@@ -174,6 +178,7 @@ const loadImageAsync = (item, resolve, reject) => {
 }
 
 export {
+  isObject,
   inBrowser,
   remove,
   some,

@@ -1,4 +1,4 @@
-import {inBrowser} from './util'
+import {inBrowser} from '../../../src/utils/common'
 
 export default (lazy) => {
   return {

@@ -1,4 +1,4 @@
-import {loadImageAsync} from './util'
+import {loadImageAsync} from '../../../src/utils/common'
 let imageCache = {}
 
 export default class ReactiveListener {

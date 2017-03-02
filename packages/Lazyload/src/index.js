@@ -1,6 +1,6 @@
 import Lazy from './lazy'
 import lazyComponent from './lazy-component'
-import {assign} from './util'
+import {assign} from '../../../src/utils/common'
 
 export default (Vue, options = {}) => {
   const lazy = new Lazy(options)
