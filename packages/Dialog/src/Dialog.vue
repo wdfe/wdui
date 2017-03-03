@@ -18,7 +18,7 @@
 import Popup from '../../../src/popup/index.js'
 
 export default {
-  name: 'wdDialog',
+  name: 'wd-dialog',
   mixins: [Popup],
   props: {
     transition: {

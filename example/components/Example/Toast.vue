@@ -14,7 +14,7 @@ export default {
     showToast1: function(){
       let toast1 = this.$Toast({
         content: 'Hello',
-        autoClose:  false
+        autoClose: false
       })
       setTimeout(function(){
         toast1.close()
