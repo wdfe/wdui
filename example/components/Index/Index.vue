@@ -47,6 +47,11 @@
           <span class="word">Switch</span>
           <i class="fa fa-angle-right right"></i>
         </router-link>
+        <router-link to="/popup">
+          <i class="fa fa-check-square"></i>
+          <span class="word">Popup</span>
+          <i class="fa fa-angle-right right"></i>
+        </router-link>
       </li>
     </ul>
   </div>
