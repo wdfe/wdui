@@ -7,6 +7,7 @@ import Picker from '../packages/Picker/index.js'
 import Search from '../packages/Search/index.js'
 import Switch from '../packages/Switch/index.js'
 import Toast from '../packages/Toast/index.js'
+import ActionSheet from '../packages/ActionSheet/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -40,5 +41,6 @@ export {
   Search,
   Switch,
   Picker,
-  Toast
+  Toast,
+  ActionSheet
 }
