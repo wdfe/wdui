@@ -5,6 +5,7 @@ import Lazyload from '../packages/Lazyload'
 import MessageBox from '../packages/MessageBox/index.js'
 import Picker from '../packages/Picker/index.js'
 import Search from '../packages/Search/index.js'
+import {Swipe, SwipeItem} from '../packages/Swipe/index.js'
 import Switch from '../packages/Switch/index.js'
 import Toast from '../packages/Toast/index.js'
 
@@ -14,13 +15,13 @@ const install = function(Vue) {
   }
 
   Vue.component(Button.name, Button)
-  Vue.component(Switch.name, Switch)
-  Vue.directive('wd-infiniteScroll', InfiniteScroll)
-  Vue.use(Lazyload, {
-    try: 3
-  })
   Vue.component(Dialog.name, Dialog)
+  Vue.directive('wd-infiniteScroll', InfiniteScroll)
+  Vue.use(Lazyload, {try: 3})
   Vue.component(Search.name, Search)
+  Vue.component(Swipe.name, Swipe)
+  Vue.component(SwipeItem.name, SwipeItem)
+  Vue.component(Switch.name, Switch)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
