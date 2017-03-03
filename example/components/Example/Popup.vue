@@ -13,7 +13,9 @@
     <br>
     <wd-button type="primary" @click.native="left300 = true">Popup left 300px</wd-button>
     <br>
-    <wd-button type="primary" @click.native="close = true">Popup left 点击 model 关闭</wd-button>
+    <wd-button type="primary" @click.native="close = true">Popup 点击 model 关闭</wd-button>
+    <br>
+    <wd-button type="primary" @click.native="closeMask = true">Popup 点击 mask 关闭</wd-button>
     <wd-popup class="popup" v-model="bottom">
       <wd-button type="gray" @click.native="bottom = false">close bottom</wd-button>
     </wd-popup>
@@ -35,6 +37,9 @@
     <wd-popup class="popup" v-model="close" position="bottom" cover="50%" closeWhenClicked>
       <p>点击 model 关闭</p>
     </wd-popup>
+    <wd-popup class="popup" v-model="closeMask" position="bottom" cover="50%" @maskClick="closeMask = false">
+      <p>点击 mask 关闭</p>
+    </wd-popup>
   </div>
 </template>
 
@@ -48,7 +53,8 @@ export default {
       right: false,
       right70: false,
       left300: false,
-      close: false
+      close: false,
+      closeMask: false
     }
   }
 }
