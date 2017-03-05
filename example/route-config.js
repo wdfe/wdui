@@ -9,7 +9,7 @@ import Search from './components/Example/Search.vue'
 import Switch from './components/Example/Switch.vue'
 import Toast from './components/Example/Toast.vue'
 import CheckList from './components/Example/CheckList.vue'
-
+import Radio from './components/Example/Radio.vue'
 export default {
   routes: [
     {
@@ -70,6 +70,11 @@ export default {
       path: '/checklist',
       name: 'CheckList',
       component: CheckList
+    },
+    {
+      path: '/radio',
+      name: 'Radio',
+      component: Radio
     }
   ]
 }

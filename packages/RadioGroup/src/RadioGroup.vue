@@ -1,14 +1,15 @@
 <template lang="html">
-  <div class="wd-checklist">
-   <ul class="wd-checklist-list">
+  <div class="wd-radiogroup">
+   <ul class="wd-radiogroup-list">
     <li v-for="list in listData">
       <label>
-        <wd-checkbox 
+        <wd-radio 
         :disChoose="list.disChoose"
         :ifChoose="list.ifChoose"
+        :ifClick="ifClick"
         v-model="list.ifChoose"
-        ></wd-checkbox>
-        <p class="wd-checklist-text">{{list.text}}</p>
+        ></wd-radio>
+        <p class="wd-radiogroup-text">{{list.text}}</p>
       </label>
     </li>
    </ul>
@@ -16,24 +17,35 @@
 </template>
 
 <script>
-import wdCheckbox from './CheckBox.vue'
+import wdRadio from './Radio.vue'
 export default {
-  name: 'wd-checklist',
+  name: 'wd-radiogroup',
   props: {
     listData: {
       default: [],
       type: Array
     }
   },
+  computed: {
+    ifClick() {
+      //是否可点击
+      let listTemp = this.listData
+      for (let i = 0, listSize = this.listData.length ; i < listSize; i++) {
+        if(listTemp[i].disChoose){
+          return false
+        }
+      }
+    }
+  },
   data() {
     return {
-     
+      ifClick: true
     }
   },
   methods: {
   },
   components: {
-    wdCheckbox
+    wdRadio
   }
 }
 </script>
@@ -43,7 +55,7 @@ export default {
  $background-color: #FFFFFF;
  $text-size: 32px;
  $border-color: #DDDDDD;
-.wd-checklist {
+.wd-radiogroup {
   background: #FFFFFF;
   width: 100%;
   margin-top: 30px;

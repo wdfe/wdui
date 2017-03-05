@@ -52,6 +52,11 @@
           <span class="word">CheckList</span>
           <i class="fa fa-angle-right right"></i>
         </router-link>
+         <router-link to="/radio">
+          <i class="fa fa-check-square"></i>
+          <span class="word">Radio</span>
+          <i class="fa fa-angle-right right"></i>
+        </router-link>
       </li>
     </ul>
   </div>

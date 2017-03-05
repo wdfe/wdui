@@ -7,7 +7,7 @@ import Picker from '../packages/Picker/index.js'
 import Search from '../packages/Search/index.js'
 import Switch from '../packages/Switch/index.js'
 import Toast from '../packages/Toast/index.js'
-import Radio from '../packages/Radio/index.js'
+import RadioGroup from '../packages/RadioGroup/index.js'
 import CheckList from '../packages/CheckList/index.js'
 
 const install = function(Vue) {
@@ -23,7 +23,7 @@ const install = function(Vue) {
   })
   Vue.component(Dialog.name, Dialog)
   Vue.component(Search.name, Search)
-  Vue.component(Radio.name, Radio)
+  Vue.component(RadioGroup.name, RadioGroup)
   Vue.component(CheckList.name, CheckList)
 }
 

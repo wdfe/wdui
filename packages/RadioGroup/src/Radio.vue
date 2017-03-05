@@ -1,7 +1,7 @@
 <template lang="html">
-	<div class="wd-checkbox">
-    <input type="checkbox" :checked="ifChoose" :disabled="disChoose" @change="changeCheck">
-    <span class="wd-checkbox-custominput" :class="{'dis': disChoose}"></span>
+	<div class="wd-radio">
+    <input type="radio" :checked="ifChoose" name="radio" :disabled="disChoose || !ifClick" @change="changeCheck">
+    <span class="wd-radio-custominput" :class="{'dis': disChoose}"></span>
 	</div>
 </template>
 
@@ -15,6 +15,10 @@ export default {
   	ifChoose: {
   		default: false,
   		type: Boolean
+  	},
+  	ifClick: {
+  		default: true,
+  		type: Boolean
   	}
   },
   data() {
@@ -26,14 +30,18 @@ export default {
   },
   methods: {
   	changeCheck(){
-  		this.$emit('input', !this.ifChoose)
+  		if(this.ifClick){
+  			this.$emit('input', !this.ifChoose)
+  		}else{
+  			return
+  		}
   	}
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.wd-checkbox {
+.wd-radio {
 	position: relative;
 	display: inline-block;
 	width: 46px;
@@ -66,13 +74,33 @@ export default {
 	}
 	input:checked+&-custominput {
 		border: 1px solid #F0412F;
-		background: #F0412F url('../../../src/assets/images/check_w.png') no-repeat center;
-		background-size: 65%;
+	}
+	input:checked+&-custominput:after{
+		content: '';
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		background: #F0412F;
+		border-radius:50%;
+		margin: -10px 0 0 -10px;
+		top: 50%;
+		left: 50%;
 	}
 	input:checked+&-custominput.dis {
 		border: 1px solid #CACACA;
-		background: #EEEEEE url('../../../src/assets/images/check_b.png') no-repeat center;
+		background: #EEEEEE;
 		background-size: 65%;
+	}
+	input:checked+&-custominput.dis:after {
+		content: '';
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		background: #CACACA;
+		border-radius:50%;
+		margin: -10px 0 0 -10px;
+		top: 50%;
+		left: 50%;
 	}
 }
 </style>

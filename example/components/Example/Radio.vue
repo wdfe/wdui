@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="wd-checklist">
-   <wd-checklist :listData="lists"></wd-checklist>
+   <wd-radiogroup :listData="lists"></wd-radiogroup>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
   },
   data() {
     return {
-     lists: [{ifChoose: false, text: '多选项', disChoose: false},
+     lists: [{ifChoose: false, text: '单选项', disChoose: false},
           {ifChoose: true, text: '选中', disChoose: false},
           {ifChoose:false, text: '被禁用', disChoose: true},
           {ifChoose:true, text: '选中禁用', disChoose: true}]
