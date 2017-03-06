@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import wdCheckbox from './CheckBox.vue'
 export default {
   name: 'wd-checklist',
   props: {
@@ -31,9 +30,6 @@ export default {
     }
   },
   methods: {
-  },
-  components: {
-    wdCheckbox
   }
 }
 </script>

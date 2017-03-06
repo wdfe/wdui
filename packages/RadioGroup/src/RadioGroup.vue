@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import wdRadio from './Radio.vue'
 export default {
   name: 'wd-radiogroup',
   props: {
@@ -43,9 +42,6 @@ export default {
     }
   },
   methods: {
-  },
-  components: {
-    wdRadio
   }
 }
 </script>
