@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="wd-checklist">
-   <wd-checklist :listData="lists"></wd-checklist>
+   <wd-checkgroup :listData="lists"></wd-checkgroup>
   </div>
 </template>
 

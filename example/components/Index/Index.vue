@@ -47,14 +47,14 @@
           <span class="word">Switch</span>
           <i class="fa fa-angle-right right"></i>
         </router-link>
-        <router-link to="/checklist">
+        <router-link to="/checkgroup">
           <i class="fa fa-check-square"></i>
-          <span class="word">CheckList</span>
+          <span class="word">CheckGroup</span>
           <i class="fa fa-angle-right right"></i>
         </router-link>
-         <router-link to="/radio">
+         <router-link to="/radiogroup">
           <i class="fa fa-check-square"></i>
-          <span class="word">Radio</span>
+          <span class="word">RadioGroup</span>
           <i class="fa fa-angle-right right"></i>
         </router-link>
       </li>

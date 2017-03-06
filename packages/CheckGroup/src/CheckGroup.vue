@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'wd-checklist',
+  name: 'wd-checkgroup',
   props: {
     listData: {
       default: [],
