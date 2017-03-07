@@ -1,6 +1,6 @@
 <template lang="html">
 	<div class="wd-checkbox">
-    <input type="checkbox" :checked="ifChoose" :disabled="disChoose" @change="changeCheck">
+    <input type="checkbox" v-model="currentCheck" :disabled="disChoose" :value="value" @change="changeCheck()">
     <span class="wd-checkbox-custominput" :class="{'dis': disChoose}"></span>
 	</div>
 </template>
@@ -13,21 +13,30 @@ export default {
   		default: false,
   		type: Boolean
   	},
-  	ifChoose: {
-  		default: false,
-  		type: Boolean
+  	nowValue: {
+  		default: [],
+  		type: Array
+  	},
+  	value: {
+  		type: String
   	}
   },
   data() {
     return {
+    	currentCheck: this.nowValue
     }
+  },
+  watch: {
+  	nowValue(val) {
+  		this.currentCheck = val
+  	}
   },
   created() {},
   mounted() {
   },
   methods: {
   	changeCheck(){
-  		this.$emit('input', !this.ifChoose)
+  		this.$emit('input', this.currentCheck)
   	}
   }
 }

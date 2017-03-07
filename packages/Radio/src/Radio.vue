@@ -1,6 +1,6 @@
 <template lang="html">
 	<div class="wd-radio">
-    <input type="radio" :checked="ifChoose" name="radio" :disabled="disChoose || !ifClick" @change="changeCheck">
+    <input type="radio" v-model="currentValue" :name="name" :value="value"  :disabled="disChoose || !ifClick" @change="changeCheck()">
     <span class="wd-radio-custominput" :class="{'dis': disChoose}"></span>
 	</div>
 </template>
@@ -13,26 +13,43 @@ export default {
   		default: false,
   		type: Boolean
   	},
-  	ifChoose: {
-  		default: false,
-  		type: Boolean
-  	},
   	ifClick: {
   		default: true,
   		type: Boolean
+  	},
+  	name: {
+  		default: 'radio',
+  		type: String
+  	},
+  	nowValue: {
+  		type: String
+  	},
+  	value: {
+  		type: String
   	}
   },
   data() {
     return {
+    	currentValue:  this.nowValue
     }
+  },
+  watch: {
+  	nowValue(val) {
+  		this.currentValue = val
+  	}
   },
   created() {},
   mounted() {
   },
+  // computed: {
+  // 	currentValue (){
+  // 		return this.nowValue
+  // 	}
+  // },
   methods: {
   	changeCheck(){
   		if(this.ifClick){
-  			this.$emit('input', !this.ifChoose)
+  			this.$emit('input', this.currentValue)
   		}else{
   			return
   		}

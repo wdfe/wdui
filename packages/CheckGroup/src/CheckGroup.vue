@@ -6,9 +6,11 @@
         <wd-checkbox 
         :disChoose="list.disChoose"
         :ifChoose="list.ifChoose"
-        v-model="list.ifChoose"
+        :value="list.value"
+        :nowValue="value"
+        v-model="currentCheck"
         ></wd-checkbox>
-        <p class="wd-checklist-text">{{list.text}}</p>
+        <p class="wd-checklist-text">{{list.value}}</p>
       </label>
     </li>
    </ul>
@@ -21,12 +23,24 @@ export default {
   props: {
     listData: {
       default: [],
+      type: Array,
+      require: true
+    },
+    value: {
       type: Array
     }
   },
   data() {
     return {
-     
+      currentCheck: this.value
+    }
+  },
+  watch: {
+    value(val){
+      this.currentCheck = val
+    },
+    currentCheck(val){
+      this.$emit('input', val)
     }
   },
   methods: {

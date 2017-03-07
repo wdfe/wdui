@@ -5,11 +5,13 @@
       <label>
         <wd-radio 
         :disChoose="list.disChoose"
-        :ifChoose="list.ifChoose"
         :ifClick="ifClick"
-        v-model="list.ifChoose"
+        :name="name"
+        :nowValue="currentValue"
+        :value="list.value"
+        v-model="currentValue"
         ></wd-radio>
-        <p class="wd-radiogroup-text">{{list.text}}</p>
+        <p class="wd-radiogroup-text">{{list.value}}</p>
       </label>
     </li>
    </ul>
@@ -22,23 +24,35 @@ export default {
   props: {
     listData: {
       default: [],
-      type: Array
-    }
+      type: Array,
+      required: true
+    },
+    name: {
+      default: 'radio',
+      type: String
+    },
+    value: String //父组件传递的当前已选中
   },
   computed: {
     ifClick() {
       //是否可点击
       let listTemp = this.listData
       for (let i = 0, listSize = this.listData.length ; i < listSize; i++) {
-        if(listTemp[i].disChoose){
+        if(listTemp[i].disChoose && this.value == listTemp[i].value){
           return false
         }
       }
-    }
+    },
   },
   data() {
     return {
-      ifClick: true
+      ifClick: true,
+      currentValue: this.value, //本组件内的存储的当前选中值
+    }
+  },
+  watch: {
+    currentValue(val) {
+      this.$emit('input', val)
     }
   },
   methods: {

@@ -1,10 +1,13 @@
 <template lang="html">
   <div>
-    <div class="wd-checklist">
-     <wd-radiogroup :listData="lists"></wd-radiogroup>
+    <div>
+     <wd-radiogroup :listData="lists" :name="'group1'" v-model="value1"></wd-radiogroup>
+     <p class="current-value">当前选中：{{value1}}</p>
     </div>
-    <div class="wd-checklist">
-     <wd-radiogroup :listData="lists2"></wd-radiogroup>
+    
+    <div>
+     <wd-radiogroup :listData="lists2" :name="'group2'" v-model="value2"></wd-radiogroup>
+      <p class="current-value">当前选中：{{value2}}</p>
     </div>
   </div>
 </template>
@@ -16,18 +19,28 @@ export default {
   },
   data() {
     return {
-      lists: [{ifChoose: false, text: '单选项', disChoose: false},
-          {ifChoose: true, text: '选中', disChoose: false},
-          {ifChoose:false, text: '被禁用', disChoose: false},
-          {ifChoose: false, text: '选中禁用', disChoose: false}],
-      lists2: [{ifChoose: false, text: '单选项', disChoose: false},
-          {ifChoose: true, text: '选中', disChoose: false},
-          {ifChoose:false, text: '被禁用', disChoose: true},
-          {ifChoose:true, text: '选中禁用', disChoose: true}]
+      lists: [{value: '选项1', disChoose: false},
+          {value: '选项2', disChoose: false},
+          {value: '选项3', disChoose: false},
+          {value: '选项4', disChoose: false}],
+      lists2: [{value: '单选项', disChoose: false},
+          {value: '选中', disChoose: false},
+          {value: '被禁用', disChoose: true},
+          {value: '选中禁用', disChoose: true}],
+      value1: '选项2',
+      value2: ''
     }
   },
   methods: {
+
   }
 }
 </script>
+<style>
+  .current-value{
+    margin: 20px;
+    padding-left: 40px;
+    box-sizing: border-box;
+  }
+</style>
 
