@@ -42,10 +42,6 @@ export default {
     slots: {
       type: Array
     },
-    remUnit: {
-      type: Number,
-      default: 75
-    },
     confirmText: {
       type: [String, Number],
       default: '确定'
