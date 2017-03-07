@@ -5,7 +5,6 @@
       <label>
         <wd-checkbox 
         :disChoose="list.disChoose"
-        :ifChoose="list.ifChoose"
         :value="list.value"
         :nowValue="value"
         v-model="currentCheck"

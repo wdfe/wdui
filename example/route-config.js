@@ -8,8 +8,8 @@ import Picker from './components/Example/Picker.vue'
 import Search from './components/Example/Search.vue'
 import Switch from './components/Example/Switch.vue'
 import Toast from './components/Example/Toast.vue'
-import CheckGroup from './components/Example/CheckGroup.vue'
-import RadioGroup from './components/Example/RadioGroup.vue'
+import CheckBox from './components/Example/CheckBox.vue'
+import Radio from './components/Example/Radio.vue'
 export default {
   routes: [
     {
@@ -67,14 +67,14 @@ export default {
       component: Toast
     },
     {
-      path: '/checkgroup',
-      name: 'CheckGroup',
-      component: CheckGroup
+      path: '/checkbox',
+      name: 'CheckBox',
+      component: CheckBox
     },
     {
-      path: '/radiogroup',
-      name: 'RadioGroup',
-      component: RadioGroup
+      path: '/radio',
+      name: 'Radio',
+      component: Radio
     }
   ]
 }
