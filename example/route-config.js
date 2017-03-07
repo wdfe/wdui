@@ -6,6 +6,7 @@ import Lazyload from './components/Example/Lazyload.vue'
 import MessageBox from './components/Example/MessageBox.vue'
 import Picker from './components/Example/Picker.vue'
 import Search from './components/Example/Search.vue'
+import Swipe from './components/Example/Swipe.vue'
 import Switch from './components/Example/Switch.vue'
 import Toast from './components/Example/Toast.vue'
 import Popup from './components/Example/Popup.vue'
@@ -55,6 +56,11 @@ export default {
       path: '/search',
       name: 'Search',
       component: Search
+    },
+    {
+      path: '/swipe',
+      name: 'Swipe',
+      component: Swipe
     },
     {
       path: '/switch',
