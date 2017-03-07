@@ -8,6 +8,7 @@ import Search from '../packages/Search/index.js'
 import Switch from '../packages/Switch/index.js'
 import Toast from '../packages/Toast/index.js'
 import Popup from '../packages/Popup/index.js'
+import Tooltip from '../packages/Tooltip/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -23,6 +24,7 @@ const install = function(Vue) {
   Vue.component(Dialog.name, Dialog)
   Vue.component(Search.name, Search)
   Vue.component(Popup.name, Popup)
+  Vue.component(Tooltip.name, Tooltip)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -43,5 +45,6 @@ export {
   Switch,
   Picker,
   Toast,
-  Popup
+  Popup,
+  Tooltip
 }

@@ -9,6 +9,7 @@ import Search from './components/Example/Search.vue'
 import Switch from './components/Example/Switch.vue'
 import Toast from './components/Example/Toast.vue'
 import Popup from './components/Example/Popup.vue'
+import Tooltip from './components/Example/Tooltip.vue'
 
 export default {
   routes: [
@@ -70,6 +71,11 @@ export default {
       path: '/popup',
       name: 'Popup',
       component: Popup
+    },
+    {
+      path: '/tooltip',
+      name: 'Tooltip',
+      component: Tooltip
     }
   ]
 }
