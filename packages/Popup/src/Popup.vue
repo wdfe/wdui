@@ -11,10 +11,6 @@ export default {
   name: 'wd-popup',
   mixins: [Popup],
   props: {
-    transition: {
-      type: String,
-      default: 'fade'
-    },
     value: {
       type: Boolean,
       default: false
@@ -38,10 +34,6 @@ export default {
     cover: {
       type: String,
       default: '100%'
-    },
-    onMaskClick: {
-      type: Function,
-      default: () => {}
     },
     onShow: {
       type: Function,
