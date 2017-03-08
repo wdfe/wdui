@@ -1,6 +1,6 @@
 <template lang="html">
 	<div class="wd-checkbox">
-    <input type="checkbox" v-model="currentCheck" :disabled="disChoose" :value="value" @change="changeCheck()">
+    <input type="checkbox" v-model="currentCheck" :disabled="disChoose" :value="text" @change="changeCheck()">
     <span class="wd-checkbox-custominput" :class="{'dis': disChoose}"></span>
 	</div>
 </template>
@@ -17,7 +17,7 @@ export default {
   		default: [],
   		type: Array
   	},
-  	value: {
+  	text: {
   		type: String
   	}
   },
