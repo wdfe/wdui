@@ -18,7 +18,7 @@ export default {
   		type: Array
   	},
   	value: {
-  		type: String
+  		type: Array
   	}
   },
   data() {
