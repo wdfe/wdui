@@ -3,12 +3,19 @@
     <div class="wd-swipe-items-wrap" ref="wrap">
       <slot></slot>
     </div>
-    <ul :class="direction !== 'vertical' ? 'wd-swipe-indicators' : 'wd-swipe-vertical-indicators'"
-        v-if="showIndicators">
-      <li v-for="(page, $index) in pages"
-          :class="[$index === index ? 'current' : '',
+    <div class="wd-swipe-indicator-wrap" :class="showTitle ? 'wd-swipe-indicator-wrap-background' : ''" v-if="showIndicators">
+      <div v-if="showTitle" class="wd-swipe-item-title">{{title}}</div>
+      <ul :class="[
+         indicatorsPosition === 'right' ? 'wd-swipe-indicators-right' : '',
+         direction !== 'vertical' ? 'wd-swipe-indicators' : 'wd-swipe-vertical-indicators'
+        ]" v-if="indicatorsType === 'dot'">
+        <li v-for="(page, $index) in pages"
+            :class="[
+           $index === index ? 'current' : '',
            direction !== 'vertical' ? 'wd-swipe-indicator' : 'wd-swipe-vertical-indicator']"></li>
-    </ul>
+      </ul>
+      <div v-if="indicatorsType === 'number'" class="wd-swipe-number-indicator">{{index+1}} / {{pages.length}}</div>
+    </div>
   </div>
 </template>
 
@@ -122,6 +129,7 @@
         animating: false,
         index: 0,
         pages: [],
+        titles: [],
         timer: null,
         reInitTimer: null,
         noDrag: false,
@@ -129,6 +137,9 @@
       }
     },
     computed: {
+      title () {
+        return this.titles[this.index]
+      }
     },
     props: {
       direction: {
@@ -162,6 +173,18 @@
       showIndicators: {
         type: Boolean,
         default: true
+      },
+      showTitle: {
+        type: Boolean,
+        default: false
+      },
+      indicatorsType: {
+        type: String,
+        default: 'dot'
+      },
+      indicatorsPosition: {
+        type: String,
+        default: 'center'
       },
       noDragWhenSingle: {
         type: Boolean,
@@ -243,12 +266,14 @@
         this.noDrag = children.length === 1 && this.noDragWhenSingle
 
         let pages = []
+        let titles = []
         let intDefaultIndex = Math.floor(this.defaultIndex)
         let defaultIndex = (intDefaultIndex >= 0 && intDefaultIndex < children.length) ? intDefaultIndex : 0
         this.index = defaultIndex
 
         children.forEach((child, index) => {
           pages.push(child.$el)
+          titles.push(child.title)
 
           removeClass(child.$el, 'current')
 
@@ -258,6 +283,7 @@
         })
 
         this.pages = pages
+        this.titles = titles
       },
       doAnimate(towards, options) {
         if (this.$children.length === 0) {
@@ -557,134 +583,5 @@
   }
 </script>
 
-<style>
-  .wd-swipe {
-    overflow: hidden;
-    position: relative;
-    height: 100%;
-  }
-
-  .wd-swipe-items-wrap {
-    position: relative;
-    overflow: hidden;
-    height: 100%;
-  }
-  .wd-swipe-items-wrap > .wd-swipe-item {
-    position: absolute;
-    transform: translateX(-100%);
-    width: 100%;
-    height: 100%;
-    display: none;
-  }
-  .wd-swipe-items-wrap > .wd-swipe-item.current {
-    display: block;
-    transform: none;
-  }
-
-  .wd-swipe-indicators {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .wd-swipe-indicator {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #000;
-    opacity: 0.2;
-    margin: 0 3px;
-  }
-  .wd-swipe-indicator.current {
-    background: #fff;
-  }
-
-
-  .wd-swipe-vertical-indicators {
-    position: absolute;
-    right: 50px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .wd-swipe-vertical-indicator {
-    display: block;
-    width: 5px;
-    height: 5px;
-    border: 4px solid rgba(152,153,151,.6);
-    background-color: transparent;
-    border-radius: 100%;
-    margin: 0 0 40px 0;
-    cursor: pointer;
-    -webkit-transition: all .36s linear;
-    transition: all .36s linear;
-    position: relative;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box
-  }
-  .wd-swipe-vertical-indicator:after,
-  .wd-swipe-vertical-indicator:before {
-    content: '';
-    display: inline-block;
-    width: 31px;
-    height: 31px;
-    border: 2px solid transparent;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
-    border-radius: 100%;
-    position: absolute;
-    top: -15px;
-    left: -15px
-  }
-  .wd-swipe-vertical-indicator:before {
-    width: 21px;
-    height: 21px;
-    top: -10px;
-    left: -10px;
-    opacity: .3
-  }
-  .wd-swipe-vertical-indicator:hover,
-  .wd-swipe-vertical-indicator.current {
-    border-color: #fff;
-    background-color: #258fb8;
-  }
-  .wd-swipe-vertical-indicator.current:before,
-  .wd-swipe-vertical-indicator.current:after {
-    border-color: #258fb8;
-    -webkit-animation: blink 3s linear infinite;
-    animation: blink 3s linear infinite
-  }
-  @-webkit-keyframes blink {
-    0% {
-      -webkit-transform: scale(0) translateZ(0);
-      transform: scale(0) translateZ(0);
-      opacity: 0
-    }
-
-    85% {
-      opacity: 1
-    }
-
-    100% {
-      opacity: 0;
-      -webkit-transform: scale(1) translateZ(0);
-      transform: scale(1) translateZ(0)
-    }
-  }
-  @keyframes blink {
-    0% {
-      transform: scale(0) translateZ(0);
-      opacity: 0
-    }
-
-    85% {
-      opacity: 1
-    }
-
-    100% {
-      opacity: 0;
-      transform: scale(1) translateZ(0)
-    }
-  }
+<style src="./swipe.css">
 </style>

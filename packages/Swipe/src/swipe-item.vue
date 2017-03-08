@@ -7,6 +7,12 @@
 <script>
   export default {
     name: 'wd-swipe-item',
+    props: {
+      title: {
+        type: String,
+        default: ''
+      }
+    },
     mounted() {
       this.$parent && this.$parent.swipeItemCreated(this)
     },
