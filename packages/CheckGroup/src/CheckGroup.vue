@@ -35,9 +35,6 @@ export default {
     }
   },
   watch: {
-    value(val){
-      this.currentCheck = val
-    },
     currentCheck(val){
       this.$emit('input', val)
     }

@@ -8,7 +8,7 @@
         :ifClick="ifClick"
         :name="name"
         :nowValue="currentValue"
-        :value="list.value"
+        :text="list.value"
         v-model="currentValue"
         ></wd-radio>
         <p class="wd-radiogroup-text">{{list.value}}</p>
@@ -33,16 +33,13 @@ export default {
     },
     value: String //父组件传递的当前已选中
   },
-  computed: {
-    ifClick() {
-      //是否可点击
-      let listTemp = this.listData
-      for (let i = 0, listSize = this.listData.length ; i < listSize; i++) {
-        if(listTemp[i].disChoose && this.value == listTemp[i].value){
-          return false
-        }
+  created() {
+    let listTemp = this.listData
+    for (let i = 0, listSize = this.listData.length ; i < listSize; i++) {
+      if(listTemp[i].disChoose && this.value == listTemp[i].value){
+        this.ifClick = false
       }
-    },
+    }
   },
   data() {
     return {
@@ -51,7 +48,7 @@ export default {
     }
   },
   watch: {
-    currentValue(val) {
+    currentValue(val){
       this.$emit('input', val)
     }
   },
