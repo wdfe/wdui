@@ -28,7 +28,7 @@ export default {
           {value: '被禁用', disChoose: true},
           {value: '选中禁用', disChoose: true}],
       value1: '选项2',
-      value2: ''
+      value2: '选中禁用'
     }
   },
   methods: {
