@@ -218,4 +218,62 @@ describe('Tooltip', () => {
     })
   })
 
+  it('maskColor 蒙版颜色', done => {
+    vm = createVueInstance({
+      template: `
+        <div>
+          <p id="locator" style="position: fixed; top: 100px; right: 30px; margin: 0; padding: 0; display: inline-block; width: 80px;">locator</p>
+          <wd-tooltip v-model="flag" :locator="locator" ref="tooltip" position="top" @maskClick="token = true" maskColor="red">
+            <p id="content" @click="flag = false" style="width: 200px;height: 100px;">click to close tooltip</p>
+          </wd-tooltip>
+        </div>
+      `,
+      data() {
+        return {
+          flag: false,
+          locator: null,
+          token: false
+        }
+      },
+      mounted() {
+        this.locator = document.querySelector('#locator')
+      }
+    })
+    vm.flag = true
+    setTimeout(() => {
+      const $mask = document.querySelector('.wd-mask')
+      expect($mask.style.backgroundColor).to.equal('red')
+      done()
+    }, 200)
+  })
+
+  it('maskOpacity 蒙版透明度', done => {
+    vm = createVueInstance({
+      template: `
+        <div>
+          <p id="locator" style="position: fixed; top: 100px; right: 30px; margin: 0; padding: 0; display: inline-block; width: 80px;">locator</p>
+          <wd-tooltip v-model="flag" :locator="locator" ref="tooltip" position="top" @maskClick="token = true" maskOpacity="0.9">
+            <p id="content" @click="flag = false" style="width: 200px;height: 100px;">click to close tooltip</p>
+          </wd-tooltip>
+        </div>
+      `,
+      data() {
+        return {
+          flag: false,
+          locator: null,
+          token: false
+        }
+      },
+      mounted() {
+        this.locator = document.querySelector('#locator')
+      }
+    })
+    vm.flag = true
+    setTimeout(() => {
+      const $mask = document.querySelector('.wd-mask')
+      expect($mask.style.opacity).to.equal('0.9')
+      done()
+    }, 200)
+  })
+
 })
