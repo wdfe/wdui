@@ -9,8 +9,8 @@
 export default {
 	name: 'wd-checkbox',
   props: {
-  	disChoose: {
-  		default: false,
+    disChoose: {
+    	default: false,
   		type: Boolean
   	},
   	nowValue: {
@@ -18,7 +18,7 @@ export default {
   		type: Array
   	},
   	value: {
-  		type: Array
+  		type: String
   	}
   },
   data() {
