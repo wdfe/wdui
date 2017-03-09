@@ -20,7 +20,6 @@ const ImagePreview = (options = {}) => {
     defaultIndex: options.defaultIndex
   })
   instance.value = options.open !== false
-  instance.onMaskClick = options.onMaskClick ? options.onMaskClick.bind(null, instance) : (() => {})
   instance.onShow = options.onShow ? options.onShow.bind(null, instance) : (() => {})
   instance.onHide = options.onHide ? options.onHide.bind(null, instance) : (() => {})
   instance.onClose = (() => {instance.value = false})
