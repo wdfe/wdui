@@ -8,10 +8,10 @@
         :ifClick="ifClick"
         :name="name"
         :nowValue="currentValue"
-        :text="list.value"
+        :text="list.value || list"
         v-model="currentValue"
         ></wd-radio>
-        <p class="wd-radiogroup-text">{{list.value}}</p>
+        <p class="wd-radiogroup-text">{{list.value || list}}</p>
       </label>
     </li>
    </ul>

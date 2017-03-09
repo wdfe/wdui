@@ -5,11 +5,11 @@
       <label>
         <wd-checkbox 
         :disChoose="list.disChoose"
-        :text="list.value"
+        :text="list.value || list"
         :nowValue="value"
         v-model="currentCheck"
         ></wd-checkbox>
-        <p class="wd-checklist-text">{{list.value}}</p>
+        <p class="wd-checklist-text">{{list.value || list}}</p>
       </label>
     </li>
    </ul>
