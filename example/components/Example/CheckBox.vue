@@ -18,7 +18,7 @@
               class="custome-checkbox-item"
               :disChoose="list.disChoose"
               :nowValue="value3"
-              :text="list.value"
+              :text="list.value || list"
               v-model="value3"
               ></wd-checkbox>
               <p class="custome-text">{{list.value || list}}</p>  
@@ -44,7 +44,7 @@ export default {
           {value: '选中禁用', disChoose: true}],
       lists3: ['选项1', '选项2', '选项3', '选项4'],
       value1: [],
-      value2: ['选中'],
+      value2: ['选中', '选中禁用'],
       value3: []
     }
   },
