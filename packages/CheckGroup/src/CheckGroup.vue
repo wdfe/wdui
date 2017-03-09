@@ -21,8 +21,10 @@ export default {
   name: 'wd-checkgroup',
   props: {
     listData: {
-      default: [],
       type: Array,
+      default: function () {
+        return []
+      },
       require: true
     },
     value: {

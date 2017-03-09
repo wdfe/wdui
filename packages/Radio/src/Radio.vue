@@ -30,7 +30,7 @@ export default {
   },
   data() {
     return {
-      currentValue:  this.nowValue
+      currentValue: this.nowValue
     }
   },
   watch: {

@@ -23,8 +23,10 @@ export default {
   name: 'wd-radiogroup',
   props: {
     listData: {
-      default: [],
       type: Array,
+      default: function () {
+        return []
+      },
       required: true
     },
     name: {
