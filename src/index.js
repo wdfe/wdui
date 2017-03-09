@@ -9,6 +9,7 @@ import {Swipe, SwipeItem} from '../packages/Swipe/index.js'
 import Switch from '../packages/Switch/index.js'
 import Toast from '../packages/Toast/index.js'
 import Popup from '../packages/Popup/index.js'
+import ImagePreview from '../packages/ImagePreview/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -44,5 +45,6 @@ export {
   Switch,
   Picker,
   Toast,
-  Popup
+  Popup,
+  ImagePreview
 }

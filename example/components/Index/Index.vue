@@ -57,6 +57,11 @@
           <span class="word">Popup</span>
           <i class="fa fa-angle-right right"></i>
         </router-link>
+        <router-link to="/imagepreview">
+          <i class="fa fa-check-square"></i>
+          <span class="word">ImagePreview</span>
+          <i class="fa fa-angle-right right"></i>
+        </router-link>
       </li>
     </ul>
   </div>
