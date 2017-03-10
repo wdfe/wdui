@@ -5,7 +5,7 @@
         <template v-for="item in components">
           <router-link :to="`/${item.toLowerCase()}`">
             <i class="fa fa-check-square"></i>
-            <span class="word">item</span>
+            <span class="word">{{item}}</span>
             <i class="fa fa-angle-right right"></i>
           </router-link>
         </template>
