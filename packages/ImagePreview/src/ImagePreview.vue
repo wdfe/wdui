@@ -31,7 +31,8 @@ export default {
     },
     imgList: {
       type: Array,
-      default: []
+      default: [],
+      required: true
     },
     defaultIndex: {
       type: Number,
