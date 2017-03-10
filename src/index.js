@@ -13,6 +13,7 @@ import Radio from '../packages/Radio/index.js'
 import RadioGroup from '../packages/RadioGroup/index.js'
 import Checkbox from '../packages/Checkbox/index.js'
 import CheckboxGroup from '../packages/CheckboxGroup/index.js'
+import ImagePreview from '../packages/ImagePreview/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -56,5 +57,6 @@ export {
   Radio,
   RadioGroup,
   Checkbox,
-  CheckboxGroup
+  CheckboxGroup,
+  ImagePreview
 }
