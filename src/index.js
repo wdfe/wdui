@@ -8,6 +8,7 @@ import Search from '../packages/Search/index.js'
 import Switch from '../packages/Switch/index.js'
 import Toast from '../packages/Toast/index.js'
 import ActionSheet from '../packages/ActionSheet/index.js'
+import CheckBox from '../packages/CheckBox/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -22,6 +23,7 @@ const install = function(Vue) {
   })
   Vue.component(Dialog.name, Dialog)
   Vue.component(Search.name, Search)
+  Vue.component(CheckBox.name, CheckBox)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {

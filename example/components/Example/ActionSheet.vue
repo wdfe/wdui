@@ -1,43 +1,74 @@
 <template lang="html">
   <div class="actionsheet-container">
-    <wd-button type="gray" @click.native="showActionSheet">有确定按钮版左右两列ActionSheet</wd-button>
-    <wd-button type="gray" @click.native="showActionSheet1">无确定单列版ActionSheet</wd-button>
+    <wd-button type="gray" @click.native="showActionSheet1">ActionSheet-单列居中版</wd-button>
+    <wd-button type="gray" @click.native="showActionSheet2">ActionSheet-radio版</wd-button>
+    <wd-button type="gray" @click.native="showActionSheet3">ActionSheet-两列版</wd-button>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
   methods: {
-    showActionSheet: function() {
-      this.$ActionSheet({
-        title: '分类至(按分类展示商品,方便买家筛选)',
-        actions: [
-          {
-            title: '男士背包',
-            subtitle: '共1件商品'
-          },
-          {
-            title: '男士公文包',
-            subtitle: '共0件商品'
-          },
-          {
-            title: '女士背包',
-            subtitle: '共1件商品'
-          }
-        ],
-        isShowConfirmButton: true,
-        confirmText: '确定',
-        cancelText: '取消'
-      })
-    },
     showActionSheet1: function() {
       this.$ActionSheet({
         title: '复制链接',
-        theme: {
-          type: 'center'
+        content: {
+          type: 'single',
+          items: ['复制店铺名称+链接','仅复制店铺链接','仅复制店铺名称'],
         },
-        actions: ['复制店铺名称+链接','仅复制店铺链接','仅复制店铺名称'],
+        textAlign: 'center',
         cancelText: '取消'
+      })
+    },
+    showActionSheet2: function() {
+      this.$ActionSheet({
+        title: '请选择排序方式',
+        content: {
+          type: 'radio',
+          items: ['名称字母排序', '总交易额', '总订单数', '上次购买时间', '平均交易额', '单次最高交易额'],
+        },
+        textAlign: 'left',
+        cancelText: '取消',
+        isShowConfirmButton: true,
+        confirmText: '确定',
+        onConfirm: (instance, data) => {
+          console.log(data)
+          Vue.nextTick(() => {
+            instance.value = false
+          })
+        }
+      })
+
+    },
+    showActionSheet3: function() {
+      this.$ActionSheet({
+        title: '分类至(按分类展示商品,方便买家筛选)',
+        content: {
+          type: 'single',
+          items: [
+            {
+              title: '男士背包',
+              subtitle: '共1件商品'
+            },
+            {
+              title: '男士公文包',
+              subtitle: '共0件商品'
+            },
+            {
+              title: '女士背包',
+              subtitle: '共1件商品'
+            }
+          ],
+        },
+        textAlign: 'left',
+        cancelText: '取消',
+        onItemClick: (instance, data) => {
+          console.log(data)
+          Vue.nextTick(() => {
+            instance.value = false
+          })
+        }
       })
     }
   }

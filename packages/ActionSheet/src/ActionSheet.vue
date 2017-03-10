@@ -1,44 +1,47 @@
 <template>
   <transition :name="actionsheetTransition" @after-enter="onShow()" @after-leave="onHide()">
-    <div :class="{'wd-actionsheet-theme-left': theme.type === 'left','wd-actionsheet-theme-center': theme.type === 'center'}" class="wd-actionsheet" ref="popup" v-if="visible" :style="{'z-index': zIndex}">
+    <div :class="{'wd-actionsheet-theme-left': textAlign === 'left','wd-actionsheet-theme-center': textAlign === 'center'}" class="wd-actionsheet" ref="popup" v-if="visible" :style="{'z-index': zIndex}">
       <header v-if="title" class="wd-actionsheet-header">{{ title }}</header>
       <div class="wd-actionsheet-content">
-        <ul class="wd-actionsheet-list">
-          <li v-for="item in actions" class="wd-actionsheet-listitem" @click="itemClick(item)">
-            <span v-if="!item.title && !item.subtitle">{{ item }}</span>
-            <span v-if="item.title">{{ item.title }}</span>
-            <span class="wd-item-sub" v-if="item.subtitle">{{ item.subtitle }}</span></li>
-        </ul>
+        <wd-actionsheet-slot @getData="getData" :items="content.items" :type="content.type" :defaultValue="content.defaultValue"></wd-actionsheet-slot>
       </div>
       <footer class="wd-actionsheet-footer">
-        <span @click="onCancel" v-if="isShowCancelButton">{{ cancelText }}</span>
+        <span @click="onCancel">{{ cancelText }}</span>
         <span @click="onConfirm" v-if="isShowConfirmButton">{{ confirmText }}</span>
       </footer>
     </div>
   </transition>
 </template>
 <script>
+  import Vue from 'vue'
+  import ActionSheetSlot from './ActionSheetSlot.vue'
   import Popup from '../../../src/popup/index.js'
 
   export default {
     name: 'wd-actionsheet',
     mixins: [Popup],
+    components: {
+      [ActionSheetSlot.name]: ActionSheetSlot
+    },
     props: {
       transition: {
         type: String,
         default: 'slide-bottom'
       },
-      theme: {
-        type: Object,
-        default: {}
-      },
       title: {
         type: [String, Number],
         default: ''
       },
-      actions: {
-        type: Array,
-        default: () => []
+      content: {
+        type: Object,
+        default: {
+          type: 'single',
+          items: []
+        }
+      },
+      textAlign: {
+        type: String,
+        default: 'center'
       },
       confirmText: {
         type: [String, Number],
@@ -47,10 +50,6 @@
       cancelText: {
         type: [String, Number],
         default: '取消'
-      },
-      isShowCancelButton: {
-        type: Boolean,
-        default: true
       },
       isShowConfirmButton: {
         type: Boolean,
@@ -80,11 +79,15 @@
         type: Function,
         default: () => {}
       },
+      onItemClick: {
+        type: Function,
+        default: () => {}
+      },
     },
     data() {
       return {
         visible: false,
-        //datas: {}
+        datas: {}
       }
     },
     computed: {
@@ -97,33 +100,16 @@
       }
     },
     watch: {
-      visible(val) {
-        this.$emit('input', val)
-      },
       value(val) {
         this.visible = val
       }
     },
     methods: {
+      getData(data) {
+        this.$set(this.datas, 'selected', data)
+      },
       maskClick() {
         this.onMaskClick()
-      },
-      itemClick(item) {
-        if(!item.title) {
-          this.data = item;
-          console.log(this.data)
-        }
-        if(item.title && item.subtitle) {
-          this.datas = {'title': item.title, 'subtitle': item.subtitle}
-          console.log(this.datas)
-        }
-        if(item.method && typeof item.method === 'function') {
-          item.method()
-        }
-        if(!this.isShowConfirmButton) {
-          this.visible = false
-          this.value = false
-        }
       }
     }
   };
@@ -133,7 +119,7 @@
   $header-text-size: 24px;
   $header-line-height: 88px;
   $content-text-color: #222;
-  $content-text-size: 36px;
+  $content-text-size: 32px;
   $content-line-height: 104px;
   $border-color: #ddd;
   $button-background-color: #f7f7f7;
@@ -153,28 +139,6 @@
     }
     .wd-actionsheet-content {
       padding: 0 0 0 40px;
-      .wd-actionsheet-list {
-
-        .wd-actionsheet-listitem {
-          position: relative;
-          padding-right: 40px;
-          height: $content-line-height;                   /* px */
-          line-height: $content-line-height;              /* px */
-          font-size: $content-text-size;                  /* px */
-          color: $content-text-color;
-          border-top: 1px solid $border-color;            /* no */
-         span {
-             display: inline-block;
-           &.wd-item-sub {
-              position: absolute;
-              right: 40px;
-              font-size: $header-text-size;               /* px */
-              color: $header-text-color;                  /* px */
-
-           }
-         }
-        }
-      }
     }
     .wd-actionsheet-footer {
       display: flex;
@@ -199,6 +163,11 @@
       .wd-actionsheet-content {
         text-align: center;
         padding: 0;
+        .wd-actionsheet-list {
+          .wd-actionsheet-listitem {
+            padding-right: 0
+        }
+      }
       }
     }
   }
