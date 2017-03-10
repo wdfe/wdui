@@ -101,18 +101,6 @@ export default {
         -o-transform: rotate(45deg);
         transform: rotate(45deg);
       }
-
-      .wd-checkbox {
-        height: $content-line-height !important;     /* px */
-        &.custome-checkbox-item {
-          float: none !important;
-          margin: 0 !important;
-          + span.wd-item-title {
-            margin-left: 16px;                          /*px*/
-            vertical-align: top;
-          }
-        }
-      }
     }
   }
 </style>
