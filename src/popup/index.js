@@ -13,6 +13,10 @@ export default {
     maskColor: {
       type: String,
       default: '#000'
+    },
+    lockScroll: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -159,15 +163,19 @@ export default {
         this.resetZIndex()
         if (this.mask) {
           MaskManager.open(this)
-          this.$nextTick(() => {
-            this.preventScroll()
-            this.enableScrollable()
-          })
+          if(this.lockScroll) {
+            this.$nextTick(() => {
+              this.preventScroll()
+              this.enableScrollable()
+            })
+          }
         }
       } else {
         MaskManager.close(this)
-        this.allowScroll()
-        this.disableScrollable()
+        if(this.lockScroll) {
+          this.allowScroll()
+          this.disableScrollable()
+        }
       }
     },
     mask(val, oldVal) {

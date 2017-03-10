@@ -13,6 +13,7 @@ import Popup from './components/Example/Popup.vue'
 import Checkbox from './components/Example/Checkbox.vue'
 import Radio from './components/Example/Radio.vue'
 import ImagePreview from './components/Example/ImagePreview.vue'
+import Tooltip from './components/Example/Tooltip.vue'
 
 export default {
   routes: [
@@ -94,6 +95,11 @@ export default {
       path: '/imagepreview',
       name: 'ImagePreview',
       component: ImagePreview
+    },
+    {
+      path: '/tooltip',
+      name: 'Tooltip',
+      component: Tooltip
     }
   ]
 }

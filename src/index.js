@@ -14,6 +14,7 @@ import RadioGroup from '../packages/RadioGroup/index.js'
 import Checkbox from '../packages/Checkbox/index.js'
 import CheckboxGroup from '../packages/CheckboxGroup/index.js'
 import ImagePreview from '../packages/ImagePreview/index.js'
+import Tooltip from '../packages/Tooltip/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -26,6 +27,7 @@ const install = function(Vue) {
   Vue.use(Lazyload, {try: 3})
   Vue.component(Search.name, Search)
   Vue.component(Popup.name, Popup)
+  Vue.component(Tooltip.name, Tooltip)
   Vue.component(Swipe.name, Swipe)
   Vue.component(SwipeItem.name, SwipeItem)
   Vue.component(Switch.name, Switch)
@@ -58,5 +60,6 @@ export {
   RadioGroup,
   Checkbox,
   CheckboxGroup,
-  ImagePreview
+  ImagePreview,
+  Tooltip
 }

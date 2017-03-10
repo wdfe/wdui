@@ -31,9 +31,10 @@ export default {
         'Swipe',
         'Switch',
         'Popup',
+        'ToolTip',
         'Radio',
         'Checkbox',
-        'ImagePreview'
+        'ImagePreview',
       ]
     }
   },
