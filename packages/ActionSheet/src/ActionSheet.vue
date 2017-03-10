@@ -106,7 +106,15 @@
     },
     methods: {
       getData(data) {
-        this.$set(this.datas, 'selected', data)
+        if(Array.isArray(data) && data.length > 0) {
+          let res = [], cont = this.content
+          data.forEach(function(e, i){
+            res.push(cont.items[e])
+          })
+          this.$set(this.datas, 'checkedList', res)
+        } else {
+          this.$set(this.datas, 'selected', data)
+        }
       },
       maskClick() {
         this.onMaskClick()

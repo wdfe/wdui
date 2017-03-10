@@ -2,7 +2,7 @@
   <div class="actionsheet-container">
     <wd-button type="gray" @click.native="showActionSheet1">ActionSheet-单列居中版</wd-button>
     <wd-button type="gray" @click.native="showActionSheet2">ActionSheet-radio版</wd-button>
-    <wd-button type="gray" @click.native="showActionSheet3">ActionSheet-两列版</wd-button>
+    <wd-button type="gray" @click.native="showActionSheet3">ActionSheet-checklist两列版</wd-button>
   </div>
 </template>
 
@@ -45,7 +45,7 @@ export default {
       this.$ActionSheet({
         title: '分类至(按分类展示商品,方便买家筛选)',
         content: {
-          type: 'single',
+          type: 'checklist',
           items: [
             {
               title: '男士背包',
@@ -63,7 +63,9 @@ export default {
         },
         textAlign: 'left',
         cancelText: '取消',
-        onItemClick: (instance, data) => {
+        isShowConfirmButton: true,
+        confirmText: '确定',
+        onConfirm: (instance, data) => {
           console.log(data)
           Vue.nextTick(() => {
             instance.value = false

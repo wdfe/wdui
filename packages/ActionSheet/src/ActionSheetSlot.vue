@@ -11,11 +11,27 @@
         <span>{{ item }}</span>
       </li>
     </ul>
+    <ul v-else-if="type === 'checklist'" class="wd-actionsheet-list">
+      <li v-for="(item, index) in items" class="wd-actionsheet-listitem">
+        <label>
+          <wd-checkbox-slot class="custome-checkbox-item" @input="getItems" :disChoose="item.disChoose" :text="item.title || item" :index="index">
+          </wd-checkbox-slot>
+          <span v-if="!item.title && !item.subtitle">{{ item }}</span>
+          <span v-if="item.title" class="wd-item-title">{{ item.title }}</span>
+          <span v-if="item.subtitle" class="wd-item-sub">{{ item.subtitle }}</span>
+        </label>
+      </li>
+    </ul>
 </template>
 
 <script>
+
+import CheckBoxSlot from './CheckBoxSlot.vue'
 export default {
   name: 'wd-actionsheet-slot',
+  components: {
+      [CheckBoxSlot.name]: CheckBoxSlot
+  },
   props: {
     type: {
       type: String,
@@ -32,7 +48,8 @@ export default {
   },
   data() {
     return {
-      selected: ''
+      selected: '',
+      checkList: []
     }
   },
   methods: {
@@ -50,11 +67,17 @@ export default {
     },
     radioClick(item) {
       this.selected = item
-      this.$nextTick(function(){
-         this.itemClick(item)
-      })
-
-    }
+      this.itemClick(item)
+    },
+    getItems(data) {
+        let index = this.checkList.indexOf(data)
+        if(index === -1) {
+          this.checkList.push(data)
+        } else {
+          this.checkList.splice(index, 1)
+        }
+        this.$emit('getData', this.checkList)
+    },
   }
 }
 
@@ -100,6 +123,18 @@ export default {
         -ms-transform: rotate(45deg);
         -o-transform: rotate(45deg);
         transform: rotate(45deg);
+      }
+
+      .wd-checkbox {
+        height: $content-line-height !important;     /* px */
+        &.custome-checkbox-item {
+          float: none !important;
+          margin: 0 !important;
+          + span.wd-item-title {
+            margin-left: 16px;                          /*px*/
+            vertical-align: top;
+          }
+        }
       }
     }
   }
