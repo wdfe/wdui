@@ -10,6 +10,8 @@ import Swipe from './components/Example/Swipe.vue'
 import Switch from './components/Example/Switch.vue'
 import Toast from './components/Example/Toast.vue'
 import Popup from './components/Example/Popup.vue'
+import Checkbox from './components/Example/Checkbox.vue'
+import Radio from './components/Example/Radio.vue'
 
 export default {
   routes: [
@@ -76,6 +78,16 @@ export default {
       path: '/popup',
       name: 'Popup',
       component: Popup
+    },
+    {
+      path: '/radio',
+      name: 'Radio',
+      component: Radio
+    },
+    {
+      path: '/checkbox',
+      name: 'Checkbox',
+      component: Checkbox
     }
   ]
 }

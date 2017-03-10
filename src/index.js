@@ -9,6 +9,10 @@ import {Swipe, SwipeItem} from '../packages/Swipe/index.js'
 import Switch from '../packages/Switch/index.js'
 import Toast from '../packages/Toast/index.js'
 import Popup from '../packages/Popup/index.js'
+import Radio from '../packages/Radio/index.js'
+import RadioGroup from '../packages/RadioGroup/index.js'
+import Checkbox from '../packages/Checkbox/index.js'
+import CheckboxGroup from '../packages/CheckboxGroup/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -24,6 +28,10 @@ const install = function(Vue) {
   Vue.component(Swipe.name, Swipe)
   Vue.component(SwipeItem.name, SwipeItem)
   Vue.component(Switch.name, Switch)
+  Vue.component(Radio.name, Radio)
+  Vue.component(RadioGroup.name, RadioGroup)
+  Vue.component(Checkbox.name, Checkbox)
+  Vue.component(CheckboxGroup.name, CheckboxGroup)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -44,5 +52,9 @@ export {
   Switch,
   Picker,
   Toast,
-  Popup
+  Popup,
+  Radio,
+  RadioGroup,
+  Checkbox,
+  CheckboxGroup
 }
