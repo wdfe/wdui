@@ -15,7 +15,7 @@ export default {
         title: '复制链接',
         content: {
           type: 'single',
-          items: ['复制店铺名称+链接','仅复制店铺链接','仅复制店铺名称'],
+          items: ['复制店铺名称+链接','仅复制店铺链接','仅复制店铺名称']
         },
         textAlign: 'center',
         cancelText: '取消'
@@ -46,20 +46,21 @@ export default {
         title: '分类至(按分类展示商品,方便买家筛选)',
         content: {
           type: 'checklist',
-          items: [
-            {
-              title: '男士背包',
-              subtitle: '共1件商品'
-            },
-            {
-              title: '男士公文包',
-              subtitle: '共0件商品'
-            },
-            {
-              title: '女士背包',
-              subtitle: '共1件商品'
-            }
-          ],
+          //items: [
+          //  {
+          //    title: '男士背包',
+          //    subtitle: '共1件商品'
+          //  },
+          //  {
+          //    title: '男士公文包',
+          //    subtitle: '共0件商品'
+          //  },
+          //  {
+          //    title: '女士背包',
+          //    subtitle: '共1件商品'
+          //  }
+          //],
+          items: ['名称字母排序', '总交易额', '总订单数', '上次购买时间', '平均交易额', '单次最高交易额']
         },
         textAlign: 'left',
         cancelText: '取消',

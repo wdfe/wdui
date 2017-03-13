@@ -14,9 +14,9 @@
     <ul v-else-if="type === 'checklist'" class="wd-actionsheet-list">
       <li v-for="(item, index) in items" class="wd-actionsheet-listitem">
         <label>
-          <wd-checkbox-slot class="custome-checkbox-item" @input="getItems" :disChoose="item.disChoose" :text="item.title || item" :index="index">
+          <wd-checkbox-slot class="custome-checkbox-item" @input="getItems" :nowValue="currentCheck" :text="item.title || item" :index="index">
           </wd-checkbox-slot>
-          <span v-if="!item.title && !item.subtitle">{{ item }}</span>
+          <span v-if="!item.title && !item.subtitle" class="wd-item-title">{{ item }}</span>
           <span v-if="item.title" class="wd-item-title">{{ item.title }}</span>
           <span v-if="item.subtitle" class="wd-item-sub">{{ item.subtitle }}</span>
         </label>
@@ -25,8 +25,8 @@
 </template>
 
 <script>
-
 import CheckBoxSlot from './CheckBoxSlot.vue'
+window.SHARED = { 'selected': '' , 'checkList': []}
 export default {
   name: 'wd-actionsheet-slot',
   components: {
@@ -49,7 +49,23 @@ export default {
   data() {
     return {
       selected: '',
-      checkList: []
+      currentCheck: [],
+      defaultValue: window.SHARED
+    }
+  },
+  mounted() {
+    let selected = this.defaultValue['selected'],
+        checkList = this.defaultValue['checkList'],
+        self = this
+    if(selected) {
+      this.selected = selected
+      this.$emit('getData', selected)
+    }
+    if(checkList && checkList.length > 0) {
+      checkList.forEach(function(e, i){
+        self.currentCheck.push(self.items[e]['title'] || self.items[e])
+      })
+      this.$emit('getData', checkList)
     }
   },
   methods: {
@@ -67,20 +83,22 @@ export default {
     },
     radioClick(item) {
       this.selected = item
+      window.SHARED['selected'] = item
       this.itemClick(item)
     },
     getItems(data) {
-        let index = this.checkList.indexOf(data)
+        let checkList = window.SHARED['checkList'],
+            index = checkList.indexOf(data)
         if(index === -1) {
-          this.checkList.push(data)
+          checkList.push(data)
         } else {
-          this.checkList.splice(index, 1)
+          checkList.splice(index, 1)
         }
-        this.$emit('getData', this.checkList)
+        window.SHARED['checkList'] = checkList
+        this.$emit('getData', checkList)
     },
   }
 }
-
 </script>
 
 <style lang="sass">

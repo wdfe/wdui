@@ -36,9 +36,6 @@ export default {
       this.currentCheck = val
     }
   },
-  created() {},
-  mounted() {
-  },
   methods: {
     changeCheck(index){
       this.$emit('input', index)
