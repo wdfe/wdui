@@ -20,10 +20,8 @@ export default {
         textAlign: 'center',
         isShowConfirmButton: false,
         onItemClick: (instance, data) => {
-          console.log(data)
-          Vue.nextTick(() => {
-            instance.value = false
-          })
+          alert(data.selected)
+          instance.value = false
         }
       })
     },
@@ -35,10 +33,8 @@ export default {
           items: ['名称字母排序', '总交易额', '总订单数', '上次购买时间', '平均交易额', '单次最高交易额'],
         },
         onConfirm: (instance, data) => {
-          console.log(data)
-          Vue.nextTick(() => {
-            instance.value = false
-          })
+          alert(data.selected)
+          instance.value = false
         }
       })
 
@@ -64,10 +60,8 @@ export default {
           ],
         },
         onConfirm: (instance, data) => {
-          console.log(data)
-          Vue.nextTick(() => {
-            instance.value = false
-          })
+          alert(JSON.stringify(data.checkList))
+          instance.value = false
         }
       })
     }
