@@ -18,7 +18,13 @@ export default {
           items: ['复制店铺名称+链接','仅复制店铺链接','仅复制店铺名称']
         },
         textAlign: 'center',
-        isShowConfirmButton: false
+        isShowConfirmButton: false,
+        onItemClick: (instance, data) => {
+          console.log(data)
+          Vue.nextTick(() => {
+            instance.value = false
+          })
+        }
       })
     },
     showActionSheet2: function() {
