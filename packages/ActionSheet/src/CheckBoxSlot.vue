@@ -1,7 +1,7 @@
 <template>
-  <div class="wd-checkbox">
+  <div class="wd-checkbox-slot">
     <input type="checkbox" v-model="currentCheck" :disabled="disChoose" :value="text" :index="index" @change="changeCheck(index)">
-    <span class="wd-checkbox-custominput" :class="{'dis': disChoose}"></span>
+    <span class="wd-checkbox-slot-custominput" :class="{'dis': disChoose}"></span>
   </div>
 </template>
 
@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.wd-checkbox {
+.wd-checkbox-slot {
   position: relative;
   display: inline-block;
   width: 46px;
