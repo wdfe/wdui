@@ -41,7 +41,7 @@
       },
       textAlign: {
         type: String,
-        default: 'center'
+        default: 'left'
       },
       confirmText: {
         type: [String, Number],
@@ -53,7 +53,7 @@
       },
       isShowConfirmButton: {
         type: Boolean,
-        default: false
+        default: true
       },
       value: {
         type: Boolean,

@@ -12,7 +12,7 @@ const ActionSheet = (options = {}) => {
     title: options.title,
     content: options.content,
     textAlign: options.textAlign,
-    isShowConfirmButton: options.isShowConfirmButton === undefined ? false : options.isShowConfirmButton,
+    isShowConfirmButton: options.isShowConfirmButton === undefined ? true : options.isShowConfirmButton,
     confirmText: options.confirmText,
     cancelText: options.cancelText
   })

@@ -17,8 +17,7 @@ export default {
           type: 'single',
           items: ['复制店铺名称+链接','仅复制店铺链接','仅复制店铺名称']
         },
-        textAlign: 'center',
-        cancelText: '取消'
+        textAlign: 'center'
       })
     },
     showActionSheet2: function() {
@@ -28,10 +27,6 @@ export default {
           type: 'radio',
           items: ['名称字母排序', '总交易额', '总订单数', '上次购买时间', '平均交易额', '单次最高交易额'],
         },
-        textAlign: 'left',
-        cancelText: '取消',
-        isShowConfirmButton: true,
-        confirmText: '确定',
         onConfirm: (instance, data) => {
           console.log(data)
           Vue.nextTick(() => {
@@ -61,10 +56,6 @@ export default {
             }
           ],
         },
-        textAlign: 'left',
-        cancelText: '取消',
-        isShowConfirmButton: true,
-        confirmText: '确定',
         onConfirm: (instance, data) => {
           console.log(data)
           Vue.nextTick(() => {
