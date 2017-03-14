@@ -137,7 +137,7 @@
       }
     },
     computed: {
-      title () {
+      title() {
         return this.titles[this.index]
       }
     },

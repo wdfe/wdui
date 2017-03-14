@@ -3,7 +3,7 @@
    <ul class="wd-radiogroup-list">
     <li v-for="list in listData">
       <label>
-        <wd-radio 
+        <wd-radio
         :disChoose="list.disChoose"
         :ifClick="ifClick"
         :name="name"
@@ -24,7 +24,7 @@ export default {
   props: {
     listData: {
       type: Array,
-      default: function () {
+      default: function() {
         return []
       },
       required: true
