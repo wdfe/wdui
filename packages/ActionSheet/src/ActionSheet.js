@@ -14,7 +14,10 @@ const ActionSheet = (options = {}) => {
     textAlign: options.textAlign,
     isShowConfirmButton: options.isShowConfirmButton === undefined ? true : options.isShowConfirmButton,
     confirmText: options.confirmText,
-    cancelText: options.cancelText
+    cancelText: options.cancelText,
+    transition: options.transition,
+    maskOpacity: options.maskOpacity,
+    maskColor: options.maskColor
   })
   instance.value = options.open || true
   instance.onItemClick = options.onItemClick ? options.onItemClick.bind(null, instance, instance.datas) : (() => {instance.value = false})

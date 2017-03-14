@@ -17,7 +17,8 @@ export default {
           type: 'single',
           items: ['复制店铺名称+链接','仅复制店铺链接','仅复制店铺名称']
         },
-        textAlign: 'center'
+        textAlign: 'center',
+        isShowConfirmButton: false
       })
     },
     showActionSheet2: function() {
