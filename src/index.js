@@ -15,6 +15,7 @@ import Checkbox from '../packages/Checkbox/index.js'
 import CheckboxGroup from '../packages/CheckboxGroup/index.js'
 import ImagePreview from '../packages/ImagePreview/index.js'
 import Tooltip from '../packages/Tooltip/index.js'
+import ActionSheet from '../packages/ActionSheet/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -61,5 +62,6 @@ export {
   Checkbox,
   CheckboxGroup,
   ImagePreview,
-  Tooltip
+  Tooltip,
+  ActionSheet
 }

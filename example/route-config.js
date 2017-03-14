@@ -14,6 +14,7 @@ import Checkbox from './components/Example/Checkbox.vue'
 import Radio from './components/Example/Radio.vue'
 import ImagePreview from './components/Example/ImagePreview.vue'
 import Tooltip from './components/Example/Tooltip.vue'
+import ActionSheet from './components/Example/ActionSheet.vue'
 
 export default {
   routes: [
@@ -100,6 +101,11 @@ export default {
       path: '/tooltip',
       name: 'Tooltip',
       component: Tooltip
+    },
+    {
+      path: '/actionsheet',
+      name: 'ActionSheet',
+      component: ActionSheet
     }
   ]
 }

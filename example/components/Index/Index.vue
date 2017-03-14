@@ -35,6 +35,7 @@ export default {
         'Radio',
         'Checkbox',
         'ImagePreview',
+        'ActionSheet'
       ]
     }
   },
