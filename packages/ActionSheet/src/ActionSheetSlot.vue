@@ -14,8 +14,8 @@
     <ul v-else-if="type === 'checklist'" class="wd-actionsheet-list">
       <li v-for="(item, index) in items" class="wd-actionsheet-listitem">
         <label>
-          <wd-checkbox-slot class="custome-checkbox-item" @input="getItems" :nowValue="currentCheck" :text="item.title || item" :index="index">
-          </wd-checkbox-slot>
+          <wd-actionsheet-checkbox class="custome-checkbox-item" @input="getItems" :nowValue="currentCheck" :text="item.title || item" :index="index">
+          </wd-actionsheet-checkbox>
           <span v-if="!item.title && !item.subtitle" class="wd-item-title">{{ item }}</span>
           <span v-if="item.title" class="wd-item-title">{{ item.title }}</span>
           <span v-if="item.subtitle" class="wd-item-sub">{{ item.subtitle }}</span>
@@ -143,7 +143,7 @@ export default {
         transform: rotate(45deg);
       }
 
-      .wd-checkbox-slot {
+      .wd-actionsheet-checkbox {
         height: $content-line-height !important;     /* px */
         &.custome-checkbox-item {
           float: none !important;

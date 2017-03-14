@@ -13,6 +13,7 @@ export default {
     showActionSheet1: function() {
       this.$ActionSheet({
         title: '复制链接',
+        isShowTitle: false,
         content: {
           type: 'single',
           items: ['复制店铺名称+链接','仅复制店铺链接','仅复制店铺名称']

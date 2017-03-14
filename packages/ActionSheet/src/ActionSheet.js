@@ -10,9 +10,10 @@ const init = (propsData) => {
 const ActionSheet = (options = {}) => {
   const instance = init({
     title: options.title,
+    isShowTitle: options.isShowTitle,
     content: options.content,
     textAlign: options.textAlign,
-    isShowConfirmButton: options.isShowConfirmButton === undefined ? true : options.isShowConfirmButton,
+    isShowConfirmButton: options.isShowConfirmButton,
     confirmText: options.confirmText,
     cancelText: options.cancelText,
     transition: options.transition,

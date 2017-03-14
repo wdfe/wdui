@@ -1,13 +1,13 @@
 <template>
-  <div class="wd-checkbox-slot">
+  <div class="wd-actionsheet-checkbox">
     <input type="checkbox" v-model="currentCheck" :disabled="disChoose" :value="text" :index="index" @change="changeCheck(index)">
-    <span class="wd-checkbox-slot-custominput" :class="{'dis': disChoose}"></span>
+    <span class="wd-actionsheet-checkbox-custominput" :class="{'dis': disChoose}"></span>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'wd-checkbox-slot',
+  name: 'wd-actionsheet-checkbox',
   props: {
     disChoose: {
       default: false,
@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.wd-checkbox-slot {
+.wd-actionsheet-checkbox {
   position: relative;
   display: inline-block;
   width: 46px;

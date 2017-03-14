@@ -1,7 +1,7 @@
 <template>
   <transition :name="actionsheetTransition" @after-enter="onShow()" @after-leave="onHide()">
     <div :class="{'wd-actionsheet-theme-left': textAlign === 'left','wd-actionsheet-theme-center': textAlign === 'center'}" class="wd-actionsheet" ref="popup" v-if="visible" :style="{'z-index': zIndex}">
-      <header v-if="title" class="wd-actionsheet-header">{{ title }}</header>
+      <header v-if="isShowTitle" class="wd-actionsheet-header">{{ title }}</header>
       <div class="wd-actionsheet-content">
         <wd-actionsheet-slot @getData="getData" :items="content.items" :type="content.type"></wd-actionsheet-slot>
       </div>
@@ -31,6 +31,10 @@
       title: {
         type: [String, Number],
         default: ''
+      },
+      isShowTitle: {
+        type: Boolean,
+        default: true
       },
       content: {
         type: Object,
