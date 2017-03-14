@@ -3,7 +3,6 @@ import 'es6-promise/auto'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import configRouter from './route-config'
-import _http from './util/http.js'
 import * as wdui from '../src/index.js'
 import './assets/reset.css'
 
