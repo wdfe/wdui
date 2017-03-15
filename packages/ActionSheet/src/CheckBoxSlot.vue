@@ -1,6 +1,6 @@
 <template>
   <div class="wd-actionsheet-checkbox">
-    <input type="checkbox" v-model="currentCheck" :disabled="disChoose" :value="text" :index="index" @change="changeCheck(index)">
+    <input type="checkbox" v-model="currentCheck" :disabled="disChoose" :value="text" :index="index" @change="changeCheck(text, index)">
     <span class="wd-actionsheet-checkbox-custominput" :class="{'dis': disChoose}"></span>
   </div>
 </template>
@@ -37,8 +37,8 @@ export default {
     }
   },
   methods: {
-    changeCheck(index){
-      this.$emit('input', index)
+    changeCheck(text, index){
+      this.$emit('input', text, index)
     }
   }
 }

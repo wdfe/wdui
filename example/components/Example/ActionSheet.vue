@@ -16,12 +16,16 @@ export default {
         isShowTitle: false,
         content: {
           type: 'single',
-          items: ['复制店铺名称+链接','仅复制店铺链接','仅复制店铺名称']
+          items: [
+            { title: '复制店铺名称+链接' },
+            { title: '仅复制店铺链接' },
+            { title: '仅复制店铺名称' }
+          ]
         },
         textAlign: 'center',
         isShowConfirmButton: false,
         onItemClick: (instance, data) => {
-          alert(data.selected)
+          alert(data.datas)
           instance.value = false
         }
       })
@@ -31,14 +35,20 @@ export default {
         title: '请选择排序方式',
         content: {
           type: 'radio',
-          items: ['名称字母排序', '总交易额', '总订单数', '上次购买时间', '平均交易额', '单次最高交易额'],
+          items: [
+            { title: '名称字母排序' },
+            { title: '总交易额' },
+            { title: '总订单数' },
+            { title: '上次购买时间' },
+            { title: '平均交易额' },
+            { title: '单次最高交易额' }
+          ]
         },
         onConfirm: (instance, data) => {
-          alert(data.selected)
+          alert(JSON.stringify(data.datas))
           instance.value = false
         }
       })
-
     },
     showActionSheet3: function() {
       this.$ActionSheet({
@@ -59,9 +69,10 @@ export default {
               subtitle: '共1件商品'
             }
           ],
+          defaultValue: [ 0, 2 ]
         },
         onConfirm: (instance, data) => {
-          alert(JSON.stringify(data.checkList))
+          alert(JSON.stringify(data.datas))
           instance.value = false
         }
       })
