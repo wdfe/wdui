@@ -48,3 +48,4 @@ npm run test
 
 - 编写时请遵循 `eslint-config-wdfe` 中的 eslint 配置。
 - 提交代码时 git commit message 请遵循[格式化规范](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
+- 在发起 merge request 之前务必先用 lint 和 test 做检查，修改至无 warning 无 error 再发请求。
