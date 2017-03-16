@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import configRouter from './route-config'
 import * as wdui from '../src/index.js'
 import './assets/reset.css'
+import '../src/assets/styles/theme-default/index.scss'
 
 Vue.use(wdui)
 Vue.use(VueRouter)
