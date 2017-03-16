@@ -3,7 +3,7 @@
   <div class="wd-spin-wrap small" >
     <div v-for="i in 12"></div>
   </div>
-  <span>正在加载</span>
+  <span>{{text}}</span>
 </div>
 
 </template>
@@ -14,6 +14,10 @@ export default {
     type: {
       type: String,
       default: 'big'
+    },
+    text: {
+      type: String,
+      default: '正在加载'
     }
   }
 }
@@ -24,7 +28,7 @@ export default {
   width: 100%;
   height: 104px;
   text-align: center;
-  background: #FFFFFF;
+  // background: #FFFFFF;
   padding: 28px 0;
   box-sizing: border-box;
   font-size: 32px; /*px*/

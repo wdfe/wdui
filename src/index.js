@@ -16,7 +16,7 @@ import CheckboxGroup from '../packages/CheckboxGroup/index.js'
 import ImagePreview from '../packages/ImagePreview/index.js'
 import Tooltip from '../packages/Tooltip/index.js'
 import ActionSheet from '../packages/ActionSheet/index.js'
-
+import Scroll from '../packages/Scroll/index.js'
 const install = function(Vue) {
   if(install.installed) {
     return
@@ -36,6 +36,7 @@ const install = function(Vue) {
   Vue.component(RadioGroup.name, RadioGroup)
   Vue.component(Checkbox.name, Checkbox)
   Vue.component(CheckboxGroup.name, CheckboxGroup)
+  Vue.component(Scroll.name, Scroll)
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -63,5 +64,6 @@ export {
   CheckboxGroup,
   ImagePreview,
   Tooltip,
-  ActionSheet
+  ActionSheet,
+  Scroll
 }

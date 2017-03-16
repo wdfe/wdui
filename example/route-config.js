@@ -15,6 +15,12 @@ import Radio from './components/Example/Radio.vue'
 import ImagePreview from './components/Example/ImagePreview.vue'
 import Tooltip from './components/Example/Tooltip.vue'
 import ActionSheet from './components/Example/ActionSheet.vue'
+import Scroll from './components/Example/Scroll/Scroll.vue'
+import Refresh from './components/Example/Scroll/Refresh.vue'
+import Loadmore from './components/Example/Scroll/Loadmore.vue'
+import RefreshAndLoadmore from './components/Example/Scroll/RefreshAndLoadmore.vue'
+import NoData from './components/Example/Scroll/NoData.vue'
+import MultiScroll from './components/Example/Scroll/MultiScroll.vue'
 
 export default {
   routes: [
@@ -106,6 +112,36 @@ export default {
       path: '/actionsheet',
       name: 'ActionSheet',
       component: ActionSheet
+    },
+    {
+      path: '/scroll',
+      name: 'Scroll',
+      component: Scroll
+    },
+    {
+      path: '/scroll/refresh',
+      name: 'Refresh',
+      component: Refresh
+    },
+    {
+      path: '/scroll/loadmore',
+      name: 'Loadmore',
+      component: Loadmore
+    },
+    {
+      path: '/scroll/refreshandloadmore',
+      name: 'RefreshAndLoadmore',
+      component: RefreshAndLoadmore
+    },
+    {
+      path: '/scroll/nodata',
+      name: 'NoData',
+      component: NoData
+    },
+    {
+      path: '/scroll/multiscroll',
+      name: 'MultiScroll',
+      component: MultiScroll
     }
   ]
 }

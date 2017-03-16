@@ -11,5 +11,4 @@ describe('Lib', () => {
     expect(wdui.Toast).to.be.an('Function')
     expect(wdui.__esModule).to.be.true
   })
-
 })
