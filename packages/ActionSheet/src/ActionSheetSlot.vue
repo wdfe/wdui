@@ -1,23 +1,21 @@
 <template>
     <ul v-if="type === 'single'" class="wd-actionsheet-list">
-      <li v-for="item in items" class="wd-actionsheet-listitem" @click="itemClick(item)">
-        <span v-if="!item.title && !item.subtitle">{{ item }}</span>
-        <span v-if="item.title" class="wd-item-title">{{ item.title }}</span>
+      <li v-for="item in items" class="wd-actionsheet-listitem" @click="itemClick(item.title)">
+        <span class="wd-item-title">{{ item.title }}</span>
         <span v-if="item.subtitle" class="wd-item-sub">{{ item.subtitle }}</span>
       </li>
     </ul>
     <ul v-else-if="type === 'radio'" class="wd-actionsheet-list">
-      <li v-for="item in items" class="wd-actionsheet-listitem" @click="radioClick(item)" :class="{'checked': item === selected}">
-        <span>{{ item }}</span>
+      <li v-for="(item, index) in items" class="wd-actionsheet-listitem" @click="radioClick(item.title, index)" :class="{'checked': item.title === selected}">
+        <span class="wd-item-title">{{ item.title }}</span>
       </li>
     </ul>
     <ul v-else-if="type === 'checklist'" class="wd-actionsheet-list">
       <li v-for="(item, index) in items" class="wd-actionsheet-listitem">
         <label>
-          <wd-actionsheet-checkbox class="custome-checkbox-item" @input="getItems" :nowValue="currentCheck" :text="item.title || item" :index="index">
+          <wd-actionsheet-checkbox class="custome-checkbox-item" @input="getItems" :nowValue="currentCheck" :text="item.title" :index="index">
           </wd-actionsheet-checkbox>
-          <span v-if="!item.title && !item.subtitle" class="wd-item-title">{{ item }}</span>
-          <span v-if="item.title" class="wd-item-title">{{ item.title }}</span>
+          <span class="wd-item-title">{{ item.title }}</span>
           <span v-if="item.subtitle" class="wd-item-sub">{{ item.subtitle }}</span>
         </label>
       </li>
@@ -26,7 +24,6 @@
 
 <script>
 import CheckBoxSlot from './CheckBoxSlot.vue'
-window.SHARED = { 'selected': '' , 'checkList': []}
 export default {
   name: 'wd-actionsheet-slot',
   components: {
@@ -44,58 +41,70 @@ export default {
     isShowConfirmButton: {
       type: Boolean,
       default: true
+    },
+    defaultValue: {
+      type: Array
     }
   },
   data() {
     return {
       selected: '',
       currentCheck: [],
-      defaultValue: window.SHARED
+      indexList: []
     }
   },
   mounted() {
-    let selected = this.defaultValue['selected'],
-        checkList = this.defaultValue['checkList'],
-        self = this
-    if(selected) {
-      this.selected = selected
-      this.$emit('getData', selected)
-    }
-    if(checkList && checkList.length > 0) {
-      checkList.forEach(function(e, i){
-        self.currentCheck.push(self.items[e]['title'] || self.items[e])
-      })
-      this.$emit('getData', checkList)
+    this.indexList = (this.defaultValue && this.defaultValue.length > 0) ? (this.defaultValueValidator()) : []
+    let self = this, list = this.indexList
+    if(list && list.length > 0){
+        if(this.type === 'radio') {
+          this.selected = this.items[list[0]]['title'];
+          this.$emit('getData', { '_index': list[0], 'value': this.selected })
+        } else if (this.type === 'checklist') {
+          list.forEach(function(e){
+            self.currentCheck.push(self.items[e]['title'])
+          })
+          this.$emit('getData', { '_index': list, 'value': this.currentCheck })
+        }
     }
   },
   methods: {
+    defaultValueValidator() {
+      let self = this, maxLen = this.items.length,
+          list = this.defaultValue.filter(function(item, pos) {
+              return self.defaultValue.indexOf(Number(item)) == pos
+          }),
+          len = list.length;
+      (len > maxLen) && (list.splice(maxLen, len - maxLen))
+      return list
+    },
     itemClick(item) {
       this.$emit('getData', item)
       if(!this.$parent.isShowConfirmButton){
         this.$nextTick(function(){
           this.$parent.onItemClick()
         })
-      } else {
+      }
+    },
+    radioClick(item, index) {
+      this.selected = item
+      this.$emit('getData', { '_index': index, 'value': item })
+      if(!this.$parent.isShowConfirmButton){
         this.$nextTick(function(){
-          //this.$parent.onConfirm()
+          this.$parent.onItemClick()
         })
       }
     },
-    radioClick(item) {
-      this.selected = item
-      window.SHARED['selected'] = item
-      this.itemClick(item)
-    },
-    getItems(data) {
-        let checkList = window.SHARED['checkList'],
-            index = checkList.indexOf(data)
-        if(index === -1) {
-          checkList.push(data)
+    getItems(item, index) {
+        let valueIndex = this.currentCheck.indexOf(item)
+        if(valueIndex === -1) {
+          this.currentCheck.push(item)
+          this.indexList.push(index)
         } else {
-          checkList.splice(index, 1)
+          this.currentCheck.splice(valueIndex, 1)
+          this.indexList.splice(this.indexList.indexOf(index), 1)
         }
-        window.SHARED['checkList'] = checkList
-        this.$emit('getData', checkList)
+        this.$emit('getData', { '_index': this.indexList, 'value': this.currentCheck })
     },
   }
 }
