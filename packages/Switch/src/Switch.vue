@@ -21,8 +21,6 @@
           this.$emit('changeValue', val)
         }
       }
-    },
-    components: {
     }
   }
 </script>
