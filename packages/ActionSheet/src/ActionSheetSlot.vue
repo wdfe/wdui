@@ -59,12 +59,12 @@ export default {
     if(list && list.length > 0){
         if(this.type === 'radio') {
           this.selected = this.items[list[0]]['title'];
-          this.$emit('getData', { 'index': list[0], 'value': this.selected })
+          this.$emit('getData', { '_index': list[0], 'value': this.selected })
         } else if (this.type === 'checklist') {
           list.forEach(function(e){
             self.currentCheck.push(self.items[e]['title'])
           })
-          this.$emit('getData', { 'index': list, 'value': this.currentCheck })
+          this.$emit('getData', { '_index': list, 'value': this.currentCheck })
         }
     }
   },
@@ -88,7 +88,7 @@ export default {
     },
     radioClick(item, index) {
       this.selected = item
-      this.$emit('getData', { 'index': index, 'value': item })
+      this.$emit('getData', { '_index': index, 'value': item })
       if(!this.$parent.isShowConfirmButton){
         this.$nextTick(function(){
           this.$parent.onItemClick()
@@ -104,7 +104,7 @@ export default {
           this.currentCheck.splice(valueIndex, 1)
           this.indexList.splice(this.indexList.indexOf(index), 1)
         }
-        this.$emit('getData', { 'index': this.indexList, 'value': this.currentCheck })
+        this.$emit('getData', { '_index': this.indexList, 'value': this.currentCheck })
     },
   }
 }
