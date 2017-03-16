@@ -74,7 +74,7 @@ export default {
       let self = this,
         maxLen = this.items.length,
         list = this.defaultValue.filter(function(item, pos) {
-          return self.defaultValue.indexOf(Number(item)) == pos
+          return self.defaultValue.indexOf(Number(item)) === pos
         }),
         len = list.length;
       (len > maxLen) && (list.splice(maxLen, len - maxLen))
@@ -153,15 +153,19 @@ export default {
         -o-transform: rotate(45deg);
         transform: rotate(45deg);
       }
-
-      .wd-actionsheet-checkbox {
-        height: $content-line-height !important;     /* px */
-        &.custome-checkbox-item {
-          float: none !important;
-          margin: 0 !important;
-          + span.wd-item-title {
-            margin-left: 16px;                       /* px */
-            vertical-align: top;
+      label {
+        overflow: hidden;
+        display: block;
+        height: $content-line-height;                   /* px */
+        .wd-actionsheet-checkbox {
+          height: $content-line-height !important;     /* px */
+          &.custome-checkbox-item {
+            float: none !important;
+            margin: 0 !important;
+            + span.wd-item-title {
+              margin-left: 16px;                       /* px */
+              vertical-align: top;
+            }
           }
         }
       }
