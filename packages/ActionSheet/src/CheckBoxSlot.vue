@@ -15,7 +15,7 @@ export default {
     },
     nowValue: {
       type: Array,
-      default: function () {
+      default: function() {
         return []
       }
     },

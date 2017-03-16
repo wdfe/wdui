@@ -11,7 +11,7 @@
     "dev": "webpack-dev-server --inline --config webpack.dev.config.js --host 0.0.0.0",
     "build-example": "NODE_ENV=production webpack --config webpack.bundle.config.js --display-modules --sort-modules-by size",
     "upload": "sh upload.sh",
-    "lint": "eslint ./packages/**/*.vue ./packages/**/*.js ./src/**/*.js ./src/**/*.vue"
+    "lint": "eslint --fix ./packages/**/*.vue ./packages/**/*.js ./src/**/*.js ./src/**/*.vue"
   },
   "author": "wdfe",
   "license": "MIT",
@@ -32,7 +32,7 @@
     "eslint": "^3.12.2",
     "eslint-config-wdfe": "http://10.8.96.35:2009/package/eslint-config-wdfe/latest",
     "eslint-loader": "^1.6.1",
-    "eslint-plugin-vue": "^1.0.0",
+    "eslint-plugin-vue": "^2.0.1",
     "file-loader": "^0.9.0",
     "gulp": "^3.9.1",
     "gulp-cssmin": "^0.1.7",

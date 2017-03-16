@@ -27,7 +27,7 @@ import CheckBoxSlot from './CheckBoxSlot.vue'
 export default {
   name: 'wd-actionsheet-slot',
   components: {
-      [CheckBoxSlot.name]: CheckBoxSlot
+    [CheckBoxSlot.name]: CheckBoxSlot
   },
   props: {
     type: {
@@ -55,26 +55,28 @@ export default {
   },
   mounted() {
     this.indexList = (this.defaultValue && this.defaultValue.length > 0) ? (this.defaultValueValidator()) : []
-    let self = this, list = this.indexList
+    let self = this
+    let list = this.indexList
     if(list && list.length > 0){
-        if(this.type === 'radio') {
-          this.selected = this.items[list[0]]['title'];
-          this.$emit('getData', { '_index': list[0], 'value': this.selected })
-        } else if (this.type === 'checklist') {
-          list.forEach(function(e){
-            self.currentCheck.push(self.items[e]['title'])
-          })
-          this.$emit('getData', { '_index': list, 'value': this.currentCheck })
-        }
+      if(this.type === 'radio') {
+        this.selected = this.items[list[0]]['title']
+        this.$emit('getData', {'_index': list[0], 'value': this.selected})
+      } else if (this.type === 'checklist') {
+        list.forEach(function(e){
+          self.currentCheck.push(self.items[e]['title'])
+        })
+        this.$emit('getData', {'_index': list, 'value': this.currentCheck})
+      }
     }
   },
   methods: {
     defaultValueValidator() {
-      let self = this, maxLen = this.items.length,
-          list = this.defaultValue.filter(function(item, pos) {
-              return self.defaultValue.indexOf(Number(item)) == pos
-          }),
-          len = list.length;
+      let self = this,
+        maxLen = this.items.length,
+        list = this.defaultValue.filter(function(item, pos) {
+          return self.defaultValue.indexOf(Number(item)) == pos
+        }),
+        len = list.length;
       (len > maxLen) && (list.splice(maxLen, len - maxLen))
       return list
     },
@@ -88,7 +90,7 @@ export default {
     },
     radioClick(item, index) {
       this.selected = item
-      this.$emit('getData', { '_index': index, 'value': item })
+      this.$emit('getData', {'_index': index, 'value': item})
       if(!this.$parent.isShowConfirmButton){
         this.$nextTick(function(){
           this.$parent.onItemClick()
@@ -96,15 +98,15 @@ export default {
       }
     },
     getItems(item, index) {
-        let valueIndex = this.currentCheck.indexOf(item)
-        if(valueIndex === -1) {
-          this.currentCheck.push(item)
-          this.indexList.push(index)
-        } else {
-          this.currentCheck.splice(valueIndex, 1)
-          this.indexList.splice(this.indexList.indexOf(index), 1)
-        }
-        this.$emit('getData', { '_index': this.indexList, 'value': this.currentCheck })
+      let valueIndex = this.currentCheck.indexOf(item)
+      if(valueIndex === -1) {
+        this.currentCheck.push(item)
+        this.indexList.push(index)
+      } else {
+        this.currentCheck.splice(valueIndex, 1)
+        this.indexList.splice(this.indexList.indexOf(index), 1)
+      }
+      this.$emit('getData', {'_index': this.indexList, 'value': this.currentCheck})
     },
   }
 }

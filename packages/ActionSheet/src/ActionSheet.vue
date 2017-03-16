@@ -13,7 +13,6 @@
   </transition>
 </template>
 <script>
-  import Vue from 'vue'
   import ActionSheetSlot from './ActionSheetSlot.vue'
   import Popup from '../../../src/popup/index.js'
 
@@ -116,7 +115,7 @@
         this.onMaskClick()
       }
     }
-  };
+  }
 </script>
 <style lang="sass">
   $header-text-color: #9a9a9a;
