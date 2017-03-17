@@ -80,13 +80,13 @@ $button-border-radius: 8px;
 $button-disabled-opacity: 0.4;
 
 .wd-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   padding: 0;
   width: $button-default-width;
   border: none;
   height: $button-default-height;
+  line-height: $button-default-height;
+  text-align: center;
   appearance: none;
   outline: none;
   border-radius: $button-border-radius;
