@@ -192,7 +192,7 @@ export default {
     loadmore() {
       setTimeout(()=>{
         this.bottomLoading = false
-        !this.noRefresh && this.onLoad && this.onLoad() 
+        !this.noRefresh && this.onLoad && this.onLoad()
       }, 1000)
     },
     finishRefresh() {

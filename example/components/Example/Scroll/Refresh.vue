@@ -25,7 +25,6 @@ export default {
   components: {
   },
   mounted() {
-    //容器目前显示的高度
     this.$nextTick(()=>{
       for (let i = 1; i <= 30; i++) {
         this.list.push(i)
@@ -35,8 +34,7 @@ export default {
   },
   methods: {
     updateData() {
-      let updateArray = []
-      let last = this.list[0] - 1
+      let last = +this.list[0] - 1
       for (let i = last; i > last - 10; i--) {
         this.list.splice(0, 0, i)
       }

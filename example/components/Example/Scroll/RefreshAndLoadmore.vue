@@ -7,26 +7,10 @@
         :refreshText="'下拉加载更多'"
         :loadText="'上拉加载更多'"
         :loadingText = "'正在加载更多哦~'"
-        :noDataText="'更多数据敬请期待'"
         ref="wrap"
         >
         <ul class="page-infinite-list">
           <li v-for="item in list" class="page-infinite-listitem">{{item}}</li>
-        </ul>
-      </wd-scroller>
-    </div>
-    <div class="page-infinite-wrapper">
-      <wd-scroller
-        :on-refresh="updateData2"
-        :on-load="loadData2"
-        :refreshText="'下拉加载更多'"
-        :loadText="'上拉加载更多'"
-        :loadingText = "'正在加载更多哦~'"
-        :noDataText="'更多数据敬请期待'"
-        ref="wrap"
-        >
-        <ul class="page-infinite-list">
-          <li v-for="item in list2" class="page-infinite-listitem">{{item}}</li>
         </ul>
       </wd-scroller>
     </div>
@@ -37,8 +21,7 @@
 export default {
   data() {
     return {
-      list: [],
-      list2: []
+      list: []
     }
   },
   components: {
@@ -48,66 +31,21 @@ export default {
     this.$nextTick(()=>{
       for (let i = 1; i <= 30; i++) {
         this.list.push(i)
-        this.list2.push(i+'line2')
       }
     })
-    
   },
   methods: {
     updateData() {
-      let updateArray = []
-      for (let i = 0; i < 10; i++) {
-        updateArray.push(-i)
-      }
-      let length = updateArray.length + this.list.length
-      if(length > 70) {
-        this.$refs.wrap.finishRefresh()
-      }else{
-        this.list = updateArray.concat(this.list)
+      let last = +this.list[0] - 1
+      for (let i = last; i > last - 10; i--) {
+        this.list.splice(0, 0, i)
       }
     },
     loadData() {
-      this.$refs.wrap.finishLoad()
-
-      let loadArray = []
-      let len = this.list.length
-      let moreload = len + 20
-      for(let i = len; i < moreload; i++){
-        loadArray.push(i)
-      }
-      let length = loadArray.length + this.list.length
-      if(length > 70) {
-        this.$refs.wrap.finishRefresh()
-      }else{
-        this.list = this.list.concat(loadArray)
-      }
-    },
-    updateData2() {
-      let updateArray = []
-      for (let i = 0; i < 10; i++) {
-        updateArray.push(-i+'line2')
-      }
-      let length = updateArray.length + this.list2.length
-      if(length > 70) {
-        this.$refs.wrap.finishRefresh()
-      }else{
-        this.list2 = updateArray.concat(this.list2)
-      }
-    },
-    loadData2() {
-      this.$refs.wrap.finishLoad()
-
-      let loadArray = []
-      let len = this.list2.length
-      let moreload = len + 20
-      for(let i = len; i < moreload; i++){
-        loadArray.push(i+'line2')
-      }
-      let length = loadArray.length + this.list2.length
-      if(length > 70) {
-        this.$refs.wrap.finishRefresh()
-      }else{
-        this.list2 = this.list2.concat(loadArray)
+      let last = +this.list.slice(-1) + 1
+      let moreload = last + 20
+      for(let i = last; i < moreload; i++){
+        this.list.push(i)
       }
     }
   }

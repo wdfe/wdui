@@ -38,7 +38,7 @@ export default {
   created() {
     let listTemp = this.listData
     for (let i = 0, listSize = this.listData.length ; i < listSize; i++) {
-      if(listTemp[i].disChoose && this.value == listTemp[i].value){
+      if(listTemp[i].disChoose && this.value === listTemp[i].value){
         this.ifClick = false
       }
     }

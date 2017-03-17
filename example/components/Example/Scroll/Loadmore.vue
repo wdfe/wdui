@@ -25,7 +25,6 @@ export default {
   components: {
   },
   mounted() {
-    //容器目前显示的高度
     this.$nextTick(()=>{
       for (let i = 1; i <= 30; i++) {
         this.list.push(i)
@@ -35,19 +34,10 @@ export default {
   },
   methods: {
     loadData() {
-      this.$refs.wrap.finishLoad()
-
-      let loadArray = []
-      let len = this.list.length
-      let moreload = len + 20
-      for(let i = len; i < moreload; i++){
-        loadArray.push(i)
-      }
-      let length = loadArray.length + this.list.length
-      if(length > 70) {
-        this.$refs.wrap.finishRefresh()
-      }else{
-        this.list = this.list.concat(loadArray)
+      let last = +this.list.slice(-1) + 1
+      let moreload = last + 20
+      for(let i = last; i < moreload; i++){
+        this.list.push(i)
       }
     }
   }
