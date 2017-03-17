@@ -52,6 +52,11 @@ npm run lint
 npm run test
 ```
 
+编写测试时，可以使用 watch 模式：
+```javascript
+npm run test:watch
+```
+
 ### 规范
 
 - 编写时请遵循 `eslint-config-wdfe` 中的 eslint 配置。
