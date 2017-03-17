@@ -1,31 +1,11 @@
 <template lang="html">
 	<div class="scroll-contain">
 		<ul>
-			<li>
-					<router-link :to="'/scroll/refresh'">
-           	Refresh <i class="arrow_l"></i>
+			<li v-for="item in scrollerList">
+					<router-link :to="`/scroller/${item.toLowerCase()}`">
+           	{{item}} <i class="arrow_l"></i>
           </router-link>
       </li>
-			<li>
-				<router-link :to="'/scroll/loadmore'">
-	        Loadmore <i class="arrow_l"></i>
-	      </router-link>
-	    </li>
-			<li>
-				<router-link :to="'/scroll/refreshandloadmore'">
-	        RefreshAndLoadmore <i class="arrow_l"></i>
-	      </router-link>
-	     </li>
-	    <li>
-				<router-link :to="'/scroll/nodata'">
-	        NoData <i class="arrow_l"></i>
-	      </router-link>
-	    </li>
-	    <li>
-				<router-link :to="'/scroll/multiscroll'">
-	        MultiScroll <i class="arrow_l"></i>
-	      </router-link>
-	    </li>
 		</ul>
 	</div>
 </template>
@@ -36,6 +16,7 @@ export default {
   },
   data() {
     return {
+    	scrollerList: ['Refresh', 'Loadmore', 'RefreshAndLoadmore', 'NoData', 'MultiScroll']
     }
   },
   created() {},

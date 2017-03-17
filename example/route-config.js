@@ -15,12 +15,12 @@ import Radio from './components/Example/Radio.vue'
 import ImagePreview from './components/Example/ImagePreview.vue'
 import Tooltip from './components/Example/Tooltip.vue'
 import ActionSheet from './components/Example/ActionSheet.vue'
-import Scroll from './components/Example/Scroll/Scroll.vue'
-import Refresh from './components/Example/Scroll/Refresh.vue'
-import Loadmore from './components/Example/Scroll/Loadmore.vue'
-import RefreshAndLoadmore from './components/Example/Scroll/RefreshAndLoadmore.vue'
-import NoData from './components/Example/Scroll/NoData.vue'
-import MultiScroll from './components/Example/Scroll/MultiScroll.vue'
+import Scroller from './components/Example/Scroller/Scroller.vue'
+import Refresh from './components/Example/Scroller/Refresh.vue'
+import Loadmore from './components/Example/Scroller/Loadmore.vue'
+import RefreshAndLoadmore from './components/Example/Scroller/RefreshAndLoadmore.vue'
+import NoData from './components/Example/Scroller/NoData.vue'
+import MultiScroll from './components/Example/Scroller/MultiScroll.vue'
 
 export default {
   routes: [
@@ -114,32 +114,32 @@ export default {
       component: ActionSheet
     },
     {
-      path: '/scroll',
-      name: 'Scroll',
-      component: Scroll
+      path: '/scroller',
+      name: 'Scroller',
+      component: Scroller
     },
     {
-      path: '/scroll/refresh',
+      path: '/scroller/refresh',
       name: 'Refresh',
       component: Refresh
     },
     {
-      path: '/scroll/loadmore',
+      path: '/scroller/loadmore',
       name: 'Loadmore',
       component: Loadmore
     },
     {
-      path: '/scroll/refreshandloadmore',
+      path: '/scroller/refreshandloadmore',
       name: 'RefreshAndLoadmore',
       component: RefreshAndLoadmore
     },
     {
-      path: '/scroll/nodata',
+      path: '/scroller/nodata',
       name: 'NoData',
       component: NoData
     },
     {
-      path: '/scroll/multiscroll',
+      path: '/scroller/multiscroll',
       name: 'MultiScroll',
       component: MultiScroll
     }
