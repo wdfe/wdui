@@ -4,8 +4,8 @@
       <wd-scroller
         :on-refresh="updateData"
         :on-load="loadData"
-        :refreshText="'下拉加载更多'"
-        :loadText="'上拉加载更多'"
+        refreshText="下拉加载更多"
+        loadText="上拉加载更多"
         :loadingText = "'正在加载更多哦~'"
         ref="wrap"
         >

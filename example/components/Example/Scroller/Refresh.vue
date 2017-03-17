@@ -3,8 +3,8 @@
     <div class="page-infinite-wrapper">
       <wd-scroller
         :on-refresh="updateData"
-        :refreshText="'下拉加载更多'"
-        :loadingText = "'正在加载更多哦~'"
+        refreshText="下拉加载更多呦"
+        loadingText = "正在加载更多哦~"
         ref="wrap"
         >
         <ul class="page-infinite-list">

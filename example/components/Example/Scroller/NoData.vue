@@ -4,10 +4,10 @@
       <wd-scroller
         :on-refresh="updateData"
         :on-load="loadData"
-        :refreshText="'下拉加载更多'"
-        :loadText="'上拉加载更多'"
-        :loadingText = "'正在加载更多哦~'"
-        :noDataText="'更多数据敬请期待'"
+        refreshText="下拉加载更多"
+        loadText="上拉加载更多"
+        loadingText = "正在加载更多哦~"
+        noDataText="更多数据敬请期待"
         ref="wrap"
         >
         <ul class="page-infinite-list">
