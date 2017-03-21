@@ -112,9 +112,9 @@ export default {
     margin-top: -1px;
     overflow: scroll;
     height: 100%;
-    /*width: 50%;*/
+    width: 50%;
     /*padding-bottom: 60px;*/
-    /*float: left;*/
+    float: left;
     box-sizing: border-box;
     border-left: 1px solid #dddddd;
 }
