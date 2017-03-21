@@ -163,7 +163,7 @@ export default {
      */
     momentum(current, start, time, lowerMargin, wrapperSize) {
       let distance = current - start
-      let  speed = Math.abs(distance) / time //得出此次拉动的速度
+      let speed = Math.abs(distance) / time //得出此次拉动的速度
       let deceleration = 0.006
       let newDist = (speed * speed) / (2 * deceleration)
       distance < 0 && (newDist = -newDist)

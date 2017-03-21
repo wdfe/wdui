@@ -1,22 +1,23 @@
-let prefix = '', eventPrefix
-let vendors = { Webkit: 'webkit', Moz: '', O: 'o' }
+let prefix = '',
+  eventPrefix
+let vendors = {Webkit: 'webkit', Moz: '', O: 'o'}
 let testEl = document.createElement('div')
 let supportedAnimation = true
 let supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i
 let cssReset = {}
 let transform, supportedHWCompositing, transitionEnd, animationEnd,
-  transitionProperty, transitionOrigin, transitionDuration, 
+  transitionProperty, transitionOrigin, transitionDuration,
   transitionTiming, transitionDelay,
   animationName, animationDuration, animationTiming, animationDelay
 for (let vendor in vendors) {
   if(testEl.style[vendor + 'TransitionProperty'] === undefined) {
-  continue
+    continue
   }
   prefix = '-' + vendor.toLowerCase() + '-'
   eventPrefix = vendors[vendor]
   break
 }
-if (eventPrefix === undefined && 
+if (eventPrefix === undefined &&
     testEl.style.transitionProperty === undefined) {
   supportedAnimation = false
 }
@@ -84,29 +85,26 @@ export function animate(elem, opts) {
 
   function setStyle(node, name, value) {
     function maybeAddPx(name, value) {
-      return (typeof value == "number" && !cssNumber[dasherize(name)]) ?
-          value + "px" : value
+      return (typeof value === 'number' && !cssNumber[dasherize(name)]) ?
+          value + 'px' : value
     }
 
-    if (typeof name == "string") {
+    if (typeof name === 'string') {
       if (!value && value !== 0){
         node.style.setProperty(dasherize(name), value)
       }else{
         node.style[camelize(name)] = maybeAddPx(name, value)
       }
-    } else if (typeof name == "object") {
-      for (var n in name) {
+    } else if (typeof name === 'object') {
+      for (let n in name) {
         if (name.hasOwnProperty(n)) {
-          if (!name[n] && name[n] !== 0)
-            node.style.setProperty(dasherize(n), name[n])
-          else
-            node.style[camelize(n)] = maybeAddPx(n, name[n])
+          if (!name[n] && name[n] !== 0) {node.style.setProperty(dasherize(n), name[n])} else {node.style[camelize(n)] = maybeAddPx(n, name[n])}
         }
       }
     }
   }
 
-  if (!supportedAnimation) opts.duration = 0
+  if (!supportedAnimation) {opts.duration = 0}
   if (opts.property && typeof opts.property === 'string') {
     // keyframe animation
     cssValues[animationName] = opts.property
