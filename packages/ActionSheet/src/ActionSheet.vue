@@ -3,7 +3,7 @@
     <div :class="{'wd-actionsheet-theme-left': textAlign === 'left','wd-actionsheet-theme-center': textAlign === 'center'}" class="wd-actionsheet" ref="popup" v-if="visible" :style="{'z-index': zIndex}">
       <header v-if="isShowTitle" class="wd-actionsheet-header">{{ title }}</header>
       <div class="wd-actionsheet-content">
-        <wd-actionsheet-slot @getData="getData" :items="content.items" :type="content.type"></wd-actionsheet-slot>
+        <wd-actionsheet-slot @getData="getData" :items="content.items" :type="content.type" :defaultValue="content.defaultValue"></wd-actionsheet-slot>
       </div>
       <footer class="wd-actionsheet-footer">
         <span @click="onCancel">{{ cancelText }}</span>
@@ -13,7 +13,6 @@
   </transition>
 </template>
 <script>
-  import Vue from 'vue'
   import ActionSheetSlot from './ActionSheetSlot.vue'
   import Popup from '../../../src/popup/index.js'
 
@@ -110,21 +109,13 @@
     },
     methods: {
       getData(data) {
-        if(Array.isArray(data) && data.length > 0) {
-          let res = [], cont = this.content
-          data.forEach(function(e, i){
-            res.push(cont.items[e])
-          })
-          this.$set(this.datas, 'checkList', res)
-        } else {
-          this.$set(this.datas, 'selected', data)
-        }
+        this.$set(this.datas, 'datas', data)
       },
       maskClick() {
         this.onMaskClick()
       }
     }
-  };
+  }
 </script>
 <style lang="sass">
   $header-text-color: #9a9a9a;

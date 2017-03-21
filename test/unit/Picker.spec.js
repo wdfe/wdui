@@ -35,7 +35,10 @@ describe('Picker', () => {
       showItemCount: 3
     })
     Vue.nextTick(() => {
+      const containerHeight = document.querySelector('.wd-picker-slots-container').offsetHeight
+      const slotHeight = document.querySelector('.wd-picker-slot-item').offsetHeight
       expect(vm.showItemCount).to.equal(3)
+      expect(slotHeight * 3).to.equal(containerHeight)
       vm.value = false
       setTimeout(() => {
         done()

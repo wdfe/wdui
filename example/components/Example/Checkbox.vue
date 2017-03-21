@@ -9,7 +9,7 @@
       <wd-checkboxgroup :listData="lists2" v-model="value2"></wd-checkboxgroup>
       <p class="current-value">当前选中：{{value2}}</p>
     </div>
-    <p class="checkbox-header">单独的CheckBox组件</p>
+    <p class="checkbox-header">单独的Checkbox组件</p>
     <div class="custome-checkbox">
       <ul class="custome-checkbox-list">
         <li v-for="list in lists3">

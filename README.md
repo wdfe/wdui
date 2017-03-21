@@ -1,4 +1,4 @@
-WDUI
+# WDUI
 
 ### 目录结构
 
@@ -40,11 +40,25 @@ npm run build-example
 
 ### 测试
 
+语法检查
+
+```javascript
+npm run lint
+```
+
+单元测试检查
+
 ```javascript
 npm run test
+```
+
+编写测试时，可以使用 watch 模式：
+```javascript
+npm run test:watch
 ```
 
 ### 规范
 
 - 编写时请遵循 `eslint-config-wdfe` 中的 eslint 配置。
-- 提交代码时 git commit message 请遵循[格式化规范](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
+- 提交代码时 git commit message 请遵循[格式化规范](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)，加入 [fix]、[feat]、[chore] 等标记
+- 发起 merge request 之前先用 lint 和 test 做检查，确保发 request时为无 warning 无 error 状态。
