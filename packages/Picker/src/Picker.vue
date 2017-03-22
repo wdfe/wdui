@@ -7,7 +7,8 @@
       </header>
       <div class="wd-picker-slots-container" :style="`height: ${containerHeight}px;`">
         <wd-picker-slot v-for="(slot, index) in slots" @getItemHeight="setItemHeight" @change="slotChangeHandler" :slotIndex="index" :showItemCount="showItemCount" :content="slot.content" :type="slot.type" :values="slot.values" :flex="slot.flex" :textAlign="slot.textAlign" :defaultValue="slot.defaultValue" :ref="'slot' + index"></wd-picker-slot>
-        <div class="wd-picker-slots-fence"></div>
+        <div class="wd-picker-slots-fence-upline"></div>
+        <div class="wd-picker-slots-fence-downline"></div>
       </div>
     </div>
   </transition>
@@ -179,18 +180,23 @@ $fence-color: #cdcdcd;
       -webkit-mask-box-image: linear-gradient(0deg,transparent,transparent 5%,#fff 20%,#fff 80%,transparent 95%,transparent);
       overflow: hidden;
 
-      .wd-picker-slots-fence {
+      .wd-picker-slots-fence-upline {
         position: absolute;
-        left: 0;
-        top: 50%;
+        height: 0;
         width: 100%;
-        display: flex;
-        height: 72px;
-        margin-top: -36px;
-        align-items: center;
-        box-sizing: border-box;
-        border-top: 1px solid $fence-color; /* no */
-        border-bottom: 1px solid $fence-color; /* no */
+        top: 50%;
+        left: 0;
+        border-top: 1px solid $fence-color;
+        transform: translate3d(0, -36px, 0)
+      }
+      .wd-picker-slots-fence-downline {
+        position: absolute;
+        height: 0;
+        width: 100%;
+        top: 50%;
+        left: 0;
+        border-top: 1px solid $fence-color;
+        transform: translate3d(0, 36px, 0)
       }
     }
   }
