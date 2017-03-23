@@ -1,12 +1,12 @@
 <template>
-    <div ref="wrap">
-      <div v-if="showTopText" class="top-text">{{refreshText}}</div>
+    <div class="wd-scroller" ref="wrap">
+      <div v-if="showTopText" class="wd-scroller-top-text">{{refreshText}}</div>
       <scrollLoader v-if="topLoading" :text="loadingText"></scrollLoader>
-      <div v-if="noRefresh" class="no-text">{{noDataText}}</div>
+      <div v-if="noRefresh" class="wd-scroller-no-text">{{noDataText}}</div>
       <slot></slot>
-      <div v-if="showBottomText" class="bottom-text">{{bottomText}}</div>
+      <div v-if="showBottomText" class="wd-scroller-bottom-text">{{bottomText}}</div>
       <scrollLoader v-if="bottomLoading" :text="loadingText"></scrollLoader>
-      <div v-if="noLoad" class="no-text">{{noDataText}}</div>
+      <div v-if="noLoad" class="wd-scroller-no-text">{{noDataText}}</div>
     </div>
   </div>
 </template>
@@ -40,7 +40,6 @@ export default {
   },
   data() {
     return {
-      list: [],
       showTopText: false,
       topLoading: false,
       showBottomText: false,
@@ -55,12 +54,8 @@ export default {
   mounted() {
     //容器目前显示的高度
     this.$nextTick(()=>{
-      for (let i = 1; i <= 30; i++) {
-        this.list.push(i)
-      }
       this.init()
     })
-    
   },
   methods: {
     init() {
@@ -210,36 +205,39 @@ export default {
   }
 }
 </script>
-<style>
-.bottom-text {
-  width: 100%;
-  text-align: center;
-  margin: 20px 0;
-  font-size: 20px;/*px*/
-  color: #999999;
-}
-.no-text {
-  width: 100%;
-  text-align: center;
-  margin: 20px 0;
-  font-size: 20px;/*px*/
-  color: #999999;
-}
-.top-text {
-  width: 100%;
-  text-align: center;
-  margin: 20px 0;
-  font-size: 20px;/*px*/
-  color: #999999;
-}
-.top-text:before {
-  width: 48px;
-  height: 48px;
-  content: '';
-  background: url(../../../src/assets/images/downLoad.png) no-repeat center;
-  background-size: 100% 100%;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 20px;
+<style lang="sass">
+
+.wd-scroller {
+  .bottom-text {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 20px;/*px*/
+    color: #999999;
+  }
+  .no-text {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 20px;/*px*/
+    color: #999999;
+  }
+  .top-text {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 20px;/*px*/
+    color: #999999;
+  }
+  .top-text:before {
+    width: 48px;
+    height: 48px;
+    content: '';
+    background: url(../../../src/assets/images/downLoad.png) no-repeat center;
+    background-size: 100% 100%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+  }
 }
 </style>
