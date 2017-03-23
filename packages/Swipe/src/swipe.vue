@@ -7,12 +7,12 @@
       <div v-if="showTitle" class="wd-swipe-item-title">{{title}}</div>
       <ul :class="[
          indicatorsPosition === 'right' ? 'wd-swipe-indicators-right' : '',
-         direction !== 'vertical' ? 'wd-swipe-indicators' : 'wd-swipe-vertical-indicators'
+         true ? 'wd-swipe-indicators' : ''
         ]" v-if="indicatorsType === 'dot'">
         <li v-for="(page, $index) in pages"
             :class="[
            $index === index ? 'current' : '',
-           direction !== 'vertical' ? 'wd-swipe-indicator' : 'wd-swipe-vertical-indicator']"></li>
+           true ? 'wd-swipe-indicator' : '']"></li>
       </ul>
       <div v-if="indicatorsType === 'number'" class="wd-swipe-number-indicator">{{index+1}} / {{pages.length}}</div>
     </div>
@@ -142,10 +142,6 @@
       }
     },
     props: {
-      direction: {
-        type: String,
-        default: 'horizontal'
-      },
       speed: {
         type: Number,
         default: 300
@@ -234,9 +230,7 @@
           this.animating = true
           element.style.webkitTransition = `-webkit-transform ${speed}ms ${this.timingFunction}`
           setTimeout(() => {
-            element.style.webkitTransform = this.direction !== 'vertical' ?
-              `translate3d(${offset}px, 0, 0)` :
-              `translate3d(0, ${offset}px, 0)`
+            element.style.webkitTransform = `translate3d(${offset}px, 0, 0)`
           }, 50)
 
           let called = false
@@ -256,9 +250,7 @@
           setTimeout(transitionEndCallback, speed + 100)
         } else {
           element.style.webkitTransition = ''
-          element.style.webkitTransform = this.direction !== 'vertical' ?
-            `translate3d(${offset}px, 0, 0)` :
-            `translate3d(0, ${offset}px, 0)`
+          element.style.webkitTransform = `translate3d(${offset}px, 0, 0)`
         }
       },
       reInitPages() {
@@ -300,7 +292,7 @@
         let pageCount = pages.length
 
         if (!options) {
-          offset = this.direction === 'vertical' ? this.$el.clientHeight : this.$el.clientWidth
+          offset = this.$el.clientWidth
           currentPage = pages[index]
           prevPage = pages[index - 1]
           nextPage = pages[index + 1]
@@ -327,7 +319,7 @@
           prevPage = options.prevPage
           currentPage = options.currentPage
           nextPage = options.nextPage
-          offset = this.direction === 'vertical' ? options.pageHeight : options.pageWidth
+          offset = options.pageWidth
           offsetLeft = options.offsetLeft
         }
 
