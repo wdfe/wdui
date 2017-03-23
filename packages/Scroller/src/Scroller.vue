@@ -40,7 +40,6 @@ export default {
   },
   data() {
     return {
-      list: [],
       showTopText: false,
       topLoading: false,
       showBottomText: false,
@@ -55,12 +54,8 @@ export default {
   mounted() {
     //容器目前显示的高度
     this.$nextTick(()=>{
-      for (let i = 1; i <= 30; i++) {
-        this.list.push(i)
-      }
       this.init()
     })
-
   },
   methods: {
     init() {
