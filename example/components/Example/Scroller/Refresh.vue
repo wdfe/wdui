@@ -30,19 +30,23 @@ export default {
         this.list.push(i)
       }
     })
-
   },
   methods: {
     updateData() {
-      let last = +this.list[0] - 1
-      for (let i = last; i > last - 10; i--) {
-        this.list.splice(0, 0, i)
-      }
+      setTimeout(() => {
+        let last = +this.list[0] - 1
+        for (let i = last; i > last - 10; i--) {
+          this.list.splice(0, 0, i)
+        }
+      }, 3000)
     }
   }
 }
 </script>
 <style lang="sass">
 .refresh-container {
+  li {
+    border-bottom: 5px solid #000!important;
+  }
 }
 </style>

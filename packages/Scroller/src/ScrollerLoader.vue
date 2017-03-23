@@ -10,6 +10,7 @@
 
 <script>
 export default {
+  name: 'wd-scroller-loader',
   props: {
     type: {
       type: String,
@@ -28,7 +29,6 @@ export default {
   width: 100%;
   height: 104px;
   text-align: center;
-  // background: #FFFFFF;
   padding: 28px 0;
   box-sizing: border-box;
   font-size: 20px; /*px*/
@@ -40,11 +40,13 @@ export default {
   position: relative;
 }
 .wd-spin-wrap.big{
+  margin-left: 60px;
   width: 60px;
   height: 60px;
   left: 50%;
 }
 .wd-spin-wrap.small{
+  margin-left: 48px;
   width: 48px;
   height: 48px;
   display: inline-block;

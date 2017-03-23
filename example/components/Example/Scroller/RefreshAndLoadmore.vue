@@ -36,17 +36,21 @@ export default {
   },
   methods: {
     updateData() {
-      let last = +this.list[0] - 1
-      for (let i = last; i > last - 10; i--) {
-        this.list.splice(0, 0, i)
-      }
+      setTimeout(() => {
+        let last = +this.list[0] - 1
+        for (let i = last; i > last - 10; i--) {
+          this.list.splice(0, 0, i)
+        }
+      }, 3000)
     },
     loadData() {
-      let last = +this.list.slice(-1) + 1
-      let moreload = last + 20
-      for(let i = last; i < moreload; i++){
-        this.list.push(i)
-      }
+      setTimeout(() => {
+        let last = +this.list.slice(-1) + 1
+        let moreload = last + 20
+        for(let i = last; i < moreload; i++){
+          this.list.push(i)
+        }
+      }, 3000)
     }
   }
 }

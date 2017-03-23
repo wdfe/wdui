@@ -25,7 +25,7 @@ export default {
         'Dialog',
         'Lazyload',
         'Button',
-        'InfinitesScroll',
+        //'InfinitesScroll',
         'Search',
         'Picker',
         'Swipe',
