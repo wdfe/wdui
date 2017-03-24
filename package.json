@@ -6,7 +6,8 @@
   "scripts": {
     "test": "karma start karma.conf.js --single-run",
     "test:watch": "karma start karma.conf.js",
-    "build": "NODE_ENV=production webpack --config webpack.build.config.js",
+    "build": "npm run build:umd && npm run build:style",
+    "build:umd": "NODE_ENV=production webpack --config webpack.build.config.js",
     "build:style": "gulp --gulpfile ./src/assets/styles/gulpfile.js build",
     "dev": "webpack-dev-server --inline --config webpack.dev.config.js --host 0.0.0.0",
     "build-example": "NODE_ENV=production webpack --config webpack.bundle.config.js --display-modules --sort-modules-by size",
