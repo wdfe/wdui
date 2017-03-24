@@ -74,7 +74,9 @@ export default {
       let self = this,
         maxLen = this.items.length,
         list = this.defaultValue.filter(function(item, pos) {
-          return self.defaultValue.indexOf(Number(item)) === pos
+          if(item < maxLen) {
+            return self.defaultValue.indexOf(Number(item)) === pos
+          }
         }),
         len = list.length;
       (len > maxLen) && (list.splice(maxLen, len - maxLen))

@@ -218,39 +218,39 @@ describe('ActionSheet', () => {
     })
   })
 
-  //it('actionsheet content defaultValue容错功能', done => {
-  //  vm = ActionSheet({
-  //    title: '测试标题',
-  //    content: {
-  //      type: 'checklist',
-  //      items: [
-  //        {
-  //          title: '测试正文主条目1',
-  //          subtitle: '测试正文副条目1'
-  //        },
-  //        {
-  //          title: '测试正文主条目2',
-  //          subtitle: '测试正文副条目2'
-  //        },
-  //        {
-  //          title: '测试正文主条目3',
-  //          subtitle: '测试正文副条目3'
-  //        }
-  //      ],
-  //      defaultValue: ['0', 1, 1, 2, 4]   //过滤字符串及重复项和越界项,过滤结果[1, 2]
-  //    }
-  //  })
-  //  Vue.nextTick(() => {
-  //    const $itemSecond = document.querySelector('ul.wd-actionsheet-list > li:nth-child(2) > label')
-  //    const $itemThird = document.querySelector('ul.wd-actionsheet-list > li:nth-child(3) > label')
-  //    expect($itemSecond.querySelector('input:checked').value).to.equal('测试正文主条目2')
-  //    expect($itemThird.querySelector('input:checked').value).to.equal('测试正文主条目3')
-  //    vm.value = false
-  //    setTimeout(() => {
-  //      done()
-  //    }, 500)
-  //  })
-  //})
+  it('actionsheet content defaultValue容错功能', done => {
+   vm = ActionSheet({
+     title: '测试标题',
+     content: {
+       type: 'checklist',
+       items: [
+         {
+           title: '测试正文主条目1',
+           subtitle: '测试正文副条目1'
+         },
+         {
+           title: '测试正文主条目2',
+           subtitle: '测试正文副条目2'
+         },
+         {
+           title: '测试正文主条目3',
+           subtitle: '测试正文副条目3'
+         }
+       ],
+       defaultValue: [4, 1, '1', 1, 2]   //过滤字符串及重复项和越界项,过滤结果[1, 2]
+     }
+   })
+   Vue.nextTick(() => {
+     const $itemSecond = document.querySelector('ul.wd-actionsheet-list > li:nth-child(2) > label')
+     const $itemThird = document.querySelector('ul.wd-actionsheet-list > li:nth-child(3) > label')
+     expect($itemSecond.querySelector('input:checked').value).to.equal('测试正文主条目2')
+     expect($itemThird.querySelector('input:checked').value).to.equal('测试正文主条目3')
+     vm.value = false
+     setTimeout(() => {
+       done()
+     }, 500)
+   })
+  })
 
   it('actionsheet confirmText 主操作文字', done => {
     vm = ActionSheet({
