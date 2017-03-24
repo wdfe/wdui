@@ -8,31 +8,39 @@
       @mouseup="mouseUp($event)"
     >
       <div class="wd-scroller-inner-wrapper" ref="content">
-        <div class="wd-scroller-refresh-wrap" v-if="onRefresh">
-          <div class="wd-scroller-pull-to-refresh-wrap" :class="{holding: pullToRefreshState === 1}" v-show="pullToRefreshState !== 2">
-            <img src="../../../src/assets/images/downLoad.png" class="wd-scroller-pull-to-refresh-loading-icon">
-            <div v-if="showTopText" class="wd-scroller-refresh-text">{{refreshText}}</div>
-          </div>
-          <div class="wd-scroller-refresh-loading-wrap" v-show="pullToRefreshState === 2">
-            <scroller-loader v-if="topLoading" :text="loadingText"></scroller-loader>
-          </div>
-          <div class="wd-scroller-no-refresh-wrap" v-show="noRefresh">
-            <div v-if="noRefresh" class="wd-scroller-no-refresh-text">{{noDataText}}</div>
-          </div>
+        <div class="wd-scroller-refresh-wrap" v-if="onRefresh" :class="{noRefresh: noRefreshStyle}">
+          <template v-if="noRefresh">
+            <div class="wd-scroller-no-refresh-wrap" v-show="noRefresh">
+              <div class="wd-scroller-no-refresh-text">{{noDataText}}</div>
+            </div>
+          </template>
+          <template v-else>
+            <div class="wd-scroller-pull-to-refresh-wrap" :class="{holding: pullToRefreshState === 1}" v-show="pullToRefreshState !== 2">
+              <img src="../../../src/assets/images/downLoad.png" class="wd-scroller-pull-to-refresh-loading-icon">
+              <div class="wd-scroller-refresh-text">{{refreshText}}</div>
+            </div>
+            <div class="wd-scroller-refresh-loading-wrap" v-show="pullToRefreshState === 2">
+              <scroller-loader :text="loadingText"></scroller-loader>
+            </div>
+          </template>
         </div>
         <div class="wd-scroller-slot-wrapper" ref="slotWrapper">
           <slot></slot>
         </div>
         <div class="wd-scroller-infinite-load-wrap" v-if="onLoad">
-          <div class="wd-scroller-infinite-load-tip-wrap" v-show="infiniteLoadingState !== 1">
-            <div v-if="showBottomText" class="wd-scroller-bottom-text">{{bottomText}}</div>
-          </div>
-          <div class="wd-scroller-infinite-loading-wrap" v-show="infiniteLoadingState === 1">
-            <scroller-loader v-if="bottomLoading" :text="loadingText"></scroller-loader>
-          </div>
-          <div class="wd-scroller-no-infinite-loading-wrap">
-            <div v-if="noLoad" class="wd-scroller-no-infinite-loading-text">{{noDataText}}</div>
-          </div>
+          <template v-if="noLoad">
+            <div class="wd-scroller-no-infinite-loading-wrap">
+              <div class="wd-scroller-no-infinite-loading-text">{{noDataText}}</div>
+            </div>
+          </template>
+          <template v-else>
+            <div class="wd-scroller-infinite-load-tip-wrap" v-show="infiniteLoadingState !== 1">
+              <div class="wd-scroller-bottom-text">{{bottomText}}</div>
+            </div>
+            <div class="wd-scroller-infinite-loading-wrap" v-show="infiniteLoadingState === 1">
+              <scroller-loader :text="loadingText"></scroller-loader>
+            </div>
+          </template>
         </div>
       </div>
     </div>
@@ -71,7 +79,7 @@ export default {
     },
     animationDuration: {
       type: Number,
-      default: 250
+      default: 400
     },
     zooming: {
       type: Boolean,
@@ -84,11 +92,8 @@ export default {
   },
   data() {
     return {
-      showTopText: true,
-      topLoading: true,
-      showBottomText: true,
-      bottomLoading: true,
       noRefresh: false,
+      noRefreshStyle: false,
       noLoad: false,
       documentHeight: 0,
       $scrollTarget: null,
@@ -101,6 +106,8 @@ export default {
       slotObserver: null,
       mousedown: false,
       pullToRefreshState: 0,
+      pullToRefreshStateCache: 0,
+      pullToRefreshStateAdjustFlag: false,
       infiniteLoadingState: 0,
       tipHeight: 0
     }
@@ -175,14 +182,20 @@ export default {
 
       if (this.onRefresh) {
         this.scroller.activatePullToRefresh(60, () => {
-          this.pullToRefreshState = 1
+          this.noRefresh = false
+          this.pullToRefreshStateAdjustFlag = false
+          this.pullToRefreshStateCache = this.pullToRefreshState = 1
         }, () => {
-          this.pullToRefreshState = 0
+          if(this.pullToRefreshStateCache === 1) {
+            this.pullToRefreshStateAdjustFlag = true
+          }
+          this.pullToRefreshStateCache = this.pullToRefreshState = 0
         }, () => {
           if(this.pullToRefreshState === 2) {
             return
           }
-          this.pullToRefreshState = 2
+          this.noRefreshStyle = false
+          this.pullToRefreshStateCache = this.pullToRefreshState = 2
           this.onRefresh()
         })
       }
@@ -196,16 +209,6 @@ export default {
         return
       }
       this.scroller.doTouchStart(e.touches, e.timeStamp)
-      /*
-       * 如果 onload 不为空，执行无限加载相关逻辑
-       */
-
-      if(this.onLoad) {
-        let top = this.scroller.getValues().top
-        if (top + this.$el.clientHeight < this.$slotWrapper.offsetHeight + 60) {
-          this.infiniteLoadingState = 0
-        }
-      }
     },
     touchMove(e) {
       e.preventDefault()
@@ -217,9 +220,16 @@ export default {
 
       if(this.onLoad) {
         let top = this.scroller.getValues().top
+        let ww = this.$el.clientWidth
+        let wh = this.$el.clientHeight
+        let ew = this.$slotWrapper.offsetWidth
+        let eh = this.$slotWrapper.offsetHeight + this.tipHeight
+        if(this.noRefresh) {
+          eh += this.tipHeight
+        }
         if (top + this.$el.clientHeight > this.$slotWrapper.offsetHeight + 60) {
-          this.resetDimensionsManually(this.$el.clientWidth, this.$el.clientHeight, this.$slotWrapper.offsetWidth, this.$slotWrapper.offsetHeight + this.tipHeight)
-        }else {
+          this.resetDimensionsManually(ww, wh, ew, eh)
+        }else if(top + this.$el.clientHeight === this.$slotWrapper.offsetHeight + 60) {
           this.resetDimensions()
         }
       }
@@ -233,13 +243,25 @@ export default {
 
       if(this.onLoad) {
         let top = this.scroller.getValues().top
+        console.log(top + this.$el.clientHeight, this.$slotWrapper.offsetHeight + 60)
         if (top + this.$el.clientHeight > this.$slotWrapper.offsetHeight + 60) {
           if (this.infiniteLoadingState) {
             return
           }
+          this.noLoad = false
           this.infiniteLoadingState = 1
           this.onLoad()
         }
+      }
+
+      if(this.pullToRefreshStateAdjustFlag) {
+        this.scroller.scrollTo(0, this.tipHeight, true)
+        setTimeout(() => {
+          this.pullToRefreshStateAdjustFlag = false
+          this.noRefreshStyle = false
+          this.scroller.scrollTo(0, 0, false)
+          this.resetDimensions()
+        }, this.animationDuration)
       }
     },
     mouseDown(e) {
@@ -271,12 +293,39 @@ export default {
       this.mousedown = false
     },
     resetDimensions() {
-      console.log('resetDimensions:', this.$el.clientWidth, this.$el.clientHeight, this.$slotWrapper.offsetWidth, this.$slotWrapper.offsetHeight)
-      this.scroller.setDimensions(this.$el.clientWidth, this.$el.clientHeight, this.$slotWrapper.offsetWidth, this.$slotWrapper.offsetHeight)
+      let ww = this.$el.clientWidth
+      let wh = this.$el.clientHeight
+      let ew = this.$slotWrapper.offsetWidth
+      let eh = this.$slotWrapper.offsetHeight
+      if(this.noRefresh) {
+        eh += this.tipHeight
+      }
+      if(this.noLoad) {
+        eh += this.tipHeight
+      }
+      console.log('resetDimensions:', ww, wh, ew, eh)
+      this.scroller.setDimensions(ww, wh, ew, eh)
     },
     resetDimensionsManually(ww, wh, ew, eh) {
       console.log('resetDimensionsManually:', ww, wh, ew, eh)
       this.scroller.setDimensions(ww, wh, ew, eh)
+    },
+    finishPullToRefresh() {
+      this.scroller.finishPullToRefresh()
+    },
+    finishInfiniteLoading() {
+      this.infiniteLoadingState = 0
+    },
+    noMoreRefresh() {
+      this.noRefresh = true
+      this.noRefreshStyle = true
+      this.scroller.scrollTo(0, 0, false)
+      this.scroller.finishPullToRefresh()
+      this.resetDimensionsManually(this.$el.clientWidth, this.$el.clientHeight, this.$slotWrapper.offsetWidth, this.$slotWrapper.offsetHeight + this.tipHeight)
+    },
+    noMoreInfiniteLoading() {
+      this.finishInfiniteLoading()
+      this.noLoad = true
     }
   }
 }
@@ -295,6 +344,20 @@ export default {
       margin-top: -120px;
       height: 120px;
       font-size: 20px;
+
+      &.noRefresh {
+        margin-top: 0;
+      }
+
+      .wd-scroller-pull-to-refresh-wrap,
+      .wd-scroller-refresh-loading-wrap,
+      .wd-scroller-no-refresh-wrap {
+        display: flex;
+        height: 100%;
+        font-size: 20px;
+        align-items: center;
+        justify-content: center;
+      }
 
       .wd-scroller-pull-to-refresh-wrap {
         display: flex;
@@ -315,28 +378,15 @@ export default {
           }
         }
       }
-
-      .wd-scroller-refresh-loading-wrap {
-        display: flex;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
-      }
-
     }
 
     .wd-scroller-infinite-load-wrap {
       height: 120px;
       font-size: 20px;
 
-      .wd-scroller-infinite-load-tip-wrap {
-        display: flex;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .wd-scroller-infinite-loading-wrap {
+      .wd-scroller-infinite-load-tip-wrap,
+      .wd-scroller-infinite-loading-wrap,
+      .wd-scroller-no-infinite-loading-wrap {
         display: flex;
         height: 100%;
         align-items: center;

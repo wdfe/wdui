@@ -31,7 +31,7 @@ export default {
   text-align: center;
   padding: 28px 0;
   box-sizing: border-box;
-  font-size: 20px; /*px*/
+  font-size: 20px;
   color: #222222;
   letter-spacing: 0;
   line-height: 46px;

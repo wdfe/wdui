@@ -38,7 +38,8 @@ export default {
         for (let i = last; i > last - 10; i--) {
           this.list.splice(0, 0, i)
         }
-      }, 3000)
+        this.$refs.wrap.finishPullToRefresh()
+      }, 8000)
     }
   }
 }

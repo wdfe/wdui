@@ -38,18 +38,28 @@ export default {
     updateData() {
       setTimeout(() => {
         let last = +this.list[0] - 1
+        if(last < 0) {
+          this.$refs.wrap.noMoreRefresh()
+          return
+        }
         for (let i = last; i > last - 10; i--) {
           this.list.splice(0, 0, i)
         }
-      }, 3000)
+        this.$refs.wrap.finishPullToRefresh()
+      }, 2000)
     },
     loadData() {
       setTimeout(() => {
         let last = +this.list.slice(-1) + 1
-        let moreload = last + 20
+        if(last > 40) {
+          this.$refs.wrap.noMoreInfiniteLoading()
+          return
+        }
+        let moreload = last + 10
         for(let i = last; i < moreload; i++){
           this.list.push(i)
         }
+        this.$refs.wrap.finishInfiniteLoading()
       }, 3000)
     }
   }
