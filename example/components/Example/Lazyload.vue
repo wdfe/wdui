@@ -43,7 +43,7 @@
 
 <style scoped>
   ul {
-  	width: 100%;	
+  	width: 100%;
   	position: absolute;
   	top: 0;
   }
