@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import Search from '../../packages/Search/index.js'
 import Vue from 'vue'
-import {createCompInstance, destroyVM , createVueInstance} from './utils.js'
+import {createCompInstance, destroyVM, createVueInstance} from './utils.js'
 
 Vue.component(Search.name, Search)
 describe('Search', () => {
