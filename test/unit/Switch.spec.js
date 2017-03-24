@@ -46,11 +46,13 @@ describe('Switch', () => {
     })
 
     Vue.nextTick(() => {
-      vm.$refs.switch.setValue('string')
       expect(vm.value).to.equal(false)
 
-      vm.$refs.switch.setValue(true)
+      vm.$refs.switch.$el.click()
       expect(vm.value).to.equal(true)
+
+      vm.$refs.switch.$el.click()
+      expect(vm.value).to.equal(false)
 
       done()
     })

@@ -21,13 +21,6 @@
           this.$emit('changeValue', val)
         }
       }
-    },
-    methods: {
-      setValue(value) {
-        if (typeof value === 'boolean') {
-          this.checked = value
-        }
-      }
     }
   }
 </script>
