@@ -7,13 +7,13 @@ describe('ActionSheet', () => {
 
   it('actionsheet initial 默认样式', done => {
     vm = ActionSheet({
-        title: '测试标题',
-        content: {
-          items: [
-            { title: '测试正文条目1' },
-            { title: '测试正文条目2' }
-          ]
-        }
+      title: '测试标题',
+      content: {
+        items: [
+            {title: '测试正文条目1'},
+            {title: '测试正文条目2'}
+        ]
+      }
     })
     Vue.nextTick(() => {
       const $dom = document.querySelector('.wd-actionsheet')
@@ -30,8 +30,8 @@ describe('ActionSheet', () => {
       title: '测试标题',
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       }
     })
@@ -51,8 +51,8 @@ describe('ActionSheet', () => {
       isShowTitle: false,
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       }
     })
@@ -72,8 +72,8 @@ describe('ActionSheet', () => {
       textAlign: 'center',
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       }
     })
@@ -93,8 +93,8 @@ describe('ActionSheet', () => {
       content: {
         type: 'radio',
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       }
     })
@@ -120,8 +120,8 @@ describe('ActionSheet', () => {
       content: {
         type: 'checklist',
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       }
     })
@@ -172,8 +172,8 @@ describe('ActionSheet', () => {
       content: {
         type: 'radio',
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ],
         defaultValue: [1]
       }
@@ -219,37 +219,37 @@ describe('ActionSheet', () => {
   })
 
   it('actionsheet content defaultValue容错功能', done => {
-   vm = ActionSheet({
-     title: '测试标题',
-     content: {
-       type: 'checklist',
-       items: [
-         {
-           title: '测试正文主条目1',
-           subtitle: '测试正文副条目1'
-         },
-         {
-           title: '测试正文主条目2',
-           subtitle: '测试正文副条目2'
-         },
-         {
-           title: '测试正文主条目3',
-           subtitle: '测试正文副条目3'
-         }
-       ],
-       defaultValue: [4, 1, '1', 1, 2]   //过滤字符串及重复项和越界项,过滤结果[1, 2]
-     }
-   })
-   Vue.nextTick(() => {
-     const $itemSecond = document.querySelector('ul.wd-actionsheet-list > li:nth-child(2) > label')
-     const $itemThird = document.querySelector('ul.wd-actionsheet-list > li:nth-child(3) > label')
-     expect($itemSecond.querySelector('input:checked').value).to.equal('测试正文主条目2')
-     expect($itemThird.querySelector('input:checked').value).to.equal('测试正文主条目3')
-     vm.value = false
-     setTimeout(() => {
-       done()
-     }, 500)
-   })
+    vm = ActionSheet({
+      title: '测试标题',
+      content: {
+        type: 'checklist',
+        items: [
+          {
+            title: '测试正文主条目1',
+            subtitle: '测试正文副条目1'
+          },
+          {
+            title: '测试正文主条目2',
+            subtitle: '测试正文副条目2'
+          },
+          {
+            title: '测试正文主条目3',
+            subtitle: '测试正文副条目3'
+          }
+        ],
+        defaultValue: [4, 1, '1', 1, 2]   //过滤字符串及重复项和越界项,过滤结果[1, 2]
+      }
+    })
+    Vue.nextTick(() => {
+      const $itemSecond = document.querySelector('ul.wd-actionsheet-list > li:nth-child(2) > label')
+      const $itemThird = document.querySelector('ul.wd-actionsheet-list > li:nth-child(3) > label')
+      expect($itemSecond.querySelector('input:checked').value).to.equal('测试正文主条目2')
+      expect($itemThird.querySelector('input:checked').value).to.equal('测试正文主条目3')
+      vm.value = false
+      setTimeout(() => {
+        done()
+      }, 500)
+    })
   })
 
   it('actionsheet confirmText 主操作文字', done => {
@@ -258,8 +258,8 @@ describe('ActionSheet', () => {
       confirmText: '测试主操作文字',
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       }
     })
@@ -279,8 +279,8 @@ describe('ActionSheet', () => {
       cancelText: '测试辅操作文字',
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       }
     })
@@ -300,8 +300,8 @@ describe('ActionSheet', () => {
       isShowConfirmButton: false,
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       }
     })
@@ -321,8 +321,8 @@ describe('ActionSheet', () => {
       maskColor: '#eee',
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       }
     })
@@ -342,8 +342,8 @@ describe('ActionSheet', () => {
       maskOpacity: 0.7,
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       }
     })
@@ -362,8 +362,8 @@ describe('ActionSheet', () => {
       title: '测试标题',
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       },
       isShowConfirmButton: false,
@@ -389,8 +389,8 @@ describe('ActionSheet', () => {
       content: {
         type: 'radio',
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       },
       onConfirm: (instance, data) => {
@@ -418,8 +418,8 @@ describe('ActionSheet', () => {
       title: '测试标题',
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       },
       onCancel: (instance) => {
@@ -443,8 +443,8 @@ describe('ActionSheet', () => {
       title: '测试标题',
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       },
       onShow(instance) {
@@ -466,8 +466,8 @@ describe('ActionSheet', () => {
       title: '测试标题',
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       },
       onHide(instance) {
@@ -491,8 +491,8 @@ describe('ActionSheet', () => {
       title: '测试标题',
       content: {
         items: [
-          { title: '测试正文条目1' },
-          { title: '测试正文条目2' }
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'}
         ]
       },
       onMaskClick(instance) {
