@@ -95,11 +95,8 @@ export default {
       noRefresh: false,
       noRefreshStyle: false,
       noLoad: false,
-      documentHeight: 0,
       $scrollTarget: null,
-      startY: 0,
-      startTime: 0,
-      ifMoveing: false,
+      $slotWrapper: null,
       render: null,
       scroller: null,
       scrollTargetRect: {},
@@ -132,12 +129,8 @@ export default {
        * 设置初始化数据
        */
 
-      this.documentHeight = document.documentElement.clientHeight
       this.$scrollTarget = this.$refs.content
       this.$slotWrapper = this.$refs.slotWrapper
-      this.startY = 0
-      this.startTime = 0
-      this.ifMoveing = false
       this.scrollTargetRect = this.$scrollTarget.getBoundingClientRect()
       this.render = translateUtils.getRender(this.$scrollTarget)
       if(this.onRefresh) {
@@ -243,7 +236,6 @@ export default {
 
       if(this.onLoad) {
         let top = this.scroller.getValues().top
-        console.log(top + this.$el.clientHeight, this.$slotWrapper.offsetHeight + 60)
         if (top + this.$el.clientHeight > this.$slotWrapper.offsetHeight + 60) {
           if (this.infiniteLoadingState) {
             return
@@ -303,11 +295,9 @@ export default {
       if(this.noLoad) {
         eh += this.tipHeight
       }
-      console.log('resetDimensions:', ww, wh, ew, eh)
       this.scroller.setDimensions(ww, wh, ew, eh)
     },
     resetDimensionsManually(ww, wh, ew, eh) {
-      console.log('resetDimensionsManually:', ww, wh, ew, eh)
       this.scroller.setDimensions(ww, wh, ew, eh)
     },
     finishPullToRefresh() {
