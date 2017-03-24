@@ -1,7 +1,7 @@
 import Index from './components/Index/Index.vue'
 import Button from './components/Example/Button.vue'
 import Dialog from './components/Example/Dialog.vue'
-import InfiniteScroll from './components/Example/InfiniteScroll.vue'
+//import InfiniteScroll from './components/Example/InfiniteScroll.vue'
 import Lazyload from './components/Example/Lazyload.vue'
 import MessageBox from './components/Example/MessageBox.vue'
 import Picker from './components/Example/Picker.vue'
@@ -43,11 +43,11 @@ export default {
       name: 'Dialog',
       component: Dialog
     },
-    {
-      path: '/infinitescroll',
-      name: 'InfiniteScroll',
-      component: InfiniteScroll
-    },
+    // {
+    //   path: '/infinitescroll',
+    //   name: 'InfiniteScroll',
+    //   component: InfiniteScroll
+    // },
     {
       path: '/lazyload',
       name: 'Lazyload',

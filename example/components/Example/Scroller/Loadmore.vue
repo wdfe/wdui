@@ -34,11 +34,13 @@ export default {
   },
   methods: {
     loadData() {
-      let last = +this.list.slice(-1) + 1
-      let moreload = last + 20
-      for(let i = last; i < moreload; i++){
-        this.list.push(i)
-      }
+      setTimeout(() => {
+        let last = +this.list.slice(-1) + 1
+        let moreload = last + 20
+        for(let i = last; i < moreload; i++){
+          this.list.push(i)
+        }
+      }, 3000)
     }
   }
 }

@@ -1,21 +1,57 @@
 <template>
-    <div class="wd-scroller" ref="wrap">
-      <div v-if="showTopText" class="wd-scroller-top-text">{{refreshText}}</div>
-      <scrollLoader v-if="topLoading" :text="loadingText"></scrollLoader>
-      <div v-if="noRefresh" class="wd-scroller-no-text">{{noDataText}}</div>
-      <slot></slot>
-      <div v-if="showBottomText" class="wd-scroller-bottom-text">{{bottomText}}</div>
-      <scrollLoader v-if="bottomLoading" :text="loadingText"></scrollLoader>
-      <div v-if="noLoad" class="wd-scroller-no-text">{{noDataText}}</div>
+    <div class="wd-scroller"
+      @touchstart="touchStart($event)"
+      @touchmove="touchMove($event)"
+      @touchend="touchEnd($event)"
+      @mousedown="mouseDown($event)"
+      @mousemove="mouseMove($event)"
+      @mouseup="mouseUp($event)"
+    >
+      <div class="wd-scroller-inner-wrapper" ref="content">
+        <div class="wd-scroller-refresh-wrap" v-if="onRefresh" :class="{noRefresh: noRefreshStyle}">
+          <template v-if="noRefresh">
+            <div class="wd-scroller-no-refresh-wrap" v-show="noRefresh">
+              <div class="wd-scroller-no-refresh-text">{{noDataText}}</div>
+            </div>
+          </template>
+          <template v-else>
+            <div class="wd-scroller-pull-to-refresh-wrap" :class="{holding: pullToRefreshState === 1}" v-show="pullToRefreshState !== 2">
+              <img src="../../../src/assets/images/downLoad.png" class="wd-scroller-pull-to-refresh-loading-icon">
+              <div class="wd-scroller-refresh-text">{{refreshText}}</div>
+            </div>
+            <div class="wd-scroller-refresh-loading-wrap" v-show="pullToRefreshState === 2">
+              <scroller-loader :text="loadingText"></scroller-loader>
+            </div>
+          </template>
+        </div>
+        <div class="wd-scroller-slot-wrapper" ref="slotWrapper">
+          <slot></slot>
+        </div>
+        <div class="wd-scroller-infinite-load-wrap" v-if="onLoad">
+          <template v-if="noLoad">
+            <div class="wd-scroller-no-infinite-loading-wrap">
+              <div class="wd-scroller-no-infinite-loading-text">{{noDataText}}</div>
+            </div>
+          </template>
+          <template v-else>
+            <div class="wd-scroller-infinite-load-tip-wrap" v-show="infiniteLoadingState !== 1">
+              <div class="wd-scroller-bottom-text">{{bottomText}}</div>
+            </div>
+            <div class="wd-scroller-infinite-loading-wrap" v-show="infiniteLoadingState === 1">
+              <scroller-loader :text="loadingText"></scroller-loader>
+            </div>
+          </template>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import draggable from '../../../src/utils/draggable.js'
-import {animate, transformName} from '../../../src/utils/animation.js'
-import scrollLoader from '../../../example/components/Example/wd-scroll-loader.vue'
-const CUBIC = 'cubic-bezier(0.33,0.66,0.66,1)'
+import Scroller from '../../../src/utils/Scroller.js'
+import translateUtils from '../../../src/utils/translate.js'
+import scrollerLoader from '../src/ScrollerLoader.vue'
+
 export default {
   name: 'wd-scroller',
   props: {
@@ -36,171 +72,250 @@ export default {
     noDataText: {
       type: String,
       default: '没有更多数据了'
+    },
+    animating: {
+      type: Boolean,
+      default: true
+    },
+    animationDuration: {
+      type: Number,
+      default: 400
+    },
+    zooming: {
+      type: Boolean,
+      default: false
+    },
+    bouncing: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
     return {
-      showTopText: false,
-      topLoading: false,
-      showBottomText: false,
-      bottomLoading: false,
       noRefresh: false,
-      noLoad: false
+      noRefreshStyle: false,
+      noLoad: false,
+      $scrollTarget: null,
+      $slotWrapper: null,
+      render: null,
+      scroller: null,
+      scrollTargetRect: {},
+      slotObserver: null,
+      mousedown: false,
+      pullToRefreshState: 0,
+      pullToRefreshStateCache: 0,
+      pullToRefreshStateAdjustFlag: false,
+      infiniteLoadingState: 0,
+      tipHeight: 0
     }
   },
   components: {
-    scrollLoader
+    scrollerLoader
   },
   mounted() {
-    //容器目前显示的高度
-    this.$nextTick(()=>{
-      this.init()
-    })
+    this.init()
+  },
+  watch() {
+
   },
   methods: {
     init() {
       this.setInitData()
-      this.scrollTo(0, 0)
-      if(this.$el.clientHeight >= this.$refs.wrap){
-        return
-      }
       this.bindEvents()
     },
     setInitData(){
-      this.scrollTarget = this.$el
-      this.wrap = document.body
-      this.startY = 0
-      this.startTime = 0
-      this.ifMoveing = false
-    },
-    scrollTo(x, y, time, timingFunction, func){
-      animate(this.scrollTarget, {
-        translateX: x + 'px',
-        translateY: y + 'px',
-        HWCompositing: true, //3D加速
-        duration: time || 0,
-        onComplete: func,
-        ease: timingFunction || 'ease'
+
+      /*
+       * 设置初始化数据
+       */
+
+      this.$scrollTarget = this.$refs.content
+      this.$slotWrapper = this.$refs.slotWrapper
+      this.scrollTargetRect = this.$scrollTarget.getBoundingClientRect()
+      this.render = translateUtils.getRender(this.$scrollTarget)
+      if(this.onRefresh) {
+        this.tipHeight = this.$el.querySelector('.wd-scroller-refresh-wrap').offsetHeight
+      }else if(this.onLoad) {
+        this.tipHeight = this.$el.querySelector('.wd-scroller-infinite-load-wrap').offsetHeight
+      }
+
+      /*
+       * 使用 MutationObserver 监听 slot 内 DOM 变动，并及时更新 Scroller
+       * ios 6+ , Android 4.4+
+       */
+
+      this.slotObserver = new MutationObserver(() => {
+        this.resetDimensions()
+      })
+      this.slotObserver.observe(this.$slotWrapper, {
+        childList: true,
+        attributes: true,
+        characterData: true,
+        subtree: true
       })
     },
     bindEvents() {
-      draggable(this.scrollTarget, {
-        start: (event) => {
-          this.startTime = Date.now()
-          this.pointY = event.pageY
-          this.scrollY = this.getComputedPosition(this.scrollTarget).y
-          //正在滚动时 点击 立刻停止
-          if(this.ifMoveing){
-            this.scrollTo(0, Math.round(this.scrollY))
+
+      /*
+       *  设置与启用 Scroller
+       */
+
+      this.scroller = new Scroller(this.render, {
+        scrollingX: false,
+        zooming: this.zooming,
+        animating: this.animating,
+        animationDuration: this.animationDuration,
+        bouncing: this.bouncing
+      })
+      this.scroller.setPosition(this.scrollTargetRect.left + this.$scrollTarget.clientLeft, this.scrollTargetRect.top + this.$scrollTarget.clientTop)
+
+      /*
+       * 若 onRefresh 不为空，绑定下拉刷新相关事件
+       */
+
+      if (this.onRefresh) {
+        this.scroller.activatePullToRefresh(60, () => {
+          this.noRefresh = false
+          this.pullToRefreshStateAdjustFlag = false
+          this.pullToRefreshStateCache = this.pullToRefreshState = 1
+        }, () => {
+          if(this.pullToRefreshStateCache === 1) {
+            this.pullToRefreshStateAdjustFlag = true
           }
-        },
-        drag: (event) => {
-          let distY = event.pageY - this.pointY + this.scrollY
-          let timestamp = Date.now()
-          this.ifMoveing = true
-          if (timestamp - this.startTime > 300 && (Math.abs(distY) < 10)) {
+          this.pullToRefreshStateCache = this.pullToRefreshState = 0
+        }, () => {
+          if(this.pullToRefreshState === 2) {
             return
           }
-          if(distY > 0){
-            //下拉更新
-            if(this.onRefresh){
-              this.showTopText = true
-            }
-            this.scrollTo(0, distY, 40, CUBIC)
-          }else{
-            // 上拉加载更多
-            this.scrollTo(0, distY)
-            if(-distY > (this.scrollTarget.clientHeight - this.wrap.clientHeight)){
-              this.onLoad && (this.showBottomText = true)
-            }
-          }
-        },
-        end: (event) => {
-          this.endTime = Date.now()
-          this.ifMoveing = false
-          let boxHeight = this.scrollTarget.clientHeight
-          let bodyHeight = this.wrap.clientHeight
-          let duration = this.endTime - this.startTime
-          let momentumY = this.momentum(event.pageY, this.pointY, duration, boxHeight, boxHeight)
-          this.scrollY = this.getComputedPosition(this.scrollTarget).y
-          if(this.scrollY > 0){
-            this.showTopText = false
-            this.onRefresh && (this.topLoading = true)
-            this.scrollTo(0, 0, 500, 'ease-out', this.update)
-          }else {
-            this.showBottomText = false
-            let newY = this.scrollY + momentumY.destination
-            this.scrollTo(0, newY, momentumY.duration, 'ease-out')
-            if(Math.abs(newY) > (boxHeight - bodyHeight)){ //超出最大可上拉距离
-              this.scrollTo(0, -(boxHeight - bodyHeight), 500, CUBIC, this.loadmore)
-              this.onLoad && (this.bottomLoading = true)
-            }
-          }
+          this.noRefreshStyle = false
+          this.pullToRefreshStateCache = this.pullToRefreshState = 2
+          this.onRefresh()
+        })
+      }
+    },
+    scrollTo(x, y, animate) {
+      this.scroller.scrollTo(x, y, animate)
+    },
+    touchStart(e) {
+      // Don't react if initial down happens on a form element
+      if (e.target.tagName.match(/input|textarea|select/i)) {
+        return
+      }
+      this.scroller.doTouchStart(e.touches, e.timeStamp)
+    },
+    touchMove(e) {
+      e.preventDefault()
+      this.scroller.doTouchMove(e.touches, e.timeStamp)
+
+      /*
+       * 如果 onload 不为空，执行无限加载相关逻辑
+       */
+
+      if(this.onLoad) {
+        let top = this.scroller.getValues().top
+        let ww = this.$el.clientWidth
+        let wh = this.$el.clientHeight
+        let ew = this.$slotWrapper.offsetWidth
+        let eh = this.$slotWrapper.offsetHeight + this.tipHeight
+        if(this.noRefresh) {
+          eh += this.tipHeight
         }
-      })
-    },
-    getComputedPosition(el) {
-      let matrix = window.getComputedStyle(el)
-      matrix = matrix[transformName].split(')')[0].split(', ')
-      return {
-        x: Math.round(matrix[12] || matrix[4]),
-        y: Math.round(matrix[13] || matrix[5])
+        if (top + this.$el.clientHeight > this.$slotWrapper.offsetHeight + 60) {
+          this.resetDimensionsManually(ww, wh, ew, eh)
+        }else if(top + this.$el.clientHeight === this.$slotWrapper.offsetHeight + 60) {
+          this.resetDimensions()
+        }
       }
     },
-    /**
-     * @description [touchend之后的惯性滚动计算]
-     * @param  {[Number]} touchend时的坐标点
-     * @param  {[Number]} touchstart时的坐标点
-     * @param  {[Number]} 时间参数，开始触屏到离开时候所用时间（touchstart到touchend)
-     * @param  {[Number]} 控制边界位置的
-     * @param  {[Number]} 容器的高度
-     * @return {[Number, Number]} 惯性距离， 动画时间
-     */
-    momentum(current, start, time, lowerMargin, wrapperSize) {
-      let distance = current - start
-      let speed = Math.abs(distance) / time //得出此次拉动的速度
-      let deceleration = 0.006
-      let newDist = (speed * speed) / (2 * deceleration)
-      distance < 0 && (newDist = -newDist)
-      let duration = speed / deceleration
-      //处理运动轨迹超出时候的距离与速度重新计算（反弹效果）
-      // if(distance > 0 && newDist > maxDistUpper) {
-      //   destination = wrapperSize ? lowerMargin - (wrapperSize / 2.5 * (speed / 8)) : lowerMargin
-      //   distance = Math.abs(destination - current)
-      //   duration = distance / speed
-      // }else if (destination > 0) {
-      //   destination = wrapperSize ? wrapperSize / 2.5 * ( speed / 8 ) : 0
-      //   distance = Math.abs(current) + destination
-      //   duration = distance / speed
-      // }
-      return {
-        destination: newDist,
-        duration: duration
+    touchEnd(e) {
+      this.scroller.doTouchEnd(e.timeStamp)
+
+      /*
+       * 如果 onload 不为空，执行无限加载相关逻辑
+       */
+
+      if(this.onLoad) {
+        let top = this.scroller.getValues().top
+        if (top + this.$el.clientHeight > this.$slotWrapper.offsetHeight + 60) {
+          if (this.infiniteLoadingState) {
+            return
+          }
+          this.noLoad = false
+          this.infiniteLoadingState = 1
+          this.onLoad()
+        }
+      }
+
+      if(this.pullToRefreshStateAdjustFlag) {
+        this.scroller.scrollTo(0, this.tipHeight, true)
+        setTimeout(() => {
+          this.pullToRefreshStateAdjustFlag = false
+          this.noRefreshStyle = false
+          this.scroller.scrollTo(0, 0, false)
+          this.resetDimensions()
+        }, this.animationDuration)
       }
     },
-    update() {
-      setTimeout(()=>{
-        this.topLoading = false
-        !this.noRefresh && this.onRefresh && this.onRefresh()
-      }, 1000)
+    mouseDown(e) {
+      // Don't react if initial down happens on a form element
+      if (e.target.tagName.match(/input|textarea|select/i)) {
+        return
+      }
+      this.scroller.doTouchStart([{
+        pageX: e.pageX,
+        pageY: e.pageY
+      }], e.timeStamp)
+      this.mousedown = true
     },
-    loadmore() {
-      setTimeout(()=>{
-        this.bottomLoading = false
-        !this.noRefresh && this.onLoad && this.onLoad()
-      }, 1000)
+    mouseMove(e) {
+      if (!this.mousedown) {
+        return
+      }
+      this.scroller.doTouchMove([{
+        pageX: e.pageX,
+        pageY: e.pageY
+      }], e.timeStamp)
+      this.mousedown = true
     },
-    finishRefresh() {
+    mouseUp(e) {
+      if (!this.mousedown) {
+        return
+      }
+      this.scroller.doTouchEnd(e.timeStamp)
+      this.mousedown = false
+    },
+    resetDimensions() {
+      let ww = this.$el.clientWidth
+      let wh = this.$el.clientHeight
+      let ew = this.$slotWrapper.offsetWidth
+      let eh = this.$slotWrapper.offsetHeight
+      if(this.noRefresh) {
+        eh += this.tipHeight
+      }
+      if(this.noLoad) {
+        eh += this.tipHeight
+      }
+      this.scroller.setDimensions(ww, wh, ew, eh)
+    },
+    resetDimensionsManually(ww, wh, ew, eh) {
+      this.scroller.setDimensions(ww, wh, ew, eh)
+    },
+    finishPullToRefresh() {
+      this.scroller.finishPullToRefresh()
+    },
+    finishInfiniteLoading() {
+      this.infiniteLoadingState = 0
+    },
+    noMoreRefresh() {
       this.noRefresh = true
-      setTimeout(()=>{
-        this.noRefresh = false
-      }, 1000)
+      this.noRefreshStyle = true
+      this.scroller.scrollTo(0, 0, false)
+      this.scroller.finishPullToRefresh()
+      this.resetDimensionsManually(this.$el.clientWidth, this.$el.clientHeight, this.$slotWrapper.offsetWidth, this.$slotWrapper.offsetHeight + this.tipHeight)
     },
-    finishLoad() {
+    noMoreInfiniteLoading() {
+      this.finishInfiniteLoading()
       this.noLoad = true
-      setTimeout(()=>{
-        this.noLoad = false
-      }, 1000)
     }
   }
 }
@@ -208,6 +323,69 @@ export default {
 <style lang="sass">
 
 .wd-scroller {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  overflow: hidden;
+
+  .wd-scroller-inner-wrapper {
+
+    .wd-scroller-refresh-wrap {
+      margin-top: -120px;
+      height: 120px;
+      font-size: 20px;
+
+      &.noRefresh {
+        margin-top: 0;
+      }
+
+      .wd-scroller-pull-to-refresh-wrap,
+      .wd-scroller-refresh-loading-wrap,
+      .wd-scroller-no-refresh-wrap {
+        display: flex;
+        height: 100%;
+        font-size: 20px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .wd-scroller-pull-to-refresh-wrap {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+
+        .wd-scroller-pull-to-refresh-loading-icon {
+          margin-right: 20px;
+          width: 48px;
+          height: 48px;
+          transition: all .3s;
+        }
+
+        &.holding {
+          .wd-scroller-pull-to-refresh-loading-icon {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+
+    .wd-scroller-infinite-load-wrap {
+      height: 120px;
+      font-size: 20px;
+
+      .wd-scroller-infinite-load-tip-wrap,
+      .wd-scroller-infinite-loading-wrap,
+      .wd-scroller-no-infinite-loading-wrap {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+  }
+
   .bottom-text {
     width: 100%;
     text-align: center;

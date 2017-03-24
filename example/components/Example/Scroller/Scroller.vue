@@ -106,11 +106,7 @@ $border-color: #DDDDDD;
       padding-bottom: 10px;
   }
   .page-infinite-wrapper {
-      margin-top: -1px;
-      overflow: scroll;
-      height: 100%;
-      box-sizing: border-box;
-      border-left: 1px solid #dddddd;
+      height: 100vh;
   }
   .page-infinite-listitem:first-child {
       border-top: 1px solid #eee;
