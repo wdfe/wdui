@@ -39,15 +39,12 @@ export default {
           this.list.splice(0, 0, i)
         }
         this.$refs.wrap.finishPullToRefresh()
-      }, 8000)
-    }
+      }, 2000)
+    },
   }
 }
 </script>
 <style lang="sass">
 .refresh-container {
-  li {
-    border-bottom: 5px solid #000!important;
-  }
 }
 </style>

@@ -7,6 +7,7 @@
         refreshText="下拉加载更多"
         loadText="上拉加载更多"
         loadingText="正在加载更多哦~"
+        noDataText="更多数据敬请期待"
         ref="wrap"
         >
         <ul class="page-infinite-list">
@@ -27,12 +28,9 @@ export default {
   components: {
   },
   mounted() {
-    //容器目前显示的高度
-    this.$nextTick(()=>{
-      for (let i = 1; i <= 30; i++) {
-        this.list.push(i)
-      }
-    })
+    for (let i = 1; i <= 30; i++) {
+      this.list.push(i)
+    }
   },
   methods: {
     updateData() {
@@ -42,9 +40,11 @@ export default {
           this.$refs.wrap.noMoreRefresh()
           return
         }
+        console.log(this.list)
         for (let i = last; i > last - 10; i--) {
           this.list.splice(0, 0, i)
         }
+        console.log(this.list)
         this.$refs.wrap.finishPullToRefresh()
       }, 2000)
     },

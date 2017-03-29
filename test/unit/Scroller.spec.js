@@ -1,13 +1,19 @@
 /* eslint-disable no-undef */
 import Scroller from '../../packages/Scroller/index.js'
-// import scrollerLoader from '../../packages/Scroller/src/ScrollerLoader.vue'
 import {createVueInstance, destroyVM} from './utils.js'
 import Vue from 'vue'
+
 Vue.component(Scroller.name, Scroller)
 
 describe('Scroller', () => {
+
+  let vm
+
+  afterEach(() => {
+    destroyVM(vm)
+  })
+
   it('scroller initial 默认样式', done => {
-    let vm
     vm = createVueInstance({
       template: `
         <wd-scroller
@@ -26,22 +32,31 @@ describe('Scroller', () => {
           list: []
         }
       },
-      created() {
+      mounted() {
         for (let i = 1; i <= 30; i++) {
           this.list.push(i)
         }
+      },
+      methods: {
+        updateData() {
+          setTimeout(() => {
+            let last = +this.list[0] - 1
+            if(last < 0) {
+              this.$refs.wrap.noMoreRefresh()
+              return
+            }
+            for (let i = last; i > last - 10; i--) {
+              this.list.splice(0, 0, i)
+            }
+            this.$refs.wrap.finishPullToRefresh()
+          }, 2000)
+        }
       }
     })
-    Vue.nextTick(() => {
-      console.log(vm)
-      const $dom = vm.$refs.wrap.$el.querySelecter('.wd-scroller')
-      console.log($dom)
-      // expect($dom).to.exist
-      // const $refreshText = $dom.querySelecter('.wd-scroller-refresh-text')
-      // expect($refreshText.textContent).to.equal('下拉加载更多哦')
-      // destroyVM()
+    setTimeout(() => {
+      let $dom = document.querySelector('.page-infinite-list')
+      expect($dom.querySelectorAll('li').length).to.equal(30)
       done()
-    })
-    
+    }, 1000)
   })
 })

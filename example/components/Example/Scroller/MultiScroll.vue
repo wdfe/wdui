@@ -23,7 +23,7 @@
         loadText="上拉加载更多"
         loadingText="正在加载更多哦~"
         noDataText="更多数据敬请期待"
-        ref="wrap"
+        ref="wrap2"
         >
         <ul class="page-infinite-list">
           <li v-for="item in list2" class="page-infinite-listitem">{{item}}</li>
@@ -44,41 +44,65 @@ export default {
   components: {
   },
   mounted() {
-    //容器目前显示的高度
-    this.$nextTick(()=>{
-      for (let i = 1; i <= 30; i++) {
-        this.list.push(i)
-        this.list2.push(`${i}line2`)
-      }
-    })
-
+    for (let i = 1; i <= 30; i++) {
+      this.list.push(i)
+      this.list2.push(i)
+    }
   },
   methods: {
     updateData() {
-      let last = +this.list[0] - 1
-      for (let i = last; i > last - 10; i--) {
-        this.list.splice(0, 0, i)
-      }
+      setTimeout(() => {
+        let last = +this.list[0] - 1
+        if(last < 0) {
+          this.$refs.wrap.noMoreRefresh()
+          return
+        }
+        for (let i = last; i > last - 10; i--) {
+          this.list.splice(0, 0, i)
+        }
+        this.$refs.wrap.finishPullToRefresh()
+      }, 2000)
     },
     loadData() {
-      let last = +this.list.slice(-1) + 1
-      let moreload = last + 20
-      for(let i = last; i < moreload; i++){
-        this.list.push(i)
-      }
+      setTimeout(() => {
+        let last = +this.list.slice(-1) + 1
+        if(last > 40) {
+          this.$refs.wrap.noMoreInfiniteLoading()
+          return
+        }
+        let moreload = last + 10
+        for(let i = last; i < moreload; i++){
+          this.list.push(i)
+        }
+        this.$refs.wrap.finishInfiniteLoading()
+      }, 3000)
     },
     updateData2() {
-      let last = +this.list[0] - 1
-      for (let i = last; i > last - 10; i--) {
-        this.list.splice(0, 0, `${i}line2`)
-      }
+      setTimeout(() => {
+        let last = +this.list2[0] - 1
+        if(last < 0) {
+          this.$refs.wrap2.noMoreRefresh()
+          return
+        }
+        for (let i = last; i > last - 10; i--) {
+          this.list2.splice(0, 0, i)
+        }
+        this.$refs.wrap2.finishPullToRefresh()
+      }, 2000)
     },
     loadData2() {
-      let last = +this.list2.slice(-1) + 1
-      let moreload = last + 20
-      for(let i = last; i < moreload; i++){
-        this.list2.push(i)
-      }
+      setTimeout(() => {
+        let last = +this.list2.slice(-1) + 1
+        if(last > 40) {
+          this.$refs.wrap2.noMoreInfiniteLoading()
+          return
+        }
+        let moreload = last + 10
+        for(let i = last; i < moreload; i++){
+          this.list2.push(i)
+        }
+        this.$refs.wrap2.finishInfiniteLoading()
+      }, 3000)
     }
   }
 }
@@ -86,14 +110,9 @@ export default {
 <style lang="sass">
 .multiscroll-container {
   .page-infinite-wrapper {
-      margin-top: -1px;
-      overflow: scroll;
-      height: 100%;
+      height: 100vh;
       width: 50%;
-      /*padding-bottom: 60px;*/
       float: left;
-      box-sizing: border-box;
-      border-left: 1px solid #dddddd;
   }
 }
 </style>

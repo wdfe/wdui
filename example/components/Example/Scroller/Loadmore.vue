@@ -25,21 +25,19 @@ export default {
   components: {
   },
   mounted() {
-    this.$nextTick(()=>{
-      for (let i = 1; i <= 30; i++) {
-        this.list.push(i)
-      }
-    })
-
+    for (let i = 1; i <= 30; i++) {
+      this.list.push(i)
+    }
   },
   methods: {
     loadData() {
       setTimeout(() => {
         let last = +this.list.slice(-1) + 1
-        let moreload = last + 20
+        let moreload = last + 10
         for(let i = last; i < moreload; i++){
           this.list.push(i)
         }
+        this.$refs.wrap.finishInfiniteLoading()
       }, 3000)
     }
   }

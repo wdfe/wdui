@@ -28,35 +28,37 @@ export default {
   components: {
   },
   mounted() {
-    //容器目前显示的高度
-    this.$nextTick(()=>{
-      for (let i = 1; i <= 30; i++) {
-        this.list.push(i)
-      }
-    })
-
+    for (let i = 1; i <= 30; i++) {
+      this.list.push(i)
+    }
   },
   methods: {
     updateData() {
-      if(this.list.length > 70) {
-        this.$refs.wrap.finishRefresh()
-      }else {
+      setTimeout(() => {
         let last = +this.list[0] - 1
+        if(last < 10) {
+          this.$refs.wrap.noMoreRefresh()
+          return
+        }
         for (let i = last; i > last - 10; i--) {
           this.list.splice(0, 0, i)
         }
-      }
+        this.$refs.wrap.finishPullToRefresh()
+      }, 2000)
     },
     loadData() {
-      if(this.list.length > 70) {
-        this.$refs.wrap.finishLoad()
-      }else {
+      setTimeout(() => {
         let last = +this.list.slice(-1) + 1
-        let moreload = last + 20
+        if(last > 30) {
+          this.$refs.wrap.noMoreInfiniteLoading()
+          return
+        }
+        let moreload = last + 10
         for(let i = last; i < moreload; i++){
           this.list.push(i)
         }
-      }
+        this.$refs.wrap.finishInfiniteLoading()
+      }, 3000)
     }
   }
 }
