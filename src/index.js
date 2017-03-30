@@ -49,7 +49,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-const version = '0.4.3'
+const version = '0.4.4'
 
 export {
   install,
