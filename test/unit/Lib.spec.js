@@ -14,6 +14,7 @@ import Radio from '../../lib/radio.js'
 import RadioGroup from '../../lib/radio-group.js'
 import Search from '../../lib/search.js'
 import Swipe from '../../lib/swipe.js'
+import SwipeItem from '../../lib/swipe-item.js'
 import Switch from '../../lib/switch.js'
 import Toast from '../../lib/toast.js'
 import Tooltip from '../../lib/tooltip.js'
@@ -83,6 +84,10 @@ describe('Lib', () => {
 
   it('Lib Swipe 单独引入', () => {
     expect(Swipe).to.exist
+  })
+
+  it('Lib SwipeItem 单独引入', () => {
+    expect(SwipeItem).to.exist
   })
 
   it('Lib Switch 单独引入', () => {
