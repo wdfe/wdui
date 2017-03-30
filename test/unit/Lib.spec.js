@@ -18,6 +18,7 @@ import SwipeItem from '../../lib/swipe-item.js'
 import Switch from '../../lib/switch.js'
 import Toast from '../../lib/toast.js'
 import Tooltip from '../../lib/tooltip.js'
+import Scroller from '../../lib/scroller.js'
 
 describe('Lib', () => {
 
@@ -100,6 +101,10 @@ describe('Lib', () => {
 
   it('Lib Tooltip 单独引入', () => {
     expect(Tooltip).to.exist
+  })
+
+  it('Lib Scroller 单独引入', () => {
+    expect(Scroller).to.exist
   })
 
 })

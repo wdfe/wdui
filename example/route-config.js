@@ -1,7 +1,7 @@
 import Index from './components/Index/Index.vue'
 import Button from './components/Example/Button.vue'
 import Dialog from './components/Example/Dialog.vue'
-import InfiniteScroll from './components/Example/InfiniteScroll.vue'
+//import InfiniteScroll from './components/Example/InfiniteScroll.vue'
 import Lazyload from './components/Example/Lazyload.vue'
 import MessageBox from './components/Example/MessageBox.vue'
 import Picker from './components/Example/Picker.vue'
@@ -15,6 +15,12 @@ import Radio from './components/Example/Radio.vue'
 import ImagePreview from './components/Example/ImagePreview.vue'
 import Tooltip from './components/Example/Tooltip.vue'
 import ActionSheet from './components/Example/ActionSheet.vue'
+import Scroller from './components/Example/Scroller/Scroller.vue'
+import Refresh from './components/Example/Scroller/Refresh.vue'
+import Loadmore from './components/Example/Scroller/Loadmore.vue'
+import RefreshAndLoadmore from './components/Example/Scroller/RefreshAndLoadmore.vue'
+import NoData from './components/Example/Scroller/NoData.vue'
+import MultiScroll from './components/Example/Scroller/MultiScroll.vue'
 
 export default {
   routes: [
@@ -37,11 +43,11 @@ export default {
       name: 'Dialog',
       component: Dialog
     },
-    {
-      path: '/infinitescroll',
-      name: 'InfiniteScroll',
-      component: InfiniteScroll
-    },
+    // {
+    //   path: '/infinitescroll',
+    //   name: 'InfiniteScroll',
+    //   component: InfiniteScroll
+    // },
     {
       path: '/lazyload',
       name: 'Lazyload',
@@ -106,6 +112,36 @@ export default {
       path: '/actionsheet',
       name: 'ActionSheet',
       component: ActionSheet
+    },
+    {
+      path: '/scroller',
+      name: 'Scroller',
+      component: Scroller
+    },
+    {
+      path: '/scroller/refresh',
+      name: 'Refresh',
+      component: Refresh
+    },
+    {
+      path: '/scroller/loadmore',
+      name: 'Loadmore',
+      component: Loadmore
+    },
+    {
+      path: '/scroller/refreshandloadmore',
+      name: 'RefreshAndLoadmore',
+      component: RefreshAndLoadmore
+    },
+    {
+      path: '/scroller/nodata',
+      name: 'NoData',
+      component: NoData
+    },
+    {
+      path: '/scroller/multiscroll',
+      name: 'MultiScroll',
+      component: MultiScroll
     }
   ]
 }

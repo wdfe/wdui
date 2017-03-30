@@ -25,7 +25,7 @@ export default {
         'Dialog',
         'Lazyload',
         'Button',
-        'InfinitesScroll',
+        //'InfinitesScroll',
         'Search',
         'Picker',
         'Swipe',
@@ -35,7 +35,8 @@ export default {
         'Radio',
         'Checkbox',
         'ImagePreview',
-        'ActionSheet'
+        'ActionSheet',
+        'Scroller'
       ]
     }
   },
