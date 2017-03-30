@@ -42,5 +42,5 @@ const Toast = (options = {}) => {
   }
   return instance
 }
-Vue.$Toast = Vue.prototype.$Toast = Toast
+
 export default Toast

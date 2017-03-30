@@ -31,5 +31,4 @@ const ActionSheet = (options = {}) => {
   return instance
 }
 
-Vue.$ActionSheet = Vue.prototype.$ActionSheet = ActionSheet
 export default ActionSheet

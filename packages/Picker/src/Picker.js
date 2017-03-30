@@ -29,5 +29,4 @@ const Picker = (options = {}) => {
   return instance
 }
 
-Vue.$Picker = Vue.prototype.$Picker = Picker
 export default Picker

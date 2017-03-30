@@ -27,5 +27,4 @@ const ImagePreview = (options = {}) => {
   return instance
 }
 
-Vue.$ImagePreview = Vue.prototype.$ImagePreview = ImagePreview
 export default ImagePreview

@@ -78,5 +78,4 @@ const MessageBox = {
   }
 }
 
-Vue.$MessageBox = Vue.prototype.$MessageBox = MessageBox
 export default MessageBox

@@ -37,13 +37,19 @@ const install = function(Vue) {
   Vue.component(RadioGroup.name, RadioGroup)
   Vue.component(Checkbox.name, Checkbox)
   Vue.component(CheckboxGroup.name, CheckboxGroup)
+
+  Vue.$Toast = Vue.prototype.$Toast = Toast
+  Vue.$ActionSheet = Vue.prototype.$ActionSheet = ActionSheet
+  Vue.$ImagePreview = Vue.prototype.$ImagePreview = ImagePreview
+  Vue.$MessageBox = Vue.prototype.$MessageBox = MessageBox
+  Vue.$Picker = Vue.prototype.$Picker = Picker
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-const version = '0.4.2'
+const version = '0.4.3'
 
 export {
   install,
