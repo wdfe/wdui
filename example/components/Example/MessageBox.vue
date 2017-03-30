@@ -1,13 +1,19 @@
 <template lang="html">
   <div class="messagebox-container">
-    <wd-button type="gray" @click.native="showAlert">Alert 示例</wd-button>
-    <wd-button type="gray" @click.native="showConfirm">Confirm 示例</wd-button>
-    <wd-button type="gray" @click.native="showPrompt">Prompt 示例</wd-button>
+    <app-header title="MessageBox" returnUrl="#/"></app-header>
+    <wd-button @click.native="showAlert">Alert 示例</wd-button>
+    <wd-button @click.native="showConfirm">Confirm 示例</wd-button>
+    <wd-button @click.native="showPrompt">Prompt 示例</wd-button>
   </div>
 </template>
 
 <script>
+import AppHeader from '../Index/AppHeader.vue'
+
 export default {
+  components: {
+    'app-header': AppHeader
+  },
   methods: {
     showAlert: function() {
       this.$MessageBox.alert({
@@ -49,6 +55,7 @@ export default {
 <style lang="sass">
 .messagebox-container {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -57,6 +64,13 @@ export default {
 
   &>button {
     margin-top: 30px;
+  }
+
+  .app-header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }
 </style>

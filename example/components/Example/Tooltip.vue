@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="tooltip-container">
+    <app-header title="Tooltip" returnUrl="#/"></app-header>
     <wd-button id="locator1" type="primary" @click.native="flag1 = true">默认 tooltip</wd-button>
     <br>
     <wd-button id="locator2" type="primary" @click.native="flag2 = true">默认 tooltip</wd-button>
@@ -30,7 +31,12 @@
 </template>
 
 <script>
+import AppHeader from '../Index/AppHeader.vue'
+
 export default {
+  components: {
+    'app-header': AppHeader
+  },
   data() {
     return {
       flag1: false,
@@ -62,6 +68,7 @@ export default {
 
 <style lang="sass">
 .tooltip-container{
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,6 +91,13 @@ export default {
   p {
     width: 450px;
     padding: 20px;
+  }
+
+  .app-header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }
 </style>

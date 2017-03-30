@@ -6,6 +6,7 @@ import configRouter from './route-config'
 import * as wdui from '../src/index.js'
 import './assets/reset.css'
 import '../src/assets/styles/theme-default/index.scss'
+import './assets/iconfont/iconfont.css'
 
 Vue.use(wdui)
 Vue.use(VueRouter)

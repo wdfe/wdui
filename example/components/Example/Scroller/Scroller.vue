@@ -1,5 +1,6 @@
 <template lang="html">
-	<div class="scroll-contain">
+	<div class="scroll-container">
+    <app-header title="Scroller" returnUrl="#/"></app-header>
 		<ul>
 			<li v-for="item in scrollerList">
 					<router-link :to="`/scroller/${item.toLowerCase()}`">
@@ -11,18 +12,16 @@
 </template>
 
 <script>
+import AppHeader from '../../Index/AppHeader.vue'
+
 export default {
-  props: {
+  components: {
+    'app-header': AppHeader
   },
   data() {
     return {
       scrollerList: ['Refresh', 'Loadmore', 'RefreshAndLoadmore', 'NoData', 'MultiScroll']
     }
-  },
-  created() {},
-  mounted() {
-  },
-  methods: {
   }
 }
 </script>
@@ -32,8 +31,10 @@ $title-color: #222222;
 $background-color: #FFFFFF;
 $text-size: 32px;
 $border-color: #DDDDDD;
-.scroll-contain {
+.scroll-container {
+  position: relative;
 	display: flex;
+  flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	ul {
@@ -77,6 +78,9 @@ $border-color: #DDDDDD;
     & li:last-child {
       border-bottom: none;
     }
+  }
+  .app-header-container {
+    width: 100%;
   }
 }
 

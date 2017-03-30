@@ -1,5 +1,6 @@
 <template lang="html">
-  <div>
+  <div class="checkbox-container">
+    <app-header title="Checkbox" returnUrl="#/"></app-header>
     <div class="wd-checklist">
       <p class="radio-header">CheckGroup组件</p>
       <wd-checkboxgroup :listData="lists1" v-model="value1"></wd-checkboxgroup>
@@ -31,9 +32,11 @@
 </template>
 
 <script>
-export default {
-  props: {
+import AppHeader from '../Index/AppHeader.vue'
 
+export default {
+  components: {
+    'app-header': AppHeader
   },
   data() {
     return {

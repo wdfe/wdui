@@ -1,6 +1,6 @@
 <template>
   <div class="component-wrapper">
-    <div class="page-title">Swipe</div>
+    <app-header title="Swipe" returnUrl="#/"></app-header>
     <div class="swipe-wrapper">
       <h2 class="swipe-title">基础用法</h2>
       <wd-swipe class="swipe">
@@ -50,8 +50,12 @@
 </template>
 
 <script>
-  export default {
+import AppHeader from '../Index/AppHeader.vue'
+export default {
+  components: {
+    'app-header': AppHeader
   }
+}
 </script>
 
 <style lang="css">

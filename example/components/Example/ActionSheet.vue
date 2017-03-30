@@ -1,14 +1,20 @@
 <template lang="html">
   <div class="actionsheet-container">
-    <wd-button type="gray" @click.native="showActionSheet1">ActionSheet-单列居中版</wd-button>
-    <wd-button type="gray" @click.native="showActionSheet2">ActionSheet-radio版</wd-button>
-    <wd-button type="gray" @click.native="showActionSheet3">ActionSheet-checklist两列版</wd-button>
+    <app-header title="ActionSheet" returnUrl="#/"></app-header>
+    <wd-button @click.native="showActionSheet1">ActionSheet-单列居中版</wd-button>
+    <wd-button @click.native="showActionSheet2">ActionSheet-radio版</wd-button>
+    <wd-button @click.native="showActionSheet3">ActionSheet-checklist两列版</wd-button>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
+import AppHeader from '../Index/AppHeader.vue'
+
 export default {
+  components: {
+    'app-header': AppHeader
+  },
   methods: {
     showActionSheet1: function() {
       this.$ActionSheet({
@@ -83,15 +89,23 @@ export default {
 
 <style lang="sass">
 .actionsheet-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 
-    &>button {
-      margin-top: 30px;
+  &>button {
+    margin-top: 30px;
+  }
+
+  .app-header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }
 

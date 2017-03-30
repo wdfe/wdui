@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="button-container">
+    <app-header title="Button" returnUrl="#/"></app-header>
     <hr />
     <hr />
     <hr />
@@ -30,10 +31,19 @@
 </template>
 
 <script>
+import AppHeader from '../Index/AppHeader.vue'
+
+export default {
+  components: {
+    'app-header': AppHeader
+  }
+}
+
 </script>
 
 <style lang="sass">
 .button-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,6 +63,13 @@
     align-items: center;
     width: 100%;
     background-color: rgba(0,0,0,0.6)
+  }
+
+  .app-header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }
 </style>

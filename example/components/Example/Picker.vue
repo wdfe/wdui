@@ -1,14 +1,19 @@
 <template lang="html">
   <div class="picker-container">
-    <wd-button type="gray" @click.native="showPicker">单行 Picker 示例</wd-button>
-    <wd-button type="gray" @click.native="showPicker2">多行动态 Picker 示例</wd-button>
+    <app-header title="Picker" returnUrl="#/"></app-header>
+    <wd-button @click.native="showPicker">单行 Picker 示例</wd-button>
+    <wd-button @click.native="showPicker2">多行动态 Picker 示例</wd-button>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
+import AppHeader from '../Index/AppHeader.vue'
 
 export default {
+  components: {
+    'app-header': AppHeader
+  },
   data() {
     return {
       address: {
@@ -107,6 +112,7 @@ export default {
 
 <style lang="sass">
 .picker-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,6 +122,12 @@ export default {
 
   &>button {
     margin-top: 30px;
+  }
+  .app-header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }
 </style>
