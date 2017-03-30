@@ -1,6 +1,5 @@
 import Button from '../packages/Button/index.js'
 import Dialog from '../packages/Dialog/index.js'
-import InfiniteScroll from '../packages/InfiniteScroll/index.js'
 import Lazyload from '../packages/Lazyload'
 import MessageBox from '../packages/MessageBox/index.js'
 import Picker from '../packages/Picker/index.js'
@@ -26,7 +25,6 @@ const install = function(Vue) {
 
   Vue.component(Button.name, Button)
   Vue.component(Dialog.name, Dialog)
-  Vue.directive('wd-infiniteScroll', InfiniteScroll)
   Vue.use(Lazyload, {try: 3})
   Vue.component(Search.name, Search)
   Vue.component(Popup.name, Popup)
@@ -58,7 +56,6 @@ export {
   version,
   Button,
   Dialog,
-  InfiniteScroll,
   Lazyload,
   MessageBox,
   Search,
