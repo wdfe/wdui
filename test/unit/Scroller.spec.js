@@ -18,8 +18,11 @@ describe('Scroller', () => {
       template: `
         <wd-scroller
           :on-refresh="updateData"
+          :on-load="loadData"
           refreshText="下拉加载更多呦"
           loadingText="正在加载更多哦~"
+          loadText="上拉加载更多"
+          noDataText="更多数据敬请期待"
           ref="wrap"
           >
           <ul class="page-infinite-list">
@@ -50,6 +53,16 @@ describe('Scroller', () => {
             }
             this.$refs.wrap.finishPullToRefresh()
           }, 2000)
+        },
+        loadData() {
+          setTimeout(() => {
+            let last = +this.list.slice(-1) + 1
+            let moreload = last + 10
+            for(let i = last; i < moreload; i++){
+              this.list.push(i)
+            }
+            this.$refs.wrap.finishInfiniteLoading()
+          }, 3000)
         }
       }
     })

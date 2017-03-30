@@ -128,6 +128,7 @@ export default {
       this.sum = this.imgList.length
     },
     bindEvent() {
+      /* istanbul ignore next */
       draggable(this.$refs.container, {
         start: (event) => {
           /*
