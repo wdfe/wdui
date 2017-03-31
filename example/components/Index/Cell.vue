@@ -1,6 +1,7 @@
 <template>
   <div class="cell-container">
     <p>{{ content }}</p>
+    <i class="arrow_l"></i>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ export default {
 </script>
 <style lang="sass">
 .cell-container {
+  position: relative;
   height: 104px;
   color: #222;
   background-color: #fff;
@@ -26,7 +28,28 @@ export default {
     height: 103px;
     line-height: 103px;
     font-size: 32px;
-    border-bottom: 1px solid #eee; /* no */
+    border-top: 1px solid #eee; /* no */
   }
+
+  .arrow_l {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    background: #CECECE;
+    position: absolute;
+    transform: rotate(-45deg);
+    top: 40px;
+    right: 40px;
+  }
+
+  .arrow_l::after {
+    content: '';
+    position: absolute;
+    top: -2px;/*no*/
+    left: -2px;/*no*/
+    width: 15px;
+    height: 15px;
+    background: #FFFFFF;
+      }
 }
 </style>
