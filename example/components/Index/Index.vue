@@ -1,20 +1,15 @@
 <template>
-  <div class="wrap">
-    <ul>
-      <li>
-        <template v-for="item in components">
-          <router-link :to="`/${item.toLowerCase()}`">
-            <i class="fa fa-check-square"></i>
-            <span class="word">{{item}}</span>
-            <i class="fa fa-angle-right right"></i>
-          </router-link>
-        </template>
-      </li>
-    </ul>
+  <div class="index-container">
+    <app-header title="Components" disableReturn></app-header>
+    <router-link :to="`/${item.toLowerCase()}`" v-for="item in components">
+      <cell :content="item"></cell>
+    </router-link>
   </div>
 </template>
 
 <script>
+import AppHeader from './AppHeader.vue'
+import Cell from './Cell.vue'
 
 export default {
   data() {
@@ -25,7 +20,6 @@ export default {
         'Dialog',
         'Lazyload',
         'Button',
-        'InfinitesScroll',
         'Search',
         'Picker',
         'Swipe',
@@ -35,19 +29,21 @@ export default {
         'Radio',
         'Checkbox',
         'ImagePreview',
-        'ActionSheet'
+        'ActionSheet',
+        'Scroller'
       ]
     }
   },
-  computed: {
+  components: {
+    'app-header': AppHeader,
+    'cell': Cell
   },
-  components: {},
   mounted() {
-    this.$nextTick(() => {
-    })
   },
   created: function(){},
   methods: {}
 }
 </script>
-<style src="./Index.scss"></style>
+<style lang="sass">
+
+</style>

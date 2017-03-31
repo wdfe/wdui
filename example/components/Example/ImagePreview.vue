@@ -1,5 +1,6 @@
 <template lang="html">
-  <div class="popup-container">
+  <div class="imagepreview-container">
+    <app-header title="ImagePreview" returnUrl="#/"></app-header>
     <wd-button type="primary" @click.native="openImagePreview1">默认 ImagePreview</wd-button>
     <br>
     <wd-button type="primary" @click.native="openImagePreview2">ImagePreview 自动关闭</wd-button>
@@ -12,10 +13,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-    }
-  },
   methods: {
     openImagePreview1() {
       this.$ImagePreview({
@@ -97,7 +94,8 @@ export default {
 </script>
 
 <style lang="sass">
-.popup-container{
+.imagepreview-container{
+  position: relative;
   justify-content:center;
   display: flex;
   flex-direction: column;
@@ -116,6 +114,12 @@ export default {
       text-align: center;
       width: 90%;
     }
+  }
+  .app-header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }
 </style>

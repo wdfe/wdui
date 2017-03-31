@@ -1,13 +1,13 @@
 <template lang="html">
   <div class="actionsheet-container">
-    <wd-button type="gray" @click.native="showActionSheet1">ActionSheet-单列居中版</wd-button>
-    <wd-button type="gray" @click.native="showActionSheet2">ActionSheet-radio版</wd-button>
-    <wd-button type="gray" @click.native="showActionSheet3">ActionSheet-checklist两列版</wd-button>
+    <app-header title="ActionSheet" returnUrl="#/"></app-header>
+    <wd-button @click.native="showActionSheet1">ActionSheet-单列居中版</wd-button>
+    <wd-button @click.native="showActionSheet2">ActionSheet-radio版</wd-button>
+    <wd-button @click.native="showActionSheet3">ActionSheet-checklist两列版</wd-button>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
 export default {
   methods: {
     showActionSheet1: function() {
@@ -17,9 +17,15 @@ export default {
         content: {
           type: 'single',
           items: [
-            { title: '复制店铺名称+链接' },
-            { title: '仅复制店铺链接' },
-            { title: '仅复制店铺名称' }
+            {
+              title: '复制店铺名称+链接'
+            },
+            {
+              title: '仅复制店铺链接'
+            },
+            {
+              title: '仅复制店铺名称'
+            }
           ]
         },
         textAlign: 'center',
@@ -36,12 +42,24 @@ export default {
         content: {
           type: 'radio',
           items: [
-            { title: '名称字母排序' },
-            { title: '总交易额' },
-            { title: '总订单数' },
-            { title: '上次购买时间' },
-            { title: '平均交易额' },
-            { title: '单次最高交易额' }
+            {
+              title: '名称字母排序'
+            },
+            {
+              title: '总交易额'
+            },
+            {
+              title: '总订单数'
+            },
+            {
+              title: '上次购买时间'
+            },
+            {
+              title: '平均交易额'
+            },
+            {
+              title: '单次最高交易额'
+            }
           ]
         },
         onConfirm: (instance, data) => {
@@ -69,7 +87,7 @@ export default {
               subtitle: '共1件商品'
             }
           ],
-          defaultValue: [ 0, 2 ]
+          defaultValue: [0, 2]
         },
         onConfirm: (instance, data) => {
           alert(JSON.stringify(data.datas))
@@ -83,15 +101,23 @@ export default {
 
 <style lang="sass">
 .actionsheet-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 
-    &>button {
-      margin-top: 30px;
+  &>button {
+    margin-top: 30px;
+  }
+
+  .app-header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }
 

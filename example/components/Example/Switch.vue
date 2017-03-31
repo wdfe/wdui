@@ -1,6 +1,6 @@
 <template>
   <div class="switch-page">
-    <div class="page-title">Switch</div>
+    <app-header title="Swtich" returnUrl="#/"></app-header>
     <div class="form-item">
       <span class="status">{{status1}}</span><wd-switch class="switch" @changeValue="update1" :value="value1"></wd-switch>
     </div>
@@ -11,30 +11,30 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        value1: true,
-        value2: false
-      }
+export default {
+  data() {
+    return {
+      value1: true,
+      value2: false
+    }
+  },
+  computed: {
+    status1() {
+      return this.value1 ? '开启中' : '关闭'
     },
-    computed: {
-      status1 () {
-        return this.value1 ? '开启中' : '关闭'
-      },
-      status2 () {
-        return this.value2 ? '开启中' : '关闭'
-      }
+    status2() {
+      return this.value2 ? '开启中' : '关闭'
+    }
+  },
+  methods: {
+    update1(val) {
+      this.value1 = val
     },
-    methods: {
-      update1 (val) {
-        this.value1 = val
-      },
-      update2 (val) {
-        this.value2 = val
-      }
+    update2(val) {
+      this.value2 = val
     }
   }
+}
 </script>
 
 <style lang="sass">

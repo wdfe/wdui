@@ -1,14 +1,17 @@
 <template>
-  <ul>
-    <li v-for="item in list">
-      <img v-lazy="item">
-    </li>
-  </ul>
+  <div class="lazyload-container">
+    <app-header title="Lazyload" returnUrl="#/"></app-header>
+    <ul>
+      <li v-for="item in list">
+        <img v-lazy="item">
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
   export default {
-    data () {
+    data() {
       return {
         list: [
           'http://fuss10.elemecdn.com/b/df/b630636b444346e38cef6c59f6457jpeg.jpeg',
@@ -41,25 +44,23 @@
   }
 </script>
 
-<style scoped>
-  ul {
-  	width: 100%;
-  	position: absolute;
-  	top: 0;
-  }
-  ul li {
-    position: relative;
-    width: 97%;
-    background: #fff;
-    padding: .5rem;
-    box-shadow: 0 0 1rem #ccc;
-    margin: 1.5%;
-    box-sizing: border-box;
-    text-align: center;
-  }
-  ul li img {
-    width: 100%;
-  }
-
-
+<style scoped lang="sass">
+ul {
+	width: 100%;
+	position: absolute;
+	top: 120px;
+}
+ul li {
+  position: relative;
+  width: 97%;
+  background: #fff;
+  padding: .5rem;
+  box-shadow: 0 0 1rem #ccc;
+  margin: 1.5%;
+  box-sizing: border-box;
+  text-align: center;
+}
+ul li img {
+  width: 100%;
+}
 </style>

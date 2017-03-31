@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="popup-container">
+    <app-header title="Popup" returnUrl="#/"></app-header>
     <wd-button type="primary" @click.native="bottom = true">Popup bottom</wd-button>
     <br>
     <wd-button type="primary" @click.native="top = true">Popup top</wd-button>
@@ -62,6 +63,7 @@ export default {
 
 <style lang="sass">
 .popup-container{
+  position: relative;
   justify-content:center;
   display: flex;
   flex-direction: column;
@@ -80,6 +82,12 @@ export default {
       text-align: center;
       width: 90%;
     }
+  }
+  .app-header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }
 </style>

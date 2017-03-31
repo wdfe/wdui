@@ -91,6 +91,24 @@ let translateElement = function(element, x, y) {
   }
 }
 
+let getRender = (content) => {
+  if (helperElem.style[perspectiveProperty] !== undefined) {
+    return function(left, top, zoom) {
+      content.style[transformProperty] = 'translate3d(' + (-left) + 'px,' + (-top) + 'px,0) scale(' + zoom + ')'
+    }
+  } else if (helperElem.style[transformProperty] !== undefined) {
+    return function(left, top, zoom) {
+      content.style[transformProperty] = 'translate(' + (-left) + 'px,' + (-top) + 'px) scale(' + zoom + ')'
+    }
+  } else {
+    return function(left, top, zoom) {
+      content.style.marginLeft = left ? (- left / zoom) + 'px' : ''
+      content.style.marginTop = top ? (- top / zoom) + 'px' : ''
+      content.style.zoom = zoom || ''
+    }
+  }
+}
+
 export default {
   transformProperty: transformProperty,
   transformStyleName: transformStyleName,
@@ -99,5 +117,6 @@ export default {
   transitionEndProperty: transitionEndProperty,
   getElementTranslate: getTranslate,
   translateElement: translateElement,
-  cancelTranslateElement: cancelTranslateElement
+  cancelTranslateElement: cancelTranslateElement,
+  getRender: getRender
 }
