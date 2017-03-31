@@ -35,7 +35,7 @@
           </template>
           <template v-else>
             <div class="wd-scroller-infinite-load-tip-wrap" v-show="infiniteLoadingState !== 1">
-              <div class="wd-scroller-bottom-text">{{bottomText}}</div>
+              <div class="wd-scroller-bottom-text">{{loadText}}</div>
             </div>
             <div class="wd-scroller-infinite-loading-wrap" v-show="infiniteLoadingState === 1">
               <scroller-loader :text="loadingText"></scroller-loader>
@@ -61,7 +61,7 @@ export default {
       type: String,
       default: '下拉更新数据'
     },
-    bottomText: {
+    loadText: {
       type: String,
       default: '加载更多数据'
     },
