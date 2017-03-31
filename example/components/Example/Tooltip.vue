@@ -31,12 +31,7 @@
 </template>
 
 <script>
-import AppHeader from '../Index/AppHeader.vue'
-
 export default {
-  components: {
-    'app-header': AppHeader
-  },
   data() {
     return {
       flag1: false,
@@ -57,11 +52,6 @@ export default {
     this.locator3 = document.querySelector('#locator3')
     this.locator4 = document.querySelector('#locator4')
     this.locator5 = document.querySelector('#locator5')
-  },
-  methods: {
-    test() {
-      console.log('test')
-    }
   }
 }
 </script>

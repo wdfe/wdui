@@ -40,18 +40,13 @@
 </template>
 
 <script>
-import AppHeader from '../Index/AppHeader.vue'
-
 export default {
-  components: {
-    'app-header': AppHeader
-  },
   data() {
     return {
       lists: ['选项1', '选项2', '选项3', '选项4'],
       lists2: [{value: '选项1'}, {value: '选中'}, {value: '选项3'}, {value: '被禁用', disChoose: true}],
       lists3: [{value: '选项1'}, {value: '选项2'}, {value: '被禁用', disChoose: true}, {value: '选中禁用', disChoose: true}],
-      lists4: [{value: '选项1'},{value: '选项2'},{value: '选项3'},{value: '选项4'}],
+      lists4: [{value: '选项1'}, {value: '选项2'}, {value: '选项3'}, {value: '选项4'}],
       value1: '选项2',
       value2: '选中',
       value3: '选中禁用',

@@ -12,12 +12,7 @@
 </template>
 
 <script>
-import AppHeader from '../../Index/AppHeader.vue'
-
 export default {
-  components: {
-    'app-header': AppHeader
-  },
   data() {
     return {
       scrollerList: ['Refresh', 'Loadmore', 'RefreshAndLoadmore', 'NoData', 'MultiScroll']
@@ -85,6 +80,10 @@ $border-color: #DDDDDD;
 }
 
 .scroller-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
   .page-infinite {
     height: 100%;
     width: 100%;
@@ -110,7 +109,8 @@ $border-color: #DDDDDD;
       padding-bottom: 10px;
   }
   .page-infinite-wrapper {
-      height: 100vh;
+      flex: 1;
+      height: 0;
   }
   .page-infinite-listitem:first-child {
       border-top: 1px solid #eee;

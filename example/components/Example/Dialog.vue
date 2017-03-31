@@ -10,7 +10,7 @@
         <span @click="dialogBox = false">关闭</span>
       </div>
     </wd-dialog>
-    <wd-dialog v-model="dialogNum" :onShow="showCb" :onHide="hideCb" :maskOpacity=".8">
+    <wd-dialog v-model="dialogNum" :maskOpacity=".8">
       <span class="dialogNum">
         <img src="https://sa.geilicdn.com/public_no_1486439719547.jpg?w=280&h=280">
         <div>关注酒评家公众号</div>
@@ -26,12 +26,7 @@
 </template>
 
 <script>
-import AppHeader from '../Index/AppHeader.vue'
-
 export default {
-  components: {
-    'app-header': AppHeader
-  },
   data() {
     return {
       dialog: false,
@@ -40,12 +35,6 @@ export default {
     }
   },
   methods: {
-    showCb() {
-      console.log('show callback!')
-    },
-    hideCb() {
-      console.log('hide callback!')
-    },
     maskClick() {
       this.dialogBox = false
     },

@@ -32,12 +32,7 @@
 </template>
 
 <script>
-import AppHeader from '../Index/AppHeader.vue'
-
 export default {
-  components: {
-    'app-header': AppHeader
-  },
   data() {
     return {
       lists1: ['选项1', '选项2', '选项3', '选项4'],

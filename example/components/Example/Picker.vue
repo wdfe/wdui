@@ -8,12 +8,7 @@
 
 <script>
 import Vue from 'vue'
-import AppHeader from '../Index/AppHeader.vue'
-
 export default {
-  components: {
-    'app-header': AppHeader
-  },
   data() {
     return {
       address: {

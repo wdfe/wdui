@@ -1,5 +1,6 @@
 <template>
   <div class="scroller-container refresh-container page-infinite">
+    <app-header title="Scroller" returnUrl="#/scroller"></app-header>
     <div class="page-infinite-wrapper">
       <wd-scroller
         :on-refresh="updateData"
@@ -21,8 +22,6 @@ export default {
     return {
       list: []
     }
-  },
-  components: {
   },
   mounted() {
     this.$nextTick(()=>{

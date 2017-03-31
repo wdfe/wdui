@@ -45,12 +45,7 @@
 </template>
 
 <script>
-import AppHeader from '../Index/AppHeader.vue'
-
 export default {
-  components: {
-    'app-header': AppHeader
-  },
   data() {
     return {
       bottom: false,

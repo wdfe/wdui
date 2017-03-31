@@ -26,7 +26,7 @@ export default {
     height: 103px;
     line-height: 103px;
     font-size: 32px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eee; /* no */
   }
 }
 </style>

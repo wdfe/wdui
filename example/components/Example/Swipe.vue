@@ -50,12 +50,6 @@
 </template>
 
 <script>
-import AppHeader from '../Index/AppHeader.vue'
-export default {
-  components: {
-    'app-header': AppHeader
-  }
-}
 </script>
 
 <style lang="css">

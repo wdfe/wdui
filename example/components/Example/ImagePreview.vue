@@ -12,12 +12,7 @@
 </template>
 
 <script>
-import AppHeader from '../Index/AppHeader.vue'
-
 export default {
-  components: {
-    'app-header': AppHeader
-  },
   methods: {
     openImagePreview1() {
       this.$ImagePreview({

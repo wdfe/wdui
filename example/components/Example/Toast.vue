@@ -10,12 +10,7 @@
 </template>
 
 <script>
-import AppHeader from '../Index/AppHeader.vue'
-
 export default {
-  components: {
-    'app-header': AppHeader
-  },
   methods: {
     showToast1: function(){
       let toast1 = this.$Toast({

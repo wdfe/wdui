@@ -1,5 +1,6 @@
 <template>
   <div class="scroller-container refreshandloadmore-container page-infinite">
+    <app-header title="Scroller" returnUrl="#/scroller"></app-header>
     <div class="page-infinite-wrapper">
       <wd-scroller
         :on-refresh="updateData"
@@ -40,11 +41,9 @@ export default {
           this.$refs.wrap.noMoreRefresh()
           return
         }
-        console.log(this.list)
         for (let i = last; i > last - 10; i--) {
           this.list.splice(0, 0, i)
         }
-        console.log(this.list)
         this.$refs.wrap.finishPullToRefresh()
       }, 2000)
     },

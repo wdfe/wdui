@@ -7,9 +7,11 @@ import * as wdui from '../src/index.js'
 import './assets/reset.css'
 import '../src/assets/styles/theme-default/index.scss'
 import './assets/iconfont/iconfont.css'
+import AppHeader from './components/Index/AppHeader.vue'
 
 Vue.use(wdui)
 Vue.use(VueRouter)
+Vue.component(AppHeader.name, AppHeader)
 
 const router = new VueRouter(configRouter)
 const app = new Vue({

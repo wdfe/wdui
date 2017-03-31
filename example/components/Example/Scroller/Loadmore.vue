@@ -1,5 +1,6 @@
 <template>
   <div class="scroller-container loadmore-container page-infinite">
+    <app-header title="Scroller" returnUrl="#/scroller"></app-header>
     <div class="page-infinite-wrapper">
       <wd-scroller
         :on-load="loadData"

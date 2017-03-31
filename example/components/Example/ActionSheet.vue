@@ -8,13 +8,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import AppHeader from '../Index/AppHeader.vue'
-
 export default {
-  components: {
-    'app-header': AppHeader
-  },
   methods: {
     showActionSheet1: function() {
       this.$ActionSheet({
@@ -23,9 +17,15 @@ export default {
         content: {
           type: 'single',
           items: [
-            { title: '复制店铺名称+链接' },
-            { title: '仅复制店铺链接' },
-            { title: '仅复制店铺名称' }
+            {
+              title: '复制店铺名称+链接'
+            },
+            {
+              title: '仅复制店铺链接'
+            },
+            {
+              title: '仅复制店铺名称'
+            }
           ]
         },
         textAlign: 'center',
@@ -42,12 +42,24 @@ export default {
         content: {
           type: 'radio',
           items: [
-            { title: '名称字母排序' },
-            { title: '总交易额' },
-            { title: '总订单数' },
-            { title: '上次购买时间' },
-            { title: '平均交易额' },
-            { title: '单次最高交易额' }
+            {
+              title: '名称字母排序'
+            },
+            {
+              title: '总交易额'
+            },
+            {
+              title: '总订单数'
+            },
+            {
+              title: '上次购买时间'
+            },
+            {
+              title: '平均交易额'
+            },
+            {
+              title: '单次最高交易额'
+            }
           ]
         },
         onConfirm: (instance, data) => {
@@ -75,7 +87,7 @@ export default {
               subtitle: '共1件商品'
             }
           ],
-          defaultValue: [ 0, 2 ]
+          defaultValue: [0, 2]
         },
         onConfirm: (instance, data) => {
           alert(JSON.stringify(data.datas))

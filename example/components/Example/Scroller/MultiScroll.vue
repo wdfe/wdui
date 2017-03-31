@@ -1,34 +1,37 @@
 <template>
   <div class="scroller-container multiscroll-container page-infinite">
+    <app-header title="Scroller" returnUrl="#/scroller"></app-header>
     <div class="page-infinite-wrapper">
-      <wd-scroller
-        :on-refresh="updateData"
-        :on-load="loadData"
-        refreshText="下拉加载更多"
-        loadText="上拉加载更多"
-        loadingText="正在加载更多哦~"
-        noDataText="更多数据敬请期待"
-        ref="wrap"
-        >
-        <ul class="page-infinite-list">
-          <li v-for="item in list" class="page-infinite-listitem">{{item}}</li>
-        </ul>
-      </wd-scroller>
-    </div>
-    <div class="page-infinite-wrapper">
-      <wd-scroller
-        :on-refresh="updateData2"
-        :on-load="loadData2"
-        refreshText="下拉加载更多"
-        loadText="上拉加载更多"
-        loadingText="正在加载更多哦~"
-        noDataText="更多数据敬请期待"
-        ref="wrap2"
-        >
-        <ul class="page-infinite-list">
-          <li v-for="item in list2" class="page-infinite-listitem">{{item}}</li>
-        </ul>
-      </wd-scroller>
+      <div class="inner">
+        <wd-scroller
+          :on-refresh="updateData"
+          :on-load="loadData"
+          refreshText="下拉加载更多"
+          loadText="上拉加载更多"
+          loadingText="正在加载更多哦~"
+          noDataText="更多数据敬请期待"
+          ref="wrap"
+          >
+          <ul class="page-infinite-list">
+            <li v-for="item in list" class="page-infinite-listitem">{{item}}</li>
+          </ul>
+        </wd-scroller>
+      </div>
+      <div class="inner">
+        <wd-scroller
+          :on-refresh="updateData2"
+          :on-load="loadData2"
+          refreshText="下拉加载更多"
+          loadText="上拉加载更多"
+          loadingText="正在加载更多哦~"
+          noDataText="更多数据敬请期待"
+          ref="wrap2"
+          >
+          <ul class="page-infinite-list">
+            <li v-for="item in list2" class="page-infinite-listitem">{{item}}</li>
+          </ul>
+        </wd-scroller>
+      </div>
     </div>
   </div>
 </template>
@@ -109,10 +112,10 @@ export default {
 </script>
 <style lang="sass">
 .multiscroll-container {
-  .page-infinite-wrapper {
-      height: 100vh;
-      width: 50%;
-      float: left;
+  .inner {
+    width: 50%;
+    float: left;
+    height: 100%;
   }
 }
 </style>
