@@ -4,18 +4,19 @@ const CleanPlugin = require('clean-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const px2rem = require('postcss-px2rem')
 const fs = require('fs')
+const path = require('path')
 
 const fileNameTransfer = fileName => fileName.match(/[A-Z][a-z]*/g).map((e) => e.toLowerCase()).join('-')
 
 const generateEntrys = () => {
   let packages = fs.readdirSync('packages')
   let entrys = {
-    'index': __dirname + '/src/index.js',
+    'index': path.resolve(__dirname, '../src/index.js'),
   }
   if(packages) {
     packages.forEach((e) => {
       if(fs.statSync(`packages/${e}`).isDirectory()) {
-        entrys[fileNameTransfer(e)] = __dirname + `/packages/${e}/index.js`
+        entrys[fileNameTransfer(e)] = path.resolve(__dirname, `../packages/${e}/index.js`)
       }
     })
     return entrys
@@ -25,7 +26,7 @@ const generateEntrys = () => {
 module.exports = {
   entry: generateEntrys(),
   output: {
-    path: __dirname + '/lib',
+    path: path.resolve(__dirname, '../lib'),
     filename: '[name].js',
     libraryTarget: 'umd'
   },
@@ -81,7 +82,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanPlugin(['lib'])
+    new CleanPlugin(['lib'], {
+      root: path.resolve(__dirname, '../'),
+    })
   ]
 }
 
