@@ -18,7 +18,8 @@ const MessageBox = {
       isShowCancelButton: options.isShowCancelButton,
       confirmText: options.confirmText,
       maskColor: options.maskColor,
-      maskOpacity: options.maskOpacity
+      maskOpacity: options.maskOpacity,
+      transition: options.transition
     })
     instance.open = options.open || true
     instance.onMaskClick = options.onMaskClick ? options.onMaskClick.bind(null, instance) : (() => {})
@@ -39,7 +40,8 @@ const MessageBox = {
       confirmText: options.confirmText,
       cancelText: options.cancelText,
       maskColor: options.maskColor,
-      maskOpacity: options.maskOpacity
+      maskOpacity: options.maskOpacity,
+      transition: options.transition
     })
     instance.open = options.open || true
     instance.onMaskClick = options.onMaskClick ? options.onMaskClick.bind(null, instance) : (() => {})
@@ -62,7 +64,8 @@ const MessageBox = {
       isShowInput: true,
       validate: options.validate,
       maskColor: options.maskColor,
-      maskOpacity: options.maskOpacity
+      maskOpacity: options.maskOpacity,
+      transition: options.transition
     })
     instance.open = options.open || true
     instance.onMaskClick = options.onMaskClick ? options.onMaskClick.bind(null, instance) : (() => {})

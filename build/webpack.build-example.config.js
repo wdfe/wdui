@@ -7,9 +7,9 @@ const HtmlwebpackPlugin = require('html-webpack-plugin')
 const CleanPlugin = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: __dirname + '/example/index.js',
+  entry: path.resolve(__dirname, '../example/index.js'),
   output: {
-    path: __dirname + '/temp/example',
+    path: path.resolve(__dirname, '../temp/example'),
     filename: 'demo.js'
   },
   module: {
@@ -45,14 +45,16 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanPlugin(['temp']),
+    new CleanPlugin(['temp'], {
+      root: path.resolve(__dirname, '../'),
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
       }
     }),
     new HtmlwebpackPlugin({
-      template: path.resolve(__dirname, './example/index.html'),
+      template: path.resolve(__dirname, '../example/index.html'),
       filename: '../demo.html',
       inject: 'body'
     }),
