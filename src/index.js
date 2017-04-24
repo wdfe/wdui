@@ -17,6 +17,7 @@ import ImagePreview from '../packages/ImagePreview/index.js'
 import Tooltip from '../packages/Tooltip/index.js'
 import ActionSheet from '../packages/ActionSheet/index.js'
 import Scroller from '../packages/Scroller/index.js'
+import Header from '../packages/Header/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -37,6 +38,7 @@ const install = function(Vue) {
   Vue.component(Checkbox.name, Checkbox)
   Vue.component(CheckboxGroup.name, CheckboxGroup)
   Vue.component(Scroller.name, Scroller)
+  Vue.component(Header.name, Header)
 
   Vue.$Toast = Vue.prototype.$Toast = Toast
   Vue.$ActionSheet = Vue.prototype.$ActionSheet = ActionSheet
@@ -70,5 +72,6 @@ export {
   ImagePreview,
   Tooltip,
   ActionSheet,
-  Scroller
+  Scroller,
+  Header
 }

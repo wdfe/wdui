@@ -1,7 +1,6 @@
 import Index from './components/Index/Index.vue'
 import Button from './components/Example/Button.vue'
 import Dialog from './components/Example/Dialog.vue'
-//import InfiniteScroll from './components/Example/InfiniteScroll.vue'
 import Lazyload from './components/Example/Lazyload.vue'
 import MessageBox from './components/Example/MessageBox.vue'
 import Picker from './components/Example/Picker.vue'
@@ -21,6 +20,7 @@ import Loadmore from './components/Example/Scroller/Loadmore.vue'
 import RefreshAndLoadmore from './components/Example/Scroller/RefreshAndLoadmore.vue'
 import NoData from './components/Example/Scroller/NoData.vue'
 import MultiScroll from './components/Example/Scroller/MultiScroll.vue'
+import Header from './components/Example/Header.vue'
 
 export default {
   routes: [
@@ -117,6 +117,11 @@ export default {
       path: '/scroller',
       name: 'Scroller',
       component: Scroller
+    },
+    {
+      path: '/header',
+      name: 'Header',
+      component: Header
     },
     {
       path: '/scroller/refresh',

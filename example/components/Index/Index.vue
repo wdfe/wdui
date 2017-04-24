@@ -30,7 +30,8 @@ export default {
         'Checkbox',
         'ImagePreview',
         'ActionSheet',
-        'Scroller'
+        'Scroller',
+        'Header'
       ]
     }
   },
