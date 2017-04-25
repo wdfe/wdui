@@ -5,12 +5,12 @@
         <span class="iconfont icon-zuosanjiao"></span>
       </router-link>
     </wd-header>
-    <div class="tab-container">
-      <p v-show="selectedTabId === 'tab1'">tab1 内容</p>
-      <p v-show="selectedTabId === 'tab2'">tab2 内容</p>
-      <p v-show="selectedTabId === 'tab3'">tab3 内容</p>
-      <p v-show="selectedTabId === 'tab4'">tab4 内容</p>
-    </div>
+    <wd-tab-container v-model="selectedTabId" class="tab-container">
+      <wd-tab-container-item tabId="tab1">tab1 内容</wd-tab-container-item>
+      <wd-tab-container-item tabId="tab2">tab2 内容</wd-tab-container-item>
+      <wd-tab-container-item tabId="tab3">tab3 内容</wd-tab-container-item>
+      <wd-tab-container-item tabId="tab4">tab4 内容</wd-tab-container-item>
+    </wd-tab-container>
     <div class="row">
       <span>当前选中Tab</span>
       <span>{{ selectedTabId }}</span>

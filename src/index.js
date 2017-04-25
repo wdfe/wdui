@@ -20,6 +20,8 @@ import Scroller from '../packages/Scroller/index.js'
 import Header from '../packages/Header/index.js'
 import Tabbar from '../packages/Tabbar/index.js'
 import TabItem from '../packages/TabItem/index.js'
+import TabContainer from '../packages/TabContainer/index.js'
+import TabContainerItem from '../packages/TabContainerItem/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -43,6 +45,8 @@ const install = function(Vue) {
   Vue.component(Header.name, Header)
   Vue.component(Tabbar.name, Tabbar)
   Vue.component(TabItem.name, TabItem)
+  Vue.component(TabContainer.name, TabContainer)
+  Vue.component(TabContainerItem.name, TabContainerItem)
 
   Vue.$Toast = Vue.prototype.$Toast = Toast
   Vue.$ActionSheet = Vue.prototype.$ActionSheet = ActionSheet
@@ -79,5 +83,7 @@ export {
   Scroller,
   Header,
   Tabbar,
-  TabItem
+  TabItem,
+  TabContainer,
+  TabContainerItem
 }
