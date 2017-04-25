@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="button-container">
-    <app-header title="Button" returnUrl="#/"></app-header>
+    <wd-header title="Button" fixed>
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <hr />
     <hr />
     <hr />

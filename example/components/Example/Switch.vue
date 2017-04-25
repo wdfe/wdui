@@ -1,6 +1,10 @@
 <template>
   <div class="switch-page">
-    <app-header title="Swtich" returnUrl="#/"></app-header>
+    <wd-header title="Switch">
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <div class="form-item">
       <span class="status">{{status1}}</span><wd-switch class="switch" @changeValue="update1" :value="value1"></wd-switch>
     </div>

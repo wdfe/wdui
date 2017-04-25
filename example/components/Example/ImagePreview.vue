@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="imagepreview-container">
-    <app-header title="ImagePreview" returnUrl="#/"></app-header>
+    <wd-header title="ImagePreview" fixed>
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <wd-button type="primary" @click.native="openImagePreview1">默认 ImagePreview</wd-button>
     <br>
     <wd-button type="primary" @click.native="openImagePreview2">ImagePreview 自动关闭</wd-button>

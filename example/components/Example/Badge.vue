@@ -19,7 +19,7 @@
       <p slot="right"><wd-badge value="NEW"></wd-badge></p>
     </wd-cell>
     <wd-cell title="带描边">
-      <p slot="right" class="border-example"><wd-badge value="8" border></wd-badge></p>
+      <p slot="right" class="border-example"><wd-badge value="1" border></wd-badge></p>
     </wd-cell>
   </div>
 </template>
@@ -51,11 +51,10 @@ export default {
   }
   .border-example {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     height: 100%;
-    width: 90px;
-    padding-right: 10px;
+    width: 100px;
     background-color: #C60A1E;
   }
 }

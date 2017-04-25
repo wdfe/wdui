@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="toast-container">
-    <app-header title="Toast" returnUrl="#/"></app-header>
+    <wd-header title="Toast" fixed>
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <wd-button type="primary" @click.native="showToast1">弹层</wd-button>
     <br>
     <wd-button type="primary" @click.native="showToast2">icon弹层</wd-button>

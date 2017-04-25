@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="radio-container">
-    <app-header title="Radio" returnUrl="#/"></app-header>
+    <wd-header title="Radio" fixed>
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <div>
       <p class="radio-header">RadioGroup组件</p>
      <wd-radiogroup :listData="lists" :name="'group1'" v-model="value1"></wd-radiogroup>

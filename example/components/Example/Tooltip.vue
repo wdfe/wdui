@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="tooltip-container">
-    <app-header title="Tooltip" returnUrl="#/"></app-header>
+    <wd-header title="Tooltip" fixed>
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <wd-button id="locator1" type="primary" @click.native="flag1 = true">默认 tooltip</wd-button>
     <br>
     <wd-button id="locator2" type="primary" @click.native="flag2 = true">默认 tooltip</wd-button>

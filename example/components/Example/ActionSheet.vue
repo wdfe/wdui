@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="actionsheet-container">
-    <app-header title="ActionSheet" returnUrl="#/"></app-header>
+    <wd-header title="ActionSheet" fixed>
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <wd-button @click.native="showActionSheet1">ActionSheet-单列居中版</wd-button>
     <wd-button @click.native="showActionSheet2">ActionSheet-radio版</wd-button>
     <wd-button @click.native="showActionSheet3">ActionSheet-checklist两列版</wd-button>

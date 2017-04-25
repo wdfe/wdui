@@ -1,6 +1,10 @@
 <template>
   <div class="scroller-container loadmore-container page-infinite">
-    <app-header title="Scroller" returnUrl="#/scroller"></app-header>
+    <wd-header title="Scroller">
+      <router-link to="/scroller" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <div class="page-infinite-wrapper">
       <wd-scroller
         :on-load="loadData"

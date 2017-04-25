@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="popup-container">
-    <app-header title="Popup" returnUrl="#/"></app-header>
+    <wd-header title="Popup" fixed>
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <wd-button type="primary" @click.native="bottom = true">Popup bottom</wd-button>
     <br>
     <wd-button type="primary" @click.native="top = true">Popup top</wd-button>

@@ -11,10 +11,8 @@
       <wd-tab-container-item tabId="tab3">tab3 内容</wd-tab-container-item>
       <wd-tab-container-item tabId="tab4">tab4 内容</wd-tab-container-item>
     </wd-tab-container>
-    <div class="row">
-      <span>当前选中Tab</span>
-      <span>{{ selectedTabId }}</span>
-    </div>
+    <br>
+    <wd-cell title="当前选中Tab" :value="selectedTabId"></wd-cell>
     <wd-tabbar v-model="selectedTabId" fixed>
       <wd-tab-item tabId="tab1">
         <div slot="icon" class="icon"></div>
@@ -70,16 +68,6 @@ export default {
   }
   .active {
     background-color: #dddddd;
-  }
-  .row {
-    display: flex;
-    margin-top: 20px;
-    padding: 0 20px;
-    height: 80px;
-    line-height: 80px;
-    font-size: 28px;
-    background-color: #FFF;
-    justify-content: space-between;
   }
   .tab-container {
     margin-top: 20px;

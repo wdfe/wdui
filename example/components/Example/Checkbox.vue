@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="checkbox-container">
-    <app-header title="Checkbox" returnUrl="#/"></app-header>
+    <wd-header title="Checkbox" fixed>
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <div class="wd-checklist">
       <p class="radio-header">CheckGroup组件</p>
       <wd-checkboxgroup :listData="lists1" v-model="value1"></wd-checkboxgroup>

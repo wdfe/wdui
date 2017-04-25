@@ -1,6 +1,10 @@
 <template lang="html">
 	<div class="scroll-container">
-    <app-header title="Scroller" returnUrl="#/"></app-header>
+    <wd-header title="Scroller">
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
 		<ul>
 			<li v-for="item in scrollerList">
 					<router-link :to="`/scroller/${item.toLowerCase()}`">

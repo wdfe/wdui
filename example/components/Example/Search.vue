@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="search-container">
-    <app-header title="Search" returnUrl="#/"></app-header>
+    <wd-header title="Search">
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <div style="width:100%" class="search-wrap">
       <wd-search
         @callback="doSearch"

@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="picker-container">
-    <app-header title="Picker" returnUrl="#/"></app-header>
+    <wd-header title="Picker" fixed>
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <wd-button @click.native="showPicker">单行 Picker 示例</wd-button>
     <wd-button @click.native="showPicker2">多行动态 Picker 示例</wd-button>
   </div>

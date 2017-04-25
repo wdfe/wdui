@@ -1,16 +1,11 @@
 <template>
   <div class="index-container">
-    <app-header title="Components" disableReturn></app-header>
-    <router-link :to="`/${item.toLowerCase()}`" v-for="item in components">
-      <cell :content="item"></cell>
-    </router-link>
+    <wd-header title="Components"></wd-header>
+    <wd-cell :title="item" :to="`#/${item.toLowerCase()}`" v-for="item in components"></wd-cell>
   </div>
 </template>
 
 <script>
-import AppHeader from './AppHeader.vue'
-import Cell from './Cell.vue'
-
 export default {
   data() {
     return {
@@ -38,17 +33,12 @@ export default {
         'Navbar'
       ]
     }
-  },
-  components: {
-    'app-header': AppHeader,
-    'cell': Cell
-  },
-  mounted() {
-  },
-  created: function(){},
-  methods: {}
+  }
 }
 </script>
-<style lang="sass">
 
+<style lang="sass">
+.icon-zuosanjiao {
+  color: #fff;
+}
 </style>

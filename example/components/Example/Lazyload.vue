@@ -1,6 +1,10 @@
 <template>
   <div class="lazyload-container">
-    <app-header title="Lazyload" returnUrl="#/"></app-header>
+    <wd-header title="Lazyload" fixed>
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <ul>
       <li v-for="item in list">
         <img v-lazy="item">

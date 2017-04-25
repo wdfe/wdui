@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="messagebox-container">
-    <app-header title="MessageBox" returnUrl="#/"></app-header>
+    <wd-header title="MessageBox" fixed>
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <wd-button @click.native="showAlert">Alert 示例</wd-button>
     <wd-button @click.native="showConfirm">Confirm 示例</wd-button>
     <wd-button @click.native="showPrompt">Prompt 示例</wd-button>

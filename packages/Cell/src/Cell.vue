@@ -60,12 +60,12 @@ $cell-right-color: #9a9a9a;
     margin-left: $cell-left-margin;
     height: 100%;
     box-sizing: border-box;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15); /* px */
+    border-top: 1px solid rgba(0, 0, 0, 0.15); /* px */
   }
 
-  &:last-child {
+  &:first-child {
     .wd-cell-inner-wrapper {
-      border-bottom: none;
+      border-top: none;
     }
   }
   .wd-cell-left-wrapper {
@@ -93,6 +93,12 @@ $cell-right-color: #9a9a9a;
       width: 32px;
       height: 32px;
     }
+  }
+}
+
+*:not(.wd-cell) + .wd-cell {
+  .wd-cell-inner-wrapper {
+    border-top: none;
   }
 }
 </style>

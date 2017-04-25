@@ -1,6 +1,10 @@
 <template>
   <div class="component-wrapper">
-    <app-header title="Swipe" returnUrl="#/"></app-header>
+    <wd-header title="Swipe">
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <div class="swipe-wrapper">
       <h2 class="swipe-title">基础用法</h2>
       <wd-swipe class="swipe">

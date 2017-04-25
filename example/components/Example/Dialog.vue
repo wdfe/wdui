@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="dialog-area">
-    <app-header title="Dialog" returnUrl="#/"></app-header>
+    <wd-header title="Dialog" fixed>
+      <router-link to="/" slot="left" class="link">
+        <span class="iconfont icon-zuosanjiao"></span>
+      </router-link>
+    </wd-header>
     <wd-dialog v-model="dialog">
       <span class="dialog-text">Dialog 弹出一个对话框，内容可以是任意的，可以定制性更大的场景，v-model控制组件的显示。</span>
     </wd-dialog>
