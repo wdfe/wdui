@@ -6,7 +6,7 @@
         <p class="wd-picker-header-confirm" @click="onConfirm">{{ confirmText }}</p>
       </header>
       <div class="wd-picker-slots-container" :style="`height: ${containerHeight}px;`">
-        <wd-picker-slot v-for="(slot, index) in slots" @getItemHeight="setItemHeight" @change="slotChangeHandler" :slotIndex="index" :showItemCount="showItemCount" :content="slot.content" :type="slot.type" :values="slot.values" :flex="slot.flex" :textAlign="slot.textAlign" :defaultValue="slot.defaultValue" :ref="'slot' + index"></wd-picker-slot>
+        <wd-picker-slot v-for="(slot, index) in slots" @getItemHeight="setItemHeight" @change="slotChangeHandler" :slotIndex="index" :showItemCount="showItemCount" :content="slot.content" :type="slot.type" :values="slot.values" :flex="slot.flex" :textAlign="slot.textAlign" :key="'slot' + index" :defaultValue="slot.defaultValue" :ref="'slot' + index"></wd-picker-slot>
         <div class="wd-picker-slots-fence-upline"></div>
         <div class="wd-picker-slots-fence-downline"></div>
       </div>

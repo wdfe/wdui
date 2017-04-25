@@ -1,7 +1,7 @@
 <template>
   <div class="index-container">
     <wd-header title="Components"></wd-header>
-    <wd-cell :title="item" :to="`#/${item.toLowerCase()}`" v-for="item in components"></wd-cell>
+    <wd-cell :title="item" :to="`#/${item.toLowerCase()}`" v-for="item in components" :key="item"></wd-cell>
   </div>
 </template>
 
@@ -28,9 +28,9 @@ export default {
         'Scroller',
         'Header',
         'Tabbar',
+        'Navbar',
         'Cell',
-        'Badge',
-        'Navbar'
+        'Badge'
       ]
     }
   }
