@@ -2,8 +2,8 @@
   <div class="wd-tab-item"
     :style="tabItemStyle"
     @click="tabItemClickHandler"
-    :class="{active: active}">
-    <div class="wd-tab-item-icon-wrapper" v-if="isIconShow">
+    :class="{active: active, 'navbar-active': navbarActive, 'tabbar-active': tabbarActive}">
+    <div class="wd-tab-item-icon-wrapper" v-if="isAttachToTabbar">
       <slot name="icon"></slot>
     </div>
     <slot></slot>
@@ -26,14 +26,23 @@ export default {
     tabItemStyle() {
       return {
         flex: this.flex,
-        flexDirection: this.isIconShow ? 'column' : 'row'
+        flexDirection: this.isAttachToTabbar ? 'column' : 'row'
       }
     },
     active() {
       return this.$parent.value === this.tabId
     },
-    isIconShow() {
+    isAttachToTabbar() {
       return this.$parent.$options._componentTag === 'wd-tabbar'
+    },
+    isAttachToNavbar() {
+      return this.$parent.$options._componentTag === 'wd-navbar'
+    },
+    navbarActive() {
+      return this.isAttachToNavbar && this.active
+    },
+    tabbarActive() {
+      return this.isAttachToTabbar && this.active
     }
   },
   methods: {
@@ -61,6 +70,11 @@ export default {
     img {
       width: 100%;
     }
+  }
+
+  &.navbar-active {
+    color: #c6021e;
+    border-bottom: 4px solid #C6021E;
   }
 }
 </style>

@@ -34,7 +34,8 @@ export default {
         'Header',
         'Tabbar',
         'Cell',
-        'Badge'
+        'Badge',
+        'Navbar'
       ]
     }
   },

@@ -24,6 +24,7 @@ import Header from './components/Example/Header.vue'
 import Tabbar from './components/Example/Tabbar.vue'
 import Cell from './components/Example/Cell.vue'
 import Badge from './components/Example/Badge.vue'
+import Navbar from './components/Example/Navbar.vue'
 
 export default {
   routes: [
@@ -165,6 +166,11 @@ export default {
       path: '/badge',
       name: 'Badge',
       component: Badge
+    },
+    {
+      path: '/navbar',
+      name: 'Navbar',
+      component: Navbar
     }
   ]
 }
