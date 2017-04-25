@@ -1,6 +1,7 @@
 .wd-swipe {
   overflow: hidden;
   position: relative;
+  height: 300px;
 }
 
 .wd-swipe-items-wrap {

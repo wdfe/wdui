@@ -67,12 +67,11 @@ $wd-navbar-tab-item-horizontal-offset: 28px;
   justify-content: center;
 
   .wd-tab-item-icon-wrapper {
-    margin-bottom: 6px;
-    width: $wd-tab-item-icon-size;
-    height: $wd-tab-item-icon-size;
 
     img {
-      width: 100%;
+      margin-bottom: 6px;
+      width: $wd-tab-item-icon-size;
+      height: $wd-tab-item-icon-size;
     }
   }
 

@@ -15,19 +15,19 @@
     <wd-cell title="当前选中Tab" :value="selectedTabId"></wd-cell>
     <wd-tabbar v-model="selectedTabId" fixed>
       <wd-tab-item tabId="tab1">
-        <div slot="icon" class="icon"></div>
+        <img slot="icon" class="icon"></img>
         tab1
       </wd-tab-item>
       <wd-tab-item tabId="tab2">
-        <div slot="icon" class="icon"></div>
+        <img slot="icon" class="icon"></img>
         tab2
       </wd-tab-item>
       <wd-tab-item tabId="tab3">
-        <div slot="icon" class="icon"></div>
+        <img slot="icon" class="icon"></img>
         tab3
       </wd-tab-item>
       <wd-tab-item tabId="tab4">
-        <div slot="icon" class="icon"></div>
+        <img slot="icon" class="icon"></img>
         tab4
       </wd-tab-item>
     </wd-tabbar>

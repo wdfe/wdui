@@ -56,7 +56,8 @@
 <script>
 </script>
 
-<style lang="css">
+<style lang="sass">
+.component-wrapper {
   .swipe {
     height: 420px;
     width: 750px;
@@ -81,4 +82,5 @@
   .wd-swipe-items-wrap > section:nth-child(4) {
     background: green;
   }
+}
 </style>

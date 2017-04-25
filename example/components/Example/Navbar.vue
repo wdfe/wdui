@@ -42,6 +42,7 @@ export default {
     color: #fff;
   }
   .tab-container {
+    display: block;
     padding: 20px;
     height: 500px;
     background-color: #FFF;
