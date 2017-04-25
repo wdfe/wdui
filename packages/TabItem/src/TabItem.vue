@@ -2,7 +2,7 @@
   <div class="wd-tab-item"
     :style="tabItemStyle"
     @click="tabItemClickHandler"
-    :class="{active: active, 'navbar-active': navbarActive, 'tabbar-active': tabbarActive}">
+    :class="{active: active, 'navbar-active': navbarActive, 'tabbar-active': tabbarActive, 'navbar-tab-item': isAttachToNavbar, 'tabbar-tab-item': isAttachToTabbar}">
     <div class="wd-tab-item-icon-wrapper" v-if="isAttachToTabbar">
       <slot name="icon"></slot>
     </div>
@@ -55,6 +55,10 @@ export default {
 
 <style lang="sass">
 
+$wd-tab-item-icon-size: 64px;
+$wd-navbar-tab-item-active-color: #c6021e;
+$wd-navbar-tab-item-horizontal-offset: 28px;
+
 .wd-tab-item {
   display: flex;
   height: 100%;
@@ -64,8 +68,8 @@ export default {
 
   .wd-tab-item-icon-wrapper {
     margin-bottom: 6px;
-    width: 64px;
-    height: 64px;
+    width: $wd-tab-item-icon-size;
+    height: $wd-tab-item-icon-size;
 
     img {
       width: 100%;
@@ -73,8 +77,11 @@ export default {
   }
 
   &.navbar-active {
-    color: #c6021e;
-    border-bottom: 4px solid #C6021E;
+    color: $wd-navbar-tab-item-active-color;
+    border-bottom: 4px solid $wd-navbar-tab-item-active-color;
+  }
+  &.navbar-tab-item {
+    margin: 0 $wd-navbar-tab-item-horizontal-offset;
   }
 }
 </style>
