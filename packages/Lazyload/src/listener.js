@@ -84,15 +84,15 @@ export default class ReactiveListener {
   render(state, notify) {
     let src
     switch (state) {
-    case 'loading':
-      src = this.loading
-      break
-    case 'error':
-      src = this.error
-      break
-    default:
-      src = this.src
-      break
+      case 'loading':
+        src = this.loading
+        break
+      case 'error':
+        src = this.error
+        break
+      default:
+        src = this.src
+        break
     }
 
     this.elRenderer({
