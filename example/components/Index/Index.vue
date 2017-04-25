@@ -31,7 +31,8 @@ export default {
         'ImagePreview',
         'ActionSheet',
         'Scroller',
-        'Header'
+        'Header',
+        'Tabbar'
       ]
     }
   },

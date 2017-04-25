@@ -30,7 +30,9 @@ export default {
       if(this.fixed) {
         return {
           position: 'fixed',
-          zIndex: 9999
+          zIndex: 9999,
+          top: 0,
+          left: 0
         }
       }else {
         return {

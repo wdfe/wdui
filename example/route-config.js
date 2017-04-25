@@ -21,6 +21,7 @@ import RefreshAndLoadmore from './components/Example/Scroller/RefreshAndLoadmore
 import NoData from './components/Example/Scroller/NoData.vue'
 import MultiScroll from './components/Example/Scroller/MultiScroll.vue'
 import Header from './components/Example/Header.vue'
+import Tabbar from './components/Example/Tabbar.vue'
 
 export default {
   routes: [
@@ -147,6 +148,11 @@ export default {
       path: '/scroller/multiscroll',
       name: 'MultiScroll',
       component: MultiScroll
+    },
+    {
+      path: '/tabbar',
+      name: 'Tabbar',
+      component: Tabbar
     }
   ]
 }

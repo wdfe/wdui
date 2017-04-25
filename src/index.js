@@ -18,6 +18,8 @@ import Tooltip from '../packages/Tooltip/index.js'
 import ActionSheet from '../packages/ActionSheet/index.js'
 import Scroller from '../packages/Scroller/index.js'
 import Header from '../packages/Header/index.js'
+import Tabbar from '../packages/Tabbar/index.js'
+import TabItem from '../packages/TabItem/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -39,6 +41,8 @@ const install = function(Vue) {
   Vue.component(CheckboxGroup.name, CheckboxGroup)
   Vue.component(Scroller.name, Scroller)
   Vue.component(Header.name, Header)
+  Vue.component(Tabbar.name, Tabbar)
+  Vue.component(TabItem.name, TabItem)
 
   Vue.$Toast = Vue.prototype.$Toast = Toast
   Vue.$ActionSheet = Vue.prototype.$ActionSheet = ActionSheet
@@ -73,5 +77,7 @@ export {
   Tooltip,
   ActionSheet,
   Scroller,
-  Header
+  Header,
+  Tabbar,
+  TabItem
 }

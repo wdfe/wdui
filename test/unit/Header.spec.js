@@ -5,7 +5,7 @@ import {createVueInstance, destroyVM} from './utils.js'
 
 Vue.component(Header.name, Header)
 
-describe('Dialog', () => {
+describe('Header', () => {
 
   let vm
 
@@ -28,7 +28,7 @@ describe('Dialog', () => {
     })
   })
 
-  it('initial 左侧容器', done => {
+  it('left slot 左侧容器', done => {
     vm = createVueInstance({
       template: `
         <wd-header title="左侧容器" ref="header">
@@ -49,7 +49,7 @@ describe('Dialog', () => {
     })
   })
 
-  it('initial 右侧容器', done => {
+  it('right slot 右侧容器', done => {
     vm = createVueInstance({
       template: `
         <wd-header title="右侧容器" ref="header">
@@ -70,7 +70,7 @@ describe('Dialog', () => {
     })
   })
 
-  it('initial 复杂样式标题', done => {
+  it('title slot 复杂样式标题', done => {
     vm = createVueInstance({
       template: `
         <wd-header ref="header">
@@ -87,7 +87,7 @@ describe('Dialog', () => {
     })
   })
 
-  it('initial 悬挂标题', done => {
+  it('fixed 悬挂标题', done => {
     vm = createVueInstance({
       template: `
         <wd-header fixed title="悬挂标题" ref="header"></wd-header>
