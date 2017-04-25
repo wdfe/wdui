@@ -19,6 +19,14 @@ import Switch from '../../lib/switch.js'
 import Toast from '../../lib/toast.js'
 import Tooltip from '../../lib/tooltip.js'
 import Scroller from '../../lib/scroller.js'
+import Header from '../../lib/header.js'
+import Tabbar from '../../lib/tabbar.js'
+import TabItem from '../../lib/tab-item.js'
+import TabContainer from '../../lib/tab-container.js'
+import TabContainerItem from '../../lib/tab-container-item.js'
+import Badge from '../../lib/badge.js'
+import Navbar from '../../lib/navbar.js'
+import Cell from '../../lib/cell.js'
 
 describe('Lib', () => {
 
@@ -105,6 +113,38 @@ describe('Lib', () => {
 
   it('Lib Scroller 单独引入', () => {
     expect(Scroller).to.exist
+  })
+
+  it('Lib Header 单独引入', () => {
+    expect(Header).to.exist
+  })
+
+  it('Lib Tabbar 单独引入', () => {
+    expect(Tabbar).to.exist
+  })
+
+  it('Lib TabItem 单独引入', () => {
+    expect(TabItem).to.exist
+  })
+
+  it('Lib TabContainer 单独引入', () => {
+    expect(TabContainer).to.exist
+  })
+
+  it('Lib TabContainerItem 单独引入', () => {
+    expect(TabContainerItem).to.exist
+  })
+
+  it('Lib Badge 单独引入', () => {
+    expect(Badge).to.exist
+  })
+
+  it('Lib Navbar 单独引入', () => {
+    expect(Navbar).to.exist
+  })
+
+  it('Lib Cell 单独引入', () => {
+    expect(Cell).to.exist
   })
 
 })
