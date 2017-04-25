@@ -22,6 +22,7 @@ import NoData from './components/Example/Scroller/NoData.vue'
 import MultiScroll from './components/Example/Scroller/MultiScroll.vue'
 import Header from './components/Example/Header.vue'
 import Tabbar from './components/Example/Tabbar.vue'
+import Cell from './components/Example/Cell.vue'
 
 export default {
   routes: [
@@ -123,6 +124,11 @@ export default {
       path: '/header',
       name: 'Header',
       component: Header
+    },
+    {
+      path: '/cell',
+      name: 'Cell',
+      component: Cell
     },
     {
       path: '/scroller/refresh',

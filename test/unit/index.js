@@ -4,7 +4,7 @@ Function.prototype.bind = require('function-bind')
 
 // require all test files (files that ends with .spec.js)
 // const testsContext = require.context('.', true, /\.spec$/)
-const testsContext = require.context('.', true, /TabContainer\.spec$/)
+const testsContext = require.context('.', true, /Cell\.spec$/)
 testsContext.keys().forEach(testsContext)
 
 // require all src files except main.js for coverage.

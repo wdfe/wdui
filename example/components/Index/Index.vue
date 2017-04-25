@@ -32,7 +32,8 @@ export default {
         'ActionSheet',
         'Scroller',
         'Header',
-        'Tabbar'
+        'Tabbar',
+        'Cell'
       ]
     }
   },
