@@ -4,7 +4,6 @@
       <div class="wd-cell-left-wrapper">
         <slot name="left">
           {{ title }}
-          <div v-if="reminding" class="reminder"></div>
         </slot>
       </div>
       <div class="wd-cell-right-wrapper">
@@ -29,10 +28,6 @@ export default {
     },
     to: {
       type: String
-    },
-    reminding: {
-      type: Boolean,
-      default: false
     }
   },
   methods: {
@@ -82,15 +77,6 @@ $cell-right-color: #9a9a9a;
     height: 100%;
     font-size: $cell-left-font-size;
     color: $cell-left-color;
-
-    .reminder {
-      display: inline-block;
-      margin-left: 12px;
-      width: 16px;
-      height: 16px;
-      background-color: #F0412F;
-      border-radius: 50%;
-    }
   }
   .wd-cell-right-wrapper {
     position: absolute;

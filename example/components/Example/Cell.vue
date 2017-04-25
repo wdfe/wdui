@@ -12,7 +12,6 @@
     <section>
       <wd-cell title="标准标题"></wd-cell>
       <wd-cell title="标准标题" value="辅助说明"></wd-cell>
-      <wd-cell title="带小红点提醒的标题" value="辅助说明" reminding></wd-cell>
       <wd-cell title="带有链接" value="跳转回首页" to="/#/"></wd-cell>
       <wd-cell>
         <p slot="left"><img src="../../../src/assets/images/check.png" class="left-icon">自定义左侧</p>

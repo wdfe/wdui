@@ -23,6 +23,7 @@ import TabItem from '../packages/TabItem/index.js'
 import TabContainer from '../packages/TabContainer/index.js'
 import TabContainerItem from '../packages/TabContainerItem/index.js'
 import Cell from '../packages/Cell/index.js'
+import Badge from '../packages/Badge/index.js'
 
 const install = function(Vue) {
   if(install.installed) {
@@ -49,6 +50,7 @@ const install = function(Vue) {
   Vue.component(TabContainer.name, TabContainer)
   Vue.component(TabContainerItem.name, TabContainerItem)
   Vue.component(Cell.name, Cell)
+  Vue.component(Badge.name, Badge)
 
   Vue.$Toast = Vue.prototype.$Toast = Toast
   Vue.$ActionSheet = Vue.prototype.$ActionSheet = ActionSheet
@@ -88,5 +90,6 @@ export {
   TabItem,
   TabContainer,
   TabContainerItem,
-  Cell
+  Cell,
+  Badge
 }

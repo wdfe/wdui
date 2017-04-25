@@ -23,6 +23,7 @@ import MultiScroll from './components/Example/Scroller/MultiScroll.vue'
 import Header from './components/Example/Header.vue'
 import Tabbar from './components/Example/Tabbar.vue'
 import Cell from './components/Example/Cell.vue'
+import Badge from './components/Example/Badge.vue'
 
 export default {
   routes: [
@@ -159,6 +160,11 @@ export default {
       path: '/tabbar',
       name: 'Tabbar',
       component: Tabbar
+    },
+    {
+      path: '/badge',
+      name: 'Badge',
+      component: Badge
     }
   ]
 }

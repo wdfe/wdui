@@ -29,22 +29,6 @@ describe('Cell', () => {
     })
   })
 
-  it('reminding 小红点提醒', done => {
-    vm = createVueInstance({
-      template: `
-        <wd-cell title="标准标题" ref="cell" reminding></wd-cell>
-      `
-    })
-    Vue.nextTick(() => {
-      let $dom = vm.$refs.cell.$el
-      let $left = $dom.querySelector('.wd-cell-left-wrapper')
-      let $reminder = $dom.querySelector('.reminder')
-      expect($left.textContent.trim()).to.equal('标准标题')
-      expect($reminder).to.exist
-      done()
-    })
-  })
-
   it('to 带链接', done => {
     vm = createVueInstance({
       template: `

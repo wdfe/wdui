@@ -33,7 +33,8 @@ export default {
         'Scroller',
         'Header',
         'Tabbar',
-        'Cell'
+        'Cell',
+        'Badge'
       ]
     }
   },
