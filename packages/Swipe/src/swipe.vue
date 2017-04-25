@@ -96,14 +96,14 @@
       if (this.keyboard) {
         window.addEventListener('keydown', function(e) {
           switch (e.keyCode) {
-          case 37: // ArrowLeft
-          case 38: // ArrowUp
-            self.prev()
-            break
-          case 39: // ArrowRight
-          case 40: // ArrowDown
-            self.next()
-            break
+            case 37: // ArrowLeft
+            case 38: // ArrowUp
+              self.prev()
+              break
+            case 39: // ArrowRight
+            case 40: // ArrowDown
+              self.next()
+              break
           }
 
           if (e.keyCode in [37, 38, 39, 40] && this.prevent) {

@@ -56,22 +56,22 @@ export default {
         zIndex: this.zIndex
       }
       switch (this.position) {
-      case 'bottom':
-        delete style.top
-        style.height = this.cover
-        break
-      case 'top':
-        delete style.bottom
-        style.height = this.cover
-        break
-      case 'left':
-        delete style.right
-        style.width = this.cover
-        break
-      case 'right':
-        delete style.left
-        style.width = this.cover
-        break
+        case 'bottom':
+          delete style.top
+          style.height = this.cover
+          break
+        case 'top':
+          delete style.bottom
+          style.height = this.cover
+          break
+        case 'left':
+          delete style.right
+          style.width = this.cover
+          break
+        case 'right':
+          delete style.left
+          style.width = this.cover
+          break
       }
       return style
     }

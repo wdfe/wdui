@@ -125,14 +125,14 @@ export default {
         position = (topSurplus > bottomSurplus) ? 'top' : 'bottom'
       }
       switch(position) {
-      case 'top':
-        locationPoint[0] = (this.locatorClientRect.left + this.locatorClientRect.right) / 2
-        locationPoint[1] = (this.locatorClientRect.top)
-        break
-      case 'bottom':
-        locationPoint[0] = (this.locatorClientRect.left + this.locatorClientRect.right) / 2
-        locationPoint[1] = (this.locatorClientRect.bottom)
-        break
+        case 'top':
+          locationPoint[0] = (this.locatorClientRect.left + this.locatorClientRect.right) / 2
+          locationPoint[1] = (this.locatorClientRect.top)
+          break
+        case 'bottom':
+          locationPoint[0] = (this.locatorClientRect.left + this.locatorClientRect.right) / 2
+          locationPoint[1] = (this.locatorClientRect.bottom)
+          break
       }
 
       //根据 tooltip 尺寸计算 tooltip 最佳位置

@@ -181,8 +181,8 @@ export function animate(elem, opts) {
       wrappedCallback.call(elem)
     }, 0)
   }
-  
+
   return elem
 }
 
-export var transformName = transform
+export const transformName = transform
