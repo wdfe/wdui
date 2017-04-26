@@ -1,8 +1,16 @@
 {
   "name": "wdui",
   "version": "0.6.0",
-  "description": "wdui",
+  "description": "Mobile UI Components Library based on Vue 2.0",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wdfe/wdui"
+  },
+  "homepage": "https://github.com/wdfe/wdui#readme",
+  "bugs": {
+    "url": "https://github.com/wdfe/wdui/issues"
+  },
   "scripts": {
     "test": "karma start karma.conf.js --single-run",
     "test:watch": "karma start karma.conf.js",
