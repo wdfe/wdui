@@ -1,5 +1,7 @@
 # WDUI
 
+[![Build Status](https://travis-ci.org/wdfe/wdui.svg?branch=dev)](https://travis-ci.org/wdfe/wdui)
+
 ### 目录结构
 
 ```bash
