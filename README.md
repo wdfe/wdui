@@ -1,6 +1,7 @@
 # WDUI
 
 [![Build Status](https://travis-ci.org/wdfe/wdui.svg?branch=dev)](https://travis-ci.org/wdfe/wdui)
+[![Coverage Status](https://coveralls.io/repos/github/wdfe/wdui/badge.svg)](https://coveralls.io/github/wdfe/wdui)
 
 ### 目录结构
 
