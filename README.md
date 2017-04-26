@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/wdfe/wdui.svg?branch=dev)](https://travis-ci.org/wdfe/wdui)
 [![Coverage Status](https://coveralls.io/repos/github/wdfe/wdui/badge.svg)](https://coveralls.io/github/wdfe/wdui)
+[![npm package](https://img.shields.io/npm/v/wdui.svg)](https://www.npmjs.org/package/wdui)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ### 目录结构
 
