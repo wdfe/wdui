@@ -1,4 +1,4 @@
-# ![WDUI](https://cloud.githubusercontent.com/assets/6868950/25426424/a7defd44-2aa1-11e7-9910-744804626180.png)
+# WDUI
 
 [![Build Status](https://travis-ci.org/wdfe/wdui.svg?branch=dev)](https://travis-ci.org/wdfe/wdui)
 [![Coverage Status](https://coveralls.io/repos/github/wdfe/wdui/badge.svg)](https://coveralls.io/github/wdfe/wdui)
