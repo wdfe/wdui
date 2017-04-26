@@ -7,7 +7,7 @@
 
 - [项目主页](https://wdfe.github.io/wdui/#/)
 
-### 安装
+## 安装
 
 ```bash
 npm i wdui@latest --save-dev
@@ -49,15 +49,15 @@ export default {
 }
 ```
 
-### Tips
+## Tips
 
  - 全部组件使用 REM 布局实现多终端适配，使用本组件库时请搭配使用 [lib-flexible](https://github.com/amfe/lib-flexible) 方案。
  - 兼容性: Android 4.4 + ， iOS 6 +
 
-### Contribute
+## Contribute
 
 请参考 [Contribute Guide](https://github.com/wdfe/wdui/blob/dev/CONTRIBUTING.md) 后提交 Pull Request。
 
-### License
+## License
 
 MIT
