@@ -64,7 +64,7 @@ $cell-right-color: #9a9a9a;
 
   & + .wd-cell {
     .wd-cell-inner-wrapper {
-      border-top: 1px solid rgba(0, 0, 0, 0.15); /* px */
+      border-top: 1px solid rgba(0, 0, 0, 0.15); /* no */
     }
   }
 
