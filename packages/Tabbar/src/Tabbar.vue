@@ -49,7 +49,7 @@ $tabbar-border-color: #dddddd;
   height: $tabbar-height;
   line-height: $tabbar-height;
   background-color: $tabbar-background-color;
-  font-size: $tabbar-font-size; /* px */
+  font-size: $tabbar-font-size;
   color: $tabbar-color;
   box-sizing: border-box;
   border-top: 1px solid $tabbar-border-color; /* no */

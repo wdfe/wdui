@@ -126,9 +126,9 @@ export default {
     .wd-actionsheet-listitem {
       position: relative;
       padding-right: 40px;
-      height: $content-line-height;                   /* px */
-      line-height: $content-line-height;              /* px */
-      font-size: $content-text-size;                  /* px */
+      height: $content-line-height;
+      line-height: $content-line-height;
+      font-size: $content-text-size;
       color: $content-text-color;
       border-top: 1px solid $border-color;            /* no */
       span {
@@ -136,17 +136,17 @@ export default {
         &.wd-item-sub {
           position: absolute;
           right: 40px;
-          font-size: $header-text-size;               /* px */
-          color: $header-text-color;                  /* px */
+          font-size: $header-text-size;
+          color: $header-text-color;
         }
       }
       &.checked:after {
         content: "";
-        width: 10px;                                  /* px */
-        height: 18px;                                 /* px */
+        width: 10px;
+        height: 18px;
         position: absolute;
         right: 43px;
-        top: 43px;                                    /* px */
+        top: 43px;
         border-bottom: 2px solid #e9071f;             /* no */
         border-right: 2px solid #e9071f;              /* no */
         -webkit-transform: rotate(45deg);
@@ -158,14 +158,14 @@ export default {
       label {
         overflow: hidden;
         display: block;
-        height: $content-line-height;                   /* px */
+        height: $content-line-height;
         .wd-actionsheet-checkbox {
-          height: $content-line-height !important;     /* px */
+          height: $content-line-height !important;
           &.custome-checkbox-item {
             float: none !important;
             margin: 0 !important;
             + span.wd-item-title {
-              margin-left: 16px;                       /* px */
+              margin-left: 16px;
               vertical-align: top;
             }
           }

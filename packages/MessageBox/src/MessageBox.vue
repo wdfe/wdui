@@ -172,13 +172,13 @@ export default {
         margin-bottom: 16px;
         text-align: center;
         align-self: stretch;
-        font-size: $title-font-size; /* px */
+        font-size: $title-font-size;
         line-height: 50px;
         color: $title-color;
         font-weight: bold;
 
         &+.wd-messagebox-content-text {
-          font-size: 28px; /* px */
+          font-size: 28px;
           color: $text-color;
           line-height: 40px;
         }
@@ -187,7 +187,7 @@ export default {
       .wd-messagebox-content-text {
         text-align: center;
         line-height: 50px;
-        font-size: $title-font-size; /* px */
+        font-size: $title-font-size;
       }
 
       input {
@@ -213,7 +213,7 @@ export default {
         height: 88px;
         align-items: center;
         justify-content: center;
-        font-size: $button-font-size; /* px */
+        font-size: $button-font-size;
         color: $button-text-color;
 
         &.disabled {

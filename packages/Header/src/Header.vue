@@ -55,7 +55,7 @@ export default {
   content {
     display: flex;
     justify-content: center;
-    font-size: 36px; /* px */
+    font-size: 36px;
     font-weight: bold;
     color: #fff;
   }
@@ -67,7 +67,7 @@ export default {
     height: 100%;
     display: flex;
     align-items: center;
-    font-size: 28px; /* px */
+    font-size: 28px;
     color: #fff;
   }
 
@@ -78,7 +78,7 @@ export default {
     height: 100%;
     display: flex;
     align-items: center;
-    font-size: 28px; /* px */
+    font-size: 28px;
     color: #fff;
   }
 }

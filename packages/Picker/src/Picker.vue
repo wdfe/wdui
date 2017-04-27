@@ -157,7 +157,7 @@ $fence-color: #cdcdcd;
 
     .wd-picker-header {
       overflow: hidden;
-      line-height: 88px; /* px */
+      line-height: 88px;
       align-items: center;
 
       .wd-picker-header-cancel {
@@ -170,7 +170,7 @@ $fence-color: #cdcdcd;
       &>p {
         padding: 0 40px;
         color: $button-color;
-        font-size: $button-text-size; /* px */
+        font-size: $button-text-size;
       }
     }
     .wd-picker-slots-container {

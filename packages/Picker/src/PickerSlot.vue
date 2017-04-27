@@ -116,6 +116,7 @@ export default {
      * bindEvents 绑定滑动事件
      */
     bindEvents() {
+      /* istanbul ignore next */
       draggable(this.$el, {
         start: (event) => {
           /*
@@ -168,7 +169,7 @@ $selected-text-color: #404040;
 $basic-text-color: #B3B3B3;
 
 .wd-picker-slot {
-  font-size: $slot-text-size; /* px */
+  font-size: $slot-text-size;
   color: $basic-text-color;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
