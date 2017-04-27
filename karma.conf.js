@@ -130,7 +130,7 @@ module.exports = function(config) {
           {
             test: /\.(js)$/,
             loader: 'istanbul-instrumenter-loader',
-            exclude: /node_modules/,
+            exclude: [/node_modules/, /src\/utils/],
             include: /src|packages/,
             enforce: 'post',
             options: {
@@ -151,6 +151,7 @@ module.exports = function(config) {
           },
           {
             test: /\.vue$/,
+            exclude: [/Scroller\.vue/, /Swipe\.vue/],
             loaders: [{
               loader: 'vue-loader',
               options: {
@@ -158,6 +159,16 @@ module.exports = function(config) {
                 preLoaders: {
                   js: 'istanbul-instrumenter-loader?esModules=true'
                 }
+              }
+            }]
+          },
+          {
+            test: /\.vue$/,
+            include: [/Scroller\.vue/, /Swipe\.vue/],
+            loaders: [{
+              loader: 'vue-loader',
+              options: {
+                postcss: [autoprefixer({browsers: ['> 1%', 'ie >= 9', 'iOS >= 6', 'Android >= 2.1']}), px2rem({remUnit: 75})],
               }
             }]
           },
