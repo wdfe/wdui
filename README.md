@@ -58,6 +58,15 @@ export default {
 
 请参考 [Contribute Guide](https://github.com/wdfe/wdui/blob/dev/CONTRIBUTING.md) 后提交 Pull Request。
 
+## Acknowledgements
+
+wdui 开发时曾参考过以下项目:
+
+ - [Element](https://github.com/ElemeFE/element)
+ - [Mint UI](https://github.com/ElemeFE/mint-ui)
+ - [Zynga Scroller](https://github.com/pbakaus/scroller)
+ - [Muse UI](https://github.com/museui/muse-ui)
+
 ## License
 
 MIT
