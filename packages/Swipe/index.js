@@ -1,1 +1,1 @@
-export {default} from './src/swipe.vue'
+export {default} from './src/Swipe.vue'
