@@ -33,7 +33,7 @@ $navbar-border-color: #dddddd;
   height: $navbar-height;
   line-height: $navbar-height;
   background-color: $navbar-background-color;
-  font-size: $navbar-font-size;
+  font-size: $navbar-font-size; /* px */
   color: $navbar-color;
   box-sizing: border-box;
   border-bottom: 1px solid $navbar-border-color; /* no */

@@ -31,7 +31,6 @@ export default {
       type: String,
       default: 'primary',
       validator(value) {
-        /* istanbul ignore next */
         return [
           'primary',
           'gray',
@@ -146,7 +145,7 @@ $button-disabled-opacity: 0.4;
   }
 
   label {
-    font-size: $button-text-size;
+    font-size: $button-text-size; /* px */
   }
 }
 </style>

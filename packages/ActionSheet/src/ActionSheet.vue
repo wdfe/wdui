@@ -135,9 +135,9 @@
     background-color: #FFF;
     .wd-actionsheet-header {
       padding: 0 40px;
-      height: $header-line-height;
-      line-height: $header-line-height;
-      font-size: $header-text-size;
+      height: $header-line-height;                   /* px */
+      line-height: $header-line-height;              /* px */
+      font-size: $header-text-size;                  /* px */
       color: $header-text-color;
     }
     .wd-actionsheet-content {
@@ -149,11 +149,11 @@
       span {
         display: flex;
         flex: 1;
-        height: 104px;
+        height: 104px;                     /* px */
         align-items: center;
         justify-content: center;
         flex-direction: row;
-        font-size: $content-text-size;
+        font-size: $content-text-size;     /* px */
         color: $content-text-color;
         background-color: $button-background-color;
         &:first-child {
