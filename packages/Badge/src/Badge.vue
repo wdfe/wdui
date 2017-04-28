@@ -37,6 +37,7 @@ export default {
   align-items: center;
   padding: 0 12px;
   height: 36px;
+  line-height: 36px;
   min-width: 12px;
   font-size: 24px;
   background-color: #E9071F;

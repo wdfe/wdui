@@ -1,8 +1,16 @@
 {
   "name": "wdui",
-  "version": "0.6.0",
-  "description": "wdui",
+  "version": "0.6.1",
+  "description": "Mobile UI Components Library based on Vue 2.0",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wdfe/wdui"
+  },
+  "homepage": "https://github.com/wdfe/wdui#readme",
+  "bugs": {
+    "url": "https://github.com/wdfe/wdui/issues"
+  },
   "scripts": {
     "test": "karma start karma.conf.js --single-run",
     "test:watch": "karma start karma.conf.js",
@@ -11,7 +19,6 @@
     "build:style": "gulp --gulpfile ./src/assets/styles/gulpfile.js build",
     "build:example": "NODE_ENV=production webpack --config build/webpack.build-example.config.js --display-modules --sort-modules-by size",
     "dev": "webpack-dev-server --inline --config build/webpack.dev.config.js --host 0.0.0.0",
-    "upload": "sh build/upload.sh",
     "lint": "eslint --fix ./packages/**/*.vue ./packages/**/*.js ./src/**/*.js ./src/**/*.vue ./test/**/*.js "
   },
   "author": "wdfe",
@@ -28,10 +35,11 @@
     "babel-runtime": "^6.20.0",
     "chai": "^3.5.0",
     "clean-webpack-plugin": "^0.1.15",
+    "coveralls": "^2.13.0",
     "css-loader": "^0.28.0",
     "es6-promise": "^4.0.5",
     "eslint": "^3.19.0",
-    "eslint-config-wdfe": "http://10.8.96.35:2009/package/eslint-config-wdfe/latest",
+    "eslint-config-wdfe": "^0.3.2",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^2.0.1",
     "file-loader": "^0.11.0",
