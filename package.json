@@ -19,7 +19,8 @@
     "build:style": "gulp --gulpfile ./src/assets/styles/gulpfile.js build",
     "build:example": "NODE_ENV=production webpack --config build/webpack.build-example.config.js --display-modules --sort-modules-by size",
     "dev": "webpack-dev-server --inline --config build/webpack.dev.config.js --host 0.0.0.0",
-    "lint": "eslint --fix ./packages/**/*.vue ./packages/**/*.js ./src/**/*.js ./src/**/*.vue ./test/**/*.js "
+    "lint": "eslint --fix ./packages/**/*.vue ./packages/**/*.js ./src/**/*.js ./src/**/*.vue ./test/**/*.js ",
+    "deploy:demo": "npm run build:example && git checkout gh-pages && cp -r temp/* . && git add . && git commit -m '[chore] update demopage' && git push"
   },
   "author": "wdfe",
   "license": "MIT",
