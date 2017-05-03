@@ -16,6 +16,11 @@ export default {
   components: {
     AppHeader,
     AppContent
+  },
+  created() {
+    if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+      window.location.href = 'https://wdfe.github.io/wdui/demo.html'
+    }
   }
 }
 </script>
