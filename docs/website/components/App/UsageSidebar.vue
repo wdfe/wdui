@@ -3,7 +3,7 @@
     <aside class="usagesidebar-sidebar sidebar">
       <div class="sidebar-item-group">
         <div class="sidebar-item-group-title">使用</div>
-        <div class="sidebar-item" :class="{'active': active === 'Quickstart'}">
+        <div class="sidebar-item" :class="{'active': active === 'quickstart'}">
           <router-link to="/components/quickstart">快速上手</router-link>
         </div>
       </div>

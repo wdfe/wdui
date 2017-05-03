@@ -26,6 +26,7 @@ import Tabbar from '../../../zh-cn/Tabbar.md'
 import Navbar from '../../../zh-cn/Navbar.md'
 import Cell from '../../../zh-cn/Cell.md'
 import Badge from '../../../zh-cn/Badge.md'
+import Quickstart from '../../../zh-cn/Quickstart.md'
 import {highlightInit} from '../../util/utils.js'
 
 const mdList = {
@@ -49,7 +50,8 @@ const mdList = {
   ['Header'.toLowerCase()]: Header,
   ['Tabbar'.toLowerCase()]: Tabbar,
   ['Navbar'.toLowerCase()]: Navbar,
-  ['Cell'.toLowerCase()]: Cell
+  ['Cell'.toLowerCase()]: Cell,
+  ['Quickstart'.toLowerCase()]: Quickstart
 }
 
 const md = new MarkdownIt({
