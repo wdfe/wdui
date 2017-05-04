@@ -5,6 +5,8 @@
         <span class="iconfont icon-zuosanjiao"></span>
       </router-link>
     </wd-header>
+    <br>
+    <br>
     <div class="wd-checklist">
       <p class="radio-header">CheckGroup组件</p>
       <wd-checkboxgroup :listData="lists1" v-model="value1"></wd-checkboxgroup>
