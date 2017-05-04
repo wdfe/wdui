@@ -9,7 +9,7 @@
             <p class="title">微店移动端设计规范</p>
             <p class="desc">我们的设计规范会随着产品的变化而不断升级，对于未来的各种不同的变化，需要提供良好的扩展性。在规范实施稳定后应该有固定的人员进行维护升级，更新样式库。</p>
             <div class="placeholder">
-              <a href="/resource/WDUIStyleGuide.zip" download>
+              <a href="/wdui/resource/WDUIStyleGuide.zip" download>
                 <img src="../../assets/images/resource-guide.png">
               </a>
             </div>
@@ -18,7 +18,7 @@
             <p class="title">UI Kit</p>
             <p class="desc">我们的设计规范会随着产品的变化而不断升级，对于未来的各种不同的变化，需要提供良好的扩展性。在规范实施稳定后应该有固定的人员进行维护升级，更新样式库。</p>
             <div class="placeholder">
-              <a href="/resource/WDUIComponents.zip" download>
+              <a href="/wdui/resource/WDUIComponents.zip" download>
                 <img src="../../assets/images/resource-ui.png">
               </a>
             </div>

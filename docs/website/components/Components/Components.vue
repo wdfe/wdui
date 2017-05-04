@@ -27,6 +27,7 @@ import Navbar from '../../../zh-cn/Navbar.md'
 import Cell from '../../../zh-cn/Cell.md'
 import Badge from '../../../zh-cn/Badge.md'
 import Quickstart from '../../../zh-cn/Quickstart.md'
+import Rem from '../../../zh-cn/Rem.md'
 import {highlightInit} from '../../util/utils.js'
 
 const mdList = {
@@ -51,7 +52,8 @@ const mdList = {
   ['Tabbar'.toLowerCase()]: Tabbar,
   ['Navbar'.toLowerCase()]: Navbar,
   ['Cell'.toLowerCase()]: Cell,
-  ['Quickstart'.toLowerCase()]: Quickstart
+  ['Quickstart'.toLowerCase()]: Quickstart,
+  ['Rem'.toLowerCase()]: Rem
 }
 
 const md = new MarkdownIt({
@@ -117,7 +119,17 @@ export default {
     color: #737373;
 
     &+p {
-      margin-top: 0;
+      margin-top: 5px;
+    }
+  }
+
+  ul,ol {
+    margin-top: 10px;
+  }
+
+  li {
+    a {
+      color: #737373;
     }
   }
 }

@@ -6,6 +6,9 @@
         <div class="sidebar-item" :class="{'active': active === 'quickstart'}">
           <router-link to="/components/quickstart">快速上手</router-link>
         </div>
+        <div class="sidebar-item" :class="{'active': active === 'rem'}">
+          <router-link to="/components/rem">REM 布局</router-link>
+        </div>
       </div>
       <div class="sidebar-item-group">
         <div class="sidebar-item-group-title bold">规范</div>
