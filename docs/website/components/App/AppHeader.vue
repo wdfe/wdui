@@ -121,4 +121,17 @@ export default {
   }
 }
 
+@media (max-width: 500px) {
+  .appheader-container {
+    .wrapper {
+      min-width: 0;
+      justify-content: center;
+
+      ul.nav {
+        display: none;
+      }
+    }
+  }
+}
+
 </style>

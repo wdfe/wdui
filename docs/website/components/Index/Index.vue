@@ -8,6 +8,7 @@
         <div class="button-group">
           <router-link to="/components/quickstart" class="button-start">快速开始</router-link>
           <router-link to="/specifications/intro" class="button-doc">查看文档</router-link>
+          <a href="https://wdfe.github.io/wdui/demo.html" class="button-demo">查看演示</a>
         </div>
       </content>
     </section>
@@ -133,6 +134,9 @@ export default {
               background-color: #3399ff;
             }
           }
+          .button-demo {
+            display: none;
+          }
         }
       }
     }
@@ -164,6 +168,79 @@ export default {
         }
         img {
           height: 274px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .index-container {
+    section {
+      content {
+        min-width: 0;
+      }
+
+      &.banner {
+        .particles {
+          width: 100%;
+          margin: 0;
+
+          .title {
+            margin: 80px 20px 0;
+            font-size: 40px;
+            line-height: 50px;
+            text-align: center;
+          }
+          .subtitle {
+            margin: 30px 20px 0;
+            text-align: center;
+            font-size: 18px;
+            line-height: 24px;
+          }
+          .button-group {
+            margin-top: 55px;
+
+            .button-doc {
+              display: none;
+            }
+            .button-start {
+              display: none;
+            }
+            .button-demo {
+              display: inline-block;
+            }
+          }
+        }
+      }
+
+      &.feature {
+        height: 300px;
+
+        content {
+          width: 100%;
+          padding: 0 20px;
+          box-sizing: border-box;
+
+          img {
+            height: 80px;
+          }
+        }
+
+        &:nth-child(even) {
+          content {
+            img {
+              margin-left: 15px;
+            }
+          }
+        }
+
+        &:nth-child(odd) {
+          content {
+            img {
+              margin-right: 15px;
+            }
+          }
         }
       }
     }
