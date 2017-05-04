@@ -23,7 +23,7 @@
     "dev:example": "webpack-dev-server --inline --config build/webpack.dev-example.config.js --host 0.0.0.0",
     "dev:website": "webpack-dev-server --inline --config build/webpack.dev-website.config.js --host 0.0.0.0",
     "lint": "eslint --fix ./packages/**/*.vue ./packages/**/*.js ./src/**/*.js ./src/**/*.vue ./test/**/*.js ./docs/**/*.js ./docs/**/*.vue ./example/**/*.js ./example/**/*.vue",
-    "deploy:gh-pages": "npm run build:gh-pages && git checkout gh-pages && cp -r temp/* . && git add . && git commit -m '[chore] Auto-deploy update demopage' && git push",
+    "deploy:gh-pages": "npm run build:gh-pages && git checkout gh-pages && cp -r temp/* . && git add . && git commit -m '[chore] Auto-deploy update demopage' --no-verify&& git push",
     "clean": "rm -rf temp coverage"
   },
   "pre-commit": {
