@@ -128,7 +128,18 @@ export default {
       justify-content: center;
 
       ul.nav {
-        display: none;
+        li:nth-child(1),
+        li:nth-child(2),
+        li:nth-child(3),
+        li:nth-child(4) {
+          display: none;
+        }
+
+        li {
+          .star-badge {
+            left: 0;
+          }
+        }
       }
     }
   }
