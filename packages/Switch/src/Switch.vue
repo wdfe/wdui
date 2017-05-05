@@ -1,6 +1,6 @@
 <template>
   <label class="wd-switch">
-    <input class="wd-switch-input" @change="$emit('change', checked)" v-model="checked" type="checkbox">
+    <input class="wd-switch-input" :checked="value" @change="changeHandler" type="checkbox">
     <span class="wd-switch-button"></span>
     <div class="wd-switch-label"><slot></slot></div>
   </label>
@@ -10,16 +10,14 @@
   export default {
     name: 'wd-switch',
     props: {
-      value: Boolean
+      value: {
+        type: Boolean,
+        default: false
+      }
     },
-    computed: {
-      checked: {
-        get() {
-          return this.value
-        },
-        set(val) {
-          this.$emit('changeValue', val)
-        }
+    methods: {
+      changeHandler() {
+        this.$emit('input', !this.value)
       }
     }
   }
@@ -43,7 +41,7 @@
   position: relative;
   width: 102px;
   height: 62px;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #D9D9D9; /* no */
   border-radius: 31px;
   box-sizing: border-box;
   background: #D9D9D9;
@@ -51,13 +49,13 @@
 .wd-switch-button:after {
   content: "";
   position: absolute;
-  top: 0;
+  top: 2px; /* no */
   left: 0;
   width: 56px;
   height: 56px;
   border-radius: 56px;
   background-color: #FFFFFF;
-  box-shadow: 0 1px 3px rgba(0,0,0,.4);
+  box-shadow: 0 1px 3px rgba(0,0,0,.4); /* no */
   transform: translateX(0);
   transition:transform .3s;
 }
@@ -66,13 +64,10 @@
   background: #09BB07;
   display: inline-block;
   position: relative;
-  border: 1px solid grey;
+  border: 1px solid grey; /* no */
   border-radius: 31px;
 }
 .wd-switch-input:checked + .wd-switch-button:after {
   transform: translateX(41px);
-}
-.wd-switch-button:active:after {
-  /*width: 60px;*/
 }
 </style>

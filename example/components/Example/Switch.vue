@@ -6,10 +6,10 @@
       </router-link>
     </wd-header>
     <div class="form-item">
-      <span class="status">{{status1}}</span><wd-switch class="switch" @changeValue="update1" :value="value1"></wd-switch>
+      <span class="status">{{status1}}</span><wd-switch class="switch" v-model="value1"></wd-switch>
     </div>
     <div class="form-item">
-      <span class="status">{{status2}}</span><wd-switch class="switch" @changeValue="update2" :value="value2"></wd-switch>
+      <span class="status">{{status2}}</span><wd-switch class="switch" v-model="value2"></wd-switch>
     </div>
   </div>
 </template>
@@ -28,14 +28,6 @@ export default {
     },
     status2() {
       return this.value2 ? '开启中' : '关闭'
-    }
-  },
-  methods: {
-    update1(val) {
-      this.value1 = val
-    },
-    update2(val) {
-      this.value2 = val
     }
   }
 }
