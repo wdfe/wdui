@@ -132,6 +132,106 @@ export default {
         {
           class: 'wd-icon-star',
           unicode: '\\e916'
+        },
+        {
+          class: 'wd-icon-qq',
+          unicode: '\\e917'
+        },
+        {
+          class: 'wd-icon-weixin',
+          unicode: '\\e918'
+        },
+        {
+          class: 'wd-icon-money',
+          unicode: '\\e919'
+        },
+        {
+          class: 'wd-icon-prom-share',
+          unicode: '\\e91a'
+        },
+        {
+          class: 'wd-icon-prom-fans',
+          unicode: '\\e91b'
+        },
+        {
+          class: 'wd-icon-prom-goods',
+          unicode: '\\e91c'
+        },
+        {
+          class: 'wd-icon-prom-headline',
+          unicode: '\\e91d'
+        },
+        {
+          class: 'wd-icon-consult',
+          unicode: '\\e91e'
+        },
+        {
+          class: 'wd-icon-prom-wxapp',
+          unicode: '\\e91f'
+        },
+        {
+          class: 'wd-icon-account',
+          unicode: '\\e920'
+        },
+        {
+          class: 'wd-icon-prom-helper',
+          unicode: '\\e921'
+        },
+        {
+          class: 'wd-icon-prom-data',
+          unicode: '\\e922'
+        },
+        {
+          class: 'wd-icon-prom-activity',
+          unicode: '\\e923'
+        },
+        {
+          class: 'wd-icon-up',
+          unicode: '\\e924'
+        },
+        {
+          class: 'wd-icon-down',
+          unicode: '\\e925'
+        },
+        {
+          class: 'wd-icon-left',
+          unicode: '\\e926'
+        },
+        {
+          class: 'wd-icon-right',
+          unicode: '\\e927'
+        },
+        {
+          class: 'wd-icon-up2',
+          unicode: '\\e928'
+        },
+        {
+          class: 'wd-icon-down2',
+          unicode: '\\e929'
+        },
+        {
+          class: 'wd-icon-left2',
+          unicode: '\\e92a'
+        },
+        {
+          class: 'wd-icon-right2',
+          unicode: '\\e92b'
+        },
+        {
+          class: 'wd-icon-account2',
+          unicode: '\\e92c'
+        },
+        {
+          class: 'wd-icon-image',
+          unicode: '\\e92d'
+        },
+        {
+          class: 'wd-icon-trash',
+          unicode: '\\e92e'
+        },
+        {
+          class: 'wd-icon-lock',
+          unicode: '\\e92f'
         }
       ]
     }
