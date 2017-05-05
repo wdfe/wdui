@@ -1,6 +1,6 @@
 <template>
   <div class="index-container">
-    <wd-header title="Components"></wd-header>
+    <wd-header title="WDUI Components"></wd-header>
     <wd-cell :title="item" :to="`#/${item.toLowerCase()}`" v-for="item in components" :key="item"></wd-cell>
   </div>
 </template>

@@ -98,38 +98,41 @@ $border-color: #DDDDDD;
     background: #ffffff;
   }
   .page-title {
-      font-size: 40px; /*px*/
-      margin: 40px auto;
-      text-align: center;
-      display: block;
-      line-height: 1;
+    font-size: 40px; /*px*/
+    margin: 40px auto;
+    text-align: center;
+    display: block;
+    line-height: 1;
   }
   .page-infinite-desc, .page-infinite-listitem {
-      text-align: center;
-      border-bottom: 1px solid #eee;
+    text-align: center;
+    border-bottom: 1px solid #eee;
   }
   .page-infinite-desc {
-      color: #666;
-      padding-bottom: 10px;
+    color: #666;
+    padding-bottom: 10px;
   }
   .page-infinite-wrapper {
-      flex: 1;
-      height: 0;
+    position: absolute;
+    left: 0;
+    top: 1.173333rem;
+    bottom: 0;
+    width: 100%;
   }
   .page-infinite-listitem:first-child {
-      border-top: 1px solid #eee;
+    border-top: 1px solid #eee;
   }
   .page-infinite-listitem {
-      height: 100px;
-      line-height: 100px;
+    height: 100px;
+    line-height: 100px;
   }
   .input_area{
     position: absolute;
     bottom: 0;
     height: 60px;
-        z-index: 10;
-      width: 100%;
-      background: palegoldenrod;
+    z-index: 10;
+    width: 100%;
+    background: palegoldenrod;
   }
   .bottom-text{
     width: 100%;

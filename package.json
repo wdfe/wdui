@@ -1,6 +1,6 @@
 {
   "name": "wdui",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Mobile UI Components Library based on Vue 2.0",
   "main": "lib/index.js",
   "repository": {
@@ -18,8 +18,19 @@
     "build:umd": "NODE_ENV=production webpack --config build/webpack.build.config.js",
     "build:style": "gulp --gulpfile ./src/assets/styles/gulpfile.js build",
     "build:example": "NODE_ENV=production webpack --config build/webpack.build-example.config.js --display-modules --sort-modules-by size",
-    "dev": "webpack-dev-server --inline --config build/webpack.dev.config.js --host 0.0.0.0",
-    "lint": "eslint --fix ./packages/**/*.vue ./packages/**/*.js ./src/**/*.js ./src/**/*.vue ./test/**/*.js "
+    "build:website": "NODE_ENV=production webpack --config build/webpack.build-website.config.js --display-modules --sort-modules-by size",
+    "build:gh-pages": "npm run build:example && npm run build:website",
+    "dev:example": "webpack-dev-server --inline --config build/webpack.dev-example.config.js --host 0.0.0.0",
+    "dev:website": "webpack-dev-server --inline --config build/webpack.dev-website.config.js --host 0.0.0.0",
+    "lint": "eslint --fix ./packages/**/*.vue ./packages/**/*.js ./src/**/*.js ./src/**/*.vue ./test/**/*.js ./docs/**/*.js ./docs/**/*.vue ./example/**/*.js ./example/**/*.vue",
+    "deploy:gh-pages": "npm run build:gh-pages && git checkout gh-pages && cp -r temp/* . && git add . && git commit -m '[chore] Auto-deploy update demopage' --no-verify&& git push",
+    "clean": "rm -rf temp coverage"
+  },
+  "pre-commit": {
+    "run": [
+      "lint",
+      "test"
+    ]
   },
   "author": "wdfe",
   "license": "MIT",
@@ -59,11 +70,14 @@
     "karma-spec-reporter": "0.0.30",
     "karma-webpack": "^2.0.2",
     "lerna": "2.0.0-beta.30",
+    "markdown-it": "^8.3.1",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.2",
     "phantomjs-prebuilt": "^2.1.14",
     "postcss-loader": "^1.2.1",
     "postcss-px2rem": "^0.3.0",
+    "pre-commit": "^1.2.2",
+    "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.3",
     "sinon": "^2.1.0",
     "sinon-chai": "^2.9.0",

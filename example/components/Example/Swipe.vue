@@ -1,10 +1,13 @@
 <template>
   <div class="component-wrapper">
-    <wd-header title="Swipe">
+    <wd-header title="Swipe" fixed>
       <router-link to="/" slot="left" class="link">
         <span class="iconfont icon-zuosanjiao"></span>
       </router-link>
     </wd-header>
+    <br>
+    <br>
+    <br>
     <div class="swipe-wrapper">
       <h2 class="swipe-title">基础用法</h2>
       <wd-swipe class="swipe">

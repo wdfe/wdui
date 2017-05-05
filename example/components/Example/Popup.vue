@@ -5,6 +5,10 @@
         <span class="iconfont icon-zuosanjiao"></span>
       </router-link>
     </wd-header>
+    <br>
+    <br>
+    <br>
+    <br>
     <wd-button type="primary" @click.native="bottom = true">Popup bottom</wd-button>
     <br>
     <wd-button type="primary" @click.native="top = true">Popup top</wd-button>
@@ -45,6 +49,7 @@
     <wd-popup class="popup" v-model="closeMask" position="bottom" cover="50%" @maskClick="closeMask = false">
       <p>点击 mask 关闭</p>
     </wd-popup>
+    <br>
   </div>
 </template>
 
@@ -68,7 +73,6 @@ export default {
 <style lang="sass">
 .popup-container{
   position: relative;
-  justify-content:center;
   display: flex;
   flex-direction: column;
   align-items: center;

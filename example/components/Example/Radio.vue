@@ -5,6 +5,8 @@
         <span class="iconfont icon-zuosanjiao"></span>
       </router-link>
     </wd-header>
+    <br>
+    <br>
     <div>
       <p class="radio-header">RadioGroup组件</p>
      <wd-radiogroup :listData="lists" :name="'group1'" v-model="value1"></wd-radiogroup>
