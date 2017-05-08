@@ -139,6 +139,7 @@ export default {
         this.tipHeight = this.$el.querySelector('.wd-scroller-infinite-load-wrap').offsetHeight
       }
 
+
       /*
        * 使用 MutationObserver 监听 slot 内 DOM 变动，并及时更新 Scroller
        * ios 6+ , Android 4.4+
@@ -174,7 +175,7 @@ export default {
        */
 
       if (this.onRefresh) {
-        this.scroller.activatePullToRefresh(60, () => {
+        this.scroller.activatePullToRefresh(this.tipHeight, () => {
           this.noRefresh = false
           this.pullToRefreshStateAdjustFlag = false
           this.pullToRefreshStateCache = this.pullToRefreshState = 1
@@ -220,9 +221,9 @@ export default {
         if(this.noRefresh) {
           eh += this.tipHeight
         }
-        if (top + this.$el.clientHeight > this.$slotWrapper.offsetHeight + 60) {
+        if (top + this.$el.clientHeight > this.$slotWrapper.offsetHeight + this.tipHeight) {
           this.resetDimensionsManually(ww, wh, ew, eh)
-        }else if(top + this.$el.clientHeight === this.$slotWrapper.offsetHeight + 60) {
+        }else if(top + this.$el.clientHeight === this.$slotWrapper.offsetHeight + this.tipHeight) {
           this.resetDimensions()
         }
       }
@@ -236,7 +237,7 @@ export default {
 
       if(this.onLoad) {
         let top = this.scroller.getValues().top
-        if (top + this.$el.clientHeight > this.$slotWrapper.offsetHeight + 60) {
+        if (top + this.$el.clientHeight > this.$slotWrapper.offsetHeight + this.tipHeight) {
           if (this.infiniteLoadingState) {
             return
           }

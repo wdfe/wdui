@@ -32,7 +32,7 @@ export default {
   height: 48px;
   display: inline-block;
   vertical-align: middle;
-  margin-right: -5px;/*no*/
+  margin-right: -5px; /*no*/
 }
 @for $i from 1 through 12 {
   .wd-spin-wrap > div:nth-child(#{$i}) {
@@ -42,23 +42,25 @@ export default {
 }
 .wd-spin-wrap.small > div {
   background-color: #000;
-  width: 2px;/*no*/
-  height: 5px;/*no*/
+  width: 4px;
+  height: 10px;
   border-radius: 100%;/*no*/
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
   position: absolute;
-  transform-origin: center 10px; /*no*/
+  top: 3px;
+  left: 0;
+  transform-origin: center 20px;
 }
 .wd-spin-wrap.big > div {
   background-color: #fff;
-  width: 3px;/*no*/
-  height: 7px;/*no*/
+  width: 6px;
+  height: 14px;
   border-radius: 100%;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
   position: absolute;
-  transform-origin: center 14px; /*no*/
+  transform-origin: center 28px;
 }
 @-webkit-keyframes wd-spin-wrap {
   50% {

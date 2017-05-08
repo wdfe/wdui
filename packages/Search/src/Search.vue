@@ -101,8 +101,8 @@ export default {
       box-sizing: border-box;
       .wd-search-icon-search {
         display: inline-block;
-        width: 10px;/*no*/
-        height: 10px;/*no*/
+        width: 20px;
+        height: 20px;
         background: #EEEEEE;
         border: 1px solid  #737373; /*no*/
         border-radius: 50%;
@@ -112,12 +112,12 @@ export default {
         content: "";
         display: block;
         position: absolute;
-        width: 1px; /*no*/
-        height: 6px; /*no*/
+        width: 2px;
+        height: 12px;
         background-color: #737373;
         transform: rotate(-45deg);
-        top: 8px;/*no*/
-        left: 11px;/*no*/
+        top: 16px;
+        left: 22px;
       }
     }
     input {

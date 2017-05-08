@@ -29,7 +29,7 @@ describe('Switch', () => {
       template: `
         <div>
           <div>
-            <wd-switch ref="switch" @changeValue="changeValue" :value="value">标签</wd-switch>
+            <wd-switch ref="switch" v-model="value">标签</wd-switch>
           </div>
         </div>
       `,
@@ -37,24 +37,20 @@ describe('Switch', () => {
         return {
           value: false
         }
-      },
-      methods: {
-        changeValue(value) {
-          this.value = value
-        }
       }
     })
 
     Vue.nextTick(() => {
       expect(vm.value).to.equal(false)
-
       vm.$refs.switch.$el.click()
-      expect(vm.value).to.equal(true)
-
-      vm.$refs.switch.$el.click()
-      expect(vm.value).to.equal(false)
-
-      done()
+      Vue.nextTick(() => {
+        expect(vm.value).to.equal(true)
+        vm.$refs.switch.$el.click()
+        Vue.nextTick(() => {
+          expect(vm.value).to.equal(false)
+          done()
+        })
+      })
     })
   })
 
