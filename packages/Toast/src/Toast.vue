@@ -36,6 +36,7 @@ export default {
   }
 }
 </script>
+
 <style lang="sass" scoped>
 .wd-toast-mask {
   position: fixed;
@@ -46,12 +47,13 @@ export default {
   overflow-y: auto;
   z-index:29999;
   transition: opacity .3s linear;
+
   .wd-toast-box {
     position: absolute;
-    overflow:hidden;
-    z-index:30000;
-    top:50%;
-    left:50%;
+    overflow: hidden;
+    z-index: 30000;
+    top: 50%;
+    left: 50%;
     max-width: 480px;
     box-sizing: border-box;
     font-size: 32px;
@@ -64,17 +66,20 @@ export default {
     border-radius: 8px;
     color: #ffffff;
   }
+
   .wd-toast-box-haveicon {
     width: 240px!important;
     padding: 56px 40px;
     text-align: center;
   }
+
   .wd-toast-icon {
     display: block;
     margin: 0 auto;
     margin-bottom: 24px;
     vertical-align: sub;
   }
+
   .success {
     width: 88px;
     height: 64px;
@@ -82,12 +87,15 @@ export default {
     background-size: 88px auto;
   }
 }
+
 .wd-toast-theme-light {
   background: rgba(0,0,0,0.40)!important;
+
   .wd-toast-box {
     background: #FFFFFF;
     color: #222222;
   }
+
   .wd-toast-box-haveicon {
     width: 560px!important;
     text-align: center;
@@ -96,19 +104,23 @@ export default {
     justify-content: center;
     align-items: center;
   }
+
   .wd-toast-icon {
     display: inline-block;
     margin: 0 auto;
     margin-bottom: 0;
   }
+
   .success {
     height: 48px;
     background-size: 48px auto;
   }
 }
+
 .wd-toast-enter-active, .wd-toast-leave-active {
   transition: opacity .5s
 }
+
 .wd-toast-enter, .wd-toast-leave-active {
   opacity: 0
 }

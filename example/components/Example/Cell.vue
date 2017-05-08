@@ -42,11 +42,6 @@ export default {
 .cell2-container{
   position: relative;
 
-  .icon-zuosanjiao {
-    font-size: 36px;
-    color: #fff;
-  }
-
   .left-icon {
     margin-right: 10px;
     width: 36px;

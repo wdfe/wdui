@@ -67,7 +67,7 @@ export default {
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
   position: absolute;
-  transform-origin: center 10px; /*no*/
+  transform-origin: center 20px;
 }
 .wd-spin-wrap.big > div {
   background-color: #fff;
@@ -77,7 +77,7 @@ export default {
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
   position: absolute;
-  transform-origin: center 14px; /*no*/
+  transform-origin: center 28px;
 }
 @-webkit-keyframes wd-spin-wrap {
   50% {

@@ -37,10 +37,6 @@ export default {
 .navbar-container{
   position: relative;
 
-  .icon-zuosanjiao {
-    font-size: 36px;
-    color: #fff;
-  }
   .tab-container {
     display: block;
     padding: 20px;

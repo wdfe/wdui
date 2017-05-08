@@ -225,11 +225,6 @@ $button-border-color: rgba(151, 151, 151, 0.6);
       justify-content: center;
       width: 100vw;
       flex: none;
-
-      img {
-        max-width: 100%;
-        max-height: 100%;
-      }
     }
   }
 
@@ -245,7 +240,7 @@ $button-border-color: rgba(151, 151, 151, 0.6);
     font-size: 24px;
     text-align: center;
     line-height: 48px;
-    border: 1px solid $button-border-color;
+    border: 1px solid $button-border-color; /* no */
     border-radius: 2px; /* no */
   }
   .wd-imagepreview-indicator {
@@ -264,5 +259,25 @@ $button-border-color: rgba(151, 151, 151, 0.6);
 .wd-imagepreview-fade-enter,
 .wd-imagepreview-fade-leave-active {
   opacity: 0;
+}
+
+[data-dpr="1"] .wd-imagepreview .wd-imagepreview-container .wd-imagepreview-item img {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+[data-dpr="2"] .wd-imagepreview .wd-imagepreview-container .wd-imagepreview-item img {
+  max-width: 50vw;
+  max-height: 50vh;
+  transform: scale(2,2)
+}
+[data-dpr="3"] .wd-imagepreview .wd-imagepreview-container .wd-imagepreview-item img {
+  max-width: 33.33vw;
+  max-height: 33.33vh;
+  transform: scale(3,3)
+}
+[data-dpr="4"] .wd-imagepreview .wd-imagepreview-container .wd-imagepreview-item img {
+  max-width: 25vw;
+  max-height: 25vh;
+  transform: scale(4,4)
 }
 </style>

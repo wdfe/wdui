@@ -38,7 +38,8 @@ export default {
 </script>
 
 <style lang="sass">
-.icon-zuosanjiao {
+.iconfont.icon-zuosanjiao {
+  font-size: 36px;
   color: #fff;
 }
 </style>

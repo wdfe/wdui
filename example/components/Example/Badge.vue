@@ -45,10 +45,6 @@ export default {
 .badge-container{
   position: relative;
 
-  .icon-zuosanjiao {
-    font-size: 36px;
-    color: #fff;
-  }
   .border-example {
     display: flex;
     justify-content: center;

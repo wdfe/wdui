@@ -49,10 +49,6 @@ export default {
 .tabbar-container{
   position: relative;
 
-  .icon-zuosanjiao {
-    font-size: 36px;
-    color: #fff;
-  }
   .link {
     display: flex;
     align-items: center;
