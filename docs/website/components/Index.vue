@@ -4,7 +4,7 @@
     <article class="app-content-container">
       <app-content></app-content>
     </article>
-    <footer>@weidian-h5 北京无线生活科技有限公司</footer>
+    <footer>@weidian-h5 北京口袋时尚科技有限公司</footer>
   </div>
 </template>
 

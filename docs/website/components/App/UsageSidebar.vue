@@ -37,7 +37,7 @@
         </keep-alive>
       </template>
     </content>
-    <div class="phone" v-if="this.$route.matched[0].path === '/components/:component'">
+    <div class="phone" v-if="isPhoneShow">
       <iframe :src="`/wdui/demo.html#/${active}`"></iframe>
     </div>
   </div>
@@ -50,6 +50,11 @@ export default {
   name: 'UsageSidebar',
   components: {
     components: Components
+  },
+  computed: {
+    isPhoneShow() {
+      return this.$route.matched[0].path === '/components/:component' && this.$route.path !== '/components/rem'
+    }
   },
   data() {
     return {

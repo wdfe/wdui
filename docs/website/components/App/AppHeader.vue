@@ -8,7 +8,7 @@
       <ul class="nav">
         <li :class="{'active': active === ''}"><router-link to="/">首页</router-link></li>
         <li :class="{'active': active === '/specifications'}"><router-link to="/specifications/intro">规范</router-link></li>
-        <li :class="{'active': active === '/components'}"><router-link to="/components/toast">组件</router-link></li>
+        <li :class="{'active': active.search(/\/components\//) !== -1}"><router-link to="/components/toast">组件</router-link></li>
         <li :class="{'active': active === '/resources'}"><router-link to="/resources">资源</router-link></li>
         <li>
           <a href="https://github.com/wdfe/wdui">
