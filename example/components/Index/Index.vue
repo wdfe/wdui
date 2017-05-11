@@ -38,8 +38,13 @@ export default {
 </script>
 
 <style lang="sass">
-.iconfont.icon-zuosanjiao {
-  font-size: 36px;
-  color: #fff;
+
+body {
+  font-family: Arial, "Microsoft YaHei";
+
+  .iconfont.icon-zuosanjiao {
+    font-size: 36px;
+    color: #fff;
+  }
 }
 </style>
