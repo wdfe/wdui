@@ -121,13 +121,15 @@ export default {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .appheader-container {
     .wrapper {
       min-width: 0;
       justify-content: center;
 
       ul.nav {
+        margin-left: 25%;
+
         li:nth-child(1),
         li:nth-child(2),
         li:nth-child(3),
