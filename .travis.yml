@@ -1,7 +1,7 @@
 sudo: false
 language: node_js
 env: PHANTOMJS_BIN=./node_modules/.bin/phantomjs
-node_js: stable
+node_js: 7
 script:
   - rm -rf node_modules
   - yarn
