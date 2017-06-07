@@ -136,8 +136,8 @@ export default {
       this.$scrollTarget = this.$refs.content
       this.$slotWrapper = this.$refs.slotWrapper
       this.scrollTargetRect = this.$scrollTarget.getBoundingClientRect()
-      this.render = translateUtils.getRender(this.$scrollTarget)
       this.containerHeight = this.$el.getBoundingClientRect().height
+      this.render = translateUtils.getRender(this.$scrollTarget)
       if(this.onRefresh) {
         this.tipHeight = this.$el.querySelector('.wd-scroller-refresh-wrap').offsetHeight
       }else if(this.onLoad) {
@@ -162,10 +162,7 @@ export default {
       })
     },
     updateDOMData() {
-      this.$nextTick(() => {
-        let height = this.$el.querySelector('.wd-scroller-slot-wrapper').getBoundingClientRect().height
-        this.contentHeight = height
-      })
+      this.contentHeight = this.$el.querySelector('.wd-scroller-slot-wrapper').getBoundingClientRect().height
     },
     bindEvents() {
 
@@ -255,7 +252,14 @@ export default {
           }
           this.noLoad = false
           this.infiniteLoadingState = 1
-          this.onLoad()
+
+          /**
+           * 加一个小延时，缓和动画效果
+           */
+
+          setTimeout(() => {
+            this.onLoad()
+          }, 200)
         }
       }
 
@@ -381,6 +385,10 @@ export default {
           }
         }
       }
+    }
+
+    .wd-scroller-slot-wrapper {
+      overflow: hidden;
     }
 
     .wd-scroller-infinite-load-wrap {
