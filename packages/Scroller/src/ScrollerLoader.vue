@@ -44,6 +44,10 @@ export default {
   width: 60px;
   height: 60px;
   left: 50%;
+
+  &+span {
+    margin-right: 30px;
+  }
 }
 .wd-spin-wrap.small{
   margin-left: 48px;
@@ -52,6 +56,10 @@ export default {
   display: inline-block;
   vertical-align: middle;
   margin-right: -9px;
+
+  &+span {
+    margin-right: 24px;
+  }
 }
 @for $i from 1 through 12 {
   .wd-spin-wrap > div:nth-child(#{$i}) {
@@ -69,6 +77,7 @@ export default {
   position: absolute;
   transform-origin: center 20px;
 }
+
 .wd-spin-wrap.big > div {
   background-color: #fff;
   width: 6px;
