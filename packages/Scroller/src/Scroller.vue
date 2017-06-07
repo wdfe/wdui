@@ -27,7 +27,7 @@
         <div class="wd-scroller-slot-wrapper" ref="slotWrapper">
           <slot></slot>
         </div>
-        <div class="wd-scroller-infinite-load-wrap" v-if="onLoad">
+        <div class="wd-scroller-infinite-load-wrap" v-if="onLoad && contentOverflow">
           <template v-if="noLoad">
             <div class="wd-scroller-no-infinite-loading-wrap">
               <div class="wd-scroller-no-infinite-loading-text">{{noDataText}}</div>
@@ -106,7 +106,9 @@ export default {
       pullToRefreshStateCache: 0,
       pullToRefreshStateAdjustFlag: false,
       infiniteLoadingState: 0,
-      tipHeight: 0
+      tipHeight: 0,
+      contentHeight: 0,
+      containerHeight: 0
     }
   },
   components: {
@@ -115,8 +117,10 @@ export default {
   mounted() {
     this.init()
   },
-  watch() {
-
+  computed: {
+    contentOverflow() {
+      return this.contentHeight >= this.containerHeight
+    }
   },
   methods: {
     init() {
@@ -133,6 +137,7 @@ export default {
       this.$slotWrapper = this.$refs.slotWrapper
       this.scrollTargetRect = this.$scrollTarget.getBoundingClientRect()
       this.render = translateUtils.getRender(this.$scrollTarget)
+      this.containerHeight = this.$el.getBoundingClientRect().height
       if(this.onRefresh) {
         this.tipHeight = this.$el.querySelector('.wd-scroller-refresh-wrap').offsetHeight
       }else if(this.onLoad) {
@@ -146,6 +151,7 @@ export default {
        */
 
       this.slotObserver = new MutationObserver(() => {
+        this.updateDOMData()
         this.resetDimensions()
       })
       this.slotObserver.observe(this.$slotWrapper, {
@@ -153,6 +159,12 @@ export default {
         attributes: true,
         characterData: true,
         subtree: true
+      })
+    },
+    updateDOMData() {
+      this.$nextTick(() => {
+        let height = this.$el.querySelector('.wd-scroller-slot-wrapper').getBoundingClientRect().height
+        this.contentHeight = height
       })
     },
     bindEvents() {
@@ -212,7 +224,7 @@ export default {
        * 如果 onload 不为空，执行无限加载相关逻辑
        */
 
-      if(this.onLoad) {
+      if(this.onLoad && this.contentOverflow) {
         let top = this.scroller.getValues().top
         let ww = this.$el.clientWidth
         let wh = this.$el.clientHeight
@@ -235,7 +247,7 @@ export default {
        * 如果 onload 不为空，执行无限加载相关逻辑
        */
 
-      if(this.onLoad) {
+      if(this.onLoad && this.contentOverflow) {
         let top = this.scroller.getValues().top
         if (top + this.$el.clientHeight > this.$slotWrapper.offsetHeight + this.tipHeight) {
           if (this.infiniteLoadingState) {
