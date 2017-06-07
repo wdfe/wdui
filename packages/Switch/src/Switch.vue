@@ -49,7 +49,7 @@
   content: "";
   position: absolute;
   top: 2px;
-  left: 0;
+  left: 1px;
   width: 56px;
   height: 56px;
   border-radius: 56px;
@@ -63,10 +63,9 @@
   background: #09BB07;
   display: inline-block;
   position: relative;
-  border: 1px solid grey;
   border-radius: 31px;
 }
 .wd-switch-input:checked + .wd-switch-button:after {
-  transform: translateX(43px);
+  transform: translateX(41px);
 }
 </style>

@@ -1,6 +1,6 @@
 {
   "name": "wdui",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Mobile UI Components Library based on Vue 2.0",
   "main": "lib/index.js",
   "repository": {
@@ -90,6 +90,7 @@
     "vue-style-loader": "^2.0.5",
     "vue-template-compiler": "^2.2.6",
     "webpack": "^2.3.2",
-    "webpack-dev-server": "^2.2.0"
+    "webpack-dev-server": "^2.2.0",
+    "webpack-stats-plugin": "^0.1.5"
   }
 }

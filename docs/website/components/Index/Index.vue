@@ -106,6 +106,7 @@ export default {
           letter-spacing: 0;
           line-height: 67px;
           z-index: 1;
+          text-align: center;
         }
         .subtitle {
           font-size: 20px;
@@ -113,6 +114,7 @@ export default {
           letter-spacing: 0;
           line-height: 28px;
           z-index: 1;
+          text-align: center;
         }
         .button-group {
           margin-top: 66px;
@@ -170,11 +172,39 @@ export default {
           height: 274px;
         }
       }
+
+      &:nth-child(even) {
+        content {
+          img {
+            margin-left: 50px;
+          }
+        }
+      }
+
+      &:nth-child(odd) {
+        content {
+          img {
+            margin-right: 50px;
+          }
+        }
+      }
     }
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1400px) {
+  .index-container {
+    section {
+      content {
+        margin: 0 100px;
+        min-width: 0;
+        width: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
   .index-container {
     section {
       content {
@@ -215,22 +245,52 @@ export default {
       }
 
       &.feature {
-        height: 300px;
+        height: auto;
+
+        &:last-child {
+
+          content {
+            border-bottom: none;
+          }
+        }
 
         content {
-          width: 100%;
-          padding: 0 20px;
+          margin: 0 8%;
+          width: auto;
+          height: auto;
           box-sizing: border-box;
+          flex-direction: column;
+          border-bottom: 1px solid #dcdcdc;
+
+          .feature-article {
+            width: 100%;
+
+            .title {
+              text-align: center;
+              font-size: 24px;
+            }
+
+            .subtitle {
+              margin-top: 3vw;
+              margin-bottom: 10.6vw;
+              font-size: 18px;
+              line-height: 32px;
+              color: #737373;
+            }
+          }
 
           img {
-            height: 80px;
+            margin-top: 12vw;
+            margin-bottom: 10vw;
+            height: 30vw;
           }
         }
 
         &:nth-child(even) {
           content {
             img {
-              margin-left: 15px;
+              margin-left: 0;
+              order: -1;
             }
           }
         }
@@ -238,7 +298,7 @@ export default {
         &:nth-child(odd) {
           content {
             img {
-              margin-right: 15px;
+              margin-right: 0;
             }
           }
         }

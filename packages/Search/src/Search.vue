@@ -7,8 +7,8 @@
       <div class="wd-search-icon">
         <i class="wd-search-icon-search"></i>
       </div>
-      <input type="text" name="" value="" v-model="inputText" @focus="closeIcon = true" :placeholder="placeholder">
-      <i class="wd-search-input-close" @click="cleanInput" v-show="closeIcon">×</i>
+      <input type="search" name="" value="" v-model="inputText" @focus="closeIcon = true" :placeholder="placeholder">
+      <i class="wd-search-input-close" @click="cleanInput" v-show="closeIcon">✕</i>
     </div>
     <div class="wd-search-button" @click="search">搜索</div>
   </div>
@@ -46,6 +46,7 @@ export default {
 </script>
 
 <style lang="sass">
+
 .wd-search {
   position: absolute;
   top: 0;
@@ -56,6 +57,7 @@ export default {
   padding: 16px 0;
   box-sizing: border-box;
   background: #ffffff;
+
   .wd-search-arrow {
     position: relative;
     width: 96px;
@@ -63,6 +65,7 @@ export default {
     padding: 12px 24px;
     box-sizing: border-box;
     $arrowBtn : 26px;
+
     .wd-search-arrow-left{
       width: $arrowBtn;
       height: $arrowBtn;
@@ -73,6 +76,7 @@ export default {
       top: 22px;
       left: 38px;
     }
+
     .wd-search-arrow-left::after {
       content: '';
       position: absolute;
@@ -83,15 +87,17 @@ export default {
       background: #FFFFFF;
     }
   }
+
   .wd-search-input {
-    flex: 1;
-    height: 100%;
     display: flex;
+    flex: 1;
+    height: 72px;
     box-sizing: border-box;
     background: #EEEEEE;
-    padding: 18px 24px 18px 0;
     border-radius: 4px; /*no*/
     position: relative;
+    padding: 18px 24px 18px 0;
+
     .wd-search-icon {
       display: inline-block;
       width: 84px;
@@ -99,15 +105,18 @@ export default {
       padding: 0 24px;
       border-right: 1px solid #CACACA;
       box-sizing: border-box;
+
       .wd-search-icon-search {
         display: inline-block;
         width: 20px;
         height: 20px;
+        top: 2px;
         background: #EEEEEE;
         border: 1px solid  #737373; /*no*/
         border-radius: 50%;
         position: relative;
       }
+
       .wd-search-icon-search:after {
         content: "";
         display: block;
@@ -120,6 +129,7 @@ export default {
         left: 22px;
       }
     }
+
     input {
       flex: 1;
       background: #EEEEEE;
@@ -131,25 +141,36 @@ export default {
       outline-offset: -4px;/*no*/
       font-size: 32px;
       color: #222222;
-      line-height: 40px;
+      line-height: 36px;
       padding-left:8px;/*no*/
       margin-top: -4px;
     }
+
+    ::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+    }
+    ::-webkit-search-results-button {
+      -webkit-appearance: none;
+    }
+
     .wd-search-input-close {
-      display: block;
-      width: 15px;/*no*/
-      height: 15px;/*no*/
-      line-height: 15px;/*no*/
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       box-sizing: border-box;
       background: rgba(0,0,0,0.3);
-      font-size: 20px;
       color: #ffffff;
-      text-align: center;
       position: absolute;
+      font-size: 21px;
+      top: 21px;
       right: 24px;
+      line-height: 30px;
     }
   }
+
   .wd-search-button {
      width: 112px;
      height: 70px;

@@ -28,10 +28,10 @@ export default {
             url: 'https://si.geilicdn.com/vshop251425459-1449658110639-27839-s1.jpg?w=480&h=480'
           },
           {
-            url: 'https://si.geilicdn.com/vshop251425459-1449658110617-11c91-s1.jpg?w=480&h=480'
+            url: 'https://si.geilicdn.com/bj-vshop-251425459-1493795843545-1563709368_456_750.jpg?w=1080&h=1080'
           },
           {
-            url: 'https://si.geilicdn.com/vshop251425459-1449658110687-84627-s1.jpg?w=200&h=200'
+            url: 'https://si.geilicdn.com/vshop251425459-1482230983108-52066-s1.jpg?w=200&h=200&cp=1'
           }
         ]
       })
@@ -46,10 +46,10 @@ export default {
             url: 'https://si.geilicdn.com/vshop251425459-1449658110639-27839-s1.jpg?w=480&h=480'
           },
           {
-            url: 'https://si.geilicdn.com/vshop251425459-1449658110617-11c91-s1.jpg?w=480&h=480'
+            url: 'https://si.geilicdn.com/bj-vshop-251425459-1493795843545-1563709368_456_750.jpg?w=1080&h=1080'
           },
           {
-            url: 'https://si.geilicdn.com/vshop251425459-1449658110687-84627-s1.jpg?w=200&h=200'
+            url: 'https://si.geilicdn.com/vshop251425459-1482230983108-52066-s1.jpg?w=200&h=200&cp=1'
           }
         ],
         autoClose: true
@@ -65,10 +65,10 @@ export default {
             url: 'https://si.geilicdn.com/vshop251425459-1449658110639-27839-s1.jpg?w=480&h=480'
           },
           {
-            url: 'https://si.geilicdn.com/vshop251425459-1449658110617-11c91-s1.jpg?w=480&h=480'
+            url: 'https://si.geilicdn.com/bj-vshop-251425459-1493795843545-1563709368_456_750.jpg?w=1080&h=1080'
           },
           {
-            url: 'https://si.geilicdn.com/vshop251425459-1449658110687-84627-s1.jpg?w=200&h=200'
+            url: 'https://si.geilicdn.com/vshop251425459-1482230983108-52066-s1.jpg?w=200&h=200&cp=1'
           }
         ],
         showIndicator: false
@@ -84,10 +84,10 @@ export default {
             url: 'https://si.geilicdn.com/vshop251425459-1449658110639-27839-s1.jpg?w=480&h=480'
           },
           {
-            url: 'https://si.geilicdn.com/vshop251425459-1449658110617-11c91-s1.jpg?w=480&h=480'
+            url: 'https://si.geilicdn.com/bj-vshop-251425459-1493795843545-1563709368_456_750.jpg?w=1080&h=1080'
           },
           {
-            url: 'https://si.geilicdn.com/vshop251425459-1449658110687-84627-s1.jpg?w=200&h=200'
+            url: 'https://si.geilicdn.com/vshop251425459-1482230983108-52066-s1.jpg?w=200&h=200&cp=1'
           }
         ],
         defaultIndex: 1
