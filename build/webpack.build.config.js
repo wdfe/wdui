@@ -5,6 +5,7 @@ const autoprefixer = require('autoprefixer')
 const px2rem = require('postcss-px2rem')
 const fs = require('fs')
 const path = require('path')
+const StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin
 
 const fileNameTransfer = fileName => fileName.match(/[A-Z][a-z]*/g).map((e) => e.toLowerCase()).join('-')
 
@@ -85,7 +86,10 @@ module.exports = {
     new CleanPlugin(['lib'], {
       root: path.resolve(__dirname, '../'),
     })
-  ]
+  ],
+  resolve: {
+    modules: ['node_modules']
+  }
 }
 
 if(process.env.NODE_ENV === 'production') {
@@ -97,6 +101,13 @@ if(process.env.NODE_ENV === 'production') {
       warnings: false
     }
   }))
+  // module.exports.plugins.push(new StatsWriterPlugin({
+  //   filename: 'stats.json',
+  //   transform: function(data, opts) {
+  //     let stats = opts.compiler.getStats().toJson({chunkModules: true})
+  //     return JSON.stringify(stats, null, 2)
+  //   }
+  // }))
 }else {
   module.exports.devtool = 'eval-source-map'
 }
