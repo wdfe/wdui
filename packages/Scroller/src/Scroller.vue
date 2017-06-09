@@ -33,7 +33,7 @@
               <div class="wd-scroller-no-infinite-loading-text">{{noDataText}}</div>
             </div>
           </template>
-          <template v-else>
+          <template v-else-if="showLoadingState">
             <div class="wd-scroller-infinite-load-tip-wrap" v-show="infiniteLoadingState !== 1">
               <div class="wd-scroller-bottom-text">{{loadText}}</div>
             </div>
@@ -95,6 +95,7 @@ export default {
       noRefresh: false,
       noRefreshStyle: false,
       noLoad: false,
+      showLoadingState: true,
       $scrollTarget: null,
       $slotWrapper: null,
       render: null,
@@ -322,6 +323,18 @@ export default {
     },
     finishInfiniteLoading() {
       this.infiniteLoadingState = 0
+      /**
+       * 如果未拉来数据，或者新 DOM 高度过低，调整 scroll 位置避免露出底部提示文字
+       */
+      let transformY = -(translateUtils.getElementTranslate(this.$refs.content).top)
+      let contentHeight = this.$refs.slotWrapper.getBoundingClientRect().height
+      if(this.containerHeight + transformY > contentHeight) {
+        this.showLoadingState = false
+        this.scroller.scrollTo(0, contentHeight - this.containerHeight, true)
+        setTimeout(() => {
+          this.showLoadingState = true
+        }, this.animationDuration)
+      }
     },
     noMoreRefresh() {
       this.noRefresh = true

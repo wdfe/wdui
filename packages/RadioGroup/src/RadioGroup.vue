@@ -11,7 +11,7 @@
         :text="list.value || list"
         v-model="currentValue"
         ></wd-radio>
-        <p class="wd-radiogroup-text">{{list.value || list}}</p>
+        <p class="wd-radiogroup-text">{{list.text || list.value || list}}</p>
       </label>
     </li>
    </ul>

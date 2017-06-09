@@ -5,8 +5,6 @@
         <span class="iconfont icon-zuosanjiao"></span>
       </router-link>
     </wd-header>
-    <br>
-    <br>
     <div>
       <p class="radio-header">RadioGroup组件</p>
      <wd-radiogroup :listData="lists" :name="'group1'" v-model="value1"></wd-radiogroup>
@@ -35,7 +33,7 @@
               :text="list.value"
               v-model="value4"
               ></wd-radio>
-              <p class="custome-text">{{list.value || list}}</p>
+              <p class="custome-text">{{list.text || list.value || list}}</p>
           </label>
         </li>
       </ul>
@@ -50,9 +48,9 @@ export default {
   data() {
     return {
       lists: ['选项1', '选项2', '选项3', '选项4'],
-      lists2: [{value: '选项1'}, {value: '选中'}, {value: '选项3'}, {value: '被禁用', disChoose: true}],
-      lists3: [{value: '选项1'}, {value: '选项2'}, {value: '被禁用', disChoose: true}, {value: '选中禁用', disChoose: true}],
-      lists4: [{value: '选项1'}, {value: '选项2'}, {value: '选项3'}, {value: '选项4'}],
+      lists2: [{value: '选项1', text: '选项text1'}, {value: '选中', text: '选中text'}, {value: '选项3', text: '选项text3'}, {value: '被禁用', text: '被禁用text', disChoose: true}],
+      lists3: [{value: '选项1', text: '选项text1'}, {value: '选项2', text: '选项text2'}, {value: '被禁用', text: '被禁用text', disChoose: true}, {value: '选中禁用', disChoose: true, text: '选中禁用text2'}],
+      lists4: [{value: '选项1', text: '选项text1'}, {value: '选项2', text: '选项text2'}, {value: '选项3', text: '选项text3'}, {value: '选项4', text: '选项text4'}],
       value1: '选项2',
       value2: '选中',
       value3: '选中禁用',

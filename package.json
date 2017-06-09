@@ -1,6 +1,6 @@
 {
   "name": "wdui",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "Mobile UI Components Library based on Vue 2.0",
   "main": "lib/index.js",
   "repository": {
