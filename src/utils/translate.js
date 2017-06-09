@@ -39,10 +39,10 @@ let getTranslate = function(element) {
   }
 
   let transform = element.style[transformProperty]
-  let matches = /translate\(\s*(-?\d+(\.?\d+?)?)px,\s*(-?\d+(\.\d+)?)px\)\s*translateZ\(0px\)/g.exec(transform)
-  if (matches) {
+  let matches = transform.match(/translate3d\(\s*(-?\d+\.?\d*)px,\s*(-?\d+\.?\d*)px,.*\)/)
+  if(matches) {
     result.left = +matches[1]
-    result.top = +matches[3]
+    result.top = +matches[2]
   }
 
   return result
