@@ -29,6 +29,32 @@ describe('RadioGroup', () => {
       done()
     })
   })
+  it('RadioGroup 初始化对象数据', done => {
+    vm = createVueInstance({
+      template: `
+        <wd-radiogroup :listData="lists" :name="'group1'" v-model="value1"></wd-radiogroup>
+      `,
+      data() {
+        return {
+          lists: [{value: '选项1', text: '选项text1'}, {value: '选项2', text: '选项text2'}, {value: '选项3', text: '选项text3'}, {value: '选项4', text: '选项text4'}],
+          value1: ''
+        }
+      }
+    })
+    Vue.nextTick(() => {
+      const $dom = document.body.querySelector('.wd-radiogroup')
+      expect($dom).to.exist
+      const inputNum = $dom.getElementsByTagName('input').length
+      expect(inputNum).to.equal(vm.lists.length)
+      const listsText = document.body.querySelectorAll('.wd-radiogroup-text')
+      expect(listsText[0].innerText).to.equal('选项text1')
+      expect(listsText[1].innerText).to.equal('选项text2')
+      expect(listsText[2].innerText).to.equal('选项text3')
+      expect(listsText[3].innerText).to.equal('选项text4')
+      destroyVM(vm)
+      done()
+    })
+  })
   it('RadioGroup 选中值', done => {
     vm = createVueInstance({
       template: `
@@ -107,6 +133,7 @@ describe('RadioGroup', () => {
       done()
     })
   })
+
   it('RadioGroup 切换禁用选中', done => {
     vm = createVueInstance({
       template: `
