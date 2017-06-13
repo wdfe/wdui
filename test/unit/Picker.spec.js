@@ -427,4 +427,37 @@ describe('Picker', () => {
     }, 400)
   })
 
+  it('picker setSlotValues 动态改变 slot', done => {
+    vm = Picker({
+      slots: [{
+        type: 'data',
+        flex: 1,
+        values: ['北京', '上海', '广州'],
+        textAlign: 'center'
+      }, {
+        type: 'divider',
+        content: '-'
+      }, {
+        type: 'data',
+        flex: 1,
+        values: ['A', 'B', 'C', 'D'],
+        textAlign: 'center',
+      }],
+      onChange: (instance, changeInfo) => {
+        if(changeInfo.changedSlotIndex === 0) {
+          instance.setSlotValues(2, ['test1', 'test2', 'test3'])
+        }
+      }
+    })
+    setTimeout(() => {
+      vm.$refs.slot0[0].locateItem(1)
+      Vue.nextTick(() => {
+        expect(document.body.querySelectorAll('.wd-picker-slot')[2].querySelector('p').textContent.trim()).to.equal('test1')
+        vm.value = false
+        setTimeout(() => {
+          done()
+        }, 500)
+      })
+    }, 200)
+  })
 })
