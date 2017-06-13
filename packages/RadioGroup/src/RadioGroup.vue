@@ -19,8 +19,13 @@
 </template>
 
 <script>
+import Radio from '../../Radio/index.js'
+
 export default {
   name: 'wd-radiogroup',
+  components: {
+    'wd-radio': Radio
+  },
   props: {
     listData: {
       type: Array,
