@@ -130,7 +130,8 @@ export default {
         this.$set(this.datas, `slot${index}`, val)
       }
     },
-    setSlotValues(index, values) {
+    setSlotValues(index, values, valueIndex) {
+      values.index = valueIndex
       this.slots[index].values = values
     },
     setItemHeight(height) {

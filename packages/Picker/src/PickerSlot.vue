@@ -62,17 +62,15 @@ export default {
         bottom: 0
       },
       itemHeight: 0,
-      currentIndex: 0,
+      currentIndex: -1,
       ready: false
     }
-  },
-  computed: {
   },
   mounted() {
     if(this.type === 'data') {
       this.getSizes()
       this.bindEvents()
-      if(this.defaultValue) {
+      if(this.defaultValue !== undefined) {
         let index
         this.values.forEach((e, i) => {
           if(e === this.defaultValue) {
@@ -97,12 +95,20 @@ export default {
     }, 300)
   },
   watch: {
-    values() {
-      this.locateItem(0)
+    values(val) {
+
+      /**
+       * 如果 setSlotValues 时带有指定 index 值，尝试定位其
+       */
+
+      let relocateIndex = val.index || 0
+      this.locateItem(relocateIndex)
       this.$emit('change', this.slotIndex, this.values.length ? this.values[this.currentIndex] : '')
     },
-    currentIndex(val) {
-      this.$emit('change', this.slotIndex, this.values.length ? this.values[val] : '')
+    currentIndex(val, oldVal) {
+      if(oldVal !== -1) {
+        this.$emit('change', this.slotIndex, this.values.length ? this.values[val] : '')
+      }
     }
   },
   methods: {
@@ -141,18 +147,20 @@ export default {
             return
           }
           let Index = Math.round((this.dragRange.top - this.dragState.endTop) / this.itemHeight)
-          if(Index < 0) {
-            this.locateItem(0)
-          }else if (Index > (this.values.length - 1)) {
-            this.locateItem(this.values.length - 1)
-          }else {
-            this.locateItem(Index)
-          }
+          this.locateItem(Index)
           this.dragState = {}
         }
       })
     },
     locateItem(Index) {
+      if(Index < 0) {
+        Index = 0
+      }else if (Index > (this.values.length - 1)) {
+        Index = this.values.length - 1
+      }
+      if(Index === this.currentIndex) {
+        return
+      }
       this.currentIndex = Index
       translateUtils.translateElement(this.$el, null, this.itemHeight * (((this.showItemCount - 1) / 2) - Index))
     }
