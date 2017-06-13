@@ -7,6 +7,7 @@
     </wd-header>
     <wd-button @click.native="showPicker">单行 Picker 示例</wd-button>
     <wd-button @click.native="showPicker2">多行动态 Picker 示例</wd-button>
+    <wd-button @click.native="showDatePicker">日期选择器示例</wd-button>
   </div>
 </template>
 
@@ -54,7 +55,7 @@ export default {
     }
   },
   methods: {
-    showPicker: function() {
+    showPicker() {
       this.$Picker({
         slots: [{
           type: 'data',
@@ -76,7 +77,7 @@ export default {
         }
       })
     },
-    showPicker2: function() {
+    showPicker2() {
       this.$Picker({
         slots: [{
           type: 'data',
@@ -104,7 +105,61 @@ export default {
           }
         }
       })
-    }
+    },
+    showDatePicker() {
+      let getYearArray = (offset) => {
+        let currentYear = new Date().getFullYear()
+        let yearArr = []
+        for(let i = currentYear - offset; i <= currentYear + offset; i++) {
+          yearArr.push(i)
+        }
+        return yearArr
+      }
+      let getDayArray = (year, month) => {
+        let tday = new Date(year, month, 0)
+        let dayArr = []
+        for(let i = 1; i <= tday.getDate(); i++) {
+          dayArr.push(i)
+        }
+        return dayArr
+      }
+      this.$Picker({
+        slots: [{
+          type: 'data',
+          flex: 1,
+          values: getYearArray(3),
+          textAlign: 'center',
+          defaultValue: new Date().getFullYear()
+        }, {
+          type: 'divider',
+          content: '-'
+        }, {
+          type: 'data',
+          flex: 1,
+          values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+          textAlign: 'center',
+          defaultValue: new Date().getMonth() + 1
+        }, {
+          type: 'divider',
+          content: '-'
+        }, {
+          type: 'data',
+          flex: 1,
+          values: getDayArray(new Date().getFullYear(), new Date().getMonth() + 1),
+          textAlign: 'center',
+          defaultValue: new Date().getDate()
+        }],
+        onConfirm: (instance, datas) => {
+          alert(datas.slot0 + ' - ' + datas.slot2 + ' - ' + datas.slot4)
+          instance.value = false
+        },
+        onChange: (instance, changeInfo) => {
+          if(changeInfo.changedSlotIndex === 0 || changeInfo.changedSlotIndex === 2) {
+            instance.setSlotValues(4, getDayArray(changeInfo.val.slot0, changeInfo.val.slot2, 0), changeInfo.val.slot4 - 1)
+          }
+        }
+      })
+    },
   }
 }
 </script>
