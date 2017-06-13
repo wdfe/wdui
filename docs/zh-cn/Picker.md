@@ -184,4 +184,4 @@ export default {
 | 属性/方法名    | 类型      | 参数                                  | 备注                  |
 |---------------  |---------- |-------------------------------------  |---------------------- |
 | value           | Boolean   | /                                     | 控制窗体打开与关闭     |
-| setSlotValues   | Function  | index(slot序号), values(slot选择项)  | 动态改变slot的选择项  |
+| setSlotValues   | Function  | index(slot序号), values(slot选择项), valueIndex(slot 默认选中的 index)  | 动态改变slot的选择项  |
