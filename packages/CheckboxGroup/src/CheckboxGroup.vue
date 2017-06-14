@@ -9,7 +9,7 @@
         :nowValue="value"
         v-model="currentCheck"
         ></wd-checkbox>
-        <p class="wd-checkboxgroup-text">{{list.value || list}}</p>
+        <p class="wd-checkboxgroup-text">{{list.text || list.value || list}}</p>
       </label>
     </li>
    </ul>
@@ -17,8 +17,13 @@
 </template>
 
 <script>
+import Checkbox from '../../Checkbox/index.js'
+
 export default {
   name: 'wd-checkboxgroup',
+  components: {
+    'wd-checkbox': Checkbox
+  },
   props: {
     listData: {
       type: Array,

@@ -42,10 +42,10 @@ export default {
   data() {
     return {
       lists1: ['选项1', '选项2', '选项3', '选项4'],
-      lists2: [{value: '多选项'},
-          {value: '选中'},
-          {value: '被禁用', disChoose: true},
-          {value: '选中禁用', disChoose: true}],
+      lists2: [{value: '多选项', text: '多选项text1'},
+                {value: '选中', text: '多选项text2'},
+                {value: '被禁用', text: '多选项text3', disChoose: true},
+                {value: '选中禁用', text: '多选项text4', disChoose: true}],
       lists3: ['选项1', '选项2', '选项3', '选项4'],
       value1: [],
       value2: ['选中', '选中禁用'],
