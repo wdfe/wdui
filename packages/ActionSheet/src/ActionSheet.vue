@@ -2,7 +2,7 @@
   <transition :name="actionsheetTransition" @after-enter="onShow()" @after-leave="onHide()">
     <div :class="{'wd-actionsheet-theme-left': textAlign === 'left','wd-actionsheet-theme-center': textAlign === 'center'}" class="wd-actionsheet" ref="popup" v-if="visible" :style="{'z-index': zIndex}">
       <header v-if="isShowTitle" class="wd-actionsheet-header">{{ title }}</header>
-      <div class="wd-actionsheet-content" ref="asItems" :style="`max-height: ${maxDisplay * 105}px;`">
+      <div class="wd-actionsheet-content" :style="`max-height: ${maxDisplay * 105}px;`">
         <wd-actionsheet-slot @getData="getData" :items="content.items" :type="content.type" :defaultValue="content.defaultValue"></wd-actionsheet-slot>
       </div>
       <footer class="wd-actionsheet-footer">
