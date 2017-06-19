@@ -529,10 +529,10 @@ describe('ActionSheet', () => {
       }
     })
     Vue.nextTick(() => {
-      const $listHeight = document.querySelector('.wd-actionsheet-list').offsetHeight
+      const $contentHeight = document.querySelector('.wd-actionsheet-content').offsetHeight
       const $itemHeight = document.querySelector('.wd-actionsheet-listitem').offsetHeight
       expect(vm.maxDisplay).to.equal(5)
-      expect($itemHeight * 5).to.equal($listHeight)
+      expect($itemHeight * 5).to.equal($contentHeight)
       vm.value = false
       setTimeout(() => {
         done()
