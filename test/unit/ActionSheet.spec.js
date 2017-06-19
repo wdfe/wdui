@@ -66,6 +66,36 @@ describe('ActionSheet', () => {
     })
   })
 
+  it('actionsheet maxDisplay 最大显示条数', done => {
+    vm = ActionSheet({
+      title: '测试标题',
+      isShowTitle: false,
+      maxDisplay: 5,
+      content: {
+        items: [
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'},
+          {title: '测试正文条目3'},
+          {title: '测试正文条目4'},
+          {title: '测试正文条目5'},
+          {title: '测试正文条目6'},
+          {title: '测试正文条目7'},
+          {title: '测试正文条目8'}
+        ]
+      }
+    })
+    Vue.nextTick(() => {
+      const $listHeight = document.querySelector('.wd-actionsheet-list').offsetHeight
+      const $itemHeight = document.querySelector('.wd-actionsheet-listitem').offsetHeight
+      expect(vm.maxDisplay).to.equal(5)
+      expect($itemHeight * 5).to.equal($listHeight)
+      vm.value = false
+      setTimeout(() => {
+        done()
+      }, 500)
+    })
+  })
+
   it('actionsheet textAlign 对齐方式', done => {
     vm = ActionSheet({
       title: '测试标题',
@@ -508,6 +538,36 @@ describe('ActionSheet', () => {
         done()
       }, 500)
     }, 200)
+  })
+
+  it('actionsheet maxDisplay 最大显示条数', done => {
+    vm = ActionSheet({
+      title: '测试标题',
+      isShowTitle: false,
+      maxDisplay: 5,
+      content: {
+        items: [
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'},
+          {title: '测试正文条目3'},
+          {title: '测试正文条目4'},
+          {title: '测试正文条目5'},
+          {title: '测试正文条目6'},
+          {title: '测试正文条目7'},
+          {title: '测试正文条目8'}
+        ]
+      }
+    })
+    Vue.nextTick(() => {
+      const $listHeight = document.querySelector('.wd-actionsheet-list').offsetHeight
+      const $itemHeight = document.querySelector('.wd-actionsheet-listitem').offsetHeight
+      expect(vm.maxDisplay).to.equal(5)
+      expect($itemHeight * 5).to.equal($listHeight)
+      vm.value = false
+      setTimeout(() => {
+        done()
+      }, 500)
+    })
   })
 
 })
