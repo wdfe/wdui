@@ -30,6 +30,7 @@ Radio 组件 通过 `v-model` 设置已选中的数据。
         :text="list.value || list"
         v-model="currentValue">
       </wd-radio>
+      <p class="custome-text">{{list.text || list.value || list}}</p>
     </label>
   </li>
 </ul>
@@ -53,7 +54,7 @@ export default {
   ...
   data () {
     return {
-      [{value: '选项1'}, {value: '选中'}, {value: '选项3'}, {value: '被禁用', disChoose: true}],
+      listData: [{value: '选项1', text: '选项text1'}, {value: '选项2', text: '选项text2'}, {value: '选项3', text: '选项text3'}, {value: '选项4', text: '选项text4'}],
       currentValue: '选中',
     }
   }
@@ -116,7 +117,7 @@ export default {
   ...
   data () {
     return {
-      listdata: [lists2: [{value: '选项1'}, {value: '选中'}, {value: '选项3'}, {value: '被禁用', disChoose: true}],
+      listdata: [{value: '选项1', text: '选项text1'}, {value: '选中', text: '选中text'}, {value: '选项3', text: '选项text3'}, {value: '被禁用', text: '被禁用text', disChoose: true}],
       currentValue: '选中',
     }
   }
@@ -127,6 +128,6 @@ export default {
 
 | 参数      | 描述                                            | 类型    | 默认值   | 备注  |
 |---------- |-----------------------------------------------  |-------- |-------- |------ |
-| listData  | 传入的 RadioGroup 数据                         | Array   | []      | 必需  |
+| listData  | 传入的 RadioGroup 数据：value表单value值，text表单展示文字                      | Array   | []      | 必需  |
 | name      | radio name 值，多个表单 list 同时存在时需传入   | String  | ''      | 可选  |
 | v-model   | 双向绑定数据值，同步已选中数据                 | String  | ''      | 必需  |

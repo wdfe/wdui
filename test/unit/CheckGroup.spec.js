@@ -29,6 +29,32 @@ describe('CheckboxGroup', () => {
       done()
     })
   })
+  it('CheckboxGroup 初始化对象数据', done => {
+    vm = createVueInstance({
+      template: `
+        <wd-checkboxgroup :listData="lists" :name="'group1'" v-model="value1"></wd-checkboxgroup>
+      `,
+      data() {
+        return {
+          lists: [{value: '选项1', text: '选项text1'}, {value: '选项2', text: '选项text2'}, {value: '选项3', text: '选项text3'}, {value: '选项4', text: '选项text4'}],
+          value1: ''
+        }
+      }
+    })
+    Vue.nextTick(() => {
+      const $dom = document.body.querySelector('.wd-checkboxgroup')
+      expect($dom).to.exist
+      const inputNum = $dom.getElementsByTagName('input').length
+      expect(inputNum).to.equal(vm.lists.length)
+      const listsText = document.body.querySelectorAll('.wd-checkboxgroup-text')
+      expect(listsText[0].innerText).to.equal('选项text1')
+      expect(listsText[1].innerText).to.equal('选项text2')
+      expect(listsText[2].innerText).to.equal('选项text3')
+      expect(listsText[3].innerText).to.equal('选项text4')
+      destroyVM(vm)
+      done()
+    })
+  })
   it('CheckboxGroup 初始化未传值', done => {
     vm = createVueInstance({
       template: `

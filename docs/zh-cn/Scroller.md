@@ -145,11 +145,13 @@ export default {
 }
 ```
 
-**__注意__**
+**注意**
 
-Scroller 组件在加载时需要获取组件 DOM 元素宽高，若在 `v-show` 为 `false`，即 `display:none` 的元素中初始化（或类似情景）该组件会导致获取宽高不正常，无法正常工作。
+1.Scroller 组件在加载时需要获取组件 DOM 元素宽高，若在 `v-show` 为 `false`（即 `display:none` ）的元素中初始化该组件会导致获取宽高不正常，无法正常工作。
 
 请在需要切换可视的场景下，使用 `v-if` 指令控制该组件。
+
+2.Scroller 组件在外层绑定了 touch 事件组接管滚动行为。若在 Scroller 组件内部存在需要滚动的元素，请为该元素绑定 touch 事件组并阻止冒泡。
 
 ## Props
 

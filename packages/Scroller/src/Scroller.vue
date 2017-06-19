@@ -150,7 +150,6 @@ export default {
        * 使用 MutationObserver 监听 slot 内 DOM 变动，并及时更新 Scroller
        * ios 6+ , Android 4.4+
        */
-
       this.slotObserver = new MutationObserver(() => {
         this.updateDOMData()
         this.resetDimensions()
@@ -179,6 +178,7 @@ export default {
         bouncing: this.bouncing
       })
       this.scroller.setPosition(this.scrollTargetRect.left + this.$scrollTarget.clientLeft, this.scrollTargetRect.top + this.$scrollTarget.clientTop)
+      this.resetDimensions()
 
       /*
        * 若 onRefresh 不为空，绑定下拉刷新相关事件

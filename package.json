@@ -1,6 +1,6 @@
 {
   "name": "wdui",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "description": "Mobile UI Components Library based on Vue 2.0",
   "main": "lib/index.js",
   "repository": {
@@ -47,7 +47,7 @@
     "chai": "^3.5.0",
     "clean-webpack-plugin": "^0.1.15",
     "coveralls": "^2.13.0",
-    "css-loader": "^0.28.0",
+    "css-loader": "^0.28.4",
     "es6-promise": "^4.0.5",
     "eslint": "^3.19.0",
     "eslint-config-wdfe": "^0.3.2",

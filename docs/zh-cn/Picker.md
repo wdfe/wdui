@@ -151,6 +151,69 @@ export default {
 }
 ```
 
+## 使用 Picker 组件实现日期选择器示例
+```html
+<wd-button @click.native="showDatePicker">日期选择器示例</wd-button>
+```
+```javascript
+methods: {
+  showDatePicker() {
+    let getYearArray = (offset) => {
+      let currentYear = new Date().getFullYear()
+      let yearArr = []
+      for(let i = currentYear - offset; i <= currentYear + offset; i++) {
+        yearArr.push(i)
+      }
+      return yearArr
+    }
+    let getDayArray = (year, month) => {
+      let tday = new Date(year, month, 0)
+      let dayArr = []
+      for(let i = 1; i <= tday.getDate(); i++) {
+        dayArr.push(i)
+      }
+      return dayArr
+    }
+    this.$Picker({
+      slots: [{
+        type: 'data',
+        flex: 1,
+        values: getYearArray(3),
+        textAlign: 'center',
+        defaultValue: new Date().getFullYear()
+      }, {
+        type: 'divider',
+        content: '-'
+      }, {
+        type: 'data',
+        flex: 1,
+        values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        textAlign: 'center',
+        defaultValue: new Date().getMonth() + 1
+      }, {
+        type: 'divider',
+        content: '-'
+      }, {
+        type: 'data',
+        flex: 1,
+        values: getDayArray(new Date().getFullYear(), new Date().getMonth() + 1),
+        textAlign: 'center',
+        defaultValue: new Date().getDate()
+      }],
+      onConfirm: (instance, datas) => {
+        alert(datas.slot0 + ' - ' + datas.slot2 + ' - ' + datas.slot4)
+        instance.value = false
+      },
+      onChange: (instance, changeInfo) => {
+        if(changeInfo.changedSlotIndex === 0 || changeInfo.changedSlotIndex === 2) {
+          instance.setSlotValues(4, getDayArray(changeInfo.val.slot0, changeInfo.val.slot2, 0), changeInfo.val.slot4 - 1)
+        }
+      }
+    })
+  }
+}
+```
+
 ## 配置项
 
 | 参数                | 描述                        | 类型      | 默认值         | 备注                                                    |
@@ -184,4 +247,4 @@ export default {
 | 属性/方法名    | 类型      | 参数                                  | 备注                  |
 |---------------  |---------- |-------------------------------------  |---------------------- |
 | value           | Boolean   | /                                     | 控制窗体打开与关闭     |
-| setSlotValues   | Function  | index(slot序号), values(slot选择项)  | 动态改变slot的选择项  |
+| setSlotValues   | Function  | index(slot序号), values(slot选择项), valueIndex(slot 默认选中的 index)  | 动态改变slot的选择项  |
