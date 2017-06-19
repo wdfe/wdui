@@ -10,7 +10,6 @@ const init = (propsData) => {
 const ActionSheet = (options = {}) => {
   const instance = init({
     title: options.title,
-    maxDisplay: options.maxDisplay,
     isShowTitle: options.isShowTitle,
     content: options.content,
     textAlign: options.textAlign,

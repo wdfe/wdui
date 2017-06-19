@@ -69,7 +69,6 @@ ActionSheet({
   title: '请选择排序方式',
   content: {
     type: 'radio',
-    maxDisplay: 5,
     items: [
       { title: '名称字母排序' },
       { title: '总交易额' },
@@ -118,32 +117,29 @@ ActionSheet({
 
 ## 配置项
 
-| 参数                  | 描述             | 类型       | 默认值  | 备注                                       |
-| ------------------- | -------------- | -------- | ---- | ---------------------------------------- |
-| title               | 标题文字           | String   | /    |                                          |
-| isShowTitle         | 是否展示标题         | Boolean  | true |                                          |
-| textAlign           | 对齐方式           | String   | left | 单选/多选时必须为left                            |
-| content             | 正文显示配置         | Object   | /    | content 配置项见下表                           |
-| maxDisplay          | 最大显示条数         | Number   | 7    |                                          |
-| confirmText         | 主操作文字          | String   | 确定   |                                          |
-| cancelText          | 辅操作文字          | String   | 取消   |                                          |
-| isShowConfirmButton | 是否展示主操作按钮      | Boolean  | true | 无确定按钮,则选择后自动关闭操作表。单列建议不显示(因为没有选项标记)多选必须存在 |
-| maskColor           | 蒙版颜色           | String   | #000 |                                          |
-| maskOpacity         | 蒙版透明度          | Number   | 0.5  |                                          |
-| transition          | 设置弹出与关闭时的动画效果  | String   | fade | 可选值：fade                                 |
-| onItemClick         | 执行点击操作项的回调函数   | Function | 关闭窗体 | 传入参数：instance(实例) 和 data(选择项数据)          |
-| onConfirm           | 确认选择时的回调函数     | Function | 关闭窗体 | 传入参数：instance(实例) 和 data(选择项数据)          |
-| onCancel            | 执行辅操作时的回调函数    | Function | 关闭窗体 |                                          |
-| onShow              | 窗体出现后的回调函数     | Function |      |                                          |
-| onHide              | 窗体隐藏后的回调函数     | Function |      |                                          |
-| onMaskClick         | 点击 Mask 时的回调函数 | Function |      |                                          |
-
-
+| 参数                  | 描述                        | 类型      | 默认值     | 备注                                                                              |
+|---------------------  |---------------------------- |---------- |---------- |---------------------------------------------------------------------------------  |
+| title                 | 标题文字                    | String    | /         |                                                                                   |
+| isShowTitle           | 是否展示标题                | Boolean   | true      |                                                                                   |
+| textAlign             | 对齐方式                    | String    | left      | 单选/多选时必须为left                                                             |
+| content               | 正文显示配置                | Object    | /         | content 配置项见下表                                                              |
+| confirmText           | 主操作文字                   | String    | 确定      |                                                                                   |
+| cancelText            | 辅操作文字                   | String    | 取消      |                                                                                   |
+| isShowConfirmButton   | 是否展示主操作按钮           | Boolean   | true      | 无确定按钮,则选择后自动关闭操作表。单列建议不显示(因为没有选项标记)多选必须存在   |
+| maskColor             | 蒙版颜色                    | String    | #000      |                                                                                   |
+| maskOpacity           | 蒙版透明度                   | Number    | 0.5       |                                                                                   |
+| transition            | 设置弹出与关闭时的动画效果   | String    | fade      | 可选值：fade                                                                      |
+| onItemClick           | 执行点击操作项的回调函数    | Function  | 关闭窗体  | 传入参数：instance(实例) 和 data(选择项数据)                                     |
+| onConfirm             | 确认选择时的回调函数        | Function  | 关闭窗体  | 传入参数：instance(实例) 和 data(选择项数据)                                     |
+| onCancel              | 执行辅操作时的回调函数       | Function  | 关闭窗体  |                                                                                   |
+| onShow                | 窗体出现后的回调函数        | Function  |           |                                                                                   |
+| onHide                | 窗体隐藏后的回调函数        | Function  |           |                                                                                   |
+| onMaskClick           | 点击 Mask 时的回调函数      | Function  |           |                                                                                   |
 
 ## content 配置项
 
-| 参数           | 描述            | 类型     | 默认值    | 备注                                       |
-| ------------ | ------------- | ------ | ------ | ---------------------------------------- |
-| type         | 类型            | String | single | 可选值: radio/checklist                     |
-| items        | 操作项名称         | Array  | /      | 单列: 按此形式传入数据, [{'title':''},...]双列: 按此形式传入数据, [{'title':'','subtitle':''},...] |
-| defaultValue | 单选/多选默认选中项的下标 | Array  | /      | 每次加载组件前修改该值即可改变默认选中项,若不改变则以首次传入值为准(每次选中项的下标会以_index返回) |
+| 参数          | 描述                        | 类型    | 默认值   | 备注                                                                                                  |
+|-------------- |---------------------------  |-------- |-------- |-----------------------------------------------------------------------------------------------------  |
+| type          | 类型                        | String  | single  | 可选值: radio/checklist                                                                              |
+| items         | 操作项名称                 | Array   | /       | 单列: 按此形式传入数据, [{'title':''},...]双列: 按此形式传入数据, [{'title':'','subtitle':''},...]    |
+| defaultValue  | 单选/多选默认选中项的下标   | Array   | /       | 每次加载组件前修改该值即可改变默认选中项,若不改变则以首次传入值为准(每次选中项的下标会以_index返回)  |
