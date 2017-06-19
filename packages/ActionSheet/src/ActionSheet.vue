@@ -96,7 +96,7 @@
         visible: false,
         datas: {},
         itemsHeight: [0, 53, 105, 157],
-        dpr: lib.flexible.dpr
+        dpr: window.dpr || window.lib.flexible.dpr
       }
     },
     computed: {
