@@ -29,6 +29,7 @@ Checkbox 组件 通过 `v-model` 设置已选中的数据。
         v-model="currentValue">
       </wd-checkbox>
     </label>
+    <p class="custome-text">{{list.text || list.value || list}}</p>
   </li>
 </ul>
 <p class="current-value">当前选中："currentValue"</p>
