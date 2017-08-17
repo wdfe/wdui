@@ -76,6 +76,8 @@ export {
   MessageBox,
   Search,
   Switch,
+  Swipe,
+  SwipeItem,
   Picker,
   Toast,
   Popup,
