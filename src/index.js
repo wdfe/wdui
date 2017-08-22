@@ -65,7 +65,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-const version = '0.6.8'
+const version = '0.6.9'
 
 export {
   install,
