@@ -73,6 +73,10 @@ export default {
       type: String,
       default: '没有更多数据了'
     },
+    noDataLoadLock: {
+      type: Boolean,
+      default: true
+    },
     animating: {
       type: Boolean,
       default: true
@@ -109,7 +113,8 @@ export default {
       infiniteLoadingState: 0,
       tipHeight: 0,
       contentHeight: 0,
-      containerHeight: 0
+      containerHeight: 0,
+      noDataLoadLocker: false
     }
   },
   components: {
@@ -251,6 +256,9 @@ export default {
           if (this.infiniteLoadingState) {
             return
           }
+          if (this.noDataLoadLocker) {
+            return
+          }
           this.noLoad = false
           this.infiniteLoadingState = 1
 
@@ -330,7 +338,7 @@ export default {
       let contentHeight = this.$refs.slotWrapper.getBoundingClientRect().height
       if(this.containerHeight + transformY > contentHeight) {
         this.showLoadingState = false
-        this.scroller.scrollTo(0, contentHeight - this.containerHeight, true)
+        this.scroller.scrollTo(0, contentHeight - this.containerHeight + this.tipHeight, true)
         setTimeout(() => {
           this.showLoadingState = true
         }, this.animationDuration)
@@ -346,6 +354,7 @@ export default {
     noMoreInfiniteLoading() {
       this.finishInfiniteLoading()
       this.noLoad = true
+      this.noDataLoadLocker = true
     }
   }
 }

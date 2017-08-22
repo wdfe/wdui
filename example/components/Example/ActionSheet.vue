@@ -43,6 +43,7 @@ export default {
     showActionSheet2: function() {
       this.$ActionSheet({
         title: '请选择排序方式',
+        maxDisplay: 5,
         content: {
           type: 'radio',
           items: [

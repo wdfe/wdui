@@ -74,6 +74,33 @@ describe('RadioGroup', () => {
       done()
     })
   })
+  it('RadioGroup 选中值改变', done => {
+    vm = createVueInstance({
+      template: `
+        <wd-radiogroup :listData="lists" :name="'group1'" ref="radiogroup" v-model="value1"></wd-radiogroup>
+      `,
+      data() {
+        return {
+          lists: ['选项1', '选项2', '选项3', '选项4'],
+          value1: '选项2'
+        }
+      }
+    })
+    Vue.nextTick(() => {
+      let dafaultValue = vm.$refs.radiogroup._data.currentValue
+      expect(dafaultValue).to.equal(vm._data.value1)
+      setTimeout(()=>{
+        vm.value1 = '选项1'
+        setTimeout(()=>{
+          let changedValue = vm.$refs.radiogroup.currentValue
+          expect(changedValue).to.equal('选项1')
+          destroyVM(vm)
+          done()
+        }, 300)
+      }, 500)
+    })
+  })
+
   it('RadioGroup 被禁用', done => {
     vm = createVueInstance({
       template: `

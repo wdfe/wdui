@@ -2,8 +2,8 @@
   <transition :name="actionsheetTransition" @after-enter="onShow()" @after-leave="onHide()">
     <div :class="{'wd-actionsheet-theme-left': textAlign === 'left','wd-actionsheet-theme-center': textAlign === 'center'}" class="wd-actionsheet" ref="popup" v-if="visible" :style="{'z-index': zIndex}">
       <header v-if="isShowTitle" class="wd-actionsheet-header">{{ title }}</header>
-      <div class="wd-actionsheet-content">
-        <wd-actionsheet-slot @getData="getData" :items="content.items" :type="content.type" :defaultValue="content.defaultValue"></wd-actionsheet-slot>
+      <div class="wd-actionsheet-content" :style="`max-height: ${maxDisplay * itemHeight}px;`">
+        <wd-actionsheet-slot @getItemHeight="setItemHeight" @getData="getData" :items="content.items" :type="content.type" :defaultValue="content.defaultValue"></wd-actionsheet-slot>
       </div>
       <footer class="wd-actionsheet-footer">
         <span @click="onCancel">{{ cancelText }}</span>
@@ -30,6 +30,10 @@
       title: {
         type: [String, Number],
         default: ''
+      },
+      maxDisplay: {
+        type: Number,
+        default: 7
       },
       isShowTitle: {
         type: Boolean,
@@ -90,7 +94,8 @@
     data() {
       return {
         visible: false,
-        datas: {}
+        datas: {},
+        itemHeight: 0
       }
     },
     computed: {
@@ -113,6 +118,9 @@
       },
       maskClick() {
         this.onMaskClick()
+      },
+      setItemHeight(height) {
+        this.itemHeight = height
       }
     }
   }
@@ -123,7 +131,6 @@
   $header-line-height: 88px;
   $content-text-color: #222;
   $content-text-size: 32px;
-  $content-line-height: 104px;
   $border-color: #ddd;
   $button-background-color: #f7f7f7;
   .wd-actionsheet {
@@ -142,6 +149,7 @@
     }
     .wd-actionsheet-content {
       padding: 0 0 0 40px;
+      overflow-y: auto;
     }
     .wd-actionsheet-footer {
       display: flex;

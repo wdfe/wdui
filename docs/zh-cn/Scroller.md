@@ -163,6 +163,7 @@ export default {
 | loadText      | 上拉加载文案        | String    | 加载更多数据    |       |
 | loadingText   | 正在加载文案        | String    | 正在加载        |       |
 | noDataText    | 无数据文案         | String    | 没有更多数据了   |       |
+| noDataLoadLock | 上拉加载无数据时锁住 | Boolean | true           |       |
 
 ## 可供调用的实例方法
 

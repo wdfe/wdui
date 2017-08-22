@@ -95,6 +95,32 @@ describe('CheckboxGroup', () => {
       done()
     })
   })
+  it('CheckboxGroup 选中值改变', done => {
+    vm = createVueInstance({
+      template: `
+        <wd-checkboxgroup :listData="lists" :name="'group1'" ref="checkgroup" v-model="value1"></wd-checkboxgroup>
+      `,
+      data() {
+        return {
+          lists: ['选项1', '选项2', '选项3', '选项4'],
+          value1: ['选项2']
+        }
+      }
+    })
+    Vue.nextTick(() => {
+      let dafaultValue = vm.$refs.checkgroup._data.currentCheck
+      expect(dafaultValue).to.equal(vm._data.value1)
+      setTimeout(()=>{
+        vm.value1 = ['选项1', '选项2']
+        setTimeout(()=>{
+          let changedValue = vm.$refs.checkgroup.currentCheck
+          expect(changedValue).to.equal(vm.value1)
+          destroyVM(vm)
+          done()
+        }, 300)
+      }, 500)
+    })
+  })
   it('CheckboxGroup 被禁用', done => {
     vm = createVueInstance({
       template: `

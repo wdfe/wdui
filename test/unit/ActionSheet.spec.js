@@ -510,4 +510,33 @@ describe('ActionSheet', () => {
     }, 200)
   })
 
+  it('actionsheet maxDisplay 最大显示条数', done => {
+    vm = ActionSheet({
+      title: '测试标题',
+      isShowTitle: false,
+      maxDisplay: 5,
+      content: {
+        items: [
+          {title: '测试正文条目1'},
+          {title: '测试正文条目2'},
+          {title: '测试正文条目3'},
+          {title: '测试正文条目4'},
+          {title: '测试正文条目5'},
+          {title: '测试正文条目6'},
+          {title: '测试正文条目7'},
+          {title: '测试正文条目8'}
+        ]
+      }
+    })
+    Vue.nextTick(() => {
+      const $contentHeight = document.querySelector('.wd-actionsheet-content').offsetHeight
+      const $itemHeight = document.querySelector('.wd-actionsheet-listitem').offsetHeight
+      expect(vm.maxDisplay).to.equal(5)
+      expect($itemHeight * 5).to.equal($contentHeight)
+      vm.value = false
+      setTimeout(() => {
+        done()
+      }, 500)
+    })
+  })
 })

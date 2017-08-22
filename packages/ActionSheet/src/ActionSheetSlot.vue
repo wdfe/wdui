@@ -50,7 +50,8 @@ export default {
     return {
       selected: '',
       currentCheck: [],
-      indexList: []
+      indexList: [],
+      itemHeight: 0
     }
   },
   mounted() {
@@ -68,6 +69,7 @@ export default {
         this.$emit('getData', {'_index': list, 'value': this.currentCheck})
       }
     }
+    this.getSize()
   },
   methods: {
     defaultValueValidator() {
@@ -109,6 +111,10 @@ export default {
         this.indexList.splice(this.indexList.indexOf(index), 1)
       }
       this.$emit('getData', {'_index': this.indexList, 'value': this.currentCheck})
+    },
+    getSize() {
+      this.itemHeight = this.$el.querySelector('.wd-actionsheet-listitem').offsetHeight
+      this.$emit('getItemHeight', this.itemHeight)
     },
   }
 }
