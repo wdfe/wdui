@@ -187,7 +187,7 @@ $fence-color: #cdcdcd;
         width: 100%;
         top: 50%;
         left: 0;
-        border-top: 1px solid $fence-color;
+        border-top: 1px solid $fence-color; /* no */
         transform: translate3d(0, -36px, 0)
       }
       .wd-picker-slots-fence-downline {
@@ -196,7 +196,7 @@ $fence-color: #cdcdcd;
         width: 100%;
         top: 50%;
         left: 0;
-        border-top: 1px solid $fence-color;
+        border-top: 1px solid $fence-color; /* no */
         transform: translate3d(0, 36px, 0)
       }
     }

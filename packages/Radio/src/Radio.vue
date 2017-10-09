@@ -74,7 +74,7 @@ export default {
     position:absolute;
     width: 40px;
     height: 40px;
-    border: 1px solid #DDDDDD;
+    border: 1px solid #DDDDDD; /* no */
     background: #FFFFFF;
     border-radius: 50%;
     display: inline-block;
@@ -83,10 +83,10 @@ export default {
   }
   input+&-custominput.dis{
     background: #EEEEEE;
-    border: 2px solid #CACACA; 
+    border: 2px solid #CACACA;
   }
   input:checked+&-custominput {
-    border: 1px solid #F0412F;
+    border: 1px solid #F0412F; /* no */
   }
   input:checked+&-custominput:after{
     content: '';
@@ -100,7 +100,7 @@ export default {
     left: 50%;
   }
   input:checked+&-custominput.dis {
-    border: 1px solid #CACACA;
+    border: 1px solid #CACACA; /* no */
     background: #EEEEEE;
     background-size: 65%;
   }
