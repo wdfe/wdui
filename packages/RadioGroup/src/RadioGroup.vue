@@ -85,7 +85,7 @@ export default {
     line-height: 104px;
     font-size: $text-size; /*px*/
     color: $title-color;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $border-color; /* no */
     label {
       width: 100%;
       height: 100%;

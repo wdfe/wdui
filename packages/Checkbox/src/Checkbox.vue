@@ -65,7 +65,7 @@ export default {
     position:absolute;
     width: 40px;
     height: 40px;
-    border: 1px solid #DDDDDD;
+    border: 1px solid #DDDDDD; /* no */
     background: #FFFFFF;
     border-radius: 50%;
     display: inline-block;
@@ -77,12 +77,12 @@ export default {
     border: 2px solid #CACACA;
   }
   input:checked+&-custominput {
-    border: 1px solid #F0412F;
+    border: 1px solid #F0412F; /* no */
     background: #F0412F url('../../../src/assets/images/check_w.png') no-repeat center;
     background-size: 65%;
   }
   input:checked+&-custominput.dis {
-    border: 1px solid #CACACA;
+    border: 1px solid #CACACA; /* no */
     background: #EEEEEE url('../../../src/assets/images/check_b.png') no-repeat center;
     background-size: 65%;
   }

@@ -53,7 +53,7 @@ export default {
   width: 100%;
   height: 104px;
   display: flex;
-  border-bottom: 1px #CACACA solid;
+  border-bottom: 1px #CACACA solid; /* no */
   padding: 16px 0;
   box-sizing: border-box;
   background: #ffffff;
@@ -103,7 +103,7 @@ export default {
       width: 84px;
       height: 36px;
       padding: 0 24px;
-      border-right: 1px solid #CACACA;
+      border-right: 1px solid #CACACA; /* no */
       box-sizing: border-box;
 
       .wd-search-icon-search {
