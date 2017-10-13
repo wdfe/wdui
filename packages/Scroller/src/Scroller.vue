@@ -301,13 +301,34 @@ export default {
         pageX: e.pageX,
         pageY: e.pageY
       }], e.timeStamp)
+
+      /*
+       * 如果 onload 不为空，执行无限加载相关逻辑
+       */
+
+      if(this.onLoad && this.contentOverflow) {
+        let top = this.scroller.getValues().top
+        let ww = this.$el.clientWidth
+        let wh = this.$el.clientHeight
+        let ew = this.$slotWrapper.offsetWidth
+        let eh = this.$slotWrapper.offsetHeight + this.tipHeight
+        if(this.noRefresh) {
+          eh += this.tipHeight
+        }
+        if (top + this.$el.clientHeight > this.$slotWrapper.offsetHeight + this.tipHeight) {
+          this.resetDimensionsManually(ww, wh, ew, eh)
+        }else if(top + this.$el.clientHeight === this.$slotWrapper.offsetHeight + this.tipHeight) {
+          this.resetDimensions()
+        }
+      }
       this.mousedown = true
     },
     mouseUp(e) {
       if (!this.mousedown) {
         return
       }
-      this.scroller.doTouchEnd(e.timeStamp)
+
+      this.touchEnd(e)
       this.mousedown = false
     },
     resetDimensions() {

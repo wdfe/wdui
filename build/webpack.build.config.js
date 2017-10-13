@@ -29,14 +29,16 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../lib'),
     filename: '[name].js',
-    libraryTarget: 'umd'
+    library: 'wdui',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   externals: {
     vue: {
       root: 'Vue',
-      commonjs2: 'vue',
-      amd: 'vue',
-      commonjs: 'vue'
+      commonjs2: 'Vue',
+      amd: 'Vue',
+      commonjs: 'Vue'
     }
   },
   module: {
