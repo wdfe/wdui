@@ -36,9 +36,9 @@ module.exports = {
   externals: {
     vue: {
       root: 'Vue',
-      commonjs2: 'Vue',
-      amd: 'Vue',
-      commonjs: 'Vue'
+      commonjs2: 'vue',
+      amd: 'vue',
+      commonjs: 'vue'
     }
   },
   module: {
