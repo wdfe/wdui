@@ -158,11 +158,11 @@ export default {
       }else if (Index > (this.values.length - 1)) {
         Index = this.values.length - 1
       }
+      translateUtils.translateElement(this.$el, null, this.itemHeight * (((this.showItemCount - 1) / 2) - Index))
       if(Index === this.currentIndex) {
         return
       }
       this.currentIndex = Index
-      translateUtils.translateElement(this.$el, null, this.itemHeight * (((this.showItemCount - 1) / 2) - Index))
     }
   }
 }
