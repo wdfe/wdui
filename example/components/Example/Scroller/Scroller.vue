@@ -46,7 +46,7 @@ $border-color: #DDDDDD;
       font-size: $text-size; /*px*/
       color: $title-color;
       padding-left: 40px;
-      border-bottom: 1px solid $border-color;
+      border-bottom: 1px solid $border-color; /* no */
       position: relative;
       $arrowBtn: 15px;
       a {
@@ -106,7 +106,7 @@ $border-color: #DDDDDD;
   }
   .page-infinite-desc, .page-infinite-listitem {
     text-align: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eee; /* no */
   }
   .page-infinite-desc {
     color: #666;
@@ -120,7 +120,7 @@ $border-color: #DDDDDD;
     width: 100%;
   }
   .page-infinite-listitem:first-child {
-    border-top: 1px solid #eee;
+    border-top: 1px solid #eee; /* no */
   }
   .page-infinite-listitem {
     height: 100px;
