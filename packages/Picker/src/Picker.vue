@@ -4,6 +4,7 @@
       <header class="wd-picker-header">
         <p class="wd-picker-header-cancel" v-if="isShowCancelButton" @click="onCancel">{{ cancelText }}</p>
         <p class="wd-picker-header-confirm" @click="onConfirm">{{ confirmText }}</p>
+        <p class="wd-picker-header-title" v-if="title">{{ title }}</p>
       </header>
       <div class="wd-picker-slots-container" :style="`height: ${containerHeight}px;`">
         <wd-picker-slot v-for="(slot, index) in slots" @getItemHeight="setItemHeight" @change="slotChangeHandler" :slotIndex="index" :showItemCount="showItemCount" :content="slot.content" :type="slot.type" :values="slot.values" :flex="slot.flex" :textAlign="slot.textAlign" :key="'slot' + index" :defaultValue="slot.defaultValue" :ref="'slot' + index"></wd-picker-slot>
@@ -25,6 +26,10 @@ export default {
     [PickerSlot.name]: PickerSlot
   },
   props: {
+    title: {
+      type: [String, Number],
+      default: ''
+    },
     value: {
       type: Boolean,
       default: false
@@ -166,6 +171,10 @@ $fence-color: #cdcdcd;
       }
       .wd-picker-header-confirm {
         float: right;
+      }
+      .wd-picker-header-title {
+        color: #404040;
+        text-align: center;
       }
 
       &>p {

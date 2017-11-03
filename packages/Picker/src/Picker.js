@@ -16,6 +16,9 @@ const Picker = (options = {}) => {
     transition: options.transition,
     maskOpacity: options.maskOpacity,
     maskColor: options.maskColor,
+    confirmText: options.confirmText,
+    cancelText: options.cancelText,
+    title: options.title,
     isShowCancelButton: options.isShowCancelButton === undefined ? true : options.isShowCancelButton
   })
   instance.value = options.open || true

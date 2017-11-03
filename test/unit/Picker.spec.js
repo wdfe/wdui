@@ -24,6 +24,71 @@ describe('Picker', () => {
     })
   })
 
+  it('picker title 标题', done => {
+    vm = Picker({
+      title: '选择城市',
+      slots: [{
+        type: 'data',
+        flex: 1,
+        values: ['北京', '上海', '广州', '深圳', '杭州'],
+        textAlign: 'center'
+      }]
+    })
+    Vue.nextTick(() => {
+      const $dom = document.querySelector('.wd-picker-header-title')
+      expect($dom).to.exist
+      expect($dom.innerText).to.equal('选择城市')
+      vm.value = false
+      setTimeout(() => {
+        done()
+      }, 500)
+    })
+  })
+
+  it('picker confirmText 确定文字', done => {
+    vm = Picker({
+      slots: [{
+        type: 'data',
+        flex: 1,
+        values: ['北京', '上海', '广州', '深圳', '杭州'],
+        textAlign: 'center'
+      }],
+      showItemCount: 3,
+      confirmText: '确定文字'
+    })
+    Vue.nextTick(() => {
+      const $dom = document.querySelector('.wd-picker-header-confirm')
+      expect($dom).to.exist
+      expect($dom.innerText).to.equal('确定文字')
+      vm.value = false
+      setTimeout(() => {
+        done()
+      }, 500)
+    })
+  })
+
+  it('picker cancelText 取消文字', done => {
+    vm = Picker({
+      slots: [{
+        type: 'data',
+        flex: 1,
+        values: ['北京', '上海', '广州', '深圳', '杭州'],
+        textAlign: 'center'
+      }],
+      showItemCount: 3,
+      cancelText: '取消文字'
+    })
+    Vue.nextTick(() => {
+      const $dom = document.querySelector('.wd-picker-header-cancel')
+      expect($dom).to.exist
+      expect($dom.innerText).to.equal('取消文字')
+      vm.value = false
+      setTimeout(() => {
+        done()
+      }, 500)
+    })
+  })
+
   it('picker showItemCount 展示行数', done => {
     vm = Picker({
       slots: [{
