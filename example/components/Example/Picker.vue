@@ -124,6 +124,7 @@ export default {
         return dayArr
       }
       this.$Picker({
+        title: '选择日期',
         slots: [{
           type: 'data',
           flex: 1,
