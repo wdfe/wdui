@@ -222,6 +222,9 @@ methods: {
 | slots               | 选择项                       | Array     |               | slot 配置项见下表                                       |
 | transition          | 弹出时动画效果               | String    | slide-bottom  | 可选值：slide-bottom                                    |
 | isShowCancelButton  | 是否显示取消按钮            | Boolean   | true          |                                                         |
+| title               | 标题                      | String/Number  | /             |                                                |
+| confirmText         | 确定按钮文字               | String/Number  | 确定             |                                                |
+| cancelText          | 取消按钮文字                | String/Number  | 取消             |                                                |
 | maskOpacity         | 蒙版透明度                   | Number    | 0.5           |                                                         |
 | maskColor           | 蒙版颜色                    | String    | #000          |                                                         |
 | onConfirm           | 确认选择时的回调函数        | Function  | 关闭窗体      | 传入参数：instance(实例) 和 datas(选择项数据)            |

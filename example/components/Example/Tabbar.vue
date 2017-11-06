@@ -59,7 +59,7 @@ export default {
   .icon {
     width: 64px;
     height: 64px;
-    border: 1px solid #666; /* px */
+    border: 1px solid #666; /* no */
     box-sizing: border-box;
   }
   .active {
