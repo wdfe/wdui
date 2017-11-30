@@ -58,6 +58,19 @@ npm run test
 npm run test:watch
 ```
 
+### 发布
+
+在 dev 分支上新增/修改完代码之后，若确认无误，可以发新版本。
+
+1. 若涉及 API 变动，需先确定在文档和 example 页中进行对应修改和示范。
+2. 更新版本号，修改 `package.json` 和 `sec/index.js` 中的版本号信息。
+3. 运行 `npm run build` 进行编译，将编译结果进行提交与 push。建议该次提交的 commit 信息为 `[release] bump to x.x.x.` 或类似。
+4. 使用新版本号打 tag，执行 `git tag vx.x.x（新版本号）`
+5. 提交 tag。执行 `git push --tags
+6. 在项目的 [release](https://github.com/wdfe/wdui/releases) 页中 `draft a new release`。发布新 release 时需要将本版本的新增功能/修改功能/bug修复等工作进行描述，仿照之前的 release。
+7. 提交项目至 npm。执行 `npm publish`
+8. 此时 wdui 新版本已成功发布，在本地项目中重新安装 wdui (`npm i wdui@latest --save-dev`)即可使用新功能。
+
 ### 规范
 
 - 编写时请遵循 `eslint-config-wdfe` 中的 eslint 配置。
