@@ -57,7 +57,7 @@ export default {
     max-width: 480px;
     box-sizing: border-box;
     font-size: 32px;
-    line-height: 45px;
+    line-height: 75px;
     transform: translate(-50%, -50%);
     outline: none;
     padding: 32px 40px;
