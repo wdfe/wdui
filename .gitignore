@@ -6,3 +6,4 @@ temp/
 npm-debug.log
 yarn-error.log
 yarn.lock
+.history
