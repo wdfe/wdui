@@ -11,6 +11,10 @@
       title: {
         type: String,
         default: ''
+      },
+      type: {
+        type: String,
+        default: ''
       }
     },
     mounted() {
