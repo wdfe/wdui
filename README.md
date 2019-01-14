@@ -34,7 +34,8 @@ npm i babel-plugin-component --save-dev
 ```json
 {
   "plugins": ["transform-vue-jsx", "something else" ,["babel-plugin-component", {
-    "libraryName": "wdui"
+    "libraryName": "wdui",
+    "style": false
   }]],
 }
 ```
