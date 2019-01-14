@@ -14,7 +14,7 @@
            $index === index ? 'current' : '',
            true ? 'wd-swipe-indicator' : '']"></li>
       </ul>
-      <div v-if="indicatorsType === 'number'" class="wd-swipe-number-indicator">{{index+1}} / {{pages.length}}</div>
+      <div v-if="indicatorsType === 'number'" class="wd-swipe-number-indicator">{{(index+1) - reduceCount}} / {{(pages.length) - reduceCount}}</div>
     </div>
   </div>
 </template>
@@ -197,11 +197,18 @@
       keyboard: {
         type: Boolean,
         default: false
+      },
+      reduceCount: {
+        type: Number,
+        default: 0
       }
     },
     watch: {
       index(newIndex) {
         this.$emit('change', newIndex)
+      },
+      defaultIndex(newIndex) {
+        this.reInitPages()
       }
     },
     methods: {

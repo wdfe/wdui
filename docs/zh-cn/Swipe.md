@@ -75,7 +75,7 @@ export default {
 |---------------------  |------------------------------------------------------------------------------------------------ |---------  |-------- |-----------------------------------  |
 | speed                 | 动画持续时间(毫秒)                                                                              | Number    | 300     |                                     |
 | auto                  | 自动播放的时间间隔(毫秒)                                                                         | Number    | 3000    |                                     |
-| defaultIndex          | 初始显示的轮播图的索引                                                                           | Number    | 0       |                                     |
+| defaultIndex          | 初始显示的轮播图的索引,可以监听索引的变化                                                                           | Number    | 0       |                                     |
 | show-title            | 显示标题                                                                                        | Boolean   | false   | 需同时设置 swipe-item 的 title 值  |
 | show-indicators       | 显示 indicators                                                                                 | Boolean   | true    |                                     |
 | indicators-type       | indicators 类型                                                                                 | String    | dot     | 可选值：dot / number                |
