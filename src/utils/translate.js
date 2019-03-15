@@ -64,7 +64,7 @@ let translateElement = function(element, x, y) {
     return
   }
 
-  if (element === null || element === undefined || element.style === null) {
+  if (element === null || element === undefined || (element && element.style === null)) {
     return
   }
 
