@@ -34,12 +34,12 @@ if (helperElem.style[perspectiveProperty] !== undefined) {
 
 let getTranslate = function(element) {
   let result = {left: 0, top: 0}
-  if (element === null || element.style === null) {
+  if (element === null || (element && element.style === null)) {
     return result
   }
 
-  let transform = element.style[transformProperty]
-  let matches = transform.match(/translate(3d)?\(\s*(-?\d+\.?\d*)px,\s*(-?\d+\.?\d*)px.*\)/)
+  let transform = element && element.style[transformProperty]
+  let matches = transform && transform.match(/translate(3d)?\(\s*(-?\d+\.?\d*)px,\s*(-?\d+\.?\d*)px.*\)/)
   if(matches) {
     result.left = +matches[2]
     result.top = +matches[3]
@@ -49,7 +49,7 @@ let getTranslate = function(element) {
 }
 
 let cancelTranslateElement = function(element) {
-  if (element === null || element.style === null) {
+  if (element === null || (element && element.style === null)) {
     return
   }
   let transformValue = element.style[transformProperty]
