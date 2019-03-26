@@ -63,7 +63,7 @@ npm run test:watch
 在 dev 分支上新增/修改完代码之后，若确认无误，可以发新版本。
 
 1. 若涉及 API 变动，需先确定在文档和 example 页中进行对应修改和示范。
-2. 更新版本号，修改 `package.json` 和 `sec/index.js` 中的版本号信息。
+2. 更新版本号，修改 `package.json` 和 `src/index.js` 中的版本号信息。
 3. 运行 `npm run build` 进行编译，将编译结果进行提交与 push。建议该次提交的 commit 信息为 `[release] bump to x.x.x.` 或类似。
 4. 使用新版本号打 tag，执行 `git tag vx.x.x（新版本号）`
 5. 提交 tag。执行 `git push --tags

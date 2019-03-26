@@ -38,7 +38,7 @@ let getTranslate = function(element) {
     return result
   }
 
-  let transform = element && element.style[transformProperty]
+  let transform = element && element.style && element.style[transformProperty]
   let matches = transform && transform.match(/translate(3d)?\(\s*(-?\d+\.?\d*)px,\s*(-?\d+\.?\d*)px.*\)/)
   if(matches) {
     result.left = +matches[2]
@@ -52,7 +52,7 @@ let cancelTranslateElement = function(element) {
   if (element === null || (element && element.style === null)) {
     return
   }
-  let transformValue = element.style[transformProperty]
+  let transformValue = element && element.style && element.style[transformProperty]
   if (transformValue) {
     transformValue = transformValue.replace(/translate\(\s*(-?\d+(\.?\d+?)?)px,\s*(-?\d+(\.\d+)?)px\)\s*translateZ\(0px\)/g, '')
     element.style[transformProperty] = transformValue
