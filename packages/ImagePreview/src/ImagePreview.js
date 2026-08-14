@@ -17,7 +17,9 @@ const ImagePreview = (options = {}) => {
     imgList: options.imgList,
     autoClose: options.autoClose,
     showIndicator: options.showIndicator,
-    defaultIndex: options.defaultIndex
+    defaultIndex: options.defaultIndex,
+    minScale: options.minScale,
+    maxScale: options.maxScale
   })
   instance.value = options.open !== false
   instance.onShow = options.onShow ? options.onShow.bind(null, instance) : (() => {})

@@ -2,8 +2,14 @@
   <transition :name="`wd-imagepreview-${transition}`" @after-enter="onShow()" @after-leave="onHide()">
     <div class="wd-imagepreview" ref="popup" v-if="visible" :style="{'z-index': zIndex}">
       <ul class="wd-imagepreview-container" ref="container" :class="{dragging: dragState.dragging}">
-        <li v-for="img in imgList" class="wd-imagepreview-item">
-          <img :src="img.url">
+        <li v-for="(img, index) in imgList" :key="index" class="wd-imagepreview-item">
+          <img
+            :src="img.url"
+            :ref="`image-${index}`"
+            :style="getImageStyle(index)"
+            @touchstart="handleTouchStart($event, index)"
+            @touchmove="handleTouchMove($event, index)"
+            @touchend="handleTouchEnd($event, index)">
         </li>
       </ul>
       <span class="wd-imagepreview-close" v-if="!autoClose" @click="onClose">关闭</span>
@@ -45,6 +51,14 @@ export default {
     showIndicator: {
       type: Boolean,
       default: true
+    },
+    minScale: {
+      type: Number,
+      default: 1
+    },
+    maxScale: {
+      type: Number,
+      default: 2
     },
     onShow: {
       type: Function,
@@ -90,7 +104,18 @@ export default {
       },
       itemWidth: 0,
       currentIndex: 0,
-      sum: 0
+      sum: 0,
+      zoomStates: [],
+      touchState: {
+        touching: false,
+        startDistance: 0,
+        startScale: 1,
+        startX: 0,
+        startY: 0,
+        lastX: 0,
+        lastY: 0,
+        isPinching: false
+      }
     }
   },
   watch: {
@@ -120,6 +145,7 @@ export default {
     },
     init() {
       this.initData()
+      this.initZoomStates()
       this.bindEvent()
       this.locateItem(this.defaultIndex)
     },
@@ -188,6 +214,135 @@ export default {
     locateItem(index) {
       translateUtils.translateElement(this.$refs.container, - index * this.itemWidth, null)
       this.currentIndex = index
+    },
+    initZoomStates() {
+      this.zoomStates = this.imgList.map(() => ({
+        scale: 1,
+        translateX: 0,
+        translateY: 0
+      }))
+    },
+    getImageStyle(index) {
+      if (!this.zoomStates[index]) {
+        return {}
+      }
+      const { scale, translateX, translateY } = this.zoomStates[index]
+      return {
+        transform: `translate(${translateX}px, ${translateY}px) scale(${scale})`,
+        transition: this.touchState.touching ? 'none' : 'transform 0.3s ease-out'
+      }
+    },
+    getTouchDistance(touches) {
+      const touch1 = touches[0]
+      const touch2 = touches[1]
+      const dx = touch1.pageX - touch2.pageX
+      const dy = touch1.pageY - touch2.pageY
+      return Math.sqrt(dx * dx + dy * dy)
+    },
+    getTouchCenter(touches) {
+      const touch1 = touches[0]
+      const touch2 = touches[1]
+      return {
+        x: (touch1.pageX + touch2.pageX) / 2,
+        y: (touch1.pageY + touch2.pageY) / 2
+      }
+    },
+    handleTouchStart(event, index) {
+      if (event.touches.length === 2) {
+        // 双指捏合开始
+        event.preventDefault()
+        this.touchState.isPinching = true
+        this.touchState.touching = true
+        this.touchState.startDistance = this.getTouchDistance(event.touches)
+        this.touchState.startScale = this.zoomStates[index].scale
+        const center = this.getTouchCenter(event.touches)
+        this.touchState.startX = center.x
+        this.touchState.startY = center.y
+        this.touchState.lastX = this.zoomStates[index].translateX
+        this.touchState.lastY = this.zoomStates[index].translateY
+      } else if (event.touches.length === 1 && this.zoomStates[index].scale > 1) {
+        // 单指拖动（仅当图片已放大时）
+        event.preventDefault()
+        this.touchState.touching = true
+        this.touchState.isPinching = false
+        this.touchState.startX = event.touches[0].pageX
+        this.touchState.startY = event.touches[0].pageY
+        this.touchState.lastX = this.zoomStates[index].translateX
+        this.touchState.lastY = this.zoomStates[index].translateY
+      }
+    },
+    handleTouchMove(event, index) {
+      if (!this.touchState.touching) {
+        return
+      }
+
+      if (event.touches.length === 2 && this.touchState.isPinching) {
+        // 双指捏合缩放
+        event.preventDefault()
+        const currentDistance = this.getTouchDistance(event.touches)
+        let scale = this.touchState.startScale * (currentDistance / this.touchState.startDistance)
+
+        // 限制缩放范围
+        scale = Math.max(this.minScale, Math.min(this.maxScale, scale))
+
+        this.zoomStates[index].scale = scale
+
+        // 计算缩放中心偏移
+        const center = this.getTouchCenter(event.touches)
+        const deltaX = center.x - this.touchState.startX
+        const deltaY = center.y - this.touchState.startY
+
+        this.zoomStates[index].translateX = this.touchState.lastX + deltaX
+        this.zoomStates[index].translateY = this.touchState.lastY + deltaY
+      } else if (event.touches.length === 1 && !this.touchState.isPinching && this.zoomStates[index].scale > 1) {
+        // 单指拖动放大的图片
+        event.preventDefault()
+        const deltaX = event.touches[0].pageX - this.touchState.startX
+        const deltaY = event.touches[0].pageY - this.touchState.startY
+
+        this.zoomStates[index].translateX = this.touchState.lastX + deltaX
+        this.zoomStates[index].translateY = this.touchState.lastY + deltaY
+      }
+    },
+    handleTouchEnd(event, index) {
+      if (!this.touchState.touching) {
+        return
+      }
+
+      this.touchState.touching = false
+
+      // 如果缩放到最小值，重置位置
+      if (this.zoomStates[index].scale <= this.minScale) {
+        this.zoomStates[index].scale = this.minScale
+        this.zoomStates[index].translateX = 0
+        this.zoomStates[index].translateY = 0
+      }
+
+      // 双击放大/缩小
+      if (event.touches.length === 0 && !this.touchState.isPinching) {
+        const now = Date.now()
+        const DOUBLE_TAP_DELAY = 300
+
+        if (this.lastTapTime && now - this.lastTapTime < DOUBLE_TAP_DELAY) {
+          // 双击事件
+          if (this.zoomStates[index].scale > this.minScale) {
+            // 已放大，缩小到最小
+            this.zoomStates[index].scale = this.minScale
+            this.zoomStates[index].translateX = 0
+            this.zoomStates[index].translateY = 0
+          } else {
+            // 未放大，放大到中间值
+            this.zoomStates[index].scale = Math.min(2, this.maxScale)
+            this.zoomStates[index].translateX = 0
+            this.zoomStates[index].translateY = 0
+          }
+          this.lastTapTime = 0
+        } else {
+          this.lastTapTime = now
+        }
+      }
+
+      this.touchState.isPinching = false
     }
   }
 }
